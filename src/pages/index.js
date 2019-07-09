@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import HomeContainer from "../containers/home.js"
 
-const IndexPage = ({ data }) => {
+/* const IndexPage = ({ data }) => {
   const postsData = data.allPrismicTesttype.edges
   const posts = postsData.map(post => (
     <div key={post.node.uid}>
@@ -15,16 +15,17 @@ const IndexPage = ({ data }) => {
         <Link to={`/${post.node.uid}`}>Ver más /{post.node.uid}</Link>
       </p>
     </div>
-  ))
+  )) */
+  const temp = ()=>{
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <h1>Noticias desde prismic</h1>
-      {posts}
+      <HomeContainer/>
     </Layout>
   )
-}
-
+  }
+/*}
+ 
 export const pageQuery = graphql`
   query IndexPageQuery {
     allPrismicTesttype {
@@ -49,3 +50,5 @@ export const pageQuery = graphql`
 `
 
 export default IndexPage
+ */
+export default temp
