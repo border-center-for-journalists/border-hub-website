@@ -34,14 +34,14 @@ module.exports = {
         icon: `src/theme/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-/*     {
+     {
       resolve: `gatsby-source-prismic`,
       options: {
-        repositoryName: `developmentprismic`,
+        repositoryName: `borderhub`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
       }, 
-    }, */
+    }, 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
