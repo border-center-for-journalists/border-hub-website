@@ -110,9 +110,13 @@ const AuthorContainer = styled.p`
   text-align: left;
   margin:0;
   display: ${props => (props.show ? "block" : "none")}
-
+  padding-right: 3em;
   b{
     color: ${props => (props.color ? props.theme.Yellow : props.theme.Black)};
+  }
+
+  ${props => props.theme.mediumBreakPoint} {
+    width: 15em;  
   }
 
   ${props => props.theme.smallBreakPoint} {
@@ -122,7 +126,17 @@ const AuthorContainer = styled.p`
   ${props => props.theme.xlBreakPoint} {
     display: ${props => (props.show ? "none" : "block")}
     margin: ${props => (props.color ? "1em 0" : "0")};
-    font-size: 27px 
+    font-size: 17px 
+  }
+  ${props => props.theme.xlBreakPoint} {
+    padding-right: 0;
+    &::after {
+      content:"";
+      display:block;
+      border-bottom:${props =>
+        props.color ? "5px solid" + props.theme.Yellow : "0"};
+      width: 7em;
+  }
   }
 
 `
@@ -144,27 +158,23 @@ const TitleContainer = styled(Container)`
   flex-direction: column;
   justify-content: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
   align-items: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
-  max-width: 65em;
   position: relative;
-  height: 250px;
+  max-width: 40em;
+  text-align: left;
+  margin: 0 1em;
 
   h1 {
     font-size: 39px;
     color: white;
     line-height: 46px;
-    max-width: 18em;
     text-align: left;
-    padding: 0 1em;
-    hr {
-      margin-top: 0.8em;
-      margin-bottom: 0.8em;
-      height: 4px;
-      background-color: ${props => props.theme.Yellow};
-    }
-    p {
-      line-height: 31.5px;
-      color: white;
-    }
+    padding-bottom: 0.5em;
+    border-bottom: 5px solid ${props => props.theme.Yellow};
+  }
+
+  p {
+    line-height: 31.5px;
+    color: white;
   }
 
   b {
@@ -173,10 +183,19 @@ const TitleContainer = styled(Container)`
 
   ${props => props.theme.mediumBreakPoint} {
     align-items: flex-start;
-    max-width: 65em;
+    width: 90%;
     height: 100%;
+  }
+
+  ${props => props.theme.smallBreakPoint} {
+    margin-top: 1em;
+  }
+
+  ${props => props.theme.xlBreakPoint} {
     h1 {
-      padding: 0.5em 1em;
+      border-bottom: 0px;
+      padding: 0;
+      margin: 0;
     }
   }
 `
