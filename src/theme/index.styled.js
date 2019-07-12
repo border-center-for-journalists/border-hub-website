@@ -101,6 +101,10 @@ const AuthorContainer = styled.p`
     color: ${props => (props.color ? props.theme.Yellow : props.theme.Black)};
   }
 
+  ${props => props.theme.mediumBreakPoint} {
+    width: 15em;  
+  }
+
   ${props => props.theme.smallBreakPoint} {
     margin: ${props => (props.color ? '0 3em' : '0')};
   }
