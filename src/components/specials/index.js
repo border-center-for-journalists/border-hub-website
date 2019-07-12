@@ -1,12 +1,12 @@
 import React, { Component } from "react"    
-import { SpecialSection, SpecialContainer,  CustomTitle } from "./index.styled"
-import {Row, Paragraph, TitleContainer } from "../../theme/index.styled"
+import { SpecialSection,  CustomTitle } from "./index.styled"
+import {Container, Row, Paragraph, TitleContainer } from "../../theme/index.styled"
 
 class SpecialNews extends Component {
     render() {
         return (
             <SpecialSection>
-                <SpecialContainer>
+                <Container>
                     <Row>
                         <CustomTitle>
                             Especiales
@@ -22,7 +22,7 @@ class SpecialNews extends Component {
                             </Paragraph>
                         </TitleContainer>
                     </Row>
-                </SpecialContainer>
+                </Container>
             </SpecialSection>
             )
         }

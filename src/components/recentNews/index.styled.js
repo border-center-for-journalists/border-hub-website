@@ -2,15 +2,14 @@ import styled from "styled-components"
 import { TitleMediumContainer, Section, Container, Col } from "../../theme/index.styled"
 
 const RecentSection = styled(Section)`
-    margin: 3em 0;
+    margin: 2em 0;
 
     ${props => props.theme.smallBreakPoint} {
-        margin: 3em 1em;
+        margin: 2em 1em;
       }
 `
 
 const CustomTitle = styled(TitleMediumContainer)`
-    margin-left: 4em;
     padding:0;
     max-width: 1100px;
     h3{
@@ -19,7 +18,6 @@ const CustomTitle = styled(TitleMediumContainer)`
     }
 `
 const PrincipalContainer = styled(Container)`
-    margin-left: 4em;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
