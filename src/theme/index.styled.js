@@ -57,7 +57,7 @@ const Rows = styled.div`
     justify-content: ${props =>
       props.alignS && props.alignS === "start" ? "flex-start" : props.alignS};
   }
-  ${props => props.theme.extraSmallBreakPoint} {
+  ${props => props.theme.xlBreakPoint} {
     flex-direction: ${props => (props.rowXs ? "row" : "column")};
     justify-content: ${props =>
       props.alignXs && props.alignXs === "start"
