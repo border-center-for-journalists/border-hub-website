@@ -25,7 +25,7 @@ const PrincipalContainer = styled(Container)`
     max-width: 1100px;
     hr{
         background-color: ${props => props.theme.White}
-        width: 95%;
+        width: 100%;
         margin-bottom: 1em;
         margin-top: 1em;
     }
@@ -89,10 +89,25 @@ const DateText = styled.p`
   line-height: 1.29;    
   text-align: left;
   margin:0;
+  ${props => props.theme.xlBreakPoint} {
+    color: ${props => props.theme.White};
+}
+
+
+`
+const TextCol = styled(Col)`
+    flex: 0 0 40%;
+    max-width: 40%;
+${props => props.theme.xlBreakPoint} {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 
 `
 
-const InterCol = styled(Col)`
+const ImgCol = styled(Col)`
+    flex: 0 0 60%;
+    max-width: 60%;
 
 ${props => props.theme.xlBreakPoint} {
     -ms-flex: 0 0 50%;
@@ -102,4 +117,10 @@ ${props => props.theme.xlBreakPoint} {
 
 `
 
-export{CustomTitle, NewsContainer, NewsText, PrincipalContainer, DateText, RecentSection, InterCol}
+const YellowText = styled.span`
+${props => props.theme.xlBreakPoint} {
+    color: ${props => props.theme.Yellow};
+  }
+`
+
+export{CustomTitle, NewsContainer, NewsText, PrincipalContainer, DateText, RecentSection, ImgCol, TextCol, YellowText}

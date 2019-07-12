@@ -108,7 +108,7 @@ const AuthorContainer = styled.p`
   ${props => props.theme.xlBreakPoint} {
     display: ${props => (props.show ? 'none' : 'block')}
     margin: ${props => (props.color ? '1em 0' : '0')};
-    font-size: 27px 
+    font-size: 17px 
   }
   ${props => props.theme.xlBreakPoint} {
     padding-right: 0;
