@@ -12,7 +12,7 @@ class HomeContainer extends Component {
     return (
       <React.Fragment>
         <HomeHeaderComponent/>
-        <HomeTitle/>  
+        {/* <HomeTitle/>   */}
         <MainNewsComponent/>
         <SubscribeComponent/>
         <RecentNews/>
