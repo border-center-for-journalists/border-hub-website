@@ -110,6 +110,15 @@ const AuthorContainer = styled.p`
     margin: ${props => (props.color ? '1em 0' : '0')};
     font-size: 27px 
   }
+  ${props => props.theme.xlBreakPoint} {
+    padding-right: 0;
+    &::after {
+      content:"";
+      display:block;
+      border-bottom:${props => (props.color ? "5px solid" + props.theme.Yellow : "0")};
+      width: 7em;
+  }
+  }
 
 `
 const Col = styled.div`
@@ -156,13 +165,21 @@ const TitleContainer = styled(Container)`
   }
 
   ${props => props.theme.mediumBreakPoint} {
-    align-items: flex-start;
+    align-items: flex-start;  
     width: 90%;
     height: 100%;
   }
 
   ${props => props.theme.smallBreakPoint} {
     margin-top:1em;
+  }
+
+  ${props => props.theme.xlBreakPoint} {
+    h1{
+      border-bottom: 0px;
+      padding:0;
+      margin:0;
+    }
   }
 
 `

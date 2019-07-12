@@ -41,6 +41,9 @@ const BannerContainer = styled(Container)`
     color: ${props => props.theme.Yellow}
   }
 
+  ${props => props.theme.xlBreakPoint} {
+      bottom:0;
+  }
 `
 
 export {
