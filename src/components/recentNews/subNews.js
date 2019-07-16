@@ -1,13 +1,13 @@
 import React, { Component } from "react"    
-import { NewsContainer, NewsText, DateText, InterCol } from "./index.styled"
-import {ImageWrapper, Paragraph, Col } from "../../theme/index.styled"
+import { NewsContainer, NewsText, DateText, ImgCol, TextCol, YellowText } from "./index.styled"
+import {ImageWrapper, Paragraph } from "../../theme/index.styled"
 import tempImg from "../../theme/images/3.jpg"
 
 class SubNewComponent extends Component {
     render() {
         return (
         <NewsContainer>
-            <InterCol>
+            <TextCol>
             <NewsText>
                 <h3>
                     Labore et dolore magna aliqua. 
@@ -17,14 +17,14 @@ class SubNewComponent extends Component {
                 </Paragraph>
             </NewsText>
             <DateText>
-                4:00 pm <br/>  Marzo 08 | 2019
+                4:00 pm <br/>  <YellowText>Marzo 08 </YellowText> | 2019
             </DateText>
-            </InterCol>
-            <InterCol>
-            <ImageWrapper>
-                <img alt="prueba" src={tempImg} />
-            </ImageWrapper>
-            </InterCol>
+            </TextCol>
+            <ImgCol>
+                <ImageWrapper>
+                    <img alt="prueba" src={tempImg} />
+                </ImageWrapper>
+            </ImgCol>
         </NewsContainer>
         )
     }

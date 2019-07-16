@@ -43,9 +43,26 @@ const Rows = styled.div`
   flex-direction: row;
   justify-content: ${props =>
     props.align && props.align === "start" ? "flex-start" : props.align};
-  ${props => (props.wrap ? "flex-wrap: wrap;" : "")} ${props =>
-    props.theme.smallBreakPoint} {
+  ${props => (props.wrap ? "flex-wrap: wrap;" : "")}
+  ${props => props.theme.mediumBreakPoint} {
+    flex-direction: ${props => (props.rowM ? "row" : "column")};
+    justify-content: ${props =>
+      props.alignM && props.alignM === "start" ? "flex-start" : props.alignM};
+  }
+  ${props => props.theme.smallBreakPoint} {
     flex-direction: ${props => (props.keepRow ? "row" : "column")};
+  }
+  ${props => props.theme.smallBreakPoint} {
+    flex-direction: ${props => (props.rowS ? "row" : "column")};
+    justify-content: ${props =>
+      props.alignS && props.alignS === "start" ? "flex-start" : props.alignS};
+  }
+  ${props => props.theme.xlBreakPoint} {
+    flex-direction: ${props => (props.rowXs ? "row" : "column")};
+    justify-content: ${props =>
+      props.alignXs && props.alignXs === "start"
+        ? "flex-start"
+        : props.alignXs};
   }
 `
 const Row = styled.div`
@@ -72,15 +89,13 @@ const ImageWrapper = styled.div`
   }
 `
 
-
-
 const YellowTitle = styled.h3`
   background-color: ${props => props.theme.Yellow};
   font-size: 30px;
   line-height: 34.5px;
-  width:100%;
-  padding: 15px 0px 15px 31px ;
-  color:black;
+  width: 100%;
+  padding: 15px 0px 15px 31px;
+  color: black;
   ${props => props.theme.xlBreakPoint} {
     margin: 0;
   }
@@ -94,20 +109,34 @@ const AuthorContainer = styled.p`
   max-width: 15em;
   text-align: left;
   margin:0;
-  display: ${props => (props.show ? 'block' : 'none')}
-
+  display: ${props => (props.show ? "block" : "none")}
+  padding-right: 3em;
   b{
     color: ${props => (props.color ? props.theme.Yellow : props.theme.Black)};
   }
 
+  ${props => props.theme.mediumBreakPoint} {
+    width: 15em;  
+  }
+
   ${props => props.theme.smallBreakPoint} {
-    margin: ${props => (props.color ? '0 3em' : '0')};
+    margin: ${props => (props.color ? "0 3em" : "0")};
   }
 
   ${props => props.theme.xlBreakPoint} {
-    display: ${props => (props.show ? 'none' : 'block')}
-    margin: ${props => (props.color ? '1em 0' : '0')};
-    font-size: 27px 
+    display: ${props => (props.show ? "none" : "block")}
+    margin: ${props => (props.color ? "1em 0" : "0")};
+    font-size: 17px 
+  }
+  ${props => props.theme.xlBreakPoint} {
+    padding-right: 0;
+    &::after {
+      content:"";
+      display:block;
+      border-bottom:${props =>
+        props.color ? "5px solid" + props.theme.Yellow : "0"};
+      width: 7em;
+  }
   }
 
 `
@@ -119,70 +148,74 @@ const Col = styled.div`
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
-    img{
+    img {
       padding: 0 1.5em 1em;
     }
-}
+  }
 `
 const TitleContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
   align-items: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
-  max-width:65em;
-  position:relative;
-  height: 250px;
+  position: relative;
+  max-width: 40em;
+  text-align: left;
+  margin: 0 1em;
 
   h1 {
     font-size: 39px;
     color: white;
     line-height: 46px;
-    max-width: 18em;
     text-align: left;
-    padding: 0 1em;
-    hr{
-        margin-top:.8em;
-        margin-bottom:.8em;
-        height:4px;
-        background-color: ${props => props.theme.Yellow}
-    }
-    p{
-        line-height: 31.5px;
-        color:white;
-      }
+    padding-bottom: 0.5em;
+    border-bottom: 5px solid ${props => props.theme.Yellow};
   }
 
-  b{
+  p {
+    line-height: 31.5px;
+    color: white;
+  }
+
+  b {
     color: ${props => props.theme.Yellow};
   }
 
   ${props => props.theme.mediumBreakPoint} {
     align-items: flex-start;
-    max-width: 65em;
+    width: 90%;
     height: 100%;
+  }
+
+  ${props => props.theme.smallBreakPoint} {
+    margin-top: 1em;
+  }
+
+  ${props => props.theme.xlBreakPoint} {
     h1 {
-      padding:.5em 1em;
+      border-bottom: 0px;
+      padding: 0;
+      margin: 0;
     }
   }
 `
 
 const TitleMediumContainer = styled(Container)`
-  padding: 1.5em 0 .1em;
+  padding: 1.5em 0 0.1em;
 
-  h3{
-    padding-bottom:15px;
+  h3 {
+    padding-bottom: 15px;
     margin-bottom: 15px;
-    color:${props => (props.color ? props.theme.Black : props.theme.White)};
+    color: ${props => (props.color ? props.theme.Black : props.theme.White)};
     border-bottom: 3px solid;
-    border-color: ${props => (props.color ? props.theme.Black : props.theme.Yellow)};
+    border-color: ${props =>
+      props.color ? props.theme.Black : props.theme.Yellow};
   }
 
   ${props => props.theme.ipadBreakPoint} {
     margin: 0 auto;
   }
 `
-
-
 
 export {
   Wrapper,
@@ -197,5 +230,5 @@ export {
   AuthorContainer,
   Col,
   TitleContainer,
-  TitleMediumContainer
+  TitleMediumContainer,
 }

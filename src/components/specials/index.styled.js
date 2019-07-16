@@ -9,14 +9,10 @@ const SpecialSection = styled(Section)`
     padding: 2em 3em;
 `
 
-const SpecialContainer = styled(Container)`
-    margin: 0 0 4em;
-`
-
 const CustomTitle = styled(YellowTitle)`
     max-width: 6.5em;
    
 `
 
 
-export{SpecialSection, SpecialContainer, CustomTitle}
+export{SpecialSection, CustomTitle}
