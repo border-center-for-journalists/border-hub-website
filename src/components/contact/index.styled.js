@@ -53,7 +53,8 @@ const CustomColText = styled(Col)`
 const CustomRows = styled(Rows)`
     padding-bottom: 2em;
     input{
-        width: 13.2em;
+        width: 95%;
+        margin-right: 3em;
     }
     ${props => props.theme.mediumBreakPoint} {
         input{
@@ -62,7 +63,9 @@ const CustomRows = styled(Rows)`
       }
       ${props => props.theme.smallBreakPoint} {
         padding-bottom: 0;
+        width: 95%;
         input{
+            width: 100%;
             margin-bottom:1em;
         }
       }
