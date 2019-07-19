@@ -6,17 +6,15 @@
 
 // You can delete this file if you're not using it
 
-/* const path = require("path")
+const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
   const pages = await graphql(`
     {
-      allPrismicTesttype {
+      allPrismicNoticiasEspeciales {
         edges {
           node {
-            id
             uid
           }
         }
@@ -24,15 +22,15 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const template = path.resolve("src/templates/post.jsx")
+  const specialNote = path.resolve("src/containers/specialnote.js")
 
-  pages.data.allPrismicTesttype.edges.forEach(edge => {
+  pages.data.allPrismicNoticiasEspeciales.edges.forEach(edge => {
     createPage({
       path: `/${edge.node.uid}`,
-      component: template,
+      component: specialNote,
       context: {
         uid: edge.node.uid,
       },
     })
   })
-} */
+}

@@ -1,32 +1,50 @@
 import React from "react"
-import { NoticeTitleWrapper, Share, YellowText } from "./index.styled"
+import {
+  NoticeTitleWrapper,
+  Share,
+  YellowText,
+  ImageWrapper,
+} from "./index.styled"
 import { Container, Rows } from "../../theme/index.styled"
+import img from "../../theme/images/1.jpg"
 
-const HeaderNoticeComponent = ({ data, type }) => {
+const HeaderNoticeComponent = ({ notice }) => {
   //const { publish_date, title, authors } = data
+  const { title, banner } = notice.data
+  const getAuthorName = () => {
+    return notice.data.authors.length > 0
+      ? notice.data.authors[0].author_name.text
+      : ""
+  }
   return (
-    <Container size="medium">
-      <NoticeTitleWrapper>
-        <h1>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt
-        </h1>
-        <p>
-          <i>
-            Por <YellowText>Diana Pérez |</YellowText> En alianza con{" "}
-            <u>Reforma</u>
-          </i>
-        </p>
-        <p>Marzo 12, 2019 | 13:45</p>
-        <hr />
-        <Rows align="flex-end">
-          <Share>a</Share>
-          <Share>a</Share>
-          <Share>a</Share>
-          <Share>a</Share>
-        </Rows>
-      </NoticeTitleWrapper>
-    </Container>
+    <React.Fragment>
+      <Container size="medium">
+        <NoticeTitleWrapper>
+          <h1>{title.text}</h1>
+          <p>
+            <i>
+              Por <YellowText>{getAuthorName()} |</YellowText> En alianza con{" "}
+              <u>Reforma</u>
+            </i>
+          </p>
+          <p>Marzo 12, 2019 | 13:45</p>
+          <hr />
+          <Rows align="flex-end">
+            <Share>a</Share>
+            <Share>a</Share>
+            <Share>a</Share>
+            <Share>a</Share>
+          </Rows>
+        </NoticeTitleWrapper>
+      </Container>
+      {banner.url ? (
+        <ImageWrapper>
+          <img alt={banner.alt} src={banner.url} />
+        </ImageWrapper>
+      ) : (
+        ""
+      )}
+    </React.Fragment>
   )
 }
 

@@ -36,14 +36,24 @@ const Container = styled.div`
     props.size === "medium"
       ? "max-width:" + props.theme.ContainerMedium + "px"
       : ""};
+  ${props => (props.size === "full" ? "max-width: 100%;" : "")};
 `
-
+const RowGap = gap => {
+  if (!gap || gap === "") return ""
+  return `
+     * {
+      padding: ${gap};
+    }
+  `
+}
 const Rows = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: ${props =>
     props.align && props.align === "start" ? "flex-start" : props.align};
   ${props => (props.wrap ? "flex-wrap: wrap;" : "")}
+  ${props => RowGap(props.gap)}
+  ${props => (props.vAlign ? `align-items:${props.vAlign};` : "")}
   ${props => props.theme.mediumBreakPoint} {
     flex-direction: ${props => (props.rowM ? "row" : "column")};
     justify-content: ${props =>
