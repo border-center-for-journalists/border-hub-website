@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {YellowTitle, Container, Section } from "../../theme/index.styled"
+import {YellowTitle, Section } from "../../theme/index.styled"
 import bg from "../../theme/images/1.jpg"
 
 const SpecialSection = styled(Section)`

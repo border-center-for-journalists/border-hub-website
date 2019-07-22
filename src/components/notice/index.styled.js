@@ -4,6 +4,12 @@ const NoticeSection = styled.section`
   padding-top: 120px;
 `
 
+const Divider = styled.hr`
+  margin: 30px 10px;
+  border: 0 none;
+  border-top: 1px solid ${props => props.theme.DarkGray};
+`
+
 const NoticeTitleWrapper = styled.div`
   display: block;
   text-align: center;
@@ -44,13 +50,16 @@ const NoticeSectionTitle = styled.h4`
 `
 
 const Author = styled.div`
-  flex: 1 0 32%;
+  flex: 0 1 32%;
   color: white;
   ul {
     list-style: none;
     padding: 0;
     font-size: 15px;
     margin: 0;
+    li {
+      margin: 0;
+    }
   }
 `
 
@@ -67,15 +76,78 @@ const AuthorRol = styled.p`
   letter-spacing: 2.4px;
   text-align: center;
   margin: 0;
+  text-transform: uppercase;
+`
+
+const AuthorProfile = styled.div`
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 5px auto 10px;
+  border-radius: 50%;
+  overflow: hidden;
+`
+
+const ImageWrapper = styled.div`
+  display: block;
+  img {
+    display: block;
+    width: 100%;
+  }
+`
+
+const TextWrapper = styled.div`
+  padding: 15px 0;
+  * {
+    color: white;
+  }
+  img {
+    display: block;
+  }
+`
+
+const QuoteWrapper = styled.div`
+  margin: 20px 0;
+  padding: 5px 70px;
+  font-style: italic;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  p {
+    margin: 5px 0;
+  }
+`
+
+const MediaWrapper = styled.div`
+  display: block;
+  position: relative;
+  margin: 0px;
+  width: 100%;
+  padding: 25% 0;
+  box-sizing: border-box;
+  iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: block;
+  }
 `
 
 export {
   NoticeTitleWrapper,
   NoticeSection,
+  Divider,
   Share,
   YellowText,
   NoticeSectionTitle,
   Author,
   AuthorTitle,
   AuthorRol,
+  AuthorProfile,
+  ImageWrapper,
+  TextWrapper,
+  QuoteWrapper,
+  MediaWrapper,
 }
