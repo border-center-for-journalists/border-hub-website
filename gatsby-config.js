@@ -37,7 +37,7 @@ module.exports = {
      {
       resolve: `gatsby-source-prismic`,
       options: {
-        repositoryName: `developmentprismic`,
+        repositoryName: `borderhub`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
       }, 
