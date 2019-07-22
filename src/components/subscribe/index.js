@@ -1,6 +1,6 @@
 import React, { Component } from "react"    
-import {YellowBody, FormBody, Col_3 } from "./index.styled"
-import {TitleMediumContainer, Row } from "../../theme/index.styled"
+import {YellowBody, CustomRow } from "./index.styled"
+import {TitleMediumContainer, Rows, FormBody } from "../../theme/index.styled"
 
 
 class SubscribeComponent extends Component {
@@ -11,26 +11,20 @@ class SubscribeComponent extends Component {
                 <h3>
                 Suscríbete
                 </h3>
-                <FormBody>
-                    <Col_3>
-                    <Row>
+                <FormBody color={true}>
+                    <Rows>
+                    <CustomRow>
                         <p>Nombre</p>
-                    </Row>
-                    <Row>
                         <input type="text" name="name" />
-                    </Row>
-                    </Col_3>
-                    <Col_3>
-                    <Row>
+                    </CustomRow>
+                    <CustomRow >
                         <p>Mail</p>
-                    </Row>
-                    <Row>
                         <input type="email" name="email"/>
-                    </Row>
-                    </Col_3>
-                    <Col_3>
+                    </CustomRow>
+                    <CustomRow>
                         <button name="Submit">Enviar</button>
-                    </Col_3>
+                    </CustomRow>   
+                    </Rows>
                 </FormBody>
             </TitleMediumContainer>
         </YellowBody>

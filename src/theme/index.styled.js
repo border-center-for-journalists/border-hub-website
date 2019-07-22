@@ -49,6 +49,7 @@ const RowGap = gap => {
 const Rows = styled.div`
   display: flex;
   flex-direction: row;
+  width:100%;
   justify-content: ${props =>
     props.align && props.align === "start" ? "flex-start" : props.align};
   ${props => (props.wrap ? "flex-wrap: wrap;" : "")}
@@ -151,11 +152,9 @@ const AuthorContainer = styled.p`
 
 `
 const Col = styled.div`
-  -ms-flex: 0 0 50%;
   flex: 0 0 50%;
   max-width: 50%;
   ${props => props.theme.xlBreakPoint} {
-    -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
     img {
@@ -227,6 +226,45 @@ const TitleMediumContainer = styled(Container)`
   }
 `
 
+
+const FormBody = styled.form`
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    input{
+        height: 40px;
+        background-color:${props => (props.color ? props.theme.Yellow : props.theme.White)};
+        border: 1px solid ${props => props.theme.Black};
+        margin-right: 2em;
+    }
+    textarea{
+      background-color:${props => (props.color ? props.theme.Yellow : props.theme.White)};
+      border: 1px solid ${props => props.theme.Black};
+      margin-right: 2em;
+    }
+    p{
+        margin:0;
+        font-size: 15px;
+        line-height: 1.56;
+        color: ${props => props.theme.Black};
+    }
+
+    button{
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        border: none;
+        width: 236px;
+        height: 40px;
+        display: block;
+        margin: 1.23em auto 0;
+        font-size: 19.5px;
+        line-height: 1.44;
+        font-weight: bold;
+        
+    }
+`
+
 export {
   Wrapper,
   Content,
@@ -241,4 +279,5 @@ export {
   Col,
   TitleContainer,
   TitleMediumContainer,
+  FormBody,
 }

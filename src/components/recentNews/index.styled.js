@@ -18,9 +18,7 @@ const CustomTitle = styled(TitleMediumContainer)`
     }
 `
 const PrincipalContainer = styled(Container)`
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     max-width: 1100px;
     hr{
