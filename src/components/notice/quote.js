@@ -4,13 +4,13 @@ import { Container } from "../../theme/index.styled"
 
 const QuoteNoticeContentComponent = ({ notice }) => {
   const { primary } = notice
-  console.log("notice", primary)
   return (
     <React.Fragment>
       <Container size="medium">
-        <QuoteWrapper>
+        <QuoteWrapper color={primary.content.color}>
           <TextWrapper
             dangerouslySetInnerHTML={{ __html: primary.content.html }}
+            color={primary.content.color}
           />
         </QuoteWrapper>
       </Container>

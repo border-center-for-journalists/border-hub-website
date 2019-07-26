@@ -1,7 +1,7 @@
 import React, { Component } from "react"    
-import { GeneralNewsSection, GeneralTitle, Quote, RectangleColorText, RectangleText, ColContainer } from "./index.styled"
+import { GeneralNewsSection, GeneralTitle, Quote } from "./index.styled"
 import tempImg from "../../theme/images/2.jpg"
-import { ImageWrapper}  from "../../theme/index.styled"
+import { ImageWrapper, RectangleColorText, RectangleText, ColContainer}  from "../../theme/index.styled"
 
 class GeneralComponent extends Component {
     render() {

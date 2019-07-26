@@ -19,7 +19,7 @@ const HeaderNoticeComponent = ({ notice }) => {
   return (
     <React.Fragment>
       <Container size="medium">
-        <NoticeTitleWrapper>
+        <NoticeTitleWrapper align={title.align}>
           <h1>{title.text}</h1>
           <p>
             <i>

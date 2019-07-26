@@ -12,7 +12,7 @@ import { Container, Rows } from "../../theme/index.styled"
 const AuthorComponent = ({ author }) => {
   console.log(author)
   return (
-    <Author>
+    <Author color={author.color}>
       {author.author_profile.url ? (
         <AuthorProfile>
           <img alt={author.author_name.text} src={author.author_profile.url} />
@@ -20,8 +20,8 @@ const AuthorComponent = ({ author }) => {
       ) : (
         ""
       )}
-      <AuthorTitle>{author.author_name.text}</AuthorTitle>
-      <AuthorRol>{author.author_rol.text}</AuthorRol>
+      <AuthorTitle align={author.align}>{author.author_name.text}</AuthorTitle>
+      <AuthorRol align={author.align}>{author.author_rol.text}</AuthorRol>
       <ul>
         {author.author_email.text ? (
           <li>
@@ -53,7 +53,7 @@ const AuthorsNoticeComponent = ({ authors }) => {
   return (
     <Container size="medium">
       <Divider />
-      <NoticeSectionTitle>Créditos</NoticeSectionTitle>
+      <NoticeSectionTitle color={authors[0].color} align={authors[0].align}>Créditos</NoticeSectionTitle>
       <Rows align="space-between">
         {authors.map((author, index) => (
           <AuthorComponent author={author} key={index} />

@@ -260,9 +260,36 @@ const FormBody = styled.form`
         margin: 1.23em auto 0;
         font-size: 19.5px;
         line-height: 1.44;
-        font-weight: bold;
-        
+        font-weight: bold; 
     }
+`
+const RectangleColorText = styled(Col)`
+    flex: 0 0 30%;
+    max-width: 30%;
+    font-size: 13px;
+    line-height: 1.54;
+    background-color: ${props => props.theme.SoftGray};
+    padding: 35px 22px;
+    b{
+        color:${props => props.theme.Black}
+    }
+    ${props => props.theme.smallBreakPoint} {
+        flex: 0 0 100%;
+        max-width: 1000%;
+    }
+`
+const RectangleText = styled(Col)`
+    flex: 0 0 70%;
+    max-width: 70%;
+    padding: 0 19px;
+    ${props => props.theme.smallBreakPoint} {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+`
+const ColContainer = styled.div`
+    flex-wrap: wrap;
+    display: flex;
 `
 
 export {
@@ -280,4 +307,7 @@ export {
   TitleContainer,
   TitleMediumContainer,
   FormBody,
+  RectangleColorText, 
+  RectangleText, 
+  ColContainer
 }

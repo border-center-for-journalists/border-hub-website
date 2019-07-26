@@ -4,6 +4,7 @@ import { Container } from "../../theme/index.styled"
 
 const TextNoticeContentComponent = ({ notice }) => {
   const { primary } = notice
+  console.log("Text", notice)
   return (
     <React.Fragment>
       <Container size="medium">

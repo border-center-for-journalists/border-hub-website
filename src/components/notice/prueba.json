@@ -1,0 +1,105 @@
+  {
+    "uid": "primera-noticia-especial",
+    "last_publication_date": "2019-07-19T18:14:06+0000",
+    "data": {
+      "title": {
+        "text": "Primera noticia especial",
+        "align": "left"
+      },
+      "banner": {
+        "url": "https://borderhub.cdn.prismic.io/borderhub/58ebba6791a8538adbaa639e828d21069c009e46_fotoperiodistas.png",
+        "alt": ""
+      },
+      "authors": [
+        {
+            "color":"black",
+            "align":"left",
+            "author_profile": {
+                "url": null
+            },
+            "author_name": {
+                "text": "Author de prueba"
+            },
+            "author_rol": {
+                "text": "Autor"
+            },
+            "author_email": {
+                "text": "autor@border-hub.com"
+            },
+            "author_facebook": {
+                "text": "author"
+            },
+            "author_twitter": {
+                "text": "author"
+            }
+        }
+      ],
+      "alliances": [
+        {
+          "alliance_image": {
+            "url": "https://borderhub.cdn.prismic.io/borderhub/48e42c20bc0f77a147a2e549408cc11588a0380e_borderhubcenter.jpg",
+            "alt": ""
+          },
+          "alliance_url": {
+            "url": "http://spaceshiplabs.com/"
+          }
+        },
+        {
+          "alliance_image": {
+            "url": "https://borderhub.cdn.prismic.io/borderhub/a51fe5676544e3e33e89520a1e2e65ed5e05f954_borderhubcenter.jpg",
+            "alt": ""
+          },
+          "alliance_url": {
+            "url": "http://spaceshiplabs.com/"
+          }
+        }
+      ],
+      "body": [
+        {
+          "__typename": "PrismicNoticiasEspecialesBodyTexto",
+          "slice_type": "texto",
+          "primary": {
+            "content": {
+              "html": "<h2>The standard Lorem Ipsum passage, used since the 1500s</h2><p>&quot;Lorem  ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint  occaecat cupidatat non proident, sunt in culpa qui officia deserunt  mollit anim id est laborum.&quot;</p><p>Labore et dolore magna aliqua. Ut enim ad minim veniam rud exercitation ullamco laboris nisi ut aliquip ex ea commodo... consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus.</p><p> error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>"
+            }
+          }
+        },
+        {
+          "__typename": "PrismicNoticiasEspecialesBodyMultimedia",
+          "slice_type": "multimedia",
+          "primary": {
+            "embed": {
+              "html": "<iframe width=\"480\" height=\"270\" src=\"https://www.youtube.com/embed/M_z4NEtZsIE?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+            },
+            "embed_type": "full"
+          }
+        },
+        {
+          "__typename": "PrismicNoticiasEspecialesBodyCitado",
+          "slice_type": "citado",
+          "primary": {
+            "content": {
+              "html": "<p>“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.”  Sequi Nesciunt</p>",
+              "color": "black"
+            }
+          }
+        },
+        {
+          "__typename": "PrismicNoticiasEspecialesBodyBloque",
+          "slice_type": "bloque",
+          "items": [
+            {
+              "content": {
+                "html": "<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+              }
+            },
+            {
+              "content": {
+                "html": "<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Section, Row } from "../../theme/index.styled"
+import {Section, Row } from "../../theme/index.styled"
 
 const YellowBody = styled(Section)`
     width:100%;
@@ -13,6 +13,9 @@ const CustomRow = styled(Row)`
 
     ${props => props.theme.mediumBreakPoint} {
         width:100%;
+        input{
+            width:100%;
+        }
         button{
             width:100%;
         }
@@ -20,9 +23,6 @@ const CustomRow = styled(Row)`
       }
 
     ${props => props.theme.smallBreakPoint} {
-        input{
-            width:100%;
-        }
         button{
             width:100%;
         }
