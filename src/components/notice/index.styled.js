@@ -12,13 +12,7 @@ const NormalNoticeContainer = styled.div`
   widht:100%;
   height:100%;
   background-color: ${props => props.theme.White}
-  p{
-    color:${props => props.theme.Black}
-  }
-  h2{
-    color:${props => props.theme.Black}
-  }
-`
+  `
 
 const YellowContainer = styled(Container)`
   background-color:${props => props.theme.Yellow}
@@ -57,6 +51,7 @@ const CustomRow = styled(Row)`
 const DonateContainer = styled(Container)`
     background-color: black;
     padding: 45px 45px;
+    margin: 0 auto 45px;
     text-align:center;
     p{
       color:white
@@ -80,7 +75,7 @@ const DonateContainer = styled(Container)`
 `
 
 const MainNewSmall = styled.div`
-    padding: 15px 0 0 0;
+    padding: 15px 15px;
     display: flex;
     flex-wrap: wrap;
     img{
@@ -199,6 +194,7 @@ const ImageWrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding: 15px 0;
+  font-size: 22px;
   * {
     color: ${props => (props.color ? props.color : "white")};
   }

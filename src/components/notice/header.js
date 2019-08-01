@@ -8,18 +8,26 @@ import {
 import { Container, Rows } from "../../theme/index.styled"
 import img from "../../theme/images/1.jpg"
 
-const HeaderNoticeComponent = ({ notice }) => {
+const HeaderNoticeComponent = ({ notice, align }) => {
   //const { publish_date, title, authors } = data
   const { title, banner } = notice.data
   const getAuthorName = () => {
-    return notice.data.authors.length > 0
+    if(notice.data.authors){
+      return notice.data.authors.length > 0
       ? notice.data.authors[0].author_name.text
       : ""
-  }
+    }
+    else{
+      return notice.data.author.length > 0
+      ? notice.data.author[0].name.text
+      : ""
+    }
+
+  } 
   return (
     <React.Fragment>
       <Container size="medium">
-        <NoticeTitleWrapper align={title.align}>
+        <NoticeTitleWrapper align={align}>
           <h1>{title.text}</h1>
           <p>
             <i>

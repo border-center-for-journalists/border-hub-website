@@ -10,23 +10,26 @@ import NormalDonateComponent from "./donate.js"
 import NormalRelatedComponent from "./related.js"
 import myData from './prueba.json';
 
-class SpecialNoticeComponent extends Component {
+class NormalNoticeComponent extends Component {
   render() {
     return (
       <NoticeSection>
-        <HeaderNoticeComponent notice={myData} />
+        {console.log(this.props.notice.data)}
+        <HeaderNoticeComponent align="left" notice={this.props.notice} />
         <NormalNoticeContainer>
-        <TextNoticeContentComponent notice={myData.data.body[0]} />
-        <NormalSubscribeComponent/>
-        <QuoteNoticeContentComponent notice={myData.data.body[2]} />
-        <RectangleComponent/>
-        <AuthorsNoticeComponent authors={myData.data.authors} />
-        <NormalRelatedComponent/>
+          <TextNoticeContentComponent notice={this.props.notice} />
+          <NormalSubscribeComponent/>
+          <QuoteNoticeContentComponent notice={myData.data.body[2]} />
+          <RectangleComponent/>
+          <AuthorsNoticeComponent authors={myData.data.authors} />
+          <NormalDonateComponent/>
+          <NormalRelatedComponent/>
         </NormalNoticeContainer>
-        {console.log(myData)}
+        
+        
       </NoticeSection>
     )
   }
 }
 
-export default SpecialNoticeComponent
+export default NormalNoticeComponent
