@@ -4,8 +4,9 @@ import {Container, Row, Paragraph, TitleContainer } from "../../theme/index.styl
 
 class SpecialNews extends Component {
     render() {
+        console.log("Especial", this.props)
         return (
-            <SpecialSection>
+            <SpecialSection bg = {this.props.notice.nodes[0].data.banner.url}>
                 <Container>
                     <Row>
                         <CustomTitle>
@@ -15,7 +16,7 @@ class SpecialNews extends Component {
                     <Row>
                         <TitleContainer fullHeight={false}>
                             <h1>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                                {this.props.notice.nodes[0].data.title.text}
                             </h1> 
                             <Paragraph>
                                 Abore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 

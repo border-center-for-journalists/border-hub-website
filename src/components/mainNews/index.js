@@ -3,28 +3,42 @@ import {NewsContainer, MainNewBig, SubTitleParagraph, TextContainer } from "./in
 import { AuthorContainer, ImageWrapper, YellowTitle } from "../../theme/index.styled"
 import tempImg from "../../theme/images/2.jpg"
 import SubNewComponent from "./subNews.js"
+
 class MainNewsComponent extends Component {
+  
+  getComponent = (data, i) => {
+      const noticeLen = Object.keys(this.props.notice).length
+      console.log(data)
+      if (noticeLen === i + 1) {
+        return <div>
+        <ImageWrapper>
+          <img alt="prueba" src={data.data.banner.url} />
+        </ImageWrapper>
+        <TextContainer>
+          <h2>{data.data.title.text}</h2>
+          <SubTitleParagraph>
+            {data.data.excerpt.text}
+          </SubTitleParagraph>
+          <AuthorContainer>
+            <i> Por <b> Diana Perez Bautista</b> </i> <br/> Marzo 12 | 2019
+          </AuthorContainer>
+        </TextContainer>
+        </div>
+      } else {
+        return <SubNewComponent notice={data}/>
+      }
+    }
     render() {
+      const htmlContent = this.props.notice.nodes.map((data, index) =>
+      this.getComponent(data, index)
+    )
       return (
           <NewsContainer>
               <YellowTitle>
                     Notas Principales
               </YellowTitle>
               <MainNewBig size="Common">
-                <ImageWrapper>
-                    <img alt="prueba" src={tempImg} />
-                </ImageWrapper>
-                <TextContainer>
-                  <h2>Sectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2>
-                  <SubTitleParagraph>
-                    Labore et dolore magna aliqua. Ut enim ad minim veniam rud exercitation ullamco laboris nisi ut aliquip ex ea commodo... consequat.  
-                  </SubTitleParagraph>
-                  <AuthorContainer>
-                    <i> Por <b> Diana Perez Bautista</b> </i> <br/> Marzo 12 | 2019
-                  </AuthorContainer>
-                </TextContainer>
-                <SubNewComponent/>
-                <SubNewComponent/>
+              {htmlContent}
               </MainNewBig>
           </NewsContainer>
       )

@@ -8,13 +8,14 @@ import SpecialNews from "../components/specials/index.js"
 
 class HomeContainer extends Component {
   render() {
+    {console.log("home",this.props)}
     return (
       <React.Fragment>
         <HomeHeaderComponent/>
-        <MainNewsComponent/>
+        <MainNewsComponent notice={this.props.noticeP} />
         <SubscribeComponent/>
         <RecentNews/>
-        <SpecialNews/>
+        <SpecialNews notice={this.props.noticeS} />
       </React.Fragment>
         )
         }

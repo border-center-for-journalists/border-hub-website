@@ -20,7 +20,6 @@ class NormalNoticeComponent extends Component {
           <TextNoticeContentComponent notice={this.props.notice} />
           <NormalSubscribeComponent/>
           <QuoteNoticeContentComponent notice={myData.data.body[2]} />
-          <RectangleComponent/>
           <AuthorsNoticeComponent authors={myData.data.authors} />
           <NormalDonateComponent/>
           <NormalRelatedComponent/>
