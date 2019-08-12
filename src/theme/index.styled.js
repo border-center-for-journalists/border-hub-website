@@ -1,9 +1,14 @@
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
+width: 100%;
+min-height: 100%;
+height: 100%;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+-moz-box-pack: justify;
+justify-content: space-between;
 `
 
 const Content = styled.div`
