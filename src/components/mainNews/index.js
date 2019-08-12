@@ -4,7 +4,7 @@ import { AuthorContainer, ImageWrapper, YellowTitle } from "../../theme/index.st
 import tempImg from "../../theme/images/2.jpg"
 import SubNewComponent from "./subNews.js"
 
-class MainNewsComponent extends Component {
+class   MainNewsComponent extends Component {
   
   getComponent = (data, i) => {
       const noticeLen = Object.keys(this.props.notice).length
@@ -20,7 +20,7 @@ class MainNewsComponent extends Component {
             {data.data.excerpt.text}
           </SubTitleParagraph>
           <AuthorContainer>
-            <i> Por <b> Diana Perez Bautista</b> </i> <br/> Marzo 12 | 2019
+            <i> Por <b>  {data.data.author[0].name.text} </b> </i> <br/> Marzo 12 | 2019
           </AuthorContainer>
         </TextContainer>
         </div>

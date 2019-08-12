@@ -4,7 +4,9 @@ import {AuthorContainer, ImageWrapper, Paragraph, Col } from "../../theme/index.
 import tempImg from "../../theme/images/2.jpg"
 class SubNewComponent extends Component {
     render() {
-        console.log(this.props)
+        const Months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+        let date = new Date(this.props.notice.data.custom_publishdate); 
+        let trueDate =  Months[date.getMonth()] + " " +  date.getDate() + " | " + date.getFullYear();
         return (
         <MainNewSmall>
             <hr/>
@@ -22,7 +24,7 @@ class SubNewComponent extends Component {
                     {this.props.notice.data.excerpt.text}
                 </Paragraph>
                 <AuthorContainer>
-                    <i> Por <b> Diana Perez Bautista</b> </i> <br/> Marzo 12 | 2019
+                    <i> Por <b> {this.props.notice.data.author[0].name.text} </b> </i> <br/> {trueDate}
                 </AuthorContainer>
             </MainNewSmallText>
             </Col>
