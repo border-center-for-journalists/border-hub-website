@@ -12,20 +12,21 @@ const Banner = styled(Section)`
 const BannerImg = styled.div`
   background-position: center;
   background-size: cover;
-  background-image: linear-gradient(to bottom, transparent 40%, black), url(${props => (props.bg ? props.bg : bg)});
+  background-image: linear-gradient(to bottom, transparent 40%, black),
+    url(${props => (props.bg ? props.bg : bg)});
   width: 100%;
   min-height: ${props => (props.fullHeight ? "600px" : "300px")};
-${props => props.theme.ipadBreakPoint} {
-  min-height: ${props => (props.fullHeight ? "440px" : "200px")};
-}
+  ${props => props.theme.ipadBreakPoint} {
+    min-height: ${props => (props.fullHeight ? "440px" : "200px")};
+  }
 
-${props => props.theme.smallBreakPoint} {
-  min-height: ${props => (props.fullHeight ? "340px" : "200px")};
-}
+  ${props => props.theme.smallBreakPoint} {
+    min-height: ${props => (props.fullHeight ? "340px" : "200px")};
+  }
 
-${props => props.theme.xlBreakPoint} {
-  background-image: url(${props => (props.bg ? props.bg : bg)});
-}
+  ${props => props.theme.xlBreakPoint} {
+    background-image: url(${props => (props.bg ? props.bg : bg)});
+  }
 `
 
 const BannerContainer = styled(Container)`
@@ -33,21 +34,21 @@ const BannerContainer = styled(Container)`
   flex-direction: column;
   justify-content: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
   align-items: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
-  max-width:65em;
+  max-width: ${props => props.theme.ContainerLarge + 30}px;
   position: relative;
   bottom: 3em;
+  padding: 0 15px;
 
-  b{
-    color: ${props => props.theme.Yellow}
+  b {
+    color: ${props => props.theme.Yellow};
   }
 
+  ${props => props.theme.largeBreakPoint} {
+    max-width: ${props => props.theme.ContainerExtraLarge + 30}px;
+  }
   ${props => props.theme.xlBreakPoint} {
-      bottom:0;
+    bottom: 0;
   }
 `
 
-export {
-  Banner,
-  BannerContainer,
-  BannerImg,
-}
+export { Banner, BannerContainer, BannerImg }

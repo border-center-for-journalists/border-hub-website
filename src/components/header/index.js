@@ -6,9 +6,9 @@ class HeaderComponent extends Component {
   render() {
     return (
       <Header>
-            <Logo>
-              <img alt="Border center" src={logo} />
-            </Logo>
+        <Logo href="/">
+          <img alt="Border center" src={logo} />
+        </Logo>
       </Header>
     )
   }
