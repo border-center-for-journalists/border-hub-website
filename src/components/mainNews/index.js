@@ -8,7 +8,6 @@ class   MainNewsComponent extends Component {
   
   getComponent = (data, i) => {
       const noticeLen = Object.keys(this.props.notice).length
-      console.log(data)
       if (noticeLen === i + 1) {
         return <div>
         <ImageWrapper>

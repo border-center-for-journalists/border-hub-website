@@ -2,15 +2,15 @@ import styled from "styled-components"
 import { TitleMediumContainer, Section, Container, Col } from "../../theme/index.styled"
 
 const RecentSection = styled(Section)`
-    margin: 2em 0;
+    background-color: black;
 
     ${props => props.theme.smallBreakPoint} {
-        margin: 2em 1em;
+        padding: 2em 1em;
       }
 `
 
 const CustomTitle = styled(TitleMediumContainer)`
-    padding:0;
+    padding-top:39px;
     max-width: 1100px;
     h3{
         font-size: 30px;
@@ -21,6 +21,7 @@ const PrincipalContainer = styled(Container)`
     display: flex;
     flex-wrap: wrap;
     max-width: 1100px;
+    padding-bottom: 46px;
     hr{
         background-color: ${props => props.theme.White}
         width: 100%;

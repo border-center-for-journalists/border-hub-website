@@ -8,9 +8,7 @@ html {
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* ¿Esta bien que lo ponga en toda la página? */
-  background-color: black;
+  -moz-osx-font-smoothing: grayscale; 
   min-height: 100%;
   height: 100%;
 }
