@@ -7,8 +7,8 @@ const SpecialNoticeContainer = ({ data }) => {
   return (
     <Layout>
       <SEO
-        title="Nota especial"
-        keywords={[`gatsby`, `application`, `react`]}
+        title={data.prismicNoticiasEspeciales.data.title.text}
+        keywords={[]}
       />
       <SpecialNoticeComponent notice={data.prismicNoticiasEspeciales} />
     </Layout>

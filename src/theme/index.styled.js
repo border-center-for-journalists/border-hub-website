@@ -46,6 +46,10 @@ const Container = styled.div`
       ? "max-width:" + props.theme.ContainerLarge + "px"
       : ""};
   ${props => (props.size === "full" ? "max-width: 100%;" : "")};
+
+  ${props => props.theme.largeBreakPoint} {
+    max-width: ${props => props.theme.ContainerExtraLarge}px;
+  }
 `
 const RowGap = gap => {
   if (!gap || gap === "") return ""
@@ -165,14 +169,11 @@ const AuthorContainer = styled.p`
 
 `
 const Col = styled.div`
-  flex: 0 0 50%;
-  max-width: 50%;
-  ${props => props.theme.xlBreakPoint} {
+  flex: 0 0 48%;
+  max-width: 48%;
+  ${props => props.theme.smallBreakPoint} {
     flex: 0 0 100%;
     max-width: 100%;
-    img {
-      padding: 0 1.5em 1em;
-    }
   }
 `
 const TitleContainer = styled.div`

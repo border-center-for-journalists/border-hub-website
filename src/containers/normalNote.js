@@ -6,60 +6,58 @@ import NormalNoticeComponent from "../components/notice/normal"
 const NormalNoticeContainer = ({ data }) => {
   return (
     <Layout>
-      <SEO
-        title="Nota especial"
-        keywords={[`gatsby`, `application`, `react`]}
-      />
-      {console.log("primero",data)}
-      <NormalNoticeComponent notice={data.prismicNoticias}/>
+      <SEO title={data.prismicNoticias.data.title.text} keywords={[]} />
+      <NormalNoticeComponent notice={data.prismicNoticias} />
     </Layout>
   )
 }
 
 export default NormalNoticeContainer
 
-export const pageQuery = graphql` 
-query SingleNormalNoticeQuery($uid: String!){
-  prismicNoticias(uid: { eq: $uid }){
-    uid
-    last_publication_date
-      data{
+export const pageQuery = graphql`
+  query SingleNormalNoticeQuery($uid: String!) {
+    prismicNoticias(uid: { eq: $uid }) {
+      uid
+      last_publication_date
+      data {
         custom_publishdate
         type
-        banner{url}
-        title{
-          text
-        }
-        content{
-          html
-        }
-        excerpt{
-          text 
-        }
-        alliance_name{
-          text
-        }
-         alliance_link{
+        banner {
           url
         }
-        author{
-          name{
+        title {
+          text
+        }
+        content {
+          html
+        }
+        excerpt {
+          text
+        }
+        alliance_name {
+          text
+        }
+        alliance_link {
+          url
+        }
+        author {
+          name {
             text
           }
-          email{
+          email {
             text
           }
-          user_picture{
+          user_picture {
             url
           }
-          twitter{
+          twitter {
             text
           }
-          facebook{
+          facebook {
             text
           }
         }
       }
     }
-}
-` 
+  }
+`

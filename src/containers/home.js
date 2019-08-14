@@ -7,15 +7,16 @@ import SpecialNews from "../components/specials/index.js"
 
 class HomeContainer extends Component {
   render() {
-    {
-      console.log("home", this.props)
-    }
     return (
       <React.Fragment>
         <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
         <MainNewsComponent notice={this.props.normalNotices} />
         <SubscribeComponent />
-        <RecentNews />
+        <RecentNews
+          notices={this.props.recentNotices}
+          bannerNotices={this.props.bannerNotice}
+          principalNotices={this.props.normalNotices}
+        />
         <SpecialNews notice={this.props.noticeS} />
       </React.Fragment>
     )

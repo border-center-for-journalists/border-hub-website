@@ -80,6 +80,7 @@ export const pageQuery = graphql`
     }
     recentNotices: allPrismicNoticias(limit: 8) {
       nodes {
+        uid
         data {
           custom_publishdate
           type

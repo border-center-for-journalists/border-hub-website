@@ -2,8 +2,9 @@ import styled from "styled-components"
 import { TitleContainer, Section, Col } from "../../theme/index.styled"
 
 const GeneralNewsSection = styled(Section)`
-background-color: white;
-padding: 5em;
+  background-color: white;
+  padding: 15px;
+  padding-top: 80px;
 `
 
 const GeneralTitle = styled(TitleContainer)`
@@ -45,5 +46,4 @@ const Quote = styled.p`
     }
 `
 
-
-export{GeneralNewsSection, GeneralTitle, Quote}
+export { GeneralNewsSection, GeneralTitle, Quote }
