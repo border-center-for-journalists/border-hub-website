@@ -55,6 +55,7 @@ export const pageQuery = graphql`
       filter: { data: { type: { eq: "normal" } } }
     ) {
       nodes {
+        uid
         data {
           custom_publishdate
           type
