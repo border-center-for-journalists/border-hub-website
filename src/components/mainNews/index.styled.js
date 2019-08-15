@@ -1,9 +1,11 @@
 import styled from "styled-components"
-import { Section, Container, Paragraph } from "../../theme/index.styled"
+import { Section, Container, Paragraph,ImageWrapper } from "../../theme/index.styled"
 
 const NewsContainer = styled(Section)`
 background-color: white;
-padding:2em 12em 0 12em;
+padding: 36px;
+margin: 0 auto;
+max-width : 700px;  
 
 ${props => props.theme.ipadBreakPoint} {
     padding: 2em 5em 0 5em;
@@ -14,7 +16,6 @@ ${props => props.theme.xlBreakPoint} {
 }
 
 `
-
 const MainNewBig = styled(Container)`
     padding-bottom:2em;
     display: flex;

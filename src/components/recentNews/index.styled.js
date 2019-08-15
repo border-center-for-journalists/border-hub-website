@@ -7,19 +7,20 @@ import {
 } from "../../theme/index.styled"
 
 const RecentSection = styled(Section)`
-  margin: 35px 15px;
-
-  ${props => props.theme.smallBreakPoint} {
-    margin: 2em 1em;
-  }
+  padding: 35px 15px;
+  background-color: black;
 `
-
 const CustomTitle = styled(TitleMediumContainer)`
-  padding: 0;
+  padding-top: 39px;
   max-width: 1100px;
   h3 {
     font-size: 30px;
     line-height: 1.22;
+  }
+  background-color: black;
+
+  ${props => props.theme.smallBreakPoint} {
+    padding: 2em 1em;
   }
 `
 const PrincipalContainer = styled.div`
