@@ -15,6 +15,7 @@ import HeaderComponent from "../components/header/index.js"
 import FooterComponent from "../components/footer/index.js"
 import SidebarComponent from "../components/sidebar/index"
 import "./layout.css"
+import "../theme/style.css"
 
 function Layout({ children }) {
   const { prismicDatosComunes } = useStaticQuery(graphql`

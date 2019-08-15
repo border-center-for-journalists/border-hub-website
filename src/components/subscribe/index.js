@@ -1,5 +1,5 @@
 import React, { Component } from "react"    
-import {YellowBody, CustomRow } from "./index.styled"
+import {YellowBody, CustomRow, XContainer } from "./index.styled"
 import {TitleMediumContainer, Rows, FormBody } from "../../theme/index.styled"
 
 
@@ -7,6 +7,9 @@ class SubscribeComponent extends Component {
     render() {
       return (
         <YellowBody>
+            <XContainer>
+                <i className="icon-x"/>
+            </XContainer>
             <TitleMediumContainer color={true}>
                 <h3>
                 Suscríbete
