@@ -94,6 +94,7 @@ const Row = styled.div`
   ${props => (props.shrink ? "flex: 0 1 auto;" : "")}
   flex-direction: column;
   max-width: 100%;
+  max-width: ${props => (props.width ? props.width : "100%")};
   ${props =>
     props.alignColumn
       ? "align-items: center;justify-content: center;display: flex;"
@@ -110,6 +111,7 @@ const Paragraph = styled.p`
 const ImageWrapper = styled.div`
   img {
     width: 100%;
+    margin-bottom: 15px;
   }
   p {
     font-size: 14px;

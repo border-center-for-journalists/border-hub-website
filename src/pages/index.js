@@ -132,6 +132,7 @@ export const pageQuery = graphql`
     }
     allPrismicNoticiasEspeciales(limit: 1) {
       nodes {
+        uid
         data {
           title {
             text
@@ -139,6 +140,9 @@ export const pageQuery = graphql`
           banner {
             url
             alt
+          }
+          excerpt {
+            text
           }
           authors {
             author_profile {
