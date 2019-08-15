@@ -1,8 +1,104 @@
 import styled from "styled-components"
+import { Container, Row } from "../../theme/index.styled"
 
 const NoticeSection = styled.section`
   padding-top: 120px;
+  img{
+    margin:0;
+  }
 `
+
+const NormalNoticeContainer = styled.div`
+  widht:100%;
+  height:100%;
+  background-color: ${props => props.theme.White}
+  `
+
+const YellowContainer = styled(Container)`
+  background-color:${props => props.theme.Yellow}
+  padding: 0 1em;
+
+`
+
+const CustomRow = styled(Row)`
+    input{
+        width: 10em;
+        margin-right: 1em;
+    }
+    button{
+      width:200px;
+    }
+
+    ${props => props.theme.mediumBreakPoint} {
+        width:100%;
+        input{
+            width:100%;
+        }
+        button{
+            width:100%;
+        }
+        
+      }
+
+    ${props => props.theme.smallBreakPoint} {
+        button{
+            width:100%;
+        }
+        
+      }
+`
+
+const DonateContainer = styled(Container)`
+    background-color: black;
+    padding: 45px 45px;
+    margin: 0 auto 45px;
+    text-align:center;
+    p{
+      color:white
+    }
+    h2{
+      color:white;
+    }
+    button{
+      background-color: ${props => props.theme.Yellow};
+      color: black  ;
+      cursor: pointer;
+      border: none;
+      width: 236px;
+      height: 40px;
+      display: block;
+      margin: 1.23em auto 0;
+      font-size: 19.5px;
+      line-height: 1.44;
+      font-weight: bold; 
+  }
+`
+
+const MainNewSmall = styled.div`
+    padding: 15px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    img{
+        margin:0;
+        height: 13em;
+    }
+`
+
+const MainNewSmallText= styled.div`
+    padding-left:30px;
+
+    h3{
+        color: ${props => props.theme.Black}
+        font-size: 19px;
+        line-height: 25px;
+        text-align: left;
+    }
+    p{
+        color: ${props => props.theme.Black}
+        text-align: left;        
+    }
+`
+
 
 const Divider = styled.hr`
   margin: 30px 10px;
@@ -12,7 +108,7 @@ const Divider = styled.hr`
 
 const NoticeTitleWrapper = styled.div`
   display: block;
-  text-align: center;
+  text-align: ${props => (props.align ? props.align : "center")}  ;
   color: white;
   p {
     font-size: 15px;
@@ -43,15 +139,15 @@ const YellowText = styled.span`
 `
 
 const NoticeSectionTitle = styled.h4`
-  color: white;
+  color: ${props => (props.color ? props.color : "white")};
   font-size: 23px;
   margin-bottom: 25px;
-  text-align: center;
+  text-align: ${props => (props.align ? props.align : "center")};
 `
 
 const Author = styled.div`
   flex: 0 1 32%;
-  color: white;
+  color: ${props => (props.color ? props.color : "white")};
   ul {
     list-style: none;
     padding: 0;
@@ -65,7 +161,7 @@ const Author = styled.div`
 
 const AuthorTitle = styled.h5`
   font-size: 16px;
-  text-align: center;
+  text-align: ${props => (props.align ? props.align : "center")};
   font-weight: bold;
   font-style: italic;
   margin: 0;
@@ -74,7 +170,7 @@ const AuthorTitle = styled.h5`
 const AuthorRol = styled.p`
   font-size: 12px;
   letter-spacing: 2.4px;
-  text-align: center;
+  text-align: ${props => (props.align ? props.align : "center")};
   margin: 0;
   text-transform: uppercase;
 `
@@ -98,8 +194,9 @@ const ImageWrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding: 15px 0;
+  font-size: 22px;
   * {
-    color: white;
+    color: ${props => (props.color ? props.color : "white")};
   }
   img {
     display: block;
@@ -110,8 +207,8 @@ const QuoteWrapper = styled.div`
   margin: 20px 0;
   padding: 5px 70px;
   font-style: italic;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  border-top: 1px solid ${props => (props.color ? props.color : "white")};
+  border-bottom: 1px solid ${props => (props.color ? props.color : "white")};
   p {
     margin: 5px 0;
   }
@@ -138,6 +235,12 @@ const MediaWrapper = styled.div`
 export {
   NoticeTitleWrapper,
   NoticeSection,
+  NormalNoticeContainer,
+  YellowContainer,
+  CustomRow,
+  DonateContainer,
+  MainNewSmall,
+  MainNewSmallText,
   Divider,
   Share,
   YellowText,

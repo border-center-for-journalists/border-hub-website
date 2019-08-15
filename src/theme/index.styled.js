@@ -3,7 +3,12 @@ import styled from "styled-components"
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
+  height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  -moz-box-pack: justify;
+  justify-content: space-between;
 `
 
 const Content = styled.div`
@@ -36,7 +41,15 @@ const Container = styled.div`
     props.size === "medium"
       ? "max-width:" + props.theme.ContainerMedium + "px"
       : ""};
+  ${props =>
+    props.size === "large"
+      ? "max-width:" + props.theme.ContainerLarge + "px"
+      : ""};
   ${props => (props.size === "full" ? "max-width: 100%;" : "")};
+
+  ${props => props.theme.largeBreakPoint} {
+    max-width: ${props => props.theme.ContainerExtraLarge}px;
+  }
 `
 const RowGap = gap => {
   if (!gap || gap === "") return ""
@@ -77,8 +90,15 @@ const Rows = styled.div`
   }
 `
 const Row = styled.div`
-  flex: ${props => (props.width ? "0 1 " + props.width : "0 1 auto")};
+  flex: ${props => (props.width ? "0 1 " + props.width : "1 0 auto")};
+  ${props => (props.shrink ? "flex: 0 1 auto;" : "")}
   flex-direction: column;
+  max-width: 100%;
+  max-width: ${props => (props.width ? props.width : "100%")};
+  ${props =>
+    props.alignColumn
+      ? "align-items: center;justify-content: center;display: flex;"
+      : ""}
 `
 
 const Paragraph = styled.p`
@@ -91,6 +111,7 @@ const Paragraph = styled.p`
 const ImageWrapper = styled.div`
   img {
     width: 100%;
+    margin-bottom: 15px;
   }
   p {
     font-size: 14px;
@@ -113,25 +134,23 @@ const YellowTitle = styled.h3`
 `
 
 const AuthorContainer = styled.p`
-
   font-size: 15px;
   color: ${props => (props.color ? props.theme.White : props.theme.Black)};
   line-height: 25px;
-  max-width: 15em;
   text-align: left;
   margin:0;
+  min-width: 200px;
   display: ${props => (props.show ? "block" : "none")}
-  padding-right: 3em;
   b{
     color: ${props => (props.color ? props.theme.Yellow : props.theme.Black)};
   }
 
   ${props => props.theme.mediumBreakPoint} {
-    width: 15em;  
+    
   }
 
   ${props => props.theme.smallBreakPoint} {
-    margin: ${props => (props.color ? "0 3em" : "0")};
+    
   }
 
   ${props => props.theme.xlBreakPoint} {
@@ -152,27 +171,23 @@ const AuthorContainer = styled.p`
 
 `
 const Col = styled.div`
-  flex: 0 0 50%;
-  max-width: 50%;
-  ${props => props.theme.xlBreakPoint} {
+  flex: 0 0 48%;
+  max-width: 48%;
+  ${props => props.theme.smallBreakPoint} {
     flex: 0 0 100%;
     max-width: 100%;
-    img {
-      padding: 0 1.5em 1em;
-    }
   }
 `
-const TitleContainer = styled(Container)`
+const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
   align-items: ${props => (props.fullHeight ? "flex-end" : "flex-start")};
   position: relative;
-  max-width: 40em;
   text-align: left;
-  margin: 0 1em;
-
+  padding-left: 40px;
   h1 {
+    width: 100%;
     font-size: 39px;
     color: white;
     line-height: 46px;
@@ -180,7 +195,11 @@ const TitleContainer = styled(Container)`
     padding-bottom: 0.5em;
     border-bottom: 5px solid ${props => props.theme.Yellow};
   }
-
+  h1 a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+  }
   p {
     line-height: 31.5px;
     color: white;
@@ -192,8 +211,7 @@ const TitleContainer = styled(Container)`
 
   ${props => props.theme.mediumBreakPoint} {
     align-items: flex-start;
-    width: 90%;
-    height: 100%;
+    padding: 0;
   }
 
   ${props => props.theme.smallBreakPoint} {
@@ -226,43 +244,71 @@ const TitleMediumContainer = styled(Container)`
   }
 `
 
-
 const FormBody = styled.form`
-    display: flex;
-    flex-wrap: wrap;
-    width:100%;
-    input{
-        height: 40px;
-        background-color:${props => (props.color ? props.theme.Yellow : props.theme.White)};
-        border: 1px solid ${props => props.theme.Black};
-        margin-right: 2em;
-    }
-    textarea{
-      background-color:${props => (props.color ? props.theme.Yellow : props.theme.White)};
-      border: 1px solid ${props => props.theme.Black};
-      margin-right: 2em;
-    }
-    p{
-        margin:0;
-        font-size: 15px;
-        line-height: 1.56;
-        color: ${props => props.theme.Black};
-    }
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  input {
+    height: 40px;
+    background-color: ${props =>
+      props.color ? props.theme.Yellow : props.theme.White};
+    border: 1px solid ${props => props.theme.Black};
+    margin-right: 2em;
+  }
+  textarea {
+    background-color: ${props =>
+      props.color ? props.theme.Yellow : props.theme.White};
+    border: 1px solid ${props => props.theme.Black};
+    margin-right: 2em;
+  }
+  p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.56;
+    color: ${props => props.theme.Black};
+  }
 
-    button{
-        background-color: black;
-        color: white;
-        cursor: pointer;
-        border: none;
-        width: 236px;
-        height: 40px;
-        display: block;
-        margin: 1.23em auto 0;
-        font-size: 19.5px;
-        line-height: 1.44;
-        font-weight: bold;
-        
-    }
+  button {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    width: 236px;
+    height: 40px;
+    display: block;
+    margin: 1.23em auto 0;
+    font-size: 19.5px;
+    line-height: 1.44;
+    font-weight: bold;
+  }
+`
+const RectangleColorText = styled(Col)`
+  flex: 0 0 30%;
+  max-width: 30%;
+  font-size: 13px;
+  line-height: 1.54;
+  background-color: ${props => props.theme.SoftGray};
+  padding: 35px 22px;
+  b {
+    color: ${props => props.theme.Black};
+  }
+  ${props => props.theme.smallBreakPoint} {
+    flex: 0 0 100%;
+    max-width: 1000%;
+  }
+`
+const RectangleText = styled(Col)`
+  flex: 0 0 70%;
+  max-width: 70%;
+  padding: 0 19px;
+  ${props => props.theme.smallBreakPoint} {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+`
+const ColContainer = styled.div`
+  flex-wrap: wrap;
+  display: flex;
 `
 
 export {
@@ -280,4 +326,7 @@ export {
   TitleContainer,
   TitleMediumContainer,
   FormBody,
+  RectangleColorText,
+  RectangleText,
+  ColContainer,
 }

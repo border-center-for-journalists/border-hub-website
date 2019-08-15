@@ -1,35 +1,63 @@
-import React, { Component } from "react"    
-import {NewsContainer, MainNewBig, SubTitleParagraph, TextContainer } from "./index.styled"
-import { AuthorContainer, ImageWrapper, YellowTitle } from "../../theme/index.styled"
-import tempImg from "../../theme/images/2.jpg"
+import React, { Component } from "react"
+import {
+  NewsContainer,
+  MainNewBig,
+  SubTitleParagraph,
+  TextContainer,
+} from "./index.styled"
+import {
+  AuthorContainer,
+  ImageWrapper,
+  YellowTitle,
+} from "../../theme/index.styled"
 import SubNewComponent from "./subNews.js"
+import moment from "moment"
+import "moment/locale/es"
+moment.locale("es")
+
 class MainNewsComponent extends Component {
-    render() {
+  getDate = date => moment(date).format("MMMM DD")
+  getComponent = (data, i) => {
+    const noticeLen = Object.keys(this.props.notice).length
+    if (noticeLen === i + 1) {
       return (
-          <NewsContainer>
-              <YellowTitle>
-                    Notas Principales
-              </YellowTitle>
-              <MainNewBig size="Common">
-                <ImageWrapper>
-                    <img alt="prueba" src={tempImg} />
-                </ImageWrapper>
-                <TextContainer>
-                  <h2>Sectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2>
-                  <SubTitleParagraph>
-                    Labore et dolore magna aliqua. Ut enim ad minim veniam rud exercitation ullamco laboris nisi ut aliquip ex ea commodo... consequat.  
-                  </SubTitleParagraph>
-                  <AuthorContainer>
-                    <i> Por <b> Diana Perez Bautista</b> </i> <br/> Marzo 12 | 2019
-                  </AuthorContainer>
-                </TextContainer>
-                <SubNewComponent/>
-                <SubNewComponent/>
-              </MainNewBig>
-          </NewsContainer>
+        <div>
+          <ImageWrapper>
+            <a href={`/${data.uid}`}>
+              <img alt={data.data.title.text} src={data.data.banner.url} />
+            </a>
+          </ImageWrapper>
+          <TextContainer>
+            <h2>
+              <a href={`/${data.uid}`}>{data.data.title.text}</a>
+            </h2>
+            <SubTitleParagraph>{data.data.excerpt.text}</SubTitleParagraph>
+            <AuthorContainer show>
+              <i>
+                {" "}
+                Por <b> {data.data.author[0].name.text} </b>{" "}
+              </i>{" "}
+              <br />{" "}
+              {moment(data.data.custom_publishdate).format("MMMM DD [|] YYYY")}
+            </AuthorContainer>
+          </TextContainer>
+        </div>
       )
+    } else {
+      return <SubNewComponent notice={data} />
     }
   }
-  
-  export default MainNewsComponent
-  
+  render() {
+    const htmlContent = this.props.notice.nodes.map((data, index) =>
+      this.getComponent(data, index)
+    )
+    return (
+      <NewsContainer>
+        <YellowTitle>Notas Principales</YellowTitle>
+        <MainNewBig size="Common">{htmlContent}</MainNewBig>
+      </NewsContainer>
+    )
+  }
+}
+
+export default MainNewsComponent

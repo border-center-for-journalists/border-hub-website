@@ -1,34 +1,41 @@
-import React, { Component } from "react"    
+import React, { Component } from "react"
 import { CustomTitle, RecentSection, PrincipalContainer } from "./index.styled"
 import SubNewComponent from "./subNews.js"
-import {Col} from "../../theme/index.styled"
+import { Col, Container } from "../../theme/index.styled"
 
 class RecentNews extends Component {
-    render() {
-      return (
-        <RecentSection>
+  isAllowed = (notice, mergeNotices) => {
+    const r = mergeNotices.reduce((result, item) => {
+      return result && item.uid === notice.uid ? false : result
+    }, true)
+    return r
+  }
+  render() {
+    const mergeNotices = this.props.bannerNotices.nodes.concat(
+      this.props.principalNotices.nodes
+    )
+    return (
+      <RecentSection>
+        <Container size="large">
           <CustomTitle color={false}>
             <h3>Notas Recientes</h3>
           </CustomTitle>
           <PrincipalContainer>
-            <Col>
-              <SubNewComponent/>
-              <hr/>
-            </Col>
-            <Col>
-              <SubNewComponent/>
-              <hr/>
-            </Col>
-            <Col>
-              <SubNewComponent/>
-            </Col>
-            <Col>
-              <SubNewComponent/>
-            </Col>
+            {this.props.notices.nodes.map(notice =>
+              this.isAllowed(notice, mergeNotices) ? (
+                <Col key={notice.uid}>
+                  <SubNewComponent notice={notice} />
+                  <hr />
+                </Col>
+              ) : (
+                ""
+              )
+            )}
           </PrincipalContainer>
-        </RecentSection>
-      )
-    }
+        </Container>
+      </RecentSection>
+    )
+  }
 }
 
 export default RecentNews

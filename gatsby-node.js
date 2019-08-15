@@ -19,6 +19,20 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allPrismicNoticias {
+        edges {
+          node {
+            uid
+          }
+        }
+      }
+      allPrismicComun {
+        edges {
+          node {
+            uid
+          }
+        }
+      }
     }
   `)
 
@@ -28,6 +42,30 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/${edge.node.uid}`,
       component: specialNote,
+      context: {
+        uid: edge.node.uid,
+      },
+    })
+  })
+
+  const normalNote = path.resolve("src/containers/normalNote.js")
+
+  pages.data.allPrismicNoticias.edges.forEach(edge => {
+    createPage({
+      path: `/${edge.node.uid}`,
+      component: normalNote,
+      context: {
+        uid: edge.node.uid,
+      },
+    })
+  })
+
+  const general = path.resolve("src/containers/general.js")
+
+  pages.data.allPrismicComun.edges.forEach(edge => {
+    createPage({
+      path: `/${edge.node.uid}`,
+      component: general,
       context: {
         uid: edge.node.uid,
       },

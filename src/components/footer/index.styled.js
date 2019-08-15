@@ -4,6 +4,7 @@ const Footer = styled.footer`
   display: block;
   padding: 40px 10px;
   text-align: center;
+  background-color:black;
   img {
     height: 60px;
     width: auto;

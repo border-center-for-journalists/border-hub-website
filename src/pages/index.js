@@ -1,46 +1,176 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
 
-/* const IndexPage = ({ data }) => {
-  const postsData = data.allPrismicTesttype.edges
-  const posts = postsData.map(post => (
-    <div key={post.node.uid}>
-      <h3>{post.node.data.title.text}</h3>
-      <p>{post.node.data.content.text}</p>
-      <p>
-        <Link to={`/${post.node.uid}`}>Ver más /{post.node.uid}</Link>
-      </p>
-    </div>
-  )) */
-  const temp = ()=>{
+const temp = data => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <HomeContainer/>
+      {console.log("home", data.data.allPrismicNoticias)}
+      <HomeContainer
+        bannerNotice={data.data.bannerNotice}
+        normalNotices={data.data.normalNotices}
+        recentNotices={data.data.recentNotices}
+        noticeP={data.data.allPrismicNoticias}
+        noticeS={data.data.allPrismicNoticiasEspeciales}
+      />
     </Layout>
   )
-  }
-/*}
- 
+}
 export const pageQuery = graphql`
-  query IndexPageQuery {
-    allPrismicTesttype {
-      edges {
-        node {
-          id
-          uid
-          data {
-            title {
-              html
+  query HomeNoticeQuery {
+    bannerNotice: allPrismicNoticias(
+      limit: 1
+      filter: { data: { type: { eq: "banner" } } }
+    ) {
+      nodes {
+        uid
+        data {
+          custom_publishdate
+          type
+          banner {
+            url
+          }
+          title {
+            text
+          }
+          content {
+            html
+          }
+          excerpt {
+            text
+          }
+          author {
+            name {
               text
             }
-            content {
-              html
+          }
+        }
+      }
+    }
+    normalNotices: allPrismicNoticias(
+      limit: 3
+      filter: { data: { type: { eq: "normal" } } }
+    ) {
+      nodes {
+        uid
+        data {
+          custom_publishdate
+          type
+          banner {
+            url
+          }
+          title {
+            text
+          }
+          content {
+            html
+          }
+          excerpt {
+            text
+          }
+          author {
+            name {
               text
+            }
+          }
+        }
+      }
+    }
+    recentNotices: allPrismicNoticias(limit: 8) {
+      nodes {
+        uid
+        data {
+          custom_publishdate
+          type
+          banner {
+            url
+          }
+          title {
+            text
+          }
+          content {
+            html
+          }
+          excerpt {
+            text
+          }
+          author {
+            name {
+              text
+            }
+          }
+        }
+      }
+    }
+    allPrismicNoticias {
+      nodes {
+        data {
+          custom_publishdate
+          type
+          banner {
+            url
+          }
+          title {
+            text
+          }
+          content {
+            html
+          }
+          excerpt {
+            text
+          }
+          author {
+            name {
+              text
+            }
+          }
+        }
+      }
+    }
+    allPrismicNoticiasEspeciales(limit: 1) {
+      nodes {
+        uid
+        data {
+          title {
+            text
+          }
+          banner {
+            url
+            alt
+          }
+          excerpt {
+            text
+          }
+          authors {
+            author_profile {
+              url
+            }
+            author_name {
+              text
+            }
+            author_rol {
+              text
+            }
+            author_email {
+              text
+            }
+            author_facebook {
+              text
+            }
+            author_twitter {
+              text
+            }
+          }
+          alliances {
+            alliance_image {
+              url
+              alt
+            }
+            alliance_url {
+              url
             }
           }
         }
@@ -49,6 +179,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default IndexPage
- */
 export default temp
