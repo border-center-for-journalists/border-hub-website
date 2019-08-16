@@ -10,7 +10,6 @@ import { Rows, Row, Paragraph } from "../../theme/index.styled"
 
 class SpecialNews extends Component {
   render() {
-    console.log(this.props.notice)
     return (
       <SpecialSection bg={this.props.notice.nodes[0].data.banner.url}>
         <CustomContainer size="large">

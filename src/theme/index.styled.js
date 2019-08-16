@@ -35,17 +35,17 @@ const Container = styled.div`
     !props.size ? "max-width:" + props.theme.ContainerCommon + "px" : ""};
   ${props =>
     props.size === "small"
-      ? "max-width:" + props.theme.ContainerSmall + "px"
-      : ""};
+      ? "max-width:" + props.theme.ContainerSmall + "px;"
+      : ""}
   ${props =>
     props.size === "medium"
-      ? "max-width:" + props.theme.ContainerMedium + "px"
-      : ""};
+      ? "max-width:" + props.theme.ContainerMedium + "px;"
+      : ""}
   ${props =>
     props.size === "large"
-      ? "max-width:" + props.theme.ContainerLarge + "px"
-      : ""};
-  ${props => (props.size === "full" ? "max-width: 100%;" : "")};
+      ? "max-width:" + props.theme.ContainerLarge + "px;"
+      : ""}
+  ${props => (props.size === "full" ? "max-width: 100%;" : "")}
 
   ${props => props.theme.largeBreakPoint} {
     max-width: ${props => props.theme.ContainerExtraLarge}px;
@@ -138,37 +138,34 @@ const AuthorContainer = styled.p`
   color: ${props => (props.color ? props.theme.White : props.theme.Black)};
   line-height: 25px;
   text-align: left;
-  margin:0;
+  margin: 0;
   min-width: 200px;
-  display: ${props => (props.show ? "block" : "none")}
-  b{
+  display: ${props => (props.show ? "block" : "none")};
+  b {
     color: ${props => (props.color ? props.theme.Yellow : props.theme.Black)};
   }
 
   ${props => props.theme.mediumBreakPoint} {
-    
   }
 
   ${props => props.theme.smallBreakPoint} {
-    
   }
 
   ${props => props.theme.xlBreakPoint} {
-    display: ${props => (props.show ? "none" : "block")}
+    display: ${props => (props.show ? "none" : "block")};
     margin: ${props => (props.color ? "1em 0" : "0")};
-    font-size: 17px 
+    font-size: 17px;
   }
   ${props => props.theme.xlBreakPoint} {
     padding-right: 0;
     &::after {
-      content:"";
-      display:block;
-      border-bottom:${props =>
+      content: "";
+      display: block;
+      border-bottom: ${props =>
         props.color ? "5px solid" + props.theme.Yellow : "0"};
       width: 7em;
+    }
   }
-  }
-
 `
 const Col = styled.div`
   flex: 0 0 48%;
