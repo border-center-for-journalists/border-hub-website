@@ -24,23 +24,22 @@ const CustomTitle = styled(TitleMediumContainer)`
   }
 `
 const PrincipalContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    hr{
-        background-color: ${props => props.theme.White}
-        width: 100%;
-        margin-bottom: 1em;
-        margin-top: 1em;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  hr {
+    background-color: ${props => props.theme.White};
+    width: 100%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
 
-    ${props => props.theme.ipadBreakPoint} {
-        margin: 0 auto;
-    }
-    ${props => props.theme.largeBreakPoint} {
+  ${props => props.theme.ipadBreakPoint} {
+    margin: 0 auto;
+  }
+  ${props => props.theme.largeBreakPoint} {
     max-width: ${props => props.theme.ContainerExtraLarge + 30}px;
-    }
-
+  }
 `
 
 const NewsContainer = styled(Container)`
@@ -59,49 +58,46 @@ const NewsContainer = styled(Container)`
 `
 
 const NewsText = styled(Container)`
-    max-width: 205px;
-    margin: 0;
-    h3{
-        color: ${props => props.theme.White};
-        font-size: 20px;
-        font-weight: bold;
-        line-height: 1.16;
-        text-align: left;
-        margin-bottom:15px;
-    }
-    h3 a{
-        color: ${props => props.theme.White}
-        text-decoration: none;
-    }
-    p{
-        color: ${props => props.theme.White}
-        text-align: left;
-        font-size: 17px;
-        line-height: 1.44;
-        margin-bottom: 15px;
-    }
+  max-width: 205px;
+  margin: 0;
+  h3 {
+    color: ${props => props.theme.White};
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.16;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  h3 a {
+    color: ${props => props.theme.White};
+    text-decoration: none;
+  }
+  p {
+    color: ${props => props.theme.White};
+    text-align: left;
+    font-size: 17px;
+    line-height: 1.44;
+    margin-bottom: 15px;
+  }
 
-    ${props => props.theme.xlBreakPoint} {
-        h3{
-            display:none;
-        }
-      }
+  ${props => props.theme.xlBreakPoint} {
+    h3 {
+      display: none;
+    }
+  }
 `
 
 const DateText = styled.p`
-
   font-size: 16px;
-  color: ${props => props.theme.DarkYellow}
+  color: ${props => props.theme.DarkYellow};
   line-height: 25px;
   max-width: 15em;
-  line-height: 1.29;    
+  line-height: 1.29;
   text-align: left;
-  margin:0;
+  margin: 0;
   ${props => props.theme.xlBreakPoint} {
     color: ${props => props.theme.White};
-}
-
-
+  }
 `
 const TextCol = styled(Col)`
   flex: 0 0 40%;

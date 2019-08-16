@@ -33,7 +33,6 @@ class SpecialNoticeComponent extends Component {
       <NoticeSection>
         <HeaderNoticeComponent notice={this.props.notice} />
         {htmlContent}
-        {console.log(htmlContent)}
         <AuthorsNoticeComponent authors={this.props.notice.data.authors} />
         <AlliancesNoticeContentComponent
           alliances={this.props.notice.data.alliances}

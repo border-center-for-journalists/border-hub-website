@@ -12,6 +12,7 @@ module.exports = {
     author: `@spaceshiplabs`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -28,20 +29,21 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        // background_color: `#663399`,
+        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/theme/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        // icon: `src/theme/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icons: [],
       },
     },
-     {
+    {
       resolve: `gatsby-source-prismic`,
       options: {
         repositoryName: `borderhub`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
-      }, 
-    }, 
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

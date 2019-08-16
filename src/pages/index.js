@@ -8,7 +8,6 @@ const temp = data => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      {console.log("home", data.data.allPrismicNoticias)}
       <HomeContainer
         bannerNotice={data.data.bannerNotice}
         normalNotices={data.data.normalNotices}
