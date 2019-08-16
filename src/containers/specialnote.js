@@ -94,6 +94,50 @@ export const pageQuery = graphql`
               embed_type
             }
           }
+          ... on PrismicNoticiasEspecialesBodyGraficas {
+            slice_type
+            primary {
+              chart_title {
+                text
+              }
+              axis_x {
+                text
+              }
+              eje_y {
+                text
+              }
+            }
+            items {
+              section {
+                text
+              }
+              values {
+                text
+              }
+            }
+          }
+          ... on PrismicNoticiasEspecialesBodyGraficaDeBarras {
+            slice_type
+            primary {
+              chart_title {
+                text
+              }
+              axis_x {
+                text
+              }
+              eje_y {
+                text
+              }
+            }
+            items {
+              section {
+                text
+              }
+              values {
+                text
+              }
+            }
+          }
         }
       }
     }

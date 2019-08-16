@@ -31,6 +31,7 @@ const Section = styled.section``
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  ${props => (props.padding ? "padding: 25px 0;" : "")}
   ${props =>
     !props.size ? "max-width:" + props.theme.ContainerCommon + "px" : ""};
   ${props =>
@@ -245,6 +246,7 @@ const FormBody = styled.form`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  padding-right: 20px;
   input {
     height: 40px;
     background-color: ${props =>

@@ -7,9 +7,11 @@ import QuoteNoticeContentComponent from "./quote"
 import MediaNoticeContentComponent from "./media"
 import ColumnsNoticeContentComponent from "./columns"
 import AlliancesNoticeContentComponent from "./alliances"
+import ChartComponent from "./chart"
 
 class SpecialNoticeComponent extends Component {
   getComponent = (data, index) => {
+    console.log("type", data.slice_type)
     switch (data.slice_type) {
       case "texto":
         return <TextNoticeContentComponent key={index} notice={data} />
@@ -20,7 +22,9 @@ class SpecialNoticeComponent extends Component {
       case "bloque":
         return <ColumnsNoticeContentComponent key={index} notice={data} />
       case "graficas":
-        return <p> Gráficas (: </p>
+        return <ChartComponent key={index} notice={data} type="area" />
+      case "grafica_de_barras":
+        return <ChartComponent key={index} notice={data} type="bar" />
       default:
         return <p> Esto no debería de pasar (: </p>
     }
