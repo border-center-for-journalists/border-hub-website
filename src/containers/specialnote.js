@@ -138,6 +138,23 @@ export const pageQuery = graphql`
               }
             }
           }
+          ... on PrismicNoticiasEspecialesBodyGraficaDePay {
+            slice_type
+            primary {
+              chart_title {
+                text
+              }
+              axis_x {
+                text
+              }
+              eje_y {
+                text
+              }
+              values {
+                text
+              }
+            }
+          }
         }
       }
     }

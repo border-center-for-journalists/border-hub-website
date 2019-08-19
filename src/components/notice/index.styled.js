@@ -152,6 +152,12 @@ const Author = styled.div`
     margin: 0;
     li {
       margin: 0;
+      i {
+        display: inline-block;
+        text-align: center;
+        width: 20px;
+        margin-right: 5px;
+      }
     }
   }
 `

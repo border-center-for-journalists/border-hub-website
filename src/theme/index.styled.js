@@ -31,6 +31,7 @@ const Section = styled.section``
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  ${props => (props.darkMode ? ".recharts-legend-wrapper{color: #fff;}" : "")}
   ${props => (props.padding ? "padding: 25px 0;" : "")}
   ${props =>
     !props.size ? "max-width:" + props.theme.ContainerCommon + "px" : ""};

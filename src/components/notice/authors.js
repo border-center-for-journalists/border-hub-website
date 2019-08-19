@@ -24,21 +24,21 @@ const AuthorComponent = ({ author }) => {
       <ul>
         {author.author_email.text ? (
           <li>
-            <i>O</i> {author.author_email.text}
+            <i className="icon-email" /> {author.author_email.text}
           </li>
         ) : (
           ""
         )}
         {author.author_twitter.text ? (
           <li>
-            <i>O</i> {author.author_twitter.text}
+            <i className="icon-twitter" /> {author.author_twitter.text}
           </li>
         ) : (
           ""
         )}
         {author.author_facebook.text ? (
           <li>
-            <i>O</i> {author.author_facebook.text}
+            <i className="icon-facebook" /> {author.author_facebook.text}
           </li>
         ) : (
           ""
@@ -52,7 +52,9 @@ const AuthorsNoticeComponent = ({ authors }) => {
   return (
     <Container size="medium">
       <Divider />
-      <NoticeSectionTitle color={authors[0].color} align={authors[0].align}>Créditos</NoticeSectionTitle>
+      <NoticeSectionTitle color={authors[0].color} align={authors[0].align}>
+        Créditos
+      </NoticeSectionTitle>
       <Rows align="space-between">
         {authors.map((author, index) => (
           <AuthorComponent author={author} key={index} />

@@ -25,6 +25,8 @@ class SpecialNoticeComponent extends Component {
         return <ChartComponent key={index} notice={data} type="area" />
       case "grafica_de_barras":
         return <ChartComponent key={index} notice={data} type="bar" />
+      case "grafica_de_pay":
+        return <ChartComponent key={index} notice={data} type="pie" />
       default:
         return <p> Esto no debería de pasar (: </p>
     }
