@@ -31,11 +31,7 @@ const Section = styled.section``
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
-<<<<<<< HEAD
-  background-color: ${props => (props.color ? props.color : "")} 
-=======
   ${props => (props.padding ? "padding: 25px 0;" : "")}
->>>>>>> 7bed148e4811b0d86efb07300b18a5b6339e6a98
   ${props =>
     !props.size ? "max-width:" + props.theme.ContainerCommon + "px" : ""};
   ${props =>

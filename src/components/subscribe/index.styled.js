@@ -1,9 +1,5 @@
 import styled from "styled-components"
-<<<<<<< HEAD
 import {Section, Row, Container } from "../../theme/index.styled"
-=======
-import { Section, Row } from "../../theme/index.styled"
->>>>>>> 7bed148e4811b0d86efb07300b18a5b6339e6a98
 
 const YellowBody = styled(Section)`
   width: 100%;
@@ -32,7 +28,6 @@ const CustomRow = styled(Row)`
   }
 `
 
-<<<<<<< HEAD
 const XContainer = styled(Container)`
       max-width: 950px;
       button{
@@ -50,6 +45,3 @@ const XContainer = styled(Container)`
 
 
 export{YellowBody, CustomRow, XContainer}
-=======
-export { YellowBody, CustomRow }
->>>>>>> 7bed148e4811b0d86efb07300b18a5b6339e6a98

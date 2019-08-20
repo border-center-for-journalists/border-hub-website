@@ -42,14 +42,12 @@ const HeaderNoticeComponent = ({ notice, align }) => {
           <p>Marzo 12, 2019 | 13:45</p>
           <hr />
           <Rows align="flex-end">
-            <FacebookShareButton>
-              <Social bigger className="icon-facebook" />
+            <FacebookShareButton url={window.location.href}>
+              <Social bigger className="icon-facebook"/>
             </FacebookShareButton>
-            <TwitterShareButton>
+            <TwitterShareButton url={window.location.href}>
               <Social className="icon-twitter" />
             </TwitterShareButton>
-            <Share>a</Share>
-            <Share>a</Share>
           </Rows>
         </NoticeTitleWrapper>
       </Container>

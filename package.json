@@ -27,11 +27,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
-<<<<<<< HEAD
     "react-share": "^3.0.0",
-=======
     "recharts": "^1.7.1",
->>>>>>> 7bed148e4811b0d86efb07300b18a5b6339e6a98
     "sharp": "^0.22.0",
     "styled-components": "^4.2.0"
   },

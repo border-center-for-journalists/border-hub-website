@@ -13,12 +13,8 @@ import myData from "./prueba.json"
 class NormalNoticeComponent extends Component {
   render() {
     return (
-<<<<<<< HEAD
       <NoticeSection color="black">
         {console.log(this.props.notice.data)}
-=======
-      <NoticeSection>
->>>>>>> 7bed148e4811b0d86efb07300b18a5b6339e6a98
         <HeaderNoticeComponent align="left" notice={this.props.notice} />
         <NormalNoticeContainer>
           <TextNoticeContentComponent notice={this.props.notice} />
