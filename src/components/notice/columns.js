@@ -3,7 +3,6 @@ import { TextWrapper } from "./index.styled"
 import { Container, Rows, Row } from "../../theme/index.styled"
 
 const ColumnsNoticeContentComponent = ({ notice }) => {
-  console.log(notice)
   const { items } = notice
   const columns = items.map((item, index) => {
     return (

@@ -3,103 +3,105 @@ import { Container, Row } from "../../theme/index.styled"
 
 const NoticeSection = styled.section`
   padding-top: 120px;
+<<<<<<< HEAD
   background-color: ${props => (props.color ? props.color : props.theme.Black)};
   img{
     margin:0;
+=======
+  background-color: ${props => props.theme.Black};
+  img {
+    margin: 0;
+>>>>>>> 7bed148e4811b0d86efb07300b18a5b6339e6a98
   }
 `
 
 const NormalNoticeContainer = styled.div`
-  widht:100%;
-  height:100%;
-  background-color: ${props => props.theme.White}
-  `
+  widht: 100%;
+  height: 100%;
+  background-color: ${props => props.theme.White};
+`
 
 const YellowContainer = styled(Container)`
-  background-color:${props => props.theme.Yellow}
+  background-color: ${props => props.theme.Yellow};
   padding: 0 1em;
-
 `
 
 const CustomRow = styled(Row)`
-    input{
-        width: 10em;
-        margin-right: 1em;
-    }
-    button{
-      width:200px;
-    }
+  input {
+    width: 10em;
+    margin-right: 1em;
+  }
+  button {
+    width: 200px;
+  }
 
-    ${props => props.theme.mediumBreakPoint} {
-        width:100%;
-        input{
-            width:100%;
-        }
-        button{
-            width:100%;
-        }
-        
-      }
+  ${props => props.theme.mediumBreakPoint} {
+    width: 100%;
+    input {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+  }
 
-    ${props => props.theme.smallBreakPoint} {
-        button{
-            width:100%;
-        }
-        
-      }
+  ${props => props.theme.smallBreakPoint} {
+    button {
+      width: 100%;
+    }
+  }
 `
 
 const DonateContainer = styled(Container)`
-    background-color: black;
-    padding: 45px 45px;
-    margin: 0 auto 45px;
-    text-align:center;
-    p{
-      color:white
-    }
-    h2{
-      color:white;
-    }
-    button{
-      background-color: ${props => props.theme.Yellow};
-      color: black  ;
-      cursor: pointer;
-      border: none;
-      width: 236px;
-      height: 40px;
-      display: block;
-      margin: 1.23em auto 0;
-      font-size: 19.5px;
-      line-height: 1.44;
-      font-weight: bold; 
+  background-color: black;
+  padding: 45px 45px;
+  margin: 0 auto 45px;
+  text-align: center;
+  p {
+    color: white;
+  }
+  h2 {
+    color: white;
+  }
+  button {
+    background-color: ${props => props.theme.Yellow};
+    color: black;
+    cursor: pointer;
+    border: none;
+    width: 236px;
+    height: 40px;
+    display: block;
+    margin: 1.23em auto 0;
+    font-size: 19.5px;
+    line-height: 1.44;
+    font-weight: bold;
   }
 `
 
 const MainNewSmall = styled.div`
-    padding: 15px 15px;
-    display: flex;
-    flex-wrap: wrap;
-    img{
-        margin:0;
-        height: 13em;
-    }
+  padding: 15px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  img {
+    margin: 0;
+    height: 13em;
+  }
 `
 
-const MainNewSmallText= styled.div`
-    padding-left:30px;
+const MainNewSmallText = styled.div`
+  padding-left: 30px;
 
-    h3{
-        color: ${props => props.theme.Black}
-        font-size: 19px;
-        line-height: 25px;
-        text-align: left;
-    }
-    p{
-        color: ${props => props.theme.Black}
-        text-align: left;        
-    }
+  h3 {
+    color: ${props => props.theme.Black};
+    font-size: 19px;
+    line-height: 25px;
+    text-align: left;
+  }
+  p {
+    color: ${props => props.theme.Black};
+    text-align: left;
+  }
 `
-
 
 const Divider = styled.hr`
   margin: 30px 10px;
@@ -109,7 +111,7 @@ const Divider = styled.hr`
 
 const NoticeTitleWrapper = styled.div`
   display: block;
-  text-align: ${props => (props.align ? props.align : "center")}  ;
+  text-align: ${props => (props.align ? props.align : "center")};
   color: white;
   p {
     font-size: 15px;

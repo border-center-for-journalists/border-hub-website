@@ -1,45 +1,64 @@
 import React, { Component } from "react"
 import { Banner, BannerContainer, BannerImg } from "./index.styled"
 import bodyImage from "../../theme/images/1.jpg"
-import { AuthorContainer, Rows, Row, TitleContainer, Paragraph } from "../../theme/index.styled"
+import {
+  AuthorContainer,
+  Rows,
+  Row,
+  TitleContainer,
+  Paragraph,
+} from "../../theme/index.styled"
+
+import moment from "moment"
+import "moment/locale/es"
+
+moment.locale("es")
 
 class HomeHeaderComponent extends Component {
+  getAuthor = notice => {
+    return notice.data.author.length > 0 ? notice.data.author[0].name.text : ""
+  }
+  getDate = notice => {
+    return moment(notice.data.custom_publishdate).format("MMMM DD [|] YYYY")
+  }
   render() {
+    const notice =
+      this.props.bannerNotice.nodes.length > 0
+        ? this.props.bannerNotice.nodes[0]
+        : {}
+    const rows =
+      this.props.bannerNotice.nodes.length === 0 ? (
+        <Rows />
+      ) : (
+        <Rows>
+          <Row shrink>
+            <AuthorContainer show={true} color={true}>
+              <i>
+                Por <b> {this.getAuthor(notice)}</b>
+              </i>
+              <br /> {this.getDate(notice)}
+            </AuthorContainer>
+          </Row>
+          <Row shrink>
+            <TitleContainer fullHeight={true}>
+              <h1>
+                <a href={`/${notice.uid}`}>{notice.data.title.text}</a>
+              </h1>
+              <AuthorContainer show={false} color={true}>
+                <i>
+                  Por <b> {this.getAuthor(notice)}</b>
+                </i>
+                <br /> {this.getDate(notice)}
+              </AuthorContainer>
+              <Paragraph>{notice.data.excerpt.text}</Paragraph>
+            </TitleContainer>
+          </Row>
+        </Rows>
+      )
     return (
       <Banner>
-        <BannerImg fullHeight={true} bg={bodyImage}/>
-        <BannerContainer fullHeight={false}>
-          <Rows>
-            <Row>
-              <AuthorContainer show={true} color={true}>
-                <i>
-                  Por <b> Diana Perez Bautista</b>
-                </i>
-                <br /> Marzo 12 | 2019
-              </AuthorContainer>
-            </Row>  
-            <Row>
-              <TitleContainer fullHeight={true}>
-                <h1>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt
-                </h1>
-                <AuthorContainer show={false} color={true}>
-                  <i>
-                    Por <b> Diana Perez Bautista</b>
-                  </i>
-                  <br /> Marzo 12 | 2019
-                </AuthorContainer>
-                <Paragraph>
-                  Abore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                  nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat. Duis aute irure dolor in reprehenderit in
-                  voluptate velit
-                </Paragraph>
-              </TitleContainer>
-            </Row>
-          </Rows>
-        </BannerContainer>
+        <BannerImg fullHeight={true} bg={bodyImage} />
+        <BannerContainer fullHeight={false}>{rows}</BannerContainer>
       </Banner>
     )
   }

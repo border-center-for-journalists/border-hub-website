@@ -8,24 +8,26 @@ import NormalSubscribeComponent from "./suscribe.js"
 import RectangleComponent from "./rectangle.js"
 import NormalDonateComponent from "./donate.js"
 import NormalRelatedComponent from "./related.js"
-import myData from './prueba.json';
+import myData from "./prueba.json"
 
 class NormalNoticeComponent extends Component {
   render() {
     return (
+<<<<<<< HEAD
       <NoticeSection color="black">
         {console.log(this.props.notice.data)}
+=======
+      <NoticeSection>
+>>>>>>> 7bed148e4811b0d86efb07300b18a5b6339e6a98
         <HeaderNoticeComponent align="left" notice={this.props.notice} />
         <NormalNoticeContainer>
           <TextNoticeContentComponent notice={this.props.notice} />
-          <NormalSubscribeComponent/>
+          <NormalSubscribeComponent />
           <QuoteNoticeContentComponent notice={myData.data.body[2]} />
           <AuthorsNoticeComponent authors={myData.data.authors} />
-          <NormalDonateComponent/>
-          <NormalRelatedComponent/>
+          <NormalDonateComponent />
+          <NormalRelatedComponent />
         </NormalNoticeContainer>
-        
-        
       </NoticeSection>
     )
   }

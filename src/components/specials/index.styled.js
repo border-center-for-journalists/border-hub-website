@@ -1,26 +1,53 @@
 import styled from "styled-components"
-import {YellowTitle, Section, Container, TitleContainer } from "../../theme/index.styled"
+import {
+  YellowTitle,
+  Section,
+  Container,
+  TitleContainer,
+} from "../../theme/index.styled"
 import bg from "../../theme/images/1.jpg"
 
 const SpecialSection = styled(Section)`
-    background: linear-gradient(to right,  ${props => props.theme.Black}99 20%, ${props => props.theme.Red}99), url(${props => (props.bg ? props.bg : bg)});
-    background-position: center;
-    background-size: cover;
-    padding: 2em 3em;
+  background: linear-gradient(
+      to right,
+      ${props => props.theme.Black}99 20%,
+      ${props => props.theme.Red}99
+    ),
+    url(${props => (props.bg ? props.bg : bg)});
+  background-position: center;
+  background-size: cover;
+  padding: 2em 3em;
+  a {
+    text-decoration: none;
+  }
 `
 
-const CustomContainer = styled(Container)`
-    max-width: 1100px;  
-`
+const CustomContainer = styled(Container)``
 
 const CustomTitle = styled(YellowTitle)`
-    max-width: 6.5em;
-   
+  max-width: 6.5em;
 `
 
 const CustomSecondTitle = styled(TitleContainer)`
-    margin: 0;
+  margin: 0;
+  padding: 0;
 `
 
+const BigArrow = styled.i`
+  font-size: 165px;
+  color: #fff;
+  margin-left: 40px;
+  width: 130px;
+  display: block;
+  ${props => props.theme.mediumBreakPoint} {
+    display: none;
+  }
+`
 
-export{SpecialSection, CustomTitle, CustomContainer, CustomSecondTitle}
+export {
+  SpecialSection,
+  CustomTitle,
+  CustomContainer,
+  CustomSecondTitle,
+  BigArrow,
+}

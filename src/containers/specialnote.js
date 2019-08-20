@@ -7,8 +7,8 @@ const SpecialNoticeContainer = ({ data }) => {
   return (
     <Layout>
       <SEO
-        title="Nota especial"
-        keywords={[`gatsby`, `application`, `react`]}
+        title={data.prismicNoticiasEspeciales.data.title.text}
+        keywords={[]}
       />
       <SpecialNoticeComponent notice={data.prismicNoticiasEspeciales} />
     </Layout>
@@ -92,6 +92,50 @@ export const pageQuery = graphql`
                 html
               }
               embed_type
+            }
+          }
+          ... on PrismicNoticiasEspecialesBodyGraficas {
+            slice_type
+            primary {
+              chart_title {
+                text
+              }
+              axis_x {
+                text
+              }
+              eje_y {
+                text
+              }
+            }
+            items {
+              section {
+                text
+              }
+              values {
+                text
+              }
+            }
+          }
+          ... on PrismicNoticiasEspecialesBodyGraficaDeBarras {
+            slice_type
+            primary {
+              chart_title {
+                text
+              }
+              axis_x {
+                text
+              }
+              eje_y {
+                text
+              }
+            }
+            items {
+              section {
+                text
+              }
+              values {
+                text
+              }
             }
           }
         }
