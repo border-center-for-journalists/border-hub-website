@@ -7,10 +7,6 @@ const YellowBody = styled(Section)`
   padding: 0 1em;
 `
 const CustomRow = styled(Row)`
-  input {
-    width: 14.8em;
-  }
-
   ${props => props.theme.mediumBreakPoint} {
     width: 100%;
     input {

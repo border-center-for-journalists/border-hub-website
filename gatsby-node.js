@@ -16,6 +16,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             uid
+            prismicId
           }
         }
       }
@@ -23,6 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             uid
+            prismicId
           }
         }
       }
@@ -30,6 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             uid
+            prismicId
           }
         }
       }
@@ -44,6 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: specialNote,
       context: {
         uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
       },
     })
   })
@@ -56,6 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: normalNote,
       context: {
         uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
       },
     })
   })
@@ -68,6 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: general,
       context: {
         uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
       },
     })
   })

@@ -20,31 +20,7 @@ const YellowContainer = styled(Container)`
   padding: 0 1em;
 `
 
-const CustomRow = styled(Row)`
-  input {
-    width: 10em;
-    margin-right: 1em;
-  }
-  button {
-    width: 200px;
-  }
-
-  ${props => props.theme.mediumBreakPoint} {
-    width: 100%;
-    input {
-      width: 100%;
-    }
-    button {
-      width: 100%;
-    }
-  }
-
-  ${props => props.theme.smallBreakPoint} {
-    button {
-      width: 100%;
-    }
-  }
-`
+const CustomRow = styled(Row)``
 
 const DonateContainer = styled(Container)`
   background-color: black;

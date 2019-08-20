@@ -7,7 +7,10 @@ const NormalNoticeContainer = ({ data }) => {
   return (
     <Layout>
       <SEO title={data.prismicNoticias.data.title.text} keywords={[]} />
-      <NormalNoticeComponent notice={data.prismicNoticias} />
+      <NormalNoticeComponent
+        notice={data.prismicNoticias}
+        related={data.relatedNotes}
+      />
     </Layout>
   )
 }
@@ -15,7 +18,7 @@ const NormalNoticeContainer = ({ data }) => {
 export default NormalNoticeContainer
 
 export const pageQuery = graphql`
-  query SingleNormalNoticeQuery($uid: String!) {
+  query SingleNormalNoticeQuery($uid: String!, $prismicId: String!) {
     prismicNoticias(uid: { eq: $uid }) {
       uid
       last_publication_date
@@ -56,6 +59,18 @@ export const pageQuery = graphql`
           facebook {
             text
           }
+        }
+      }
+    }
+    relatedNotes: allPrismicNoticias(
+      similar: { documentId: $prismicId, max: 5 }
+    ) {
+      uid
+      last_publication_date
+      data {
+        custom_publishdate
+        title {
+          text
         }
       }
     }
