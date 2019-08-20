@@ -22,9 +22,7 @@ export default SpecialNoticeContainer
 
 export const pageQuery = graphql`
   query SingleSpecialNoticeQuery($uid: String!) {
-    relatedNotes: allPrismicNoticiasEspeciales(
-      similar: { documentId: $prismicId, max: 5 }
-    ) {
+    relatedNotes: allPrismicNoticiasEspeciales {
       uid
       last_publication_date
       data {

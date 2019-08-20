@@ -11,7 +11,7 @@ const Sidebar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: black;
   z-index: 101;
   ${props => props.theme.largeBreakPoint} {
     width: ${props => props.theme.SidebarWidth2x}px;
@@ -24,8 +24,8 @@ const Sidebar = styled.div`
 const Social = styled.a`
   position: relative;
   display: inline-block;
-  background-color: ${props => props.theme.Black};
-  color: ${props => props.theme.Yellow};
+  background-color: ${props => props.theme.Yellow};
+  color: ${props => props.theme.Black};
   width: 40px;
   height: 40px;
   text-decoration: none;

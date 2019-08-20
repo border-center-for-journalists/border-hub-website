@@ -62,9 +62,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    relatedNotes: allPrismicNoticias(
-      similar: { documentId: $prismicId, max: 5 }
-    ) {
+    relatedNotes: allPrismicNoticias {
       uid
       last_publication_date
       data {
