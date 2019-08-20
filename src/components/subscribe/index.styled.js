@@ -32,10 +32,16 @@ const CustomRow = styled(Row)`
 
 const XContainer = styled(Container)`
       max-width: 950px;
-      i{
-          font-size:30px;
+      button{
+          font-size:35px;
           float: right;
           padding-top: 20px;
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+      }
+      button:focus{
+          outline: transparent;
       }
 `
 

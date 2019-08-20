@@ -231,6 +231,22 @@ const MediaWrapper = styled.div`
     display: block;
   }
 `
+const Social = styled.a`
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  color: ${props => props.theme.White};
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 5px 0;
+  padding: ${props => (props.bigger ? "10px" : "14px")} 0;
+  font-size: ${props => (props.bigger ? "18px" : "14px")};
+`
+
 
 export {
   NoticeTitleWrapper,
@@ -253,4 +269,5 @@ export {
   TextWrapper,
   QuoteWrapper,
   MediaWrapper,
+  Social,
 }

@@ -4,11 +4,26 @@ import {TitleMediumContainer, Rows, FormBody } from "../../theme/index.styled"
 
 
 class SubscribeComponent extends Component {
+    constructor(props) {
+		super(props);
+		this.state = {
+			deleteMe: true,
+        };
+        console.log(this.state.deleteMe)
+	}
+    setSuscribe(){
+        this.setState({
+            deleteMe:false
+        })
+        console.log(this.state.deleteMe)
+    }
     render() {
       return (
-        <YellowBody>
+          <div>
+            {this.state.deleteMe ? 
+        <YellowBody>    
             <XContainer>
-                <i className="icon-x"/>
+                <button onClick={()=>this.setSuscribe()} className="icon-x"/>
             </XContainer>
             <TitleMediumContainer color={true}>
                 <h3>
@@ -31,6 +46,8 @@ class SubscribeComponent extends Component {
                 </FormBody>
             </TitleMediumContainer>
         </YellowBody>
+        : null }
+        </div>
       )
     }
 }
