@@ -3,6 +3,7 @@ import { Container, Row } from "../../theme/index.styled"
 
 const NoticeSection = styled.section`
   padding-top: 120px;
+  background-color: ${props => (props.color ? props.color : props.theme.Black)};
   img{
     margin:0;
   }

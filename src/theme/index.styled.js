@@ -31,6 +31,7 @@ const Section = styled.section``
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  background-color: ${props => (props.color ? props.color : "")} 
   ${props =>
     !props.size ? "max-width:" + props.theme.ContainerCommon + "px" : ""};
   ${props =>

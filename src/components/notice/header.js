@@ -27,6 +27,7 @@ const HeaderNoticeComponent = ({ notice, align }) => {
     }
 
   } 
+
   return (
     <React.Fragment>
       <Container size="medium">
