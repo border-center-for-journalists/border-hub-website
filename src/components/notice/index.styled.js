@@ -3,7 +3,7 @@ import { Container, Row } from "../../theme/index.styled"
 
 const NoticeSection = styled.section`
   padding-top: 120px;
-  background-color: ${props => props.theme.Black};
+  background-color: ${props => (props.color ? props.color : props.theme.Black)};
   img {
     margin: 0;
   }
@@ -20,31 +20,7 @@ const YellowContainer = styled(Container)`
   padding: 0 1em;
 `
 
-const CustomRow = styled(Row)`
-  input {
-    width: 10em;
-    margin-right: 1em;
-  }
-  button {
-    width: 200px;
-  }
-
-  ${props => props.theme.mediumBreakPoint} {
-    width: 100%;
-    input {
-      width: 100%;
-    }
-    button {
-      width: 100%;
-    }
-  }
-
-  ${props => props.theme.smallBreakPoint} {
-    button {
-      width: 100%;
-    }
-  }
-`
+const CustomRow = styled(Row)``
 
 const DonateContainer = styled(Container)`
   background-color: black;
@@ -78,7 +54,6 @@ const MainNewSmall = styled.div`
   flex-wrap: wrap;
   img {
     margin: 0;
-    height: 13em;
   }
 `
 
@@ -86,13 +61,21 @@ const MainNewSmallText = styled.div`
   padding-left: 30px;
 
   h3 {
-    color: ${props => props.theme.Black};
+    color: ${props =>
+      props.color === "black" ? props.theme.Black : props.theme.White};
     font-size: 19px;
     line-height: 25px;
     text-align: left;
+    margin-bottom: 10px;
+  }
+  h3 a {
+    text-decoration: none;
+    color: ${props =>
+      props.color === "black" ? props.theme.Black : props.theme.White};
   }
   p {
-    color: ${props => props.theme.Black};
+    color: ${props =>
+      props.color === "black" ? props.theme.Black : props.theme.White};
     text-align: left;
   }
 `
@@ -152,6 +135,12 @@ const Author = styled.div`
     margin: 0;
     li {
       margin: 0;
+      i {
+        display: inline-block;
+        text-align: center;
+        width: 20px;
+        margin-right: 5px;
+      }
     }
   }
 `
@@ -228,6 +217,21 @@ const MediaWrapper = styled.div`
     display: block;
   }
 `
+const Social = styled.a`
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  color: ${props => props.theme.White};
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 5px 0;
+  padding: ${props => (props.bigger ? "10px" : "14px")} 0;
+  font-size: ${props => (props.bigger ? "18px" : "14px")};
+`
 
 export {
   NoticeTitleWrapper,
@@ -250,4 +254,5 @@ export {
   TextWrapper,
   QuoteWrapper,
   MediaWrapper,
+  Social,
 }

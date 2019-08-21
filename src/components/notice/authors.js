@@ -9,36 +9,72 @@ import {
 } from "./index.styled"
 import { Container, Rows } from "../../theme/index.styled"
 
-const AuthorComponent = ({ author }) => {
+const AuthorComponent = ({ color, author }) => {
   return (
-    <Author color={author.color}>
-      {author.author_profile.url ? (
+    <Author color={color}>
+      {author.user_picture && author.user_picture.url ? (
+        <AuthorProfile>
+          <img alt={author.name.text} src={author.user_picture.url} />
+        </AuthorProfile>
+      ) : (
+        ""
+      )}
+      {author.author_profile && author.author_profile.url ? (
         <AuthorProfile>
           <img alt={author.author_name.text} src={author.author_profile.url} />
         </AuthorProfile>
       ) : (
         ""
       )}
-      <AuthorTitle align={author.align}>{author.author_name.text}</AuthorTitle>
-      <AuthorRol align={author.align}>{author.author_rol.text}</AuthorRol>
+      {author.name && author.name.text ? (
+        <AuthorTitle align="center">{author.name.text}</AuthorTitle>
+      ) : (
+        ""
+      )}
+      {author.author_name && author.author_name.text ? (
+        <AuthorTitle align="center">{author.author_name.text}</AuthorTitle>
+      ) : (
+        ""
+      )}
       <ul>
-        {author.author_email.text ? (
+        {author.email && author.email.text ? (
           <li>
-            <i>O</i> {author.author_email.text}
+            <i className="icon-email" /> {author.email.text}
           </li>
         ) : (
           ""
         )}
-        {author.author_twitter.text ? (
+        {author.author_email && author.author_email.text ? (
           <li>
-            <i>O</i> {author.author_twitter.text}
+            <i className="icon-email" /> {author.author_email.text}
           </li>
         ) : (
           ""
         )}
-        {author.author_facebook.text ? (
+        {author.twitter && author.twitter.text ? (
           <li>
-            <i>O</i> {author.author_facebook.text}
+            <i className="icon-twitter" /> {author.twitter.text}
+          </li>
+        ) : (
+          ""
+        )}
+        {author.author_twitter && author.author_twitter.text ? (
+          <li>
+            <i className="icon-twitter" /> {author.author_twitter.text}
+          </li>
+        ) : (
+          ""
+        )}
+        {author.facebook && author.facebook.text ? (
+          <li>
+            <i className="icon-facebook" /> {author.facebook.text}
+          </li>
+        ) : (
+          ""
+        )}
+        {author.author_facebook && author.author_facebook.text ? (
+          <li>
+            <i className="icon-facebook" /> {author.author_facebook.text}
           </li>
         ) : (
           ""
@@ -48,14 +84,15 @@ const AuthorComponent = ({ author }) => {
   )
 }
 
-const AuthorsNoticeComponent = ({ authors }) => {
+const AuthorsNoticeComponent = ({ color, authors }) => {
   return (
     <Container size="medium">
       <Divider />
-      <NoticeSectionTitle color={authors[0].color} align={authors[0].align}>Créditos</NoticeSectionTitle>
+      {/**color={authors[0].color} align={authors[0].align} */}
+      <NoticeSectionTitle>Créditos</NoticeSectionTitle>
       <Rows align="space-between">
         {authors.map((author, index) => (
-          <AuthorComponent author={author} key={index} />
+          <AuthorComponent color={color} author={author} key={index} />
         ))}
       </Rows>
       <Divider />

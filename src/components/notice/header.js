@@ -4,12 +4,15 @@ import {
   Share,
   YellowText,
   ImageWrapper,
+  Social,
 } from "./index.styled"
 import { Container, Rows } from "../../theme/index.styled"
+import { FacebookShareButton, TwitterShareButton } from "react-share"
 import img from "../../theme/images/1.jpg"
 
 const HeaderNoticeComponent = ({ notice, align }) => {
   //const { publish_date, title, authors } = data
+  {console.log(notice)}
   const { title, banner } = notice.data
   const getAuthorName = () => {
     if(notice.data.authors){
@@ -24,6 +27,7 @@ const HeaderNoticeComponent = ({ notice, align }) => {
     }
 
   } 
+
   return (
     <React.Fragment>
       <Container size="medium">
@@ -38,10 +42,12 @@ const HeaderNoticeComponent = ({ notice, align }) => {
           <p>Marzo 12, 2019 | 13:45</p>
           <hr />
           <Rows align="flex-end">
-            <Share>a</Share>
-            <Share>a</Share>
-            <Share>a</Share>
-            <Share>a</Share>
+            <FacebookShareButton url={window.location.href}>
+              <Social bigger className="icon-facebook"/>
+            </FacebookShareButton>
+            <TwitterShareButton url={window.location.href}>
+              <Social className="icon-twitter" />
+            </TwitterShareButton>
           </Rows>
         </NoticeTitleWrapper>
       </Container>

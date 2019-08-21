@@ -10,6 +10,9 @@ module.exports = {
     title: `Border Hub Center`,
     description: ``,
     author: `@spaceshiplabs`,
+    API_KEY: process.env.API_KEY,
+    API_REF: process.env.API_REF,
+    API_URL: process.env.API_URL,
   },
   plugins: [
     `gatsby-plugin-styled-components`,

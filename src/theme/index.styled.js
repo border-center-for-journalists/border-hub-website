@@ -31,6 +31,7 @@ const Section = styled.section``
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  ${props => (props.darkMode ? ".recharts-legend-wrapper{color: #fff;}" : "")}
   ${props => (props.padding ? "padding: 25px 0;" : "")}
   ${props =>
     !props.size ? "max-width:" + props.theme.ContainerCommon + "px" : ""};
@@ -242,12 +243,16 @@ const TitleMediumContainer = styled(Container)`
   }
 `
 
-const FormBody = styled.form`
+const FormBody = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   padding-right: 20px;
   input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
     height: 40px;
     background-color: ${props =>
       props.color ? props.theme.Yellow : props.theme.White};
@@ -260,24 +265,27 @@ const FormBody = styled.form`
     border: 1px solid ${props => props.theme.Black};
     margin-right: 2em;
   }
+  label,
   p {
+    display: block;
     margin: 0;
+    margin-top: 10px;
     font-size: 15px;
     line-height: 1.56;
     color: ${props => props.theme.Black};
   }
 
+  input[type="submit"],
   button {
+    width: 100%;
     background-color: black;
     color: white;
     cursor: pointer;
     border: none;
-    width: 236px;
-    height: 40px;
     display: block;
-    margin: 1.23em auto 0;
+    margin: 32px auto 0;
     font-size: 19.5px;
-    line-height: 1.44;
+    line-height: 1.2;
     font-weight: bold;
   }
 `

@@ -8,10 +8,31 @@ import MediaNoticeContentComponent from "./media"
 import ColumnsNoticeContentComponent from "./columns"
 import AlliancesNoticeContentComponent from "./alliances"
 import ChartComponent from "./chart"
+import NormalRelatedComponent from "./related.js"
+import Prismic from "prismic-javascript"
 
 class SpecialNoticeComponent extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      related: [],
+    }
+  }
+  componentDidMount() {
+    const { prismicId } = this.props.notice
+    const { API_KEY, API_URL } = this.props.site
+    Prismic.getApi(API_URL, { accessToken: API_KEY })
+      .then(api =>
+        api.query([
+          Prismic.Predicates.at("document.type", "noticias_especiales"),
+          Prismic.Predicates.similar(prismicId, 3),
+        ])
+      )
+      .then(response => {
+        this.setState({ related: response.results })
+      })
+  }
   getComponent = (data, index) => {
-    console.log("type", data.slice_type)
     switch (data.slice_type) {
       case "texto":
         return <TextNoticeContentComponent key={index} notice={data} />
@@ -25,6 +46,8 @@ class SpecialNoticeComponent extends Component {
         return <ChartComponent key={index} notice={data} type="area" />
       case "grafica_de_barras":
         return <ChartComponent key={index} notice={data} type="bar" />
+      case "grafica_de_pay":
+        return <ChartComponent key={index} notice={data} type="pie" />
       default:
         return <p> Esto no debería de pasar (: </p>
     }
@@ -37,10 +60,14 @@ class SpecialNoticeComponent extends Component {
       <NoticeSection>
         <HeaderNoticeComponent notice={this.props.notice} />
         {htmlContent}
-        <AuthorsNoticeComponent authors={this.props.notice.data.authors} />
+        <AuthorsNoticeComponent
+          color="white"
+          authors={this.props.notice.data.authors}
+        />
         <AlliancesNoticeContentComponent
           alliances={this.props.notice.data.alliances}
         />
+        <NormalRelatedComponent color="white" related={this.state.related} />
       </NoticeSection>
     )
   }

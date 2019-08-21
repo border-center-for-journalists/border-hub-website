@@ -10,7 +10,11 @@ const SpecialNoticeContainer = ({ data }) => {
         title={data.prismicNoticiasEspeciales.data.title.text}
         keywords={[]}
       />
-      <SpecialNoticeComponent notice={data.prismicNoticiasEspeciales} />
+      <SpecialNoticeComponent
+        notice={data.prismicNoticiasEspeciales}
+        related={data.relatedNotes}
+        site={data.site.siteMetadata}
+      />
     </Layout>
   )
 }
@@ -19,8 +23,16 @@ export default SpecialNoticeContainer
 
 export const pageQuery = graphql`
   query SingleSpecialNoticeQuery($uid: String!) {
+    site {
+      siteMetadata {
+        API_KEY
+        API_REF
+        API_URL
+      }
+    }
     prismicNoticiasEspeciales(uid: { eq: $uid }) {
       uid
+      prismicId
       last_publication_date
       data {
         title {
@@ -131,6 +143,23 @@ export const pageQuery = graphql`
             }
             items {
               section {
+                text
+              }
+              values {
+                text
+              }
+            }
+          }
+          ... on PrismicNoticiasEspecialesBodyGraficaDePay {
+            slice_type
+            primary {
+              chart_title {
+                text
+              }
+              axis_x {
+                text
+              }
+              eje_y {
                 text
               }
               values {
