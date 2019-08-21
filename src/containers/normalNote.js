@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import NormalNoticeComponent from "../components/notice/normal"
 
-const NormalNoticeContainer = ({ data }) => {
+const NormalNoticeContainer = ({ location, data }) => {
   return (
     <Layout>
       <SEO title={data.prismicNoticias.data.title.text} keywords={[]} />
@@ -11,6 +11,7 @@ const NormalNoticeContainer = ({ data }) => {
         notice={data.prismicNoticias}
         related={data.relatedNotes}
         site={data.site.siteMetadata}
+        url={location.href}
       />
     </Layout>
   )

@@ -58,7 +58,10 @@ class SpecialNoticeComponent extends Component {
     )
     return (
       <NoticeSection>
-        <HeaderNoticeComponent notice={this.props.notice} />
+        <HeaderNoticeComponent
+          notice={this.props.notice}
+          url={this.props.url}
+        />
         {htmlContent}
         <AuthorsNoticeComponent
           color="white"

@@ -34,7 +34,11 @@ class NormalNoticeComponent extends Component {
   render() {
     return (
       <NoticeSection color="black">
-        <HeaderNoticeComponent align="left" notice={this.props.notice} />
+        <HeaderNoticeComponent
+          align="left"
+          notice={this.props.notice}
+          url={this.props.url}
+        />
         <NormalNoticeContainer>
           <TextNoticeContentComponent notice={this.props.notice} />
           <NormalSubscribeComponent />
