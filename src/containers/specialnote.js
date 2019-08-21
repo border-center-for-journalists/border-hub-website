@@ -13,6 +13,7 @@ const SpecialNoticeContainer = ({ data }) => {
       <SpecialNoticeComponent
         notice={data.prismicNoticiasEspeciales}
         related={data.relatedNotes}
+        site={data.site.siteMetadata}
       />
     </Layout>
   )
@@ -22,18 +23,16 @@ export default SpecialNoticeContainer
 
 export const pageQuery = graphql`
   query SingleSpecialNoticeQuery($uid: String!) {
-    relatedNotes: allPrismicNoticiasEspeciales {
-      uid
-      last_publication_date
-      data {
-        custom_publishdate
-        title {
-          text
-        }
+    site {
+      siteMetadata {
+        API_KEY
+        API_REF
+        API_URL
       }
     }
     prismicNoticiasEspeciales(uid: { eq: $uid }) {
       uid
+      prismicId
       last_publication_date
       data {
         title {

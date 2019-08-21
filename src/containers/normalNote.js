@@ -10,6 +10,7 @@ const NormalNoticeContainer = ({ data }) => {
       <NormalNoticeComponent
         notice={data.prismicNoticias}
         related={data.relatedNotes}
+        site={data.site.siteMetadata}
       />
     </Layout>
   )
@@ -18,9 +19,18 @@ const NormalNoticeContainer = ({ data }) => {
 export default NormalNoticeContainer
 
 export const pageQuery = graphql`
-  query SingleNormalNoticeQuery($uid: String!, $prismicId: String!) {
+  query SingleNormalNoticeQuery($uid: String!) {
+    site {
+      siteMetadata {
+        API_KEY
+        API_REF
+        API_URL
+      }
+    }
+
     prismicNoticias(uid: { eq: $uid }) {
       uid
+      prismicId
       last_publication_date
       data {
         custom_publishdate
@@ -59,16 +69,6 @@ export const pageQuery = graphql`
           facebook {
             text
           }
-        }
-      }
-    }
-    relatedNotes: allPrismicNoticias {
-      uid
-      last_publication_date
-      data {
-        custom_publishdate
-        title {
-          text
         }
       }
     }

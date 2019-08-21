@@ -1,7 +1,7 @@
+/* eslint-disable */
 import React, { Component } from "react"
 import { TitleMediumContainer, Rows, FormBody } from "../../theme/index.styled"
-import React, { Component } from "react"    
-import {YellowBody, CustomRow, XContainer } from "./index.styled"
+import { YellowBody, CustomRow, XContainer } from "./index.styled"
 
 /*
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">

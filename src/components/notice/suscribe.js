@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react"
 import { YellowContainer, CustomRow } from "./index.styled"
 import { TitleMediumContainer, Rows, FormBody } from "../../theme/index.styled"

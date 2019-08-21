@@ -4,8 +4,8 @@ import { Container, Row } from "../../theme/index.styled"
 const NoticeSection = styled.section`
   padding-top: 120px;
   background-color: ${props => (props.color ? props.color : props.theme.Black)};
-  img{
-    margin:0;
+  img {
+    margin: 0;
   }
 `
 
@@ -54,7 +54,6 @@ const MainNewSmall = styled.div`
   flex-wrap: wrap;
   img {
     margin: 0;
-    height: 13em;
   }
 `
 
@@ -62,13 +61,21 @@ const MainNewSmallText = styled.div`
   padding-left: 30px;
 
   h3 {
-    color: ${props => props.theme.Black};
+    color: ${props =>
+      props.color === "black" ? props.theme.Black : props.theme.White};
     font-size: 19px;
     line-height: 25px;
     text-align: left;
+    margin-bottom: 10px;
+  }
+  h3 a {
+    text-decoration: none;
+    color: ${props =>
+      props.color === "black" ? props.theme.Black : props.theme.White};
   }
   p {
-    color: ${props => props.theme.Black};
+    color: ${props =>
+      props.color === "black" ? props.theme.Black : props.theme.White};
     text-align: left;
   }
 `
@@ -225,7 +232,6 @@ const Social = styled.a`
   padding: ${props => (props.bigger ? "10px" : "14px")} 0;
   font-size: ${props => (props.bigger ? "18px" : "14px")};
 `
-
 
 export {
   NoticeTitleWrapper,

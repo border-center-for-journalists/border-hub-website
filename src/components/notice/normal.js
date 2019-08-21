@@ -3,25 +3,47 @@ import { NoticeSection, NormalNoticeContainer } from "./index.styled"
 import HeaderNoticeComponent from "./header.js"
 import AuthorsNoticeComponent from "./authors"
 import TextNoticeContentComponent from "./textContent"
-import QuoteNoticeContentComponent from "./quote"
 import NormalSubscribeComponent from "./suscribe.js"
-import RectangleComponent from "./rectangle.js"
 import NormalDonateComponent from "./donate.js"
 import NormalRelatedComponent from "./related.js"
 import myData from "./prueba.json"
+import Prismic from "prismic-javascript"
 
 class NormalNoticeComponent extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      related: [],
+    }
+  }
+  componentDidMount() {
+    const { prismicId } = this.props.notice
+    const { API_KEY, API_URL } = this.props.site
+    Prismic.getApi(API_URL, { accessToken: API_KEY })
+      .then(api =>
+        api.query([
+          Prismic.Predicates.at("document.type", "noticias"),
+          Prismic.Predicates.similar(prismicId, 3),
+        ])
+      )
+      .then(response => {
+        console.log("RELATED", response)
+        this.setState({ related: response.results })
+      })
+  }
   render() {
     return (
       <NoticeSection color="black">
-        {console.log(this.props.notice.data)}
         <HeaderNoticeComponent align="left" notice={this.props.notice} />
         <NormalNoticeContainer>
           <TextNoticeContentComponent notice={this.props.notice} />
           <NormalSubscribeComponent />
-          <AuthorsNoticeComponent authors={myData.data.authors} />
+          <AuthorsNoticeComponent
+            color="black"
+            authors={this.props.notice.data.author}
+          />
           <NormalDonateComponent />
-          <NormalRelatedComponent notices={this.props.related} />
+          <NormalRelatedComponent color="black" related={this.state.related} />
         </NormalNoticeContainer>
       </NoticeSection>
     )

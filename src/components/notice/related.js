@@ -1,33 +1,52 @@
 import React from "react"
-import {MainNewSmall, MainNewSmallText} from "./index.styled"
-import { Container, YellowTitle, AuthorContainer, Col, ImageWrapper } from "../../theme/index.styled"
-import img from "../../theme/images/1.jpg"
+import { MainNewSmall, MainNewSmallText } from "./index.styled"
+import {
+  Container,
+  YellowTitle,
+  AuthorContainer,
+  Col,
+  ImageWrapper,
+} from "../../theme/index.styled"
 
-const NormalRelatedComponent = () => {
+import moment from "moment"
+import "moment/locale/es"
+moment.locale("es")
 
+const NormalRelatedComponent = ({ color, related }) => {
+  const getDate = date => moment(date).format("MMMM DD, YYYY [|] h:mm a")
   return (
     <React.Fragment>
       <Container size="medium">
-          <YellowTitle>
-              Notas Relacionadas
-          </YellowTitle>
-          <MainNewSmall>
-                <Col>
-                    <ImageWrapper>
-                        <img alt="prueba" src={img} />
-                    </ImageWrapper>
-                </Col>
-                <Col>
-                <MainNewSmallText>
-                    <h3>
-                        Labore et dolore magna aliqua. Ut enim ad minim
-                    </h3>
-                    <AuthorContainer show={true}>
-                        Marzo 12, 2019 | 13:45
-                    </AuthorContainer>
-                </MainNewSmallText>    
-                </Col>
-            </MainNewSmall>
+        <YellowTitle>Notas Relacionadas</YellowTitle>
+        {related.map((item, index) => (
+          <MainNewSmall key={index}>
+            <Col>
+              <ImageWrapper>
+                <a href={`/${item.uid}`}>
+                  {item.data.banner && item.data.banner.url ? (
+                    <img alt="prueba" src={item.data.banner.url} />
+                  ) : (
+                    ""
+                  )}
+                </a>
+              </ImageWrapper>
+            </Col>
+            <Col>
+              <MainNewSmallText color={color}>
+                <h3>
+                  <a href={`/${item.uid}`}>{item.data.title[0].text}</a>
+                </h3>
+                <AuthorContainer color={color} show={true}>
+                  {getDate(
+                    item.type === "noticias"
+                      ? item.data.custom_publishdate
+                      : item.last_publication_date
+                  )}
+                </AuthorContainer>
+              </MainNewSmallText>
+            </Col>
+          </MainNewSmall>
+        ))}
       </Container>
     </React.Fragment>
   )

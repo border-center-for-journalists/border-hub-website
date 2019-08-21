@@ -2426,7 +2426,7 @@ cross-fetch@2.2.2:
     node-fetch "2.1.2"
     whatwg-fetch "2.0.4"
 
-cross-fetch@^2.2.0:
+cross-fetch@^2.2.0, cross-fetch@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-2.2.3.tgz#e8a0b3c54598136e037f8650f8e823ccdfac198e"
   dependencies:
@@ -7554,6 +7554,13 @@ prismic-javascript@^1.1.5:
   resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-1.5.1.tgz#0f9da4e58a094ca0fb0b68e2e458e1a6c33a52ce"
   dependencies:
     cross-fetch "^2.2.0"
+    promise-polyfill "8.0.0"
+
+prismic-javascript@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/prismic-javascript/-/prismic-javascript-2.1.1.tgz#fd82bd3a8882acc69c7b52c257340516dadec0d2"
+  dependencies:
+    cross-fetch "^2.2.3"
     promise-polyfill "8.0.0"
 
 prismic-richtext@^0.4.2:
