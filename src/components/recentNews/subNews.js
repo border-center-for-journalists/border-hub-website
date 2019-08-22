@@ -37,7 +37,7 @@ class SubNewComponent extends Component {
               {excerpt.text.length > limit
                 ? `${excerpt.text.slice(0, limit)} ...`
                 : excerpt.text}
-            </Paragraph>
+            </Paragraph> 
           </NewsText>
           <DateText>
             {this.getTime(custom_publishdate)} <br />{" "}
@@ -48,7 +48,7 @@ class SubNewComponent extends Component {
         <ImgCol>
           <ImageWrapper>
             <a href={`/${this.props.notice.uid}`}>
-              <img alt="prueba" src={banner.url} />
+              <img alt="prueba" src={banner.thumbnail.url} />
             </a>
           </ImageWrapper>
         </ImgCol>

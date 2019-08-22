@@ -60,6 +60,9 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            thumbnail{
+              url
+           }
           }
           title {
             text
@@ -86,6 +89,9 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            thumbnail{
+              url
+           }
           }
           title {
             text
@@ -139,6 +145,9 @@ export const pageQuery = graphql`
           banner {
             url
             alt
+            thumbnail{
+              url
+           }
           }
           excerpt {
             text

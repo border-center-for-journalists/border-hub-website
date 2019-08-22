@@ -7,7 +7,7 @@ import {
   Social,
 } from "./index.styled"
 import { Container, Rows } from "../../theme/index.styled"
-import { FacebookShareButton, TwitterShareButton } from "react-share"
+import { FacebookShareButton, TwitterShareButton, EmailShareButton } from "react-share"
 import img from "../../theme/images/1.jpg"
 
 const HeaderNoticeComponent = ({ url, notice, align }) => {
@@ -45,6 +45,9 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
             <TwitterShareButton url={url}>
               <Social className="icon-twitter" />
             </TwitterShareButton>
+            <EmailShareButton url={url}>
+              <Social className="icon-email" />
+            </EmailShareButton>
           </Rows>
         </NoticeTitleWrapper>
       </Container>
