@@ -220,7 +220,6 @@ const MediaWrapper = styled.div`
 const Social = styled.a`
   position: relative;
   display: inline-block;
-  background-color: transparent;
   color: ${props => props.theme.White};
   width: 40px;
   height: 40px;

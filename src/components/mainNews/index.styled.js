@@ -10,7 +10,12 @@ const NewsContainer = styled(Section)`
   background-color: white;
   padding: 36px;
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 1000px;
+
+  ${props => props.theme.mediumBreakPoint} {
+    max-width: 700px;
+  }
+
 
   ${props => props.theme.ipadBreakPoint} {
     padding: 2em 5em 0 5em;

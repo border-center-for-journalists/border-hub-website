@@ -35,7 +35,7 @@ class SubNewComponent extends Component {
         <Col>
           <ImageWrapper>
             <a href={`/${this.props.notice.uid}`}>
-              <img alt="prueba" src={this.props.notice.data.banner.url} />
+              <img alt="prueba" src={this.props.notice.data.banner.thumbnail.url} />
             </a>
           </ImageWrapper>
         </Col>
