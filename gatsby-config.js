@@ -36,7 +36,6 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         // icon: `src/theme/images/gatsby-icon.png`, // This path is relative to the root of the site.
-        icon: `src/theme/favicon.ico`, // This path is relative to the root of the site.
         icons: [],
       },
     },
