@@ -7,6 +7,7 @@ export const Theme = {
   White: "#ffffff",
   Black: "#1f191a",
   Red: "#991212",
+  Blue: "#2d82be",
   FontAleo: "'Aleo', serif",
   ContainerSmall: 500,
   ContainerMedium: 630,

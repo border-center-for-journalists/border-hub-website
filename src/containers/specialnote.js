@@ -5,7 +5,7 @@ import SpecialNoticeComponent from "../components/notice/special"
 
 const SpecialNoticeContainer = ({ location, data }) => {
   return (
-    <Layout>
+    <Layout minify>
       <SEO
         title={data.prismicNoticiasEspeciales.data.title.text}
         keywords={[]}
