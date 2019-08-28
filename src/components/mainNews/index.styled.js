@@ -16,7 +16,6 @@ const NewsContainer = styled(Section)`
     max-width: 700px;
   }
 
-
   ${props => props.theme.ipadBreakPoint} {
     padding: 2em 5em 0 5em;
   }
@@ -32,9 +31,10 @@ const MainNewBig = styled(Container)`
   h2 {
     text-align: left;
     color: ${props => props.theme.Black};
-    font-size: 38px;
+    font-size: 30px;
     line-height: 38px;
     margin-bottom: 15px;
+    font-weight: bold;
   }
   h2 a {
     color: ${props => props.theme.Black};
@@ -42,20 +42,22 @@ const MainNewBig = styled(Container)`
   }
 `
 const TextContainer = styled(Container)`
+  max-width: 100%;
   ${props => props.theme.xlBreakPoint} {
     padding: 0 1.5em;
   }
 `
 
 const SubTitleParagraph = styled(Paragraph)`
-  width: 90%;
-  font-size: 20px;
+  font-size: 17px;
+  line-height: 1.35;
   ${props => props.theme.xlBreakPoint} {
     display: none;
   }
 `
 
 const MainNewSmall = styled(Container)`
+  max-width: 100%;
   padding: 15px 0 0 0;
   display: -ms-flexbox;
   display: flex;
@@ -75,10 +77,10 @@ const MainNewSmallText = styled(Container)`
 
   h3 {
     color: ${props => props.theme.Black};
-    font-size: 28px;
-    line-height: 34.5px;
+    font-size: 24px;
+    line-height: 1.47;
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
   a {
     color: ${props => props.theme.Black};

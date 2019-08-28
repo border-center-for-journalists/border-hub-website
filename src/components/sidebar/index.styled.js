@@ -11,7 +11,7 @@ const Sidebar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: ${props => (props.minify ? "transparent" : "black")};
   z-index: 101;
   ${props => props.theme.largeBreakPoint} {
     width: ${props => props.theme.SidebarWidth2x}px;
@@ -35,6 +35,7 @@ const Social = styled.a`
   margin: 5px 0;
   padding: ${props => (props.bigger ? "10px" : "14px")} 0;
   font-size: ${props => (props.bigger ? "18px" : "14px")};
+  box-shadow: 0px 3px 7px 0 rgba(1, 0, 1, 0.23);
 `
 const Hamburguer = styled.button`
   cursor: pointer;
