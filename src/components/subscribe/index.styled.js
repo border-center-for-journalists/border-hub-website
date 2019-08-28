@@ -4,7 +4,7 @@ import { Section, Row, Container } from "../../theme/index.styled"
 const YellowBody = styled(Section)`
   width: 100%;
   background-color: ${props => props.theme.Yellow};
-  padding: 0 1em;
+  padding: 0 24px;
   h3 {
     font-size: 21px;
   }

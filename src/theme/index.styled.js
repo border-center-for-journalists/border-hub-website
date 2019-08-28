@@ -252,7 +252,7 @@ const FormBody = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding-right: 20px;
+
   form {
     width: 100%;
   }

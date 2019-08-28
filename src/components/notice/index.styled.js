@@ -109,6 +109,12 @@ const NoticeTitleWrapper = styled.div`
     margin-top: 10px;
     margin-bottom: 5px;
   }
+  ${props => props.theme.smallBreakPoint} {
+    padding: 0px 24px;
+    h1 {
+      font-size: 30px;
+    }
+  }
 `
 
 const Share = styled.a`
@@ -194,6 +200,7 @@ const TextWrapper = styled.div`
   p {
     font-size: 19px;
     line-height: 1.58;
+    color: ${props => (props.color ? props.color : "white")};
   }
   a[href] {
     text-decoration: underline;
@@ -201,10 +208,12 @@ const TextWrapper = styled.div`
   }
   h1 {
     color: ${props => props.theme.Black};
+    color: ${props => (props.color ? props.color : "white")};
   }
   h3 {
     font-size: 25px;
     font-weight: bold;
+    color: ${props => (props.color ? props.color : "white")};
   }
   ul {
     margin: 0 auto 42px;
@@ -215,6 +224,10 @@ const TextWrapper = styled.div`
   li {
     font-size: 18px;
     color: ${props => props.theme.Black};
+    color: ${props => (props.color ? props.color : "white")};
+  }
+  ${props => props.theme.smallBreakPoint} {
+    padding: 15px 24px;
   }
 `
 
@@ -228,6 +241,10 @@ const QuoteWrapper = styled.div`
     margin: 5px 0;
     font-size: 18px;
     line-height: 1.33;
+  }
+  ${props => props.theme.smallBreakPoint} {
+    margin: 20px 24px;
+    padding: 15px 0px;
   }
 `
 
