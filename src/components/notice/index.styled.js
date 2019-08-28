@@ -97,12 +97,16 @@ const NoticeTitleWrapper = styled.div`
   }
   h1 {
     color: white;
+    font-size: 39px;
+    font-size: ${props =>
+      props.align && props.align === "center" ? "42px" : "39px"};
+    margin-bottom: 5px;
   }
   hr {
     border: 0 none;
     border: 0 none;
     border-top: 4px solid ${props => props.theme.Yellow};
-    margin-top: 25px;
+    margin-top: 10px;
     margin-bottom: 5px;
   }
 `
@@ -187,6 +191,31 @@ const TextWrapper = styled.div`
   img {
     display: block;
   }
+  p {
+    font-size: 19px;
+    line-height: 1.58;
+  }
+  a[href] {
+    text-decoration: underline;
+    color: ${props => props.theme.Blue};
+  }
+  h1 {
+    color: ${props => props.theme.Black};
+  }
+  h3 {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  ul {
+    margin: 0 auto 42px;
+  }
+  ol {
+    margin: 0 auto 42px;
+  }
+  li {
+    font-size: 18px;
+    color: ${props => props.theme.Black};
+  }
 `
 
 const QuoteWrapper = styled.div`
@@ -197,6 +226,8 @@ const QuoteWrapper = styled.div`
   border-bottom: 1px solid ${props => (props.color ? props.color : "white")};
   p {
     margin: 5px 0;
+    font-size: 18px;
+    line-height: 1.33;
   }
 `
 

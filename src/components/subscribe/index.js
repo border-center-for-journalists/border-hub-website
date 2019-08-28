@@ -20,16 +20,13 @@ class SubscribeComponent extends Component {
       <YellowBody>
         <TitleMediumContainer color={true}>
           <h3>Suscríbete</h3>
-          <FormBody color>
-            <div id="mc_embed_signup">
+          <FormBody color id="mc_embed_signup">
               <form
                 action="https://bordercenter.us20.list-manage.com/subscribe/post?u=7e8c52a85a62c87db4816ca56&amp;id=d871cf9a52"
                 method="post"
                 id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form"
-                className="validate"
                 target="_blank"
-                novalidate
               >
                 <Rows align="space-between" wrap id="mc_embed_signup_scroll">
                   <CustomRow width="48%" className="mc-field-group">
@@ -134,7 +131,6 @@ class SubscribeComponent extends Component {
                   </CustomRow>
                 </Rows>
               </form>
-            </div>
           </FormBody>
           {/*<FormBody color={true}>
             <Rows>

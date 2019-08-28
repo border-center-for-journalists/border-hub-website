@@ -1,10 +1,13 @@
 import styled from "styled-components"
-import {Section, Row, Container } from "../../theme/index.styled"
+import { Section, Row, Container } from "../../theme/index.styled"
 
 const YellowBody = styled(Section)`
   width: 100%;
   background-color: ${props => props.theme.Yellow};
   padding: 0 1em;
+  h3 {
+    font-size: 21px;
+  }
 `
 const CustomRow = styled(Row)`
   ${props => props.theme.mediumBreakPoint} {
@@ -25,19 +28,18 @@ const CustomRow = styled(Row)`
 `
 
 const XContainer = styled(Container)`
-      max-width: 950px;
-      button{
-          font-size:35px;
-          float: right;
-          padding-top: 20px;
-          cursor: pointer;
-          border: none;
-          background-color: transparent;
-      }
-      button:focus{
-          outline: transparent;
-      }
+  max-width: 950px;
+  button {
+    font-size: 35px;
+    float: right;
+    padding-top: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+  button:focus {
+    outline: transparent;
+  }
 `
 
-
-export{YellowBody, CustomRow, XContainer}
+export { YellowBody, CustomRow, XContainer }

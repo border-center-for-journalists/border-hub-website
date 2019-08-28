@@ -27,7 +27,6 @@ const Logo = styled.a`
   }
   ${props => props.theme.smallBreakPoint} {
     overflow: hidden;
-    width: 130px;
   }
 `
 
