@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `
 
 const Content = styled.div`
-  padding: 0 0 0 ${props => props.theme.SidebarWidth}px;
+  padding: 0 0 0 ${props => (props.minify ? "0" : props.theme.SidebarWidth)}px;
   transition: padding 0.5s;
   font-family: ${props => props.theme.FontAleo};
   * {
@@ -101,7 +101,7 @@ const Row = styled.div`
     props.alignColumn
       ? "align-items: center;justify-content: center;display: flex;"
       : ""}
-  ${props => props.theme.mediumBreakPoint}{
+  ${props => props.theme.mediumBreakPoint} {
     flex: ${props => (props.widthXs ? "0 1 " + props.widthXs : "1 0 auto")};
     max-width: ${props => (props.widthXs ? props.widthXs : "100%")};
   }

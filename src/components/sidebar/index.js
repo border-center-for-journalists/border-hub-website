@@ -19,7 +19,7 @@ class SidebarComponent extends Component {
   render() {
     const { facebook, twitter, youtube, menu } = this.props.data
     return (
-      <Sidebar>
+      <Sidebar minify={this.props.minify}>
         <Hamburguer
           onClick={() => {
             this.toggleMenu()
