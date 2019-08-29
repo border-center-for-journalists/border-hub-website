@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   -moz-box-pack: justify;
   justify-content: space-between;
 `

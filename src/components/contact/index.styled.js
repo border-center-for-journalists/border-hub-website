@@ -15,10 +15,13 @@ const ContactUsSection = styled(Section)`
 const ContactContainer = styled(Container)`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 840px !important;
 `
 
 const TitleYellow = styled(TitleMediumContainer)`
   text-align: center;
+  max-width: 840px !important;
   h3 {
     color: ${props => props.theme.Black};
     font-size: 39px;
@@ -33,12 +36,15 @@ const TitleYellow = styled(TitleMediumContainer)`
   }
 `
 const CustomColForm = styled(Col)`
-  flex: 0 0 70%;
-  max-width: 70%;
+  flex: 0 0 66%;
+  max-width: 66%;
   textarea {
     width: 100%;
     padding: 10px;
     margin: 0;
+  }
+  button {
+    padding: 12px;
   }
 `
 

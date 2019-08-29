@@ -35,9 +35,7 @@ class ContactUsComponent extends Component {
                 </Row>
               </CustomRows>
               <textarea rows="6" name="message" placeholder="Message" />
-              <Row>
-                <button name="Submit">Enviar</button>
-              </Row>
+              <button name="Submit">Enviar</button>
             </FormBody>
           </CustomColForm>
           <CustomColText>
