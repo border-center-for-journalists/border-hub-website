@@ -20,7 +20,8 @@ const Content = styled.div`
     font-family: ${props => props.theme.FontAleo};
   }
   ${props => props.theme.largeBreakPoint} {
-    padding: 0 0 0 ${props => props.theme.SidebarWidth2x}px;
+    padding: 0 0 0
+      ${props => (props.minify ? "0" : props.theme.SidebarWidth2x)}px;
   }
   ${props => props.theme.smallBreakPoint} {
     padding: 0;
