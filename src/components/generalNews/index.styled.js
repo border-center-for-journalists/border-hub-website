@@ -3,8 +3,11 @@ import { TitleContainer, Section, Col } from "../../theme/index.styled"
 
 const GeneralNewsSection = styled(Section)`
   background-color: white;
-  padding: 15px;
+  padding: 15px 24px;
   padding-top: 80px;
+  ${props => props.theme.smallBreakPoint} {
+    padding-top: 90px;
+  }
 `
 
 const GeneralTitle = styled(TitleContainer)`
@@ -30,6 +33,10 @@ const GeneralTitle = styled(TitleContainer)`
   li {
     font-size: 18px;
     color: ${props => props.theme.Black};
+  }
+  a[href] {
+    text-decoration: underline;
+    color: ${props => props.theme.Blue};
   }
 `
 

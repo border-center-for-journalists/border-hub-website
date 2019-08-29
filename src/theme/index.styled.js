@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   -moz-box-pack: justify;
   justify-content: space-between;
 `
@@ -252,7 +253,7 @@ const FormBody = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding-right: 20px;
+
   form {
     width: 100%;
   }

@@ -17,7 +17,7 @@ const NewsContainer = styled(Section)`
   }
 
   ${props => props.theme.ipadBreakPoint} {
-    padding: 2em 5em 0 5em;
+    padding: 2em 24px 0 24px;
   }
 
   ${props => props.theme.xlBreakPoint} {
@@ -70,11 +70,13 @@ const MainNewSmall = styled(Container)`
   img {
     margin: 0;
   }
+  ${props => props.theme.xlBreakPoint} {
+    padding: 0 24px;
+  }
 `
 
 const MainNewSmallText = styled(Container)`
   padding-left: 30px;
-
   h3 {
     color: ${props => props.theme.Black};
     font-size: 24px;
@@ -91,6 +93,9 @@ const MainNewSmallText = styled(Container)`
     text-align: left;
     font-size: 17px;
     margin-bottom: 15px;
+  }
+  ${props => props.theme.smallBreakPoint} {
+    padding-left: 0px;
   }
 `
 

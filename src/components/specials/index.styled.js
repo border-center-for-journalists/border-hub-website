@@ -20,6 +20,9 @@ const SpecialSection = styled(Section)`
   a {
     text-decoration: none;
   }
+  ${props => props.theme.smallBreakPoint} {
+    padding: 2em 24px;
+  }
 `
 
 const CustomContainer = styled(Container)``
