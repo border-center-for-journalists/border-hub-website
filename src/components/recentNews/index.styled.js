@@ -7,7 +7,7 @@ import {
 } from "../../theme/index.styled"
 
 const RecentSection = styled(Section)`
-  padding: 35px 15px;
+  padding: 35px 24px;
   background-color: black;
 `
 const CustomTitle = styled(TitleMediumContainer)`
@@ -20,7 +20,7 @@ const CustomTitle = styled(TitleMediumContainer)`
   background-color: black;
 
   ${props => props.theme.smallBreakPoint} {
-    padding: 2em 1em;
+    padding: 2em 0;
   }
 `
 const PrincipalContainer = styled.div`
