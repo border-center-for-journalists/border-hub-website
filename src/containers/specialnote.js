@@ -4,29 +4,30 @@ import SEO from "../components/seo"
 import SpecialNoticeComponent from "../components/notice/special"
 
 const SpecialNoticeContainer = ({ location, data }) => {
-  {console.log("datos",data.prismicNoticiasEspeciales.data)}
   let getDescription = data => {
-    if(data.metadescription.text){
-       return data.metadescription.text
+    if (data.metadescription.text) {
+      return data.metadescription.text
+    } else {
+      return false
     }
-    else{
-     let content = data.content.html
-     let div = document.createElement("div");
-     div.innerHTML = content;
-     let text = div.innerText;
-     text = "<p>" + text.substring(0, 200) + "</p>";
-     return text
-    }
- }
+  }
+  const notice = data.prismicNoticiasEspeciales
+  const common = data.prismicDatosComunes.data
+  const description =
+    getDescription(notice.data) || common.metadescription.text || ""
+  const keywords =
+    notice.data.metakeywords.text || common.metakeywords.text || ""
+  const image = notice.data.banner.url || false
   return (
     <Layout minify>
       <SEO
-        title={data.prismicNoticiasEspeciales.data.title.text}
-        description={getDescription(data.prismicNoticiasEspeciales.data)} 
-        keywords={[data.prismicNoticiasEspeciales.data.metakeywords.text]}
+        title={notice.data.title.text}
+        description={description}
+        keywords={keywords}
+        image={image}
       />
       <SpecialNoticeComponent
-        notice={data.prismicNoticiasEspeciales}
+        notice={notice}
         related={data.relatedNotes}
         site={data.site.siteMetadata}
         url={location.href}
@@ -39,6 +40,16 @@ export default SpecialNoticeContainer
 
 export const pageQuery = graphql`
   query SingleSpecialNoticeQuery($uid: String!) {
+    prismicDatosComunes {
+      data {
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
+        }
+      }
+    }
     site {
       siteMetadata {
         API_KEY
@@ -54,10 +65,10 @@ export const pageQuery = graphql`
         title {
           text
         }
-        metadescription{
+        metadescription {
           text
         }
-        metakeywords{
+        metakeywords {
           text
         }
         banner {

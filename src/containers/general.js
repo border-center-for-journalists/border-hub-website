@@ -4,9 +4,16 @@ import SEO from "../components/seo"
 import GeneralComponent from "../components/generalNews/index.js"
 
 const generalContainer = ({ data }) => {
+  const title = data.prismicComun.data.title.text
+  const description =
+    data.prismicComun.data.metadescription.text ||
+    data.prismicDatosComunes.data.metadescription.text
+  const keywords =
+    data.prismicComun.data.metakeywords.text ||
+    data.prismicDatosComunes.data.metakeywords.text
   return (
     <Layout>
-      <SEO title={data.prismicComun.data.title.text} keywords={[]} />
+      <SEO title={title} keywords={keywords} description={description} />
       <GeneralComponent data={data.prismicComun.data} />
     </Layout>
   )
@@ -23,6 +30,22 @@ export const pageQuery = graphql`
         }
         content {
           html
+        }
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
+        }
+      }
+    }
+    prismicDatosComunes {
+      data {
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
         }
       }
     }
