@@ -4,11 +4,26 @@ import SEO from "../components/seo"
 import SpecialNoticeComponent from "../components/notice/special"
 
 const SpecialNoticeContainer = ({ location, data }) => {
+  {console.log("datos",data.prismicNoticiasEspeciales.data)}
+  let getDescription = data => {
+    if(data.metadescription.text){
+       return data.metadescription.text
+    }
+    else{
+     let content = data.content.html
+     let div = document.createElement("div");
+     div.innerHTML = content;
+     let text = div.innerText;
+     text = "<p>" + text.substring(0, 200) + "</p>";
+     return text
+    }
+ }
   return (
     <Layout>
       <SEO
         title={data.prismicNoticiasEspeciales.data.title.text}
-        keywords={[]}
+        description={getDescription(data.prismicNoticiasEspeciales.data)} 
+        keywords={[data.prismicNoticiasEspeciales.data.metakeywords.text]}
       />
       <SpecialNoticeComponent
         notice={data.prismicNoticiasEspeciales}
@@ -37,6 +52,12 @@ export const pageQuery = graphql`
       last_publication_date
       data {
         title {
+          text
+        }
+        metadescription{
+          text
+        }
+        metakeywords{
           text
         }
         banner {

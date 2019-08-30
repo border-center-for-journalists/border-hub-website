@@ -10,6 +10,7 @@ import {
 import { Container, Rows } from "../../theme/index.styled"
 
 const AuthorComponent = ({ color, author }) => {
+  console.log("au", author)
   return (
     <Author color={color}>
       {author.user_picture && author.user_picture.url ? (

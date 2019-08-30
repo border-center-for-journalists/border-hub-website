@@ -23,8 +23,8 @@ const NormalRelatedComponent = ({ color, related }) => {
             <Col>
               <ImageWrapper>
                 <a href={`/${item.uid}`}>
-                  {item.data.banner && item.data.banner.url ? (
-                    <img alt="prueba" src={item.data.banner.url} />
+                  {item.data.banner.thumbnail && item.data.banner.thumbnail.url ? (
+                    <img alt="prueba" src={item.data.banner.thumbnail.url} />
                   ) : (
                     ""
                   )}
