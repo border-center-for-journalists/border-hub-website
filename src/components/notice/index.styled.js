@@ -27,6 +27,9 @@ const DonateContainer = styled(Container)`
   padding: 45px 45px;
   margin: 0 auto 45px;
   text-align: center;
+  img{
+    width: 50px;
+  }
   p {
     color: white;
   }

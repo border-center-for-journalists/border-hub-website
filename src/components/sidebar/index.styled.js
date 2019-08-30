@@ -51,7 +51,7 @@ const Hamburguer = styled.button`
   i {
     display: block;
     top: 0px;
-    left: 10px;
+    left: 5px;
     width: 25px;
     height: 0px;
     border-bottom: 3px solid white;
@@ -98,6 +98,9 @@ const Hamburguer = styled.button`
   ${props => props.theme.largeBreakPoint} {
     width: ${props => props.theme.SidebarWidth2x}px;
     height: ${props => props.theme.SidebarWidth2x}px;
+    i {
+      left: 10px;
+    }
   }
   ${props => props.theme.smallBreakPoint} {
     left: ${props => props.theme.SidebarWidth}px;

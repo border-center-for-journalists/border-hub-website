@@ -5,9 +5,12 @@ import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
 
 const temp = data => {
+  const common = data.data.prismicDatosComunes.data
+  const description = common.metadescription.text
+  const keywords = common.metakeywords.text
   return (
     <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Home" description={description} keywords={keywords} />
       <HomeContainer
         bannerNotice={data.data.bannerNotice}
         normalNotices={data.data.normalNotices}
@@ -20,6 +23,16 @@ const temp = data => {
 }
 export const pageQuery = graphql`
   query HomeNoticeQuery {
+    prismicDatosComunes {
+      data {
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
+        }
+      }
+    }
     bannerNotice: allPrismicNoticias(
       limit: 1
       filter: { data: { type: { eq: "banner" } } }
@@ -60,9 +73,9 @@ export const pageQuery = graphql`
           type
           banner {
             url
-            thumbnail{
+            thumbnail {
               url
-           }
+            }
           }
           title {
             text
@@ -89,9 +102,9 @@ export const pageQuery = graphql`
           type
           banner {
             url
-            thumbnail{
+            thumbnail {
               url
-           }
+            }
           }
           title {
             text
@@ -145,9 +158,9 @@ export const pageQuery = graphql`
           banner {
             url
             alt
-            thumbnail{
+            thumbnail {
               url
-           }
+            }
           }
           excerpt {
             text

@@ -45,6 +45,7 @@ const CustomColForm = styled(Col)`
   }
   button {
     padding: 12px;
+    margin-bottom: 30px;
   }
 `
 
