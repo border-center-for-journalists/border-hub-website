@@ -7,7 +7,7 @@ import {
 } from "../../theme/index.styled"
 
 const RecentSection = styled(Section)`
-  padding: 35px 15px;
+  padding: 35px 24px;
   background-color: black;
 `
 const CustomTitle = styled(TitleMediumContainer)`
@@ -20,7 +20,7 @@ const CustomTitle = styled(TitleMediumContainer)`
   background-color: black;
 
   ${props => props.theme.smallBreakPoint} {
-    padding: 2em 1em;
+    padding: 2em 0;
   }
 `
 const PrincipalContainer = styled.div`
@@ -62,7 +62,7 @@ const NewsText = styled(Container)`
   margin: 0;
   h3 {
     color: ${props => props.theme.White};
-    font-size: 20px;
+    font-size: 19px;
     font-weight: bold;
     line-height: 1.16;
     text-align: left;
@@ -75,7 +75,7 @@ const NewsText = styled(Container)`
   p {
     color: ${props => props.theme.White};
     text-align: left;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.44;
     margin-bottom: 15px;
   }
@@ -88,10 +88,9 @@ const NewsText = styled(Container)`
 `
 
 const DateText = styled.p`
-  font-size: 16px;
+  font-size: 15.5px;
   color: ${props => props.theme.DarkYellow};
   line-height: 25px;
-  max-width: 15em;
   line-height: 1.29;
   text-align: left;
   margin: 0;

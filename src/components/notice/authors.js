@@ -13,7 +13,7 @@ const AuthorComponent = ({ color, author }) => {
   console.log("au", author)
   return (
     <Author color={color}>
-      {author.user_picture && author.user_picture.url ? (
+      { (author.user_picture && author.user_picture.url) ? (
         <AuthorProfile>
           <img alt={author.name.text} src={author.user_picture.url} />
         </AuthorProfile>
@@ -85,12 +85,15 @@ const AuthorComponent = ({ color, author }) => {
   )
 }
 
-const AuthorsNoticeComponent = ({ color, authors }) => {
+const AuthorsNoticeComponent = ({ color, authors, align }) => {
+  let getTitle = (special) =>{
+    return special ? "Créditos" : "Contacta al Autor"
+  }
   return (
     <Container size="medium">
       <Divider />
       {/**color={authors[0].color} align={authors[0].align} */}
-      <NoticeSectionTitle>Créditos</NoticeSectionTitle>
+      <NoticeSectionTitle align={align} color={color}>{getTitle()}</NoticeSectionTitle>
       <Rows align="space-between">
         {authors.map((author, index) => (
           <AuthorComponent color={color} author={author} key={index} />

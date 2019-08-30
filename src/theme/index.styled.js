@@ -7,12 +7,13 @@ const Wrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   -moz-box-pack: justify;
   justify-content: space-between;
 `
 
 const Content = styled.div`
-  padding: 0 0 0 ${props => props.theme.SidebarWidth}px;
+  padding: 0 0 0 ${props => (props.minify ? "0" : props.theme.SidebarWidth)}px;
   transition: padding 0.5s;
   font-family: ${props => props.theme.FontAleo};
   * {
@@ -101,11 +102,16 @@ const Row = styled.div`
     props.alignColumn
       ? "align-items: center;justify-content: center;display: flex;"
       : ""}
+  ${props => props.theme.mediumBreakPoint} {
+    flex: ${props => (props.widthXs ? "0 1 " + props.widthXs : "1 0 auto")};
+    max-width: ${props => (props.widthXs ? props.widthXs : "100%")};
+  }
 `
 
 const Paragraph = styled.p`
   font-size: 17px;
   font-weight: 300;
+  font-weight: normal;
   line-height: 23px;
   color: ${props => props.theme.Black};
 `
@@ -247,7 +253,10 @@ const FormBody = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding-right: 20px;
+
+  form {
+    width: 100%;
+  }
   input {
     display: block;
     width: 100%;
@@ -270,7 +279,7 @@ const FormBody = styled.div`
     display: block;
     margin: 0;
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 12.5px;
     line-height: 1.56;
     color: ${props => props.theme.Black};
   }

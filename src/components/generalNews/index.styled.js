@@ -3,47 +3,54 @@ import { TitleContainer, Section, Col } from "../../theme/index.styled"
 
 const GeneralNewsSection = styled(Section)`
   background-color: white;
-  padding: 15px;
+  padding: 15px 24px;
   padding-top: 80px;
+  ${props => props.theme.smallBreakPoint} {
+    padding-top: 90px;
+  }
 `
 
 const GeneralTitle = styled(TitleContainer)`
-    margin: 0 auto;
-h1{
-    color:${props => props.theme.Black}
-}
-h3{
+  margin: 0 auto;
+  h1 {
+    color: ${props => props.theme.Black};
+  }
+  h3 {
     font-size: 25px;
     font-weight: bold;
-}
-p{
-    color:${props => props.theme.Black}
+  }
+  p {
+    color: ${props => props.theme.Black};
     font-size: 19px;
     line-height: 1.58;
-}
-ul{
+  }
+  ul {
     margin: 0 auto 42px;
-}
-ol{
+  }
+  ol {
     margin: 0 auto 42px;
-}
-li{
+  }
+  li {
     font-size: 18px;
-    color:${props => props.theme.Black}
-}
+    color: ${props => props.theme.Black};
+  }
+  a[href] {
+    text-decoration: underline;
+    color: ${props => props.theme.Blue};
+  }
 `
 
 const Quote = styled.p`
-    font-size: 18px;
-    font-style: italic;
-    line-height: 1.33;
-    color:${props => props.theme.Black}
-    border-bottom: 1px solid ${props => props.theme.Black};
-    border-top: 1px solid ${props => props.theme.Black};
-    padding: 23px 50px;
-    b{
-        color:${props => props.theme.Black}
-    }
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.33;
+  color: ${props => props.theme.Black};
+  border-bottom: 1px solid ${props => props.theme.Black};
+  border-top: 1px solid ${props => props.theme.Black};
+  padding: 23px 50px;
+  b {
+    color: ${props => props.theme.Black};
+  }
 `
 
 export { GeneralNewsSection, GeneralTitle, Quote }

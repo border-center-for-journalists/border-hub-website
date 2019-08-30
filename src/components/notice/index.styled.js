@@ -27,6 +27,9 @@ const DonateContainer = styled(Container)`
   padding: 45px 45px;
   margin: 0 auto 45px;
   text-align: center;
+  img{
+    width: 50px;
+  }
   p {
     color: white;
   }
@@ -97,13 +100,23 @@ const NoticeTitleWrapper = styled.div`
   }
   h1 {
     color: white;
+    font-size: 39px;
+    font-size: ${props =>
+      props.align && props.align === "center" ? "42px" : "39px"};
+    margin-bottom: 5px;
   }
   hr {
     border: 0 none;
     border: 0 none;
     border-top: 4px solid ${props => props.theme.Yellow};
-    margin-top: 25px;
+    margin-top: 10px;
     margin-bottom: 5px;
+  }
+  ${props => props.theme.smallBreakPoint} {
+    padding: 0px 24px;
+    h1 {
+      font-size: 30px;
+    }
   }
 `
 
@@ -187,6 +200,38 @@ const TextWrapper = styled.div`
   img {
     display: block;
   }
+  p {
+    font-size: 19px;
+    line-height: 1.58;
+    color: ${props => (props.color ? props.color : "white")};
+  }
+  a[href] {
+    text-decoration: underline;
+    color: ${props => props.theme.Blue};
+  }
+  h1 {
+    color: ${props => props.theme.Black};
+    color: ${props => (props.color ? props.color : "white")};
+  }
+  h3 {
+    font-size: 25px;
+    font-weight: bold;
+    color: ${props => (props.color ? props.color : "white")};
+  }
+  ul {
+    margin: 0 auto 42px;
+  }
+  ol {
+    margin: 0 auto 42px;
+  }
+  li {
+    font-size: 18px;
+    color: ${props => props.theme.Black};
+    color: ${props => (props.color ? props.color : "white")};
+  }
+  ${props => props.theme.smallBreakPoint} {
+    padding: 15px 24px;
+  }
 `
 
 const QuoteWrapper = styled.div`
@@ -197,6 +242,12 @@ const QuoteWrapper = styled.div`
   border-bottom: 1px solid ${props => (props.color ? props.color : "white")};
   p {
     margin: 5px 0;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  ${props => props.theme.smallBreakPoint} {
+    margin: 20px 24px;
+    padding: 15px 0px;
   }
 `
 

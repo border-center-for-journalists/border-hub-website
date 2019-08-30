@@ -21,7 +21,7 @@ class MainNewsComponent extends Component {
     const noticeLen = Object.keys(this.props.notice).length
     if (noticeLen === i + 1) {
       return (
-        <div>
+        <React.Fragment>
           <ImageWrapper>
             <a href={`/${data.uid}`}>
               <img alt={data.data.title.text} src={data.data.banner.url} />
@@ -41,7 +41,7 @@ class MainNewsComponent extends Component {
               {moment(data.data.custom_publishdate).format("MMMM DD [|] YYYY")}
             </AuthorContainer>
           </TextContainer>
-        </div>
+        </React.Fragment>
       )
     } else {
       return <SubNewComponent notice={data} />

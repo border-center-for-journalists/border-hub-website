@@ -40,10 +40,12 @@ class NormalNoticeComponent extends Component {
           url={this.props.url}
         />
         <NormalNoticeContainer>
+          <br />
           <TextNoticeContentComponent notice={this.props.notice} />
           <NormalSubscribeComponent />
           <AuthorsNoticeComponent
             color="black"
+            align = "left"
             authors={this.props.notice.data.author}
           />
           <NormalDonateComponent />

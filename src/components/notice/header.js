@@ -7,7 +7,11 @@ import {
   Social,
 } from "./index.styled"
 import { Container, Rows } from "../../theme/index.styled"
-import { FacebookShareButton, TwitterShareButton, EmailShareButton } from "react-share"
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+} from "react-share"
 import img from "../../theme/images/1.jpg"
 
 const HeaderNoticeComponent = ({ url, notice, align }) => {
@@ -32,8 +36,11 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
           <h1>{title.text}</h1>
           <p>
             <i>
-              Por <YellowText>{getAuthorName()} |</YellowText> En alianza con{" "}
-              <u>Reforma</u>
+              Por{" "}
+              <YellowText>
+                <b>{getAuthorName()} |</b>
+              </YellowText>{" "}
+              En alianza con <u>Reforma</u>
             </i>
           </p>
           <p>Marzo 12, 2019 | 13:45</p>

@@ -37,7 +37,7 @@ const BannerContainer = styled(Container)`
   max-width: ${props => props.theme.ContainerLarge + 30}px;
   position: relative;
   bottom: 3em;
-  padding: 0 15px;
+  padding: 0 24px;
 
   b {
     color: ${props => props.theme.Yellow};
