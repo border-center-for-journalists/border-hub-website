@@ -103,7 +103,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-  image: defaultImage,
+  image: false,
 }
 
 SEO.propTypes = {
