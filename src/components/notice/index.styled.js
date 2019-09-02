@@ -27,8 +27,9 @@ const DonateContainer = styled(Container)`
   padding: 45px 45px;
   margin: 0 auto 45px;
   text-align: center;
-  img{
-    width: 50px;
+  i{
+    font-size: 50px;
+    color: ${props => props.theme.Yellow};
   }
   p {
     color: white;
@@ -139,7 +140,9 @@ const NoticeSectionTitle = styled.h4`
 `
 
 const Author = styled.div`
-  flex: 0 1 32%;
+  flex: ${props => (props.color == "black" ? "0 0 50%" : "0 1 32%" )} ;
+  display: flex;
+  flex-wrap: wrap;
   color: ${props => (props.color ? props.color : "white")};
   ul {
     list-style: none;
@@ -163,6 +166,7 @@ const AuthorTitle = styled.h5`
   text-align: ${props => (props.align ? props.align : "center")};
   font-weight: bold;
   font-style: italic;
+  padding-bottom: 5px;
   margin: 0;
 `
 

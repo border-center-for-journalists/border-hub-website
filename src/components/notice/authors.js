@@ -7,16 +7,15 @@ import {
   AuthorProfile,
   Divider,
 } from "./index.styled"
-import { Container, Rows } from "../../theme/index.styled"
+import { Container, Rows, Col } from "../../theme/index.styled"
 
 const AuthorComponent = ({ color, author }) => {
-  console.log("au", author)
   return (
     <Author color={color}>
       { (author.user_picture && author.user_picture.url) ? (
-        <AuthorProfile>
-          <img alt={author.name.text} src={author.user_picture.url} />
-        </AuthorProfile>
+          <AuthorProfile>
+            <img alt={author.name.text} src={author.user_picture.url} />
+          </AuthorProfile>
       ) : (
         ""
       )}
@@ -28,7 +27,17 @@ const AuthorComponent = ({ color, author }) => {
         ""
       )}
       {author.name && author.name.text ? (
-        <AuthorTitle align="center">{author.name.text}</AuthorTitle>
+        <Col>
+          <AuthorTitle align="left">{author.name.text}</AuthorTitle>
+          <ul>
+            { author.email && author.email.text ? (
+              <li><i className="icon-email" /> {author.email.text}</li>) : ( "" )}
+            {author.author_email && author.author_email.text ? (
+              <li><i className="icon-email" /> {author.author_email.text}</li>) : ( "")}  
+            {author.facebook && author.facebook.text ? (
+                <li><i className="icon-facebook" /> {author.facebook.text}</li>) : ("")}
+          </ul>
+        </Col>
       ) : (
         ""
       )}
@@ -38,13 +47,6 @@ const AuthorComponent = ({ color, author }) => {
         ""
       )}
       <ul>
-        {author.email && author.email.text ? (
-          <li>
-            <i className="icon-email" /> {author.email.text}
-          </li>
-        ) : (
-          ""
-        )}
         {author.author_email && author.author_email.text ? (
           <li>
             <i className="icon-email" /> {author.author_email.text}
@@ -52,23 +54,9 @@ const AuthorComponent = ({ color, author }) => {
         ) : (
           ""
         )}
-        {author.twitter && author.twitter.text ? (
-          <li>
-            <i className="icon-twitter" /> {author.twitter.text}
-          </li>
-        ) : (
-          ""
-        )}
         {author.author_twitter && author.author_twitter.text ? (
           <li>
             <i className="icon-twitter" /> {author.author_twitter.text}
-          </li>
-        ) : (
-          ""
-        )}
-        {author.facebook && author.facebook.text ? (
-          <li>
-            <i className="icon-facebook" /> {author.facebook.text}
           </li>
         ) : (
           ""
@@ -87,13 +75,13 @@ const AuthorComponent = ({ color, author }) => {
 
 const AuthorsNoticeComponent = ({ color, authors, align }) => {
   let getTitle = (special) =>{
-    return special ? "Créditos" : "Contacta al Autor"
+    return special == "left" ? "Contacta al Autor" : "Créditos"   
   }
   return (
     <Container size="medium">
       <Divider />
       {/**color={authors[0].color} align={authors[0].align} */}
-      <NoticeSectionTitle align={align} color={color}>{getTitle()}</NoticeSectionTitle>
+      <NoticeSectionTitle align={align} color={color}>{getTitle(align)}</NoticeSectionTitle>
       <Rows align="space-between">
         {authors.map((author, index) => (
           <AuthorComponent color={color} author={author} key={index} />

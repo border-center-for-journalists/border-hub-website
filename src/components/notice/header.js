@@ -45,7 +45,7 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
           </p>
           <p>Marzo 12, 2019 | 13:45</p>
           <hr />
-          <Rows align="flex-end">
+          <Rows rowS="row" rowXs="row" align="flex-end">
             <FacebookShareButton url={url}>
               <Social bigger className="icon-facebook" />
             </FacebookShareButton>
@@ -53,7 +53,7 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
               <Social className="icon-twitter" />
             </TwitterShareButton>
             <EmailShareButton url={url}>
-              <Social className="icon-email" />
+              <Social className="icon-mail" />
             </EmailShareButton>
           </Rows>
         </NoticeTitleWrapper>

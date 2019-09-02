@@ -9,7 +9,7 @@ const NormalDonateComponent = () => {
   return (
     <React.Fragment>
       <DonateContainer size="medium">
-        <img src={img}/>
+        <i class="icon-donar"/>
           <h2>El periodismo requiere de tu apoyo</h2>
           <p>Conviértete en miembro del Border Hub</p>
           <button> Donar </button>
