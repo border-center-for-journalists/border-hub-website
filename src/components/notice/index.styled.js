@@ -27,7 +27,7 @@ const DonateContainer = styled(Container)`
   padding: 45px 45px;
   margin: 0 auto 45px;
   text-align: center;
-  i{
+  i {
     font-size: 50px;
     color: ${props => props.theme.Yellow};
   }
@@ -137,13 +137,19 @@ const NoticeSectionTitle = styled.h4`
   font-size: 23px;
   margin-bottom: 25px;
   text-align: ${props => (props.align ? props.align : "center")};
+  ${props => props.theme.smallBreakPoint} {
+    padding: 0 15px;
+  }
 `
 
 const Author = styled.div`
-  flex: ${props => (props.color == "black" ? "0 0 50%" : "0 1 32%" )} ;
+  flex: ${props => (props.color == "black" ? "0 0 50%" : "0 1 32%")};
+  flex: 1 0 auto;
+  max-width: ${props => (props.align === "left" ? "300" : "240")}px;
   display: flex;
   flex-wrap: wrap;
   color: ${props => (props.color ? props.color : "white")};
+  flex-direction: ${props => (props.align === "center" ? "column" : "row")};
   ul {
     list-style: none;
     padding: 0;
@@ -158,6 +164,9 @@ const Author = styled.div`
         margin-right: 5px;
       }
     }
+  }
+  ${props => props.theme.smallBreakPoint} {
+    padding: 15px;
   }
 `
 
@@ -180,9 +189,10 @@ const AuthorRol = styled.p`
 
 const AuthorProfile = styled.div`
   display: block;
+  margin: ${props =>
+    props.align === "center" ? " 5px auto 10px" : "0 15px 0 0"};
   width: 60px;
   height: 60px;
-  margin: 5px auto 10px;
   border-radius: 50%;
   overflow: hidden;
 `

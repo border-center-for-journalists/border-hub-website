@@ -45,7 +45,7 @@ class NormalNoticeComponent extends Component {
           <NormalSubscribeComponent />
           <AuthorsNoticeComponent
             color="black"
-            align = "left"
+            align="left"
             authors={this.props.notice.data.author}
           />
           <NormalDonateComponent />
