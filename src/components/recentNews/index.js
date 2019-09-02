@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { CustomTitle, RecentSection, PrincipalContainer } from "./index.styled"
+import { CustomTitle, RecentSection, PrincipalContainer, HrCol } from "./index.styled"
 import SubNewComponent from "./subNews.js"
 import { Col, Container } from "../../theme/index.styled"
 
@@ -23,10 +23,9 @@ class RecentNews extends Component {
           <PrincipalContainer>
             {this.props.notices.nodes.map(notice =>
               this.isAllowed(notice, mergeNotices) ? (
-                <Col key={notice.uid}>
+                <HrCol key={notice.uid}>
                   <SubNewComponent notice={notice} />
-                  <hr />
-                </Col>
+                </HrCol>
               ) : (
                 ""
               )
