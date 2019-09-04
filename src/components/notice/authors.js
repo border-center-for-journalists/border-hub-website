@@ -93,7 +93,7 @@ const AuthorsNoticeComponent = ({ color, authors, align }) => {
     return special == "left" ? "Contacta al Autor" : "Créditos"
   }
   return (
-    <Container size="medium">
+    <Container size="medium" xlStaticSize>
       <Divider />
       {/**color={authors[0].color} align={authors[0].align} */}
       <NoticeSectionTitle align={align} color={color}>

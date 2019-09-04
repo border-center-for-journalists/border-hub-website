@@ -6,36 +6,22 @@ import {
   Paragraph,
   Col,
 } from "../../theme/index.styled"
+import moment from "moment"
+import "moment/locale/es"
+moment.locale("es")
+
 class SubNewComponent extends Component {
   render() {
-    const Months = [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre",
-    ]
-    let date = new Date(this.props.notice.data.custom_publishdate)
-    let trueDate =
-      Months[date.getMonth()] +
-      " " +
-      date.getDate() +
-      " | " +
-      date.getFullYear()
     return (
       <MainNewSmall>
         <hr />
         <Col>
           <ImageWrapper>
             <a href={`/${this.props.notice.uid}`}>
-              <img alt="prueba" src={this.props.notice.data.banner.thumbnail.url} />
+              <img
+                alt="prueba"
+                src={this.props.notice.data.banner.thumbnail.url}
+              />
             </a>
           </ImageWrapper>
         </Col>
@@ -52,7 +38,10 @@ class SubNewComponent extends Component {
                 {" "}
                 Por <b> {this.props.notice.data.author[0].name.text} </b>{" "}
               </i>{" "}
-              <br /> {trueDate}
+              <br />{" "}
+              {moment(this.props.notice.data.custom_publishdate).format(
+                "MMMM DD [|] YYYY"
+              )}
             </AuthorContainer>
           </MainNewSmallText>
         </Col>

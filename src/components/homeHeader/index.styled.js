@@ -16,6 +16,7 @@ const BannerImg = styled.div`
     url(${props => (props.bg ? props.bg : bg)});
   width: 100%;
   min-height: ${props => (props.fullHeight ? "600px" : "300px")};
+
   ${props => props.theme.ipadBreakPoint} {
     min-height: ${props => (props.fullHeight ? "440px" : "200px")};
   }
@@ -23,9 +24,7 @@ const BannerImg = styled.div`
   ${props => props.theme.smallBreakPoint} {
     min-height: ${props => (props.fullHeight ? "340px" : "200px")};
   }
-
   ${props => props.theme.xlBreakPoint} {
-    background-image: url(${props => (props.bg ? props.bg : bg)});
   }
 `
 
