@@ -52,7 +52,10 @@ const Container = styled.div`
   ${props => (props.size === "full" ? "max-width: 100%;" : "")}
 
   ${props => props.theme.largeBreakPoint} {
-    max-width: ${props => props.theme.ContainerExtraLarge}px;
+    ${props =>
+      props.xlStaticSize
+        ? ""
+        : "max-width:" + props.theme.ContainerExtraLarge + "px;"};
   }
 `
 const RowGap = gap => {

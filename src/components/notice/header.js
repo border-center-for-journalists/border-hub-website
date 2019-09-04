@@ -35,7 +35,7 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
 
   return (
     <React.Fragment>
-      <Container size="medium">
+      <Container size="medium" xlStaticSize>
         <NoticeTitleWrapper align={align}>
           <h1>{title.text}</h1>
           <p>

@@ -173,6 +173,7 @@ const Menu = styled.div`
   }
   ${props => props.theme.smallBreakPoint} {
     width: 100%;
+    min-width: 100%;
   }
   ${props => props.theme.largeBreakPoint} {
     min-width: 538px;
