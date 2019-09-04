@@ -148,7 +148,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicNoticiasEspeciales(limit: 1) {
+    allPrismicNoticiasEspeciales(
+      limit: 1
+      sort: { fields: [last_publication_date], order: [DESC] }
+    ) {
       nodes {
         uid
         data {

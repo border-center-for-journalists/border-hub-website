@@ -21,6 +21,7 @@ const Logo = styled.a`
   display: inline-block;
   height: 100%;
   padding: ${props => (props.minify ? "15px" : "0")};
+  ${props => (props.minify ? "position:absolute;left:0;right:0;" : "")}
   img {
     transition: height 0.5s;
     height: ${props => props.theme.SidebarWidth}px;
