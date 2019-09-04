@@ -51,7 +51,9 @@ class SidebarComponent extends Component {
           >
             <i />
           </Hamburguer>
-          <img alt="Border center" src={logo} />
+          <a href="/">
+            <img alt="Border center" src={logo} />
+          </a>
           <ul>
             {menu.map((item, index) => (
               <li key={index}>

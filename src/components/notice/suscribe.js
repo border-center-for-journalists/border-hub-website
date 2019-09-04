@@ -6,7 +6,7 @@ import { TitleMediumContainer, Rows, FormBody } from "../../theme/index.styled"
 class NormalSubscribeComponent extends Component {
   render() {
     return (
-      <YellowContainer size="medium">
+      <YellowContainer size="medium" xlStaticSize>
         <TitleMediumContainer color={true}>
           <h3>Unete a nuestro newsletter.</h3>
           <FormBody color id="mc_embed_signup">

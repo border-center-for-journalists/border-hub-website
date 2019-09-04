@@ -7,7 +7,7 @@ class GeneralComponent extends Component {
     const { title, content } = this.props.data
     return (
       <GeneralNewsSection>
-        <Container>
+        <Container xlStaticSize>
           <GeneralTitle>
             <h1>{title.text}</h1>
             <div dangerouslySetInnerHTML={{ __html: content.html }} />
