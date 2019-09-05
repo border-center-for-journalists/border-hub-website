@@ -8,11 +8,12 @@ const temp = data => {
   const common = data.data.prismicDatosComunes.data
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
+  console.log("BANNER ???", common.banner.document)
   return (
     <Layout>
       <SEO title="Home" description={description} keywords={keywords} />
       <HomeContainer
-        bannerNotice={data.data.bannerNotice}
+        bannerNotice={common.banner.document}
         normalNotices={data.data.normalNotices}
         recentNotices={data.data.recentNotices}
         noticeP={data.data.allPrismicNoticias}
@@ -30,6 +31,28 @@ export const pageQuery = graphql`
         }
         metakeywords {
           text
+        }
+        banner {
+          document {
+            uid
+            data {
+              custom_publishdate
+              title {
+                text
+              }
+              banner {
+                url
+              }
+              excerpt {
+                text
+              }
+              author {
+                name {
+                  text
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -157,7 +180,7 @@ export const pageQuery = graphql`
     }
     allPrismicNoticiasEspeciales(
       limit: 1
-      sort: { fields: [last_publication_date], order: [DESC] }
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
         uid
@@ -175,23 +198,23 @@ export const pageQuery = graphql`
           excerpt {
             text
           }
-          authors {
-            author_profile {
+          author {
+            user_picture {
               url
             }
-            author_name {
+            name {
               text
             }
             author_rol {
               text
             }
-            author_email {
+            email {
               text
             }
-            author_facebook {
+            facebook {
               text
             }
-            author_twitter {
+            twitter {
               text
             }
           }
