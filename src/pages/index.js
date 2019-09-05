@@ -36,6 +36,7 @@ export const pageQuery = graphql`
     bannerNotice: allPrismicNoticias(
       limit: 1
       filter: { data: { type: { eq: "banner" } } }
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
         uid
@@ -65,6 +66,7 @@ export const pageQuery = graphql`
     normalNotices: allPrismicNoticias(
       limit: 3
       filter: { data: { type: { eq: "normal" } } }
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
         uid
@@ -94,7 +96,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    recentNotices: allPrismicNoticias(limit: 8) {
+    recentNotices: allPrismicNoticias(
+      limit: 8
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    ) {
       nodes {
         uid
         data {
@@ -123,7 +128,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicNoticias {
+    allPrismicNoticias(
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    ) {
       nodes {
         data {
           custom_publishdate
