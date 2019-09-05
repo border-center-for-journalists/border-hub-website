@@ -55,9 +55,10 @@ class HomeHeaderComponent extends Component {
           </Row>
         </Rows>
       )
+    const banner = notice.data.banner.url ? notice.data.banner.url : bodyImage
     return (
       <Banner>
-        <BannerImg fullHeight={true} bg={bodyImage} />
+        <BannerImg fullHeight={true} bg={banner} />
         <BannerContainer fullHeight={false}>{rows}</BannerContainer>
       </Banner>
     )
