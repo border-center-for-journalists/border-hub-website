@@ -1,5 +1,10 @@
 import React, { Component } from "react"
-import { CustomTitle, RecentSection, PrincipalContainer, HrCol } from "./index.styled"
+import {
+  CustomTitle,
+  RecentSection,
+  PrincipalContainer,
+  HrCol,
+} from "./index.styled"
 import SubNewComponent from "./subNews.js"
 import { Col, Container } from "../../theme/index.styled"
 
@@ -11,9 +16,10 @@ class RecentNews extends Component {
     return r
   }
   render() {
-    const mergeNotices = this.props.bannerNotices.nodes.concat(
-      this.props.principalNotices.nodes
-    )
+    // const mergeNotices = this.props.bannerNotices.nodes.concat(
+    //   this.props.principalNotices.nodes
+    // )
+    const mergeNotices = this.props.principalNotices.nodes
     return (
       <RecentSection>
         <Container size="large">

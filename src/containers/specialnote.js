@@ -76,23 +76,23 @@ export const pageQuery = graphql`
           url
           alt
         }
-        authors {
-          author_profile {
+        author {
+          user_picture {
             url
           }
-          author_name {
+          name {
             text
           }
           author_rol {
             text
           }
-          author_email {
+          email {
             text
           }
-          author_facebook {
+          facebook {
             text
           }
-          author_twitter {
+          twitter {
             text
           }
         }
