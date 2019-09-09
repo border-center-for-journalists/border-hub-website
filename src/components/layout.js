@@ -50,7 +50,7 @@ function Layout({ children, minify }) {
         <HeaderComponent minify={minify} />
         <SidebarComponent minify={minify} data={prismicDatosComunes.data} />
         <Content minify={minify}>{children}</Content>
-        <FooterComponent />
+        <FooterComponent data={prismicDatosComunes.data}/>
       </Wrapper>
     </ThemeProvider>
   )

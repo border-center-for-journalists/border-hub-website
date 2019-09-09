@@ -121,7 +121,7 @@ const YellowText = styled.span`
 `
 const HrCol = styled(Col)`
   padding-bottom: 20px;
-  border-bottom: 1px solid ${props => props.theme.White};
+  border-bottom: 1px solid ${props => props.color};
   `
 
 export {
