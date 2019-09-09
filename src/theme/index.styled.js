@@ -28,7 +28,13 @@ const Content = styled.div`
   }
 `
 
-const Section = styled.section``
+const Section = styled.section`
+  ${props => (props.paddingTop ? "padding-top: 130px;" : "")}
+  ${props =>
+    props.darkMode === true
+      ? "background-color: " + props.theme.Black + ";"
+      : ""}
+`
 
 const Container = styled.div`
   width: 100%;
@@ -133,6 +139,19 @@ const ImageWrapper = styled.div`
   }
 `
 
+const TitleYellow = styled.h1`
+  background-color: ${props => props.theme.Yellow};
+  font-size: 30px;
+  line-height: 34.5px;
+  width: 100%;
+  padding: 15px 0px 15px 31px;
+  color: black;
+  text-align: center;
+  ${props => props.theme.xlBreakPoint} {
+    margin: 0;
+  }
+`
+
 const YellowTitle = styled.h3`
   background-color: ${props => props.theme.Yellow};
   font-size: 30px;
@@ -148,13 +167,17 @@ const YellowTitle = styled.h3`
 const AuthorContainer = styled.p`
   font-size: 15px;
   color: ${props => (props.color ? props.theme.White : props.theme.Black)};
+  ${props =>
+    props.yellowMode ? "color:" + props.theme.Yellow + "!important;" : ""}
   line-height: 25px;
   text-align: left;
   margin: 0;
   min-width: 200px;
   display: ${props => (props.show ? "block" : "none")};
-  b {
+  b,
+  i {
     color: ${props => (props.color ? props.theme.Yellow : props.theme.Black)};
+    ${props => (props.yellowMode ? "color:" + props.theme.Yellow + ";" : "")}
   }
 
   ${props => props.theme.mediumBreakPoint} {
@@ -341,6 +364,7 @@ export {
   Paragraph,
   ImageWrapper,
   YellowTitle,
+  TitleYellow,
   AuthorContainer,
   Col,
   TitleContainer,

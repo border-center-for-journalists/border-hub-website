@@ -4,6 +4,9 @@ if (process.env.NODE_ENV === "development") {
   })
 }
 
+var PrismicDOM = require("prismic-dom")
+var Elements = PrismicDOM.RichText.Elements
+
 module.exports = {
   pathPrefix: "/gatsbyPrismic",
   siteMetadata: {
@@ -46,6 +49,22 @@ module.exports = {
         repositoryName: `borderhub`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        htmlSerializer: ({ node, key, value }) => (
+          type,
+          element,
+          content,
+          children
+        ) => {
+          if (type === Elements.image) {
+            return `
+              <div class="imageWrapper" >
+                <img src="${element.url}" alt="${element.alt}" />
+                <p>${element.alt || ""}</p>
+              </div>
+            `
+          }
+          return null
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

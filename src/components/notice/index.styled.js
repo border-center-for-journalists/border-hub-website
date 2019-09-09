@@ -211,8 +211,16 @@ const TextWrapper = styled.div`
   * {
     color: ${props => (props.color ? props.color : "white")};
   }
-  img {
-    display: block;
+  .imageWrapper {
+    p {
+      font-size: 15px;
+      font-style: italic;
+      margin: 5px 0;
+    }
+    img {
+      display: block;
+      margin: 0;
+    }
   }
   p {
     font-size: 19px;
@@ -245,6 +253,15 @@ const TextWrapper = styled.div`
   }
   ${props => props.theme.smallBreakPoint} {
     padding: 15px 24px;
+  }
+`
+
+const ImageWithFooter = styled.div`
+  img {
+    display: block;
+    margin: 0;
+  }
+  p {
   }
 `
 
@@ -316,6 +333,7 @@ export {
   AuthorProfile,
   ImageWrapper,
   TextWrapper,
+  ImageWithFooter,
   QuoteWrapper,
   MediaWrapper,
   Social,

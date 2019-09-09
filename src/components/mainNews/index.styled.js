@@ -77,19 +77,26 @@ const MainNewSmall = styled(Container)`
 
 const MainNewSmallText = styled(Container)`
   padding-left: 30px;
+  * {
+    color: ${props =>
+      props.darkMode === true ? props.theme.White : props.theme.Black};
+  }
   h3 {
-    color: ${props => props.theme.Black};
+    color: ${props =>
+      props.darkMode === true ? props.theme.White : props.theme.Black};
     font-size: 24px;
     line-height: 1.47;
     text-align: left;
     margin-bottom: 5px;
   }
   a {
-    color: ${props => props.theme.Black};
+    color: ${props =>
+      props.darkMode === true ? props.theme.White : props.theme.Black};
     text-decoration: none;
   }
   p {
-    color: ${props => props.theme.Black};
+    color: ${props =>
+      props.darkMode === true ? props.theme.White : props.theme.Black};
     text-align: left;
     font-size: 17px;
     margin-bottom: 15px;
