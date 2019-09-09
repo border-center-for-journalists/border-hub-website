@@ -26,14 +26,14 @@ class SubNewComponent extends Component {
           </ImageWrapper>
         </Col>
         <Col>
-          <MainNewSmallText>
+          <MainNewSmallText darkMode={this.props.darkMode}>
             <h3>
               <a href={`/${this.props.notice.uid}`}>
                 {this.props.notice.data.title.text}
               </a>
             </h3>
             <Paragraph>{this.props.notice.data.excerpt.text}</Paragraph>
-            <AuthorContainer show>
+            <AuthorContainer show yellowMode={this.props.darkMode}>
               <i>
                 {" "}
                 Por <b> {this.props.notice.data.author[0].name.text} </b>{" "}
