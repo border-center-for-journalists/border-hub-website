@@ -66,7 +66,8 @@ class SpecialNoticeComponent extends Component {
         {htmlContent}
         <AuthorsNoticeComponent
           color="white"
-          authors={this.props.notice.data.authors}
+          align="center"
+          authors={this.props.notice.data.author}
         />
         <AlliancesNoticeContentComponent
           alliances={this.props.notice.data.alliances}

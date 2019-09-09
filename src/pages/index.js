@@ -5,11 +5,15 @@ import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
 
 const temp = data => {
+  const common = data.data.prismicDatosComunes.data
+  const description = common.metadescription.text
+  const keywords = common.metakeywords.text
+  console.log("BANNER ???", common.banner.document)
   return (
     <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Home" description={description} keywords={keywords} />
       <HomeContainer
-        bannerNotice={data.data.bannerNotice}
+        bannerNotice={common.banner.document}
         normalNotices={data.data.normalNotices}
         recentNotices={data.data.recentNotices}
         noticeP={data.data.allPrismicNoticias}
@@ -20,9 +24,42 @@ const temp = data => {
 }
 export const pageQuery = graphql`
   query HomeNoticeQuery {
+    prismicDatosComunes {
+      data {
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
+        }
+        banner {
+          document {
+            uid
+            data {
+              custom_publishdate
+              title {
+                text
+              }
+              banner {
+                url
+              }
+              excerpt {
+                text
+              }
+              author {
+                name {
+                  text
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     bannerNotice: allPrismicNoticias(
       limit: 1
       filter: { data: { type: { eq: "banner" } } }
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
         uid
@@ -52,6 +89,7 @@ export const pageQuery = graphql`
     normalNotices: allPrismicNoticias(
       limit: 3
       filter: { data: { type: { eq: "normal" } } }
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
         uid
@@ -60,9 +98,9 @@ export const pageQuery = graphql`
           type
           banner {
             url
-            thumbnail{
+            thumbnail {
               url
-           }
+            }
           }
           title {
             text
@@ -81,7 +119,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    recentNotices: allPrismicNoticias(limit: 8) {
+    recentNotices: allPrismicNoticias(
+      limit: 8
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    ) {
       nodes {
         uid
         data {
@@ -89,9 +130,9 @@ export const pageQuery = graphql`
           type
           banner {
             url
-            thumbnail{
+            thumbnail {
               url
-           }
+            }
           }
           title {
             text
@@ -110,7 +151,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicNoticias {
+    allPrismicNoticias(
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    ) {
       nodes {
         data {
           custom_publishdate
@@ -135,7 +178,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicNoticiasEspeciales(limit: 1) {
+    allPrismicNoticiasEspeciales(
+      limit: 1
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    ) {
       nodes {
         uid
         data {
@@ -145,30 +191,30 @@ export const pageQuery = graphql`
           banner {
             url
             alt
-            thumbnail{
+            thumbnail {
               url
-           }
+            }
           }
           excerpt {
             text
           }
-          authors {
-            author_profile {
+          author {
+            user_picture {
               url
             }
-            author_name {
+            name {
               text
             }
             author_rol {
               text
             }
-            author_email {
+            email {
               text
             }
-            author_facebook {
+            facebook {
               text
             }
-            author_twitter {
+            twitter {
               text
             }
           }

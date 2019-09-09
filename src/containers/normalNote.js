@@ -1,25 +1,26 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import NormalNoticeComponent from "../components/notice/normal"
 
 const NormalNoticeContainer = ({ location, data }) => {
-   let getDescription = data => {
-     if(data.metadescription.text){
-        return data.metadescription.text
-     }
-     else{
-      let content = data.content.html
-      let div = document.createElement("div");
-      div.innerHTML = content;
-      let text = div.innerText;
-      text = "<p>" + text.substring(0, 200) + "</p>";
-      return text
-     }
+  let getDescription = data => {
+    if (data.metadescription.text) {
+      return data.metadescription.text
+    } else {
+      return data.content.text.substring(0, 200)
+    }
   }
+  const image = data.prismicNoticias.data.banner.url || false
   return (
     <Layout>
-      <SEO title={data.prismicNoticias.data.title.text} description={getDescription(data.prismicNoticias.data)} keywords={[data.prismicNoticias.data.metakeywords.text]} />
+      <SEO
+        title={data.prismicNoticias.data.title.text}
+        description={getDescription(data.prismicNoticias.data)}
+        keywords={data.prismicNoticias.data.metakeywords.text || ""}
+        image={image}
+      />
       <NormalNoticeComponent
         notice={data.prismicNoticias}
         related={data.relatedNotes}
@@ -49,10 +50,10 @@ export const pageQuery = graphql`
       data {
         custom_publishdate
         type
-        metadescription{
+        metadescription {
           text
         }
-        metakeywords{
+        metakeywords {
           text
         }
         banner {
@@ -63,6 +64,7 @@ export const pageQuery = graphql`
         }
         content {
           html
+          text
         }
         excerpt {
           text

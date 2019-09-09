@@ -20,7 +20,8 @@ const Content = styled.div`
     font-family: ${props => props.theme.FontAleo};
   }
   ${props => props.theme.largeBreakPoint} {
-    padding: 0 0 0 ${props => props.theme.SidebarWidth2x}px;
+    padding: 0 0 0
+      ${props => (props.minify ? "0" : props.theme.SidebarWidth2x)}px;
   }
   ${props => props.theme.smallBreakPoint} {
     padding: 0;
@@ -51,7 +52,10 @@ const Container = styled.div`
   ${props => (props.size === "full" ? "max-width: 100%;" : "")}
 
   ${props => props.theme.largeBreakPoint} {
-    max-width: ${props => props.theme.ContainerExtraLarge}px;
+    ${props =>
+      props.xlStaticSize
+        ? ""
+        : "max-width:" + props.theme.ContainerExtraLarge + "px;"};
   }
 `
 const RowGap = gap => {

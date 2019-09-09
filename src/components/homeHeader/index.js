@@ -22,12 +22,10 @@ class HomeHeaderComponent extends Component {
     return moment(notice.data.custom_publishdate).format("MMMM DD [|] YYYY")
   }
   render() {
-    const notice =
-      this.props.bannerNotice.nodes.length > 0
-        ? this.props.bannerNotice.nodes[0]
-        : {}
+    const notice = this.props.bannerNotice[0]
+    console.log("NOTICE", notice)
     const rows =
-      this.props.bannerNotice.nodes.length === 0 ? (
+      this.props.bannerNotice.length === 0 ? (
         <Rows />
       ) : (
         <Rows>
@@ -55,9 +53,10 @@ class HomeHeaderComponent extends Component {
           </Row>
         </Rows>
       )
+    const banner = notice.data.banner.url ? notice.data.banner.url : bodyImage
     return (
       <Banner>
-        <BannerImg fullHeight={true} bg={bodyImage} />
+        <BannerImg fullHeight={true} bg={banner} />
         <BannerContainer fullHeight={false}>{rows}</BannerContainer>
       </Banner>
     )

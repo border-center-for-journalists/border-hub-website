@@ -1,23 +1,25 @@
 import React from "react"
 import { NoticeSectionTitle } from "./index.styled"
 import { Container, Rows } from "../../theme/index.styled"
-import img from "../../theme/images/1.jpg"
 
 const AlliancesNoticeContentComponent = ({ alliances }) => {
-  return (
-    <React.Fragment>
-      <Container>
-        <NoticeSectionTitle>Alianzas</NoticeSectionTitle>
-        <Rows wrap align="center" vAlign="center" gap="10px">
-          {alliances.map((alliance, index) => (
-            <a href={alliance.alliance_url.url}>
+  const content = (
+    <Container>
+      <NoticeSectionTitle>Alianzas</NoticeSectionTitle>
+      <Rows wrap align="center" vAlign="center" gap="10px">
+        {alliances.map((alliance, index) =>
+          alliance.alliance_image.url ? (
+            <a href={alliance.alliance_url.url} key={index}>
               <img alt="" src={alliance.alliance_image.url} />
             </a>
-          ))}
-        </Rows>
-      </Container>
-    </React.Fragment>
+          ) : (
+            ""
+          )
+        )}
+      </Rows>
+    </Container>
   )
+  return <React.Fragment>{alliances.length > 0 ? content : ""}</React.Fragment>
 }
 
 export default AlliancesNoticeContentComponent

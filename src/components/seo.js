@@ -9,8 +9,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import favicon from "../../static/favicon.ico"
+const defaultImage = require("../theme/images/periodistas.png")
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ description, lang, meta, keywords, title, image }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,15 +21,15 @@ function SEO({ description, lang, meta, keywords, title }) {
             title
             description
             author
+            SITE_URL
           }
         }
       }
     `
   )
 
-  const metaDescription =  description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description
 
-  {console.log(keywords)}
   return (
     <Helmet
       htmlAttributes={{
@@ -54,7 +56,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
@@ -68,35 +70,49 @@ function SEO({ description, lang, meta, keywords, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          property: `og:image`,
+          content: `${image ? "" : site.siteMetadata.SITE_URL}${image ||
+            defaultImage}`,
+        },
       ]
         .concat(
           keywords.length > 0
             ? {
                 name: `keywords`,
-                content: keywords.join(`, `),
+                content: keywords,
               }
             : []
         )
         .concat(meta)}
+      link={[
+        { rel: "icon", type: "image/ico", href: `${favicon}` },
+        { rel: "shortcut icon", type: "image/ico", href: `${favicon}` },
+      ]}
     >
-    <link href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap" rel="stylesheet"></link>
+      <link
+        href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap"
+        rel="stylesheet"
+      />
     </Helmet>
   )
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `es`,
   meta: [],
   keywords: [],
   description: ``,
+  image: false,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
+  keywords: PropTypes.string,
   title: PropTypes.string.isRequired,
+  image: PropTypes.string,
 }
 
 export default SEO

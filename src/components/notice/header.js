@@ -1,7 +1,6 @@
 import React from "react"
 import {
   NoticeTitleWrapper,
-  Share,
   YellowText,
   ImageWrapper,
   Social,
@@ -12,7 +11,9 @@ import {
   TwitterShareButton,
   EmailShareButton,
 } from "react-share"
-import img from "../../theme/images/1.jpg"
+import moment from "moment"
+import "moment/locale/es"
+moment.locale("es")
 
 const HeaderNoticeComponent = ({ url, notice, align }) => {
   //const { publish_date, title, authors } = data
@@ -28,10 +29,13 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
         : ""
     }
   }
+  const date = notice.data.custom_publishdate
+    ? notice.data.custom_publishdate
+    : notice.last_publication_date
 
   return (
     <React.Fragment>
-      <Container size="medium">
+      <Container size="medium" xlStaticSize>
         <NoticeTitleWrapper align={align}>
           <h1>{title.text}</h1>
           <p>
@@ -43,9 +47,9 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
               En alianza con <u>Reforma</u>
             </i>
           </p>
-          <p>Marzo 12, 2019 | 13:45</p>
+          <p>{moment(date).format("MMMM DD, YYYY [|] h:mm a")}</p>
           <hr />
-          <Rows rowS="row" rowXs="row" align="flex-end">
+          <Rows rowM="row" rowS="row" rowXs="row" align="flex-end">
             <FacebookShareButton url={url}>
               <Social bigger className="icon-facebook" />
             </FacebookShareButton>

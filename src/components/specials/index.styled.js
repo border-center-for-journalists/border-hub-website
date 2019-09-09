@@ -10,8 +10,8 @@ import bg from "../../theme/images/1.jpg"
 const SpecialSection = styled(Section)`
   background: linear-gradient(
       to right,
-      ${props => props.theme.Black}99 20%,
-      ${props => props.theme.Red}99
+      rgba(31, 25, 26, 0.6) 20%,
+      rgba(153, 18, 18, 0.6)
     ),
     url(${props => (props.bg ? props.bg : bg)});
   background-position: center;

@@ -16,14 +16,15 @@ const NormalRelatedComponent = ({ color, related }) => {
   const getDate = date => moment(date).format("MMMM DD, YYYY [|] h:mm a")
   return (
     <React.Fragment>
-      <Container size="medium">
+      <Container size="medium" xlStaticSize>
         <YellowTitle>Notas Relacionadas</YellowTitle>
         {related.map((item, index) => (
           <MainNewSmall key={index}>
             <Col>
               <ImageWrapper>
                 <a href={`/${item.uid}`}>
-                  {item.data.banner.thumbnail && item.data.banner.thumbnail.url ? (
+                  {item.data.banner.thumbnail &&
+                  item.data.banner.thumbnail.url ? (
                     <img alt="prueba" src={item.data.banner.thumbnail.url} />
                   ) : (
                     ""

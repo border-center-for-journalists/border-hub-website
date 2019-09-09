@@ -4,15 +4,13 @@ import {
 } from "./index.styled"
 
 const NormalDonateComponent = () => {
-
   return (
     <React.Fragment>
-      <DonateContainer size="medium">
-        <i class="icon-donar"/>
-          <h2>El periodismo requiere de tu apoyo</h2>
-          <p>Conviértete en miembro del Border Hub</p>
-          <button> Donar </button>
-
+      <DonateContainer size="medium" xlStaticSize>
+        <i class="icon-donar" />
+        <h2>El periodismo requiere de tu apoyo</h2>
+        <p>Conviértete en miembro del Border Hub</p>
+        <button> Donar </button>
       </DonateContainer>
     </React.Fragment>
   )
