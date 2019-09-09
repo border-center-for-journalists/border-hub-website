@@ -9,27 +9,32 @@ import SubNewComponent from "./subNews.js"
 import { Col, Container } from "../../theme/index.styled"
 
 class RecentNews extends Component {
+  
   isAllowed = (notice, mergeNotices) => {
     const r = mergeNotices.reduce((result, item) => {
       return result && item.uid === notice.uid ? false : result
     }, true)
     return r
   }
+  getColor = (mergeNotices) =>{
+    let count = 0
+    this.props.notices.nodes.map(notice => this.isAllowed(notice, mergeNotices) ? count += 1 : "")
+    console.log(count)
+    return count >= 2 ? "white" : ""
+    }
   render() {
-    // const mergeNotices = this.props.bannerNotices.nodes.concat(
-    //   this.props.principalNotices.nodes
-    // )
+    console.log("res",this.props)
     const mergeNotices = this.props.principalNotices.nodes
     return (
       <RecentSection>
         <Container size="large">
-          <CustomTitle color={false}>
+          <CustomTitle>
             <h3>Notas Recientes</h3>
           </CustomTitle>
           <PrincipalContainer>
-            {this.props.notices.nodes.map(notice =>
+            {this.props.notices.nodes.map(notice => 
               this.isAllowed(notice, mergeNotices) ? (
-                <HrCol key={notice.uid}>
+                <HrCol color={this.getColor(mergeNotices)} key={notice.uid}>
                   <SubNewComponent notice={notice} />
                 </HrCol>
               ) : (
