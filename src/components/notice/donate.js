@@ -1,6 +1,7 @@
 import React from "react"
-import { DonateContainer } from "./index.styled"
-//import img from "../../theme/images/donar.svg"
+import {
+  DonateContainer,
+} from "./index.styled"
 
 const NormalDonateComponent = () => {
   return (
