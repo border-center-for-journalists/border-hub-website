@@ -6,7 +6,7 @@ import {
   HrCol,
 } from "./index.styled"
 import SubNewComponent from "./subNews.js"
-import { Col, Container } from "../../theme/index.styled"
+import { Container } from "../../theme/index.styled"
 
 class RecentNews extends Component {
   

@@ -1,40 +1,46 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { Container } from "../../theme/index.styled"
 
 const Footer = styled.footer`
   display: block;
-  padding: 40px 10px;
   text-align: center;
-  background-color:black;
   img {
     height: 60px;
     width: auto;
     max-width: 90%;
     margin: 10px 10px;
   }
-  ${props => props.theme.smallBreakPoint} {
-    background-color: ${props => props.theme.Yellow};
-    img{
-      display:none;
-    }
-
-  } 
 `
 const Social = styled.a`
   position: relative;
   display: none;
-  background-color: ${props => props.theme.Black};
+  background-color: black;
   color: ${props => props.theme.White};
-  width: 85px;
-  height: 84px;
+  width: 55px;
+  height: 54px;
   text-decoration: none;
   border-radius: 50%;
   text-align: center;
   box-sizing: border-box;
   margin: 5px 16px;
-  padding: 28px 0;
-  font-size: 25px;
+  padding: 16px 0;
+  font-size: 20px;
   ${props => props.theme.smallBreakPoint} {
     display: inline-block
   } 
 `
-export { Footer, Social }
+const BlackContainer = styled(Container) `
+  background-color:black;
+  padding: 23px 0;
+`
+
+const YellowContainer = styled(Container)`
+  display:none;
+  background-color: ${props => props.theme.Yellow};
+  padding: 23px 0;
+  ${props => props.theme.smallBreakPoint} {
+    display: block
+  } 
+`
+
+export { Footer, Social, BlackContainer, YellowContainer }
