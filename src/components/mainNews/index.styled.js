@@ -3,7 +3,6 @@ import {
   Section,
   Container,
   Paragraph,
-  ImageWrapper,
 } from "../../theme/index.styled"
 
 const NewsContainer = styled(Section)`
@@ -51,7 +50,7 @@ const TextContainer = styled(Container)`
 const SubTitleParagraph = styled(Paragraph)`
   font-size: 17px;
   line-height: 1.35;
-  ${props => props.theme.xlBreakPoint} {
+  ${props => props.theme.smallBreakPoint} {
     display: none;
   }
 `
@@ -97,6 +96,12 @@ const MainNewSmallText = styled(Container)`
   ${props => props.theme.smallBreakPoint} {
     padding-left: 0px;
   }
+
+`
+const MobileParagraph = styled(Paragraph)`
+  ${props => props.theme.smallBreakPoint} {
+    display: none;
+  }
 `
 
 export {
@@ -106,4 +111,5 @@ export {
   MainNewSmall,
   MainNewSmallText,
   TextContainer,
+  MobileParagraph,
 }
