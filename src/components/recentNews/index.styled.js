@@ -17,6 +17,13 @@ const CustomTitle = styled(TitleMediumContainer)`
     font-size: 30px;
     line-height: 1.22;
   }
+  a {
+    float: right;
+    font-size: 15px;
+    font-style: italic;
+    color: ${props => props.theme.Yellow};
+    padding: 12px 0;
+  }
   background-color: black;
 
   ${props => props.theme.smallBreakPoint} {
@@ -97,13 +104,13 @@ const TextCol = styled(Col)`
   ${props => props.theme.smallBreakPoint} {
     flex: 0 0 50%;
     max-width: 50%;
-  } 
+  }
 `
 const ImgCol = styled(Col)`
   flex: 0 0 60%;
   max-width: 60%;
   img {
-    width:200px;
+    width: 200px;
     display: block;
     margin: 0 auto;
   }
@@ -117,12 +124,12 @@ const ImgCol = styled(Col)`
 const YellowText = styled.span`
   ${props => props.theme.xlBreakPoint} {
     color: ${props => props.theme.Yellow};
-   }
+  }
 `
 const HrCol = styled(Col)`
   padding-bottom: 20px;
   border-bottom: 1px solid ${props => props.color};
-  `
+`
 
 export {
   CustomTitle,
@@ -134,5 +141,5 @@ export {
   ImgCol,
   TextCol,
   YellowText,
-  HrCol
+  HrCol,
 }

@@ -17,6 +17,7 @@ const Noticias = data => {
       />
       <BlogContainer
         darkMode={true}
+        site={data.data.site.siteMetadata}
         data={data.data.allPrismicNoticiasEspeciales.nodes}
       />
     </Layout>
@@ -24,6 +25,13 @@ const Noticias = data => {
 }
 export const pageQuery = graphql`
   query blogEspecialesQuery {
+    site {
+      siteMetadata {
+        API_KEY
+        API_REF
+        API_URL
+      }
+    }
     prismicDatosComunes {
       data {
         metadescription {
@@ -35,7 +43,7 @@ export const pageQuery = graphql`
       }
     }
     allPrismicNoticiasEspeciales(
-      limit: 3
+      limit: 5
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
