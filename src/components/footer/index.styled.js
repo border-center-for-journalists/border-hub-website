@@ -1,20 +1,21 @@
-import styled from "styled-components";
+import styled from "styled-components"
 import { Container } from "../../theme/index.styled"
 
 const Footer = styled.footer`
   display: block;
   text-align: center;
+  padding-left: ${props => props.theme.SidebarWidth}px;
   img {
-    height: 60px;
     width: auto;
     max-width: 90%;
     margin: 10px 10px;
   }
   ${props => props.theme.smallBreakPoint} {
-    img{
+    padding-left: 0;
+    img {
       width: 40%;
     }
-  } 
+  }
 `
 const Social = styled.a`
   position: relative;
@@ -31,27 +32,31 @@ const Social = styled.a`
   padding: 16px 0;
   font-size: 20px;
   ${props => props.theme.smallBreakPoint} {
-    display: inline-block
-  } 
+    display: inline-block;
+  }
 `
-const BlackContainer = styled(Container) `
-  background-color:black;
+const BlackContainer = styled(Container)`
+  background-color: black;
   padding: 23px 0;
+  max-width: 100% !important;
+  img {
+    vertical-align: middle;
+  }
 `
 
 const YellowContainer = styled(Container)`
-  display:none;
+  display: none;
   background-color: ${props => props.theme.Yellow};
   padding: 23px 0;
-  img{
+  img {
     width: 198px;
-    height:auto;
+    height: auto;
     margin: 15px auto 31px;
-    display:block;
+    display: block;
   }
   ${props => props.theme.smallBreakPoint} {
-    display: block
-  } 
+    display: block;
+  }
 `
 
 export { Footer, Social, BlackContainer, YellowContainer }
