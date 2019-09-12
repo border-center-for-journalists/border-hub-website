@@ -23,14 +23,13 @@ class HomeHeaderComponent extends Component {
   }
   render() {
     const notice = this.props.bannerNotice[0]
-    console.log("NOTICE", notice)
     const rows =
       this.props.bannerNotice.length === 0 ? (
         <Rows />
       ) : (
         <Rows>
           <Row shrink>
-            <AuthorContainer show={true} color={true}>
+            <AuthorContainer main={true} show={true} color={true}>
               <i>
                 Por <b> {this.getAuthor(notice)}</b>
               </i>

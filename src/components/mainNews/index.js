@@ -53,7 +53,9 @@ class MainNewsComponent extends Component {
     )
     return (
       <NewsContainer>
-        <YellowTitle>Notas Principales</YellowTitle>
+        <YellowTitle>
+          <a href="/noticias">Ver todas las notas</a> Notas Principales
+        </YellowTitle>
         <MainNewBig size="Common">{htmlContent}</MainNewBig>
       </NewsContainer>
     )

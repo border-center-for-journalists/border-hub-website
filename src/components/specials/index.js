@@ -13,7 +13,9 @@ class SpecialNews extends Component {
     return (
       <SpecialSection bg={this.props.notice.nodes[0].data.banner.url}>
         <CustomContainer size="large">
-          <CustomTitle>Especiales</CustomTitle>
+          <CustomTitle>
+            <a href="/noticias-especiales">Ver todas las notas</a> Especiales
+          </CustomTitle>
           <Rows>
             <Row shrink>
               <CustomSecondTitle fullHeight={false}>

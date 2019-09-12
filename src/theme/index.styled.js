@@ -41,6 +41,7 @@ const Container = styled.div`
   margin: 0 auto;
   ${props => (props.darkMode ? ".recharts-legend-wrapper{color: #fff;}" : "")}
   ${props => (props.padding ? "padding: 25px 0;" : "")}
+  ${props => (props.wrapPadding ? "padding: 25px;" : "")}
   ${props =>
     !props.size ? "max-width:" + props.theme.ContainerCommon + "px" : ""};
   ${props =>
@@ -157,8 +158,15 @@ const YellowTitle = styled.h3`
   font-size: 30px;
   line-height: 34.5px;
   width: 100%;
-  padding: 15px 0px 15px 31px;
+  padding: 15px 31px;
   color: black;
+  a {
+    float: right;
+    font-size: 15px;
+    font-style: italic;
+    color: ${props => props.theme.Black};
+    text-decoration: underline;
+  }
   ${props => props.theme.xlBreakPoint} {
     margin: 0;
   }
@@ -180,14 +188,7 @@ const AuthorContainer = styled.p`
     ${props => (props.yellowMode ? "color:" + props.theme.Yellow + ";" : "")}
   }
 
-  ${props => props.theme.mediumBreakPoint} {
-  }
-
-  ${props => props.theme.smallBreakPoint} {
-  }
-
   ${props => props.theme.xlBreakPoint} {
-    display: ${props => (props.show ? "none" : "block")};
     margin: ${props => (props.color ? "1em 0" : "0")};
     font-size: 17px;
   }
@@ -196,9 +197,8 @@ const AuthorContainer = styled.p`
     &::after {
       content: "";
       display: block;
-      border-bottom: ${props =>
-        props.color ? "5px solid" + props.theme.Yellow : "0"};
-      width: 7em;
+      border-bottom: ${props =>props.color ? "5px solid" + props.theme.Yellow : "0"};
+      width: ${props => props.main ? "158px": "190px"};
     }
   }
 `
@@ -354,6 +354,20 @@ const ColContainer = styled.div`
   display: flex;
 `
 
+const Message = styled.p`
+  padding: 40px 0;
+  text-align: center;
+  font-size: 20px;
+  color: ${props => props.theme.Black};
+  margin: 0;
+  span {
+    background-color: ${props => props.theme.Yellow};
+    padding: 15px 30px;
+    max-width: 90%;
+    display: inline-block;
+  }
+`
+
 export {
   Wrapper,
   Content,
@@ -373,4 +387,5 @@ export {
   RectangleColorText,
   RectangleText,
   ColContainer,
+  Message,
 }

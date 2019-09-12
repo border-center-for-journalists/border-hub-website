@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,11 +8,13 @@ const Noticias = data => {
   const common = data.data.prismicDatosComunes.data
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
+
   return (
     <Layout>
       <SEO title="Blog" description={description} keywords={keywords} />
       <BlogContainer
         darkMode={false}
+        site={data.data.site.siteMetadata}
         data={data.data.allPrismicNoticias.nodes}
       />
     </Layout>
@@ -20,6 +22,13 @@ const Noticias = data => {
 }
 export const pageQuery = graphql`
   query blogQuery {
+    site {
+      siteMetadata {
+        API_KEY
+        API_REF
+        API_URL
+      }
+    }
     prismicDatosComunes {
       data {
         metadescription {
@@ -31,7 +40,7 @@ export const pageQuery = graphql`
       }
     }
     allPrismicNoticias(
-      limit: 3
+      limit: 5
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {

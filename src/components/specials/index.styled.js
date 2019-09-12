@@ -28,7 +28,11 @@ const SpecialSection = styled(Section)`
 const CustomContainer = styled(Container)``
 
 const CustomTitle = styled(YellowTitle)`
-  max-width: 6.5em;
+  width: auto;
+  display: inline-block;
+  a {
+    margin-left: 40px;
+  }
 `
 
 const CustomSecondTitle = styled(TitleContainer)`
