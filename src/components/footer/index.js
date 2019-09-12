@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Footer, Social, BlackContainer, YellowContainer } from "./index.styled"
 import bc from "../../theme/images/borderhubcenter.jpg"
 import bh from "../../theme/images/logo.jpg"
+import bcjb from "../../theme/images/logo_footer.jpg"
 
 class FooterComponent extends Component {
   render() {
@@ -17,6 +18,7 @@ class FooterComponent extends Component {
           </a>
         </BlackContainer>
         <YellowContainer>
+          <img src={bcjb}/>
           <Social
             target="_blank"
             bigger

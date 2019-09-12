@@ -10,6 +10,11 @@ const Footer = styled.footer`
     max-width: 90%;
     margin: 10px 10px;
   }
+  ${props => props.theme.smallBreakPoint} {
+    img{
+      width: 40%;
+    }
+  } 
 `
 const Social = styled.a`
   position: relative;
@@ -38,6 +43,12 @@ const YellowContainer = styled(Container)`
   display:none;
   background-color: ${props => props.theme.Yellow};
   padding: 23px 0;
+  img{
+    width: 198px;
+    height:auto;
+    margin: 15px auto 31px;
+    display:block;
+  }
   ${props => props.theme.smallBreakPoint} {
     display: block
   } 
