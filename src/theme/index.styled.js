@@ -188,14 +188,7 @@ const AuthorContainer = styled.p`
     ${props => (props.yellowMode ? "color:" + props.theme.Yellow + ";" : "")}
   }
 
-  ${props => props.theme.mediumBreakPoint} {
-  }
-
-  ${props => props.theme.smallBreakPoint} {
-  }
-
   ${props => props.theme.xlBreakPoint} {
-    display: ${props => (props.show ? "none" : "block")};
     margin: ${props => (props.color ? "1em 0" : "0")};
     font-size: 17px;
   }
@@ -204,9 +197,8 @@ const AuthorContainer = styled.p`
     &::after {
       content: "";
       display: block;
-      border-bottom: ${props =>
-        props.color ? "5px solid" + props.theme.Yellow : "0"};
-      width: 7em;
+      border-bottom: ${props =>props.color ? "5px solid" + props.theme.Yellow : "0"};
+      width: ${props => props.main ? "158px": "190px"};
     }
   }
 `

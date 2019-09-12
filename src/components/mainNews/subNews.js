@@ -1,11 +1,6 @@
 import React, { Component } from "react"
-import { MainNewSmall, MainNewSmallText } from "./index.styled"
-import {
-  AuthorContainer,
-  ImageWrapper,
-  Paragraph,
-  Col,
-} from "../../theme/index.styled"
+import { MainNewSmall, MainNewSmallText, MobileParagraph } from "./index.styled"
+import { AuthorContainer, ImageWrapper, Col } from "../../theme/index.styled"
 import moment from "moment"
 import "moment/locale/es"
 moment.locale("es")
@@ -32,7 +27,10 @@ class SubNewComponent extends Component {
                 {this.props.notice.data.title.text}
               </a>
             </h3>
-            <Paragraph>{this.props.notice.data.excerpt.text}</Paragraph>
+            {/*<Paragraph>{this.props.notice.data.excerpt.text}</Paragraph>*/}
+            <MobileParagraph>
+              {this.props.notice.data.excerpt.text}
+            </MobileParagraph>
             <AuthorContainer show yellowMode={this.props.darkMode}>
               <i>
                 {" "}
