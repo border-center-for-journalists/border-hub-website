@@ -9,6 +9,7 @@ import ColumnsNoticeContentComponent from "./columns"
 import AlliancesNoticeContentComponent from "./alliances"
 import ChartComponent from "./chart"
 import NormalRelatedComponent from "./related.js"
+import MultinotesComponent from "./multinotes.js"
 import Prismic from "prismic-javascript"
 
 class SpecialNoticeComponent extends Component {
@@ -48,6 +49,8 @@ class SpecialNoticeComponent extends Component {
         return <ChartComponent key={index} notice={data} type="bar" />
       case "grafica_de_pay":
         return <ChartComponent key={index} notice={data} type="pie" />
+      case "multi-nota":
+        return <MultinotesComponent key={index} notice={data} />
       default:
         return <p> Esto no debería de pasar (: </p>
     }

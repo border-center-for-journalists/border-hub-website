@@ -68,7 +68,7 @@ const Container = styled.div`
 const RowGap = gap => {
   if (!gap || gap === "") return ""
   return `
-     * {
+    & > * {
       padding: ${gap};
     }
   `
@@ -113,9 +113,17 @@ const Row = styled.div`
     props.alignColumn
       ? "align-items: center;justify-content: center;display: flex;"
       : ""}
+  ${props => props.theme.largeBreakPoint} {
+    flex: ${props => (props.widthXl ? "0 1 " + props.widthXl : "1 0 auto")};
+    max-width: ${props => (props.widthXl ? props.widthXl : "100%")};
+  }
   ${props => props.theme.mediumBreakPoint} {
     flex: ${props => (props.widthXs ? "0 1 " + props.widthXs : "1 0 auto")};
     max-width: ${props => (props.widthXs ? props.widthXs : "100%")};
+  }
+  ${props => props.theme.smallBreakPoint} {
+    flex: ${props => (props.widthS ? "0 1 " + props.widthS : "1 0 auto")};
+    max-width: ${props => (props.widthS ? props.widthS : "100%")};
   }
 `
 
@@ -197,8 +205,9 @@ const AuthorContainer = styled.p`
     &::after {
       content: "";
       display: block;
-      border-bottom: ${props =>props.color ? "5px solid" + props.theme.Yellow : "0"};
-      width: ${props => props.main ? "158px": "190px"};
+      border-bottom: ${props =>
+        props.color ? "5px solid" + props.theme.Yellow : "0"};
+      width: ${props => (props.main ? "158px" : "190px")};
     }
   }
 `

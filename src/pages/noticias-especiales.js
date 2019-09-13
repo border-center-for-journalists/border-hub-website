@@ -47,6 +47,7 @@ export const pageQuery = graphql`
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
+        uid
         data {
           custom_publishdate
           banner {

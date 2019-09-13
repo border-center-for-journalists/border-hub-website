@@ -201,6 +201,33 @@ export const pageQuery = graphql`
               }
             }
           }
+          ... on PrismicNoticiasEspecialesBodyMultiNota {
+            slice_type
+            items {
+              title_note {
+                text
+              }
+              note {
+                document {
+                  uid
+                  data {
+                    title {
+                      text
+                    }
+                    excerpt {
+                      text
+                    }
+                    banner {
+                      thumbnail {
+                        url
+                      }
+                    }
+                    custom_publishdate
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
