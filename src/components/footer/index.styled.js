@@ -3,6 +3,7 @@ import { Container } from "../../theme/index.styled"
 
 const Footer = styled.footer`
   display: block;
+  background-color: black;
   text-align: center;
   padding-left: ${props => props.theme.SidebarWidth}px;
   img {
