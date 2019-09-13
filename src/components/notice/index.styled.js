@@ -15,6 +15,56 @@ const NormalNoticeContainer = styled.div`
   background-color: ${props => props.theme.White};
 `
 
+const VerticalNotice = styled.div`
+  color: ${props => props.theme.White};
+  background-color: #000;
+  .image {
+    position: relative;
+    display: block;
+  }
+  .image::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 30%, black);
+    z-index: 2;
+  }
+  img {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+  }
+  .text-wrapper {
+    padding: 15px 20px;
+  }
+  h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  a {
+    color: ${props => props.theme.White};
+    text-decoration: none;
+  }
+  .excerpt {
+    padding: 15px 0;
+    border-top: 5px solid ${props => props.theme.Yellow};
+    font-size: 14px;
+  }
+  .yellow-text {
+    color: ${props => props.theme.Yellow};
+    font-size: 14px;
+    p {
+      margin: 0;
+    }
+  }
+`
+
 const YellowContainer = styled(Container)`
   background-color: ${props => props.theme.Yellow};
   padding: 0 1em;
@@ -318,6 +368,7 @@ export {
   NoticeTitleWrapper,
   NoticeSection,
   NormalNoticeContainer,
+  VerticalNotice,
   YellowContainer,
   CustomRow,
   DonateContainer,
