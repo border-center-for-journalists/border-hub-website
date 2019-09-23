@@ -44,11 +44,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-prismic`,
+      //resolve: `gatsby-source-prismic`,
+      resolve: `gatsby-source-prismic-rich-text-fields`,
       options: {
         repositoryName: `borderhub`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        forceRichTextFields: {
+          document_type: "content",
+        },
         htmlSerializer: ({ node, key, value }) => (
           type,
           element,
@@ -62,6 +66,10 @@ module.exports = {
                 <p>${element.alt || ""}</p>
               </div>
             `
+          }
+          if (type === Elements.preformatted) {
+            console.log("element", element)
+            return `${element.text}`
           }
           return null
         },
