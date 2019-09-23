@@ -68,7 +68,7 @@ module.exports = {
             `
           }
           if (type === Elements.preformatted) {
-            console.log("element", element)
+            //console.log("element", element)
             return `${element.text}`
           }
           return null
