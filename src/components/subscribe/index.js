@@ -29,17 +29,17 @@ class SubscribeComponent extends Component {
               target="_blank"
             >
               <Rows align="space-between" wrap id="mc_embed_signup_scroll">
-                <CustomRow width="48%" className="mc-field-group">
-                  <label for="mce-FNAME">First Name </label>
+                <CustomRow width="48%" widthXl="24%" className="mc-field-group">
+                  <label for="mce-FNAME">Nombre </label>
                   <input type="text" name="FNAME" className="" id="mce-FNAME" />
                 </CustomRow>
-                <CustomRow width="48%" className="mc-field-group">
-                  <label for="mce-LNAME">Last Name </label>
+                <CustomRow width="48%" widthXl="24%" className="mc-field-group">
+                  <label for="mce-LNAME">Apellido </label>
                   <input type="text" name="LNAME" className="" id="mce-LNAME" />
                 </CustomRow>
-                <CustomRow width="48%" className="mc-field-group">
+                <CustomRow width="48%" widthXl="24%" className="mc-field-group">
                   <label for="mce-EMAIL">
-                    Email Address <span className="asterisk">*</span>
+                    Correo <span className="asterisk">*</span>
                   </label>
                   <input
                     type="email"
@@ -107,7 +107,7 @@ class SubscribeComponent extends Component {
                     value=""
                   />
                 </div>
-                <CustomRow width="48%" className="clear">
+                <CustomRow width="48%" widthXl="24%" className="clear">
                   <input
                     type="submit"
                     value="Enviar"
