@@ -10,7 +10,7 @@ class HomeContainer extends Component {
     return (
       <React.Fragment>
         <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
-        <MainNewsComponent notice={this.props.normalNotices} />
+        <MainNewsComponent notice={this.props.noticeP} />
         <SubscribeComponent />
         <RecentNews
           notices={this.props.recentNotices}
