@@ -31,7 +31,7 @@ class RecentNews extends Component {
         <Container size="large">
           <CustomTitle>
             <h3>
-              <a href="/noticias">Ver todas las notas</a> Notas Recientes
+              <a href="/noticias">Ver todas</a> Notas Recientes
             </h3>
           </CustomTitle>
           <PrincipalContainer>

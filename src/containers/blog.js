@@ -44,18 +44,27 @@ class BlogContainer extends Component {
         })
       )
       .then(response => {
-        const newData = response.results.map(n => ({
-          uid: n.uid,
-          data: {
-            banner: {
-              thumbnail: { url: n.data.banner.thumbnail.url },
+        const newData = response.results.map(n => {
+          const excerptLength = n.data.excerpt.length;
+          const titleLength = n.data.title.length;
+          const authorLength = n.data.author.length;
+          const excerptText = excerptLength ? n.data.excerpt[0].text : "";
+          const titleText = titleLength ? n.data.title[0].text : "";
+          const authorText = authorLength ? n.data.author[0].name[0].text : "Anónimo";
+          
+          return ({
+            uid: n.uid,
+            data: {
+              banner: {
+                thumbnail: { url: n.data.banner.thumbnail.url },
+              },
+              title: { text: titleText },
+              excerpt: { text: excerptText },
+              custom_publishdate: n.data.custom_publishdate,
+              author: [{ name: { text: authorText } }],
             },
-            title: { text: n.data.title[0].text },
-            excerpt: { text: n.data.excerpt[0].text },
-            custom_publishdate: n.data.custom_publishdate,
-            author: [{ name: n.data.author[0].name[0].text }],
-          },
-        }))
+          })
+        })
         let newState = {
           data: [...this.state.data, ...newData],
           isFetching: false,
