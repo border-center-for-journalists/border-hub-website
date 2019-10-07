@@ -1,107 +1,145 @@
 import styled from "styled-components"
-import { TitleMediumContainer, Section, Container, Col } from "../../theme/index.styled"
+import {
+  TitleMediumContainer,
+  Section,
+  Container,
+  Col,
+} from "../../theme/index.styled"
 
 const RecentSection = styled(Section)`
-    margin: 3em 0;
-
-    ${props => props.theme.smallBreakPoint} {
-        margin: 3em 1em;
-      }
+  padding: 35px 24px;
+  background-color: black;
 `
-
 const CustomTitle = styled(TitleMediumContainer)`
-    margin-left: 4em;
-    padding:0;
-    max-width: 1100px;
-    h3{
-        font-size: 30px;
-        line-height: 1.22;
-    }
+  padding-top: 39px;
+  max-width: 1100px;
+  h3 {
+    font-size: 30px;
+    line-height: 1.22;
+  }
+  a {
+    float: right;
+    font-size: 15px;
+    font-style: italic;
+    color: ${props => props.theme.Yellow};
+    padding: 12px 0;
+  }
+  background-color: black;
+
+  ${props => props.theme.smallBreakPoint} {
+    padding: 2em 0;
+  }
 `
-const PrincipalContainer = styled(Container)`
-    margin-left: 4em;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    max-width: 1100px;
-    hr{
-        background-color: ${props => props.theme.White}
-        width: 95%;
-        margin-bottom: 1em;
-        margin-top: 1em;
-    }
-
-    ${props => props.theme.ipadBreakPoint} {
-        margin: 0 auto;
-      }
-
+const PrincipalContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  ${props => props.theme.ipadBreakPoint} {
+    margin: 0 auto;
+  }
+  ${props => props.theme.largeBreakPoint} {
+    max-width: ${props => props.theme.ContainerExtraLarge + 30}px;
+  }
 `
 
 const NewsContainer = styled(Container)`
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding-top:1em;
-    img{
-        margin:0;
-        height: 10em;
-        padding-right :30px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1em;
+  flex-direction: row;
+  img {
+    margin: 0;
+  }
+  ${props => props.theme.xlBreakPoint} {
+    img {
+      padding: 0 0 1em 1em !important;
     }
-    ${props => props.theme.xlBreakPoint} {
-        img{
-            padding: 0 0 1em 1em!important;
-        }
-      }
+  }
 `
 
-const NewsText= styled(Container)`
+const NewsText = styled(Container)`
+  max-width: 205px;
+  margin: 0;
+  h3 {
+    color: ${props => props.theme.White};
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 1.16;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  h3 a {
+    color: ${props => props.theme.White};
+    text-decoration: none;
+  }
+  p {
+    color: ${props => props.theme.White};
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.44;
+    margin-bottom: 15px;
+  }
 
-    max-width: 205px;
-    margin: 0;
-    h3{
-        color: ${props => props.theme.White}
-        font-size: 20px;
-        font-weight: bold;
-        line-height: 1.16;
-        text-align: left;
+  ${props => props.theme.xlBreakPoint} {
+    h3 {
+      display: none;
     }
-    p{
-        color: ${props => props.theme.White}
-        text-align: left;
-        font-size: 17px;
-        line-height: 1.44;
-        
-    }
-
-    ${props => props.theme.xlBreakPoint} {
-        h3{
-            display:none;
-        }
-      }
+  }
 `
 
 const DateText = styled.p`
-
-  font-size: 16px;
-  color: ${props => props.theme.DarkYellow}
+  font-size: 15.5px;
+  color: ${props => props.theme.DarkYellow};
   line-height: 25px;
-  max-width: 15em;
-  line-height: 1.29;    
+  line-height: 1.29;
   text-align: left;
-  margin:0;
-
+  margin: 0;
+  ${props => props.theme.xlBreakPoint} {
+    color: ${props => props.theme.White};
+  }
 `
-
-const InterCol = styled(Col)`
-
-${props => props.theme.xlBreakPoint} {
+const TextCol = styled(Col)`
+  flex: 0 0 40%;
+  max-width: 40%;
+  ${props => props.theme.smallBreakPoint} {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+`
+const ImgCol = styled(Col)`
+  flex: 0 0 60%;
+  max-width: 60%;
+  img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+  ${props => props.theme.smallBreakPoint} {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
   }
-
 `
 
-export{CustomTitle, NewsContainer, NewsText, PrincipalContainer, DateText, RecentSection, InterCol}
+const YellowText = styled.span`
+  ${props => props.theme.xlBreakPoint} {
+    color: ${props => props.theme.Yellow};
+  }
+`
+const HrCol = styled(Col)`
+  padding-bottom: 20px;
+  border-bottom: 1px solid ${props => props.color};
+`
+
+export {
+  CustomTitle,
+  NewsContainer,
+  NewsText,
+  PrincipalContainer,
+  DateText,
+  RecentSection,
+  ImgCol,
+  TextCol,
+  YellowText,
+  HrCol,
+}

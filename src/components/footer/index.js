@@ -1,18 +1,33 @@
 import React, { Component } from "react"
-import { Footer } from "./index.styled"
+import { Footer, Social, BlackContainer, YellowContainer } from "./index.styled"
 import bc from "../../theme/images/borderhubcenter.jpg"
-import bh from "../../theme/images/borderhubcenter.jpg"
+import bh from "../../theme/images/logo.jpg"
+import bcjb from "../../theme/images/logo_footer.jpg"
 
 class FooterComponent extends Component {
   render() {
+    const { facebook, twitter, youtube, menu } = this.props.data
     return (
       <Footer>
-        <a href="/">
-          <img alt="Border Center" src={bc} />
-        </a>
-        <a href="/">
-          <img alt="Border Hub" src={bh} />
-        </a>
+        <BlackContainer>
+          <a href="/">
+            <img alt="Border Hub" src={bh} />
+          </a>
+          <a href="/">
+            <img alt="Border Center" src={bc} />
+          </a>
+        </BlackContainer>
+        <YellowContainer>
+          <img src={bcjb}/>
+          <Social
+            target="_blank"
+            bigger
+            href={facebook.url}
+            className="icon-facebook"
+          />
+          <Social target="_blank" href={twitter.url} className="icon-twitter" />
+          <Social target="_blank" href={youtube.url} className="icon-youtube" />
+        </YellowContainer>
       </Footer>
     )
   }

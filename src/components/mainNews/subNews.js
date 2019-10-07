@@ -1,32 +1,50 @@
-import React, { Component } from "react"    
-import { MainNewSmall, MainNewSmallText } from "./index.styled"
-import {AuthorContainer, ImageWrapper, Paragraph, Col } from "../../theme/index.styled"
-import tempImg from "../../theme/images/2.jpg"
+import React, { Component } from "react"
+import { MainNewSmall, MainNewSmallText, MobileParagraph } from "./index.styled"
+import { AuthorContainer, ImageWrapper, Col } from "../../theme/index.styled"
+import moment from "moment"
+import "moment/locale/es"
+moment.locale("es")
+
 class SubNewComponent extends Component {
-    render() {
-        return (
-        <MainNewSmall>
-            <hr/>
-            <Col>
-            <ImageWrapper>
-                <img alt="prueba" src={tempImg} />
-            </ImageWrapper>
-            </Col>
-            <Col>
-            <MainNewSmallText>
-                <h3>
-                    Labore et dolore magna aliqua. Ut enim ad minim
-                </h3>
-                <Paragraph>
-                    Labore et dolore magna aliqua. Ut enim ad minim veniam rud exercitation ullamco laboris nisi ut aliquip ex ea commodo...  
-                </Paragraph>
-                <AuthorContainer>
-                    <i> Por <b> Diana Perez Bautista</b> </i> <br/> Marzo 12 | 2019
-                </AuthorContainer>
-            </MainNewSmallText>
-            </Col>
-        </MainNewSmall>
-        )
-    }
+  render() {
+    return (
+      <MainNewSmall>
+        <hr />
+        <Col>
+          <ImageWrapper>
+            <a href={`/${this.props.notice.uid}`}>
+              <img
+                alt="prueba"
+                src={this.props.notice.data.banner.thumbnail.url}
+              />
+            </a>
+          </ImageWrapper>
+        </Col>
+        <Col>
+          <MainNewSmallText darkMode={this.props.darkMode}>
+            <h3>
+              <a href={`/${this.props.notice.uid}`}>
+                {this.props.notice.data.title.text}
+              </a>
+            </h3>
+            {/*<Paragraph>{this.props.notice.data.excerpt.text}</Paragraph>*/}
+            <MobileParagraph>
+              {this.props.notice.data.excerpt.text}
+            </MobileParagraph>
+            <AuthorContainer show yellowMode={this.props.darkMode}>
+              <i>
+                {" "}
+                Por <b> {this.props.notice.data.author[0].name.text} </b>{" "}
+              </i>{" "}
+              <br />{" "}
+              {moment(this.props.notice.data.custom_publishdate).format(
+                "MMMM DD [|] YYYY"
+              )}
+            </AuthorContainer>
+          </MainNewSmallText>
+        </Col>
+      </MainNewSmall>
+    )
+  }
 }
 export default SubNewComponent

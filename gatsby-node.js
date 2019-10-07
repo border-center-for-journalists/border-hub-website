@@ -6,33 +6,75 @@
 
 // You can delete this file if you're not using it
 
-/* const path = require("path")
+const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
   const pages = await graphql(`
     {
-      allPrismicTesttype {
+      allPrismicNoticiasEspeciales {
         edges {
           node {
-            id
             uid
+            prismicId
+          }
+        }
+      }
+      allPrismicNoticias {
+        edges {
+          node {
+            uid
+            prismicId
+          }
+        }
+      }
+      allPrismicComun {
+        edges {
+          node {
+            uid
+            prismicId
           }
         }
       }
     }
   `)
 
-  const template = path.resolve("src/templates/post.jsx")
+  const specialNote = path.resolve("src/containers/specialnote.js")
 
-  pages.data.allPrismicTesttype.edges.forEach(edge => {
+  pages.data.allPrismicNoticiasEspeciales.edges.forEach(edge => {
     createPage({
       path: `/${edge.node.uid}`,
-      component: template,
+      component: specialNote,
       context: {
         uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
       },
     })
   })
-} */
+
+  const normalNote = path.resolve("src/containers/normalNote.js")
+
+  pages.data.allPrismicNoticias.edges.forEach(edge => {
+    createPage({
+      path: `/${edge.node.uid}`,
+      component: normalNote,
+      context: {
+        uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
+      },
+    })
+  })
+
+  const general = path.resolve("src/containers/general.js")
+
+  pages.data.allPrismicComun.edges.forEach(edge => {
+    createPage({
+      path: `/${edge.node.uid}`,
+      component: general,
+      context: {
+        uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
+      },
+    })
+  })
+}
