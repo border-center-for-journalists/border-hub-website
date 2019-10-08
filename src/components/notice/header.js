@@ -29,6 +29,11 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
         : ""
     }
   }
+  const getAllianceName = () => {
+      return notice.data.alliance_name
+        ? notice.data.alliance_name.text
+        : ""
+  }
   const date = notice.data.custom_publishdate
     ? notice.data.custom_publishdate
     : notice.last_publication_date
@@ -44,7 +49,7 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
               <YellowText>
                 <b>{getAuthorName()} |</b>
               </YellowText>{" "}
-              En alianza con <u>Reforma</u>
+              {getAllianceName()}
             </i>
           </p>
           <p>{moment(date).format("MMMM DD, YYYY [|] h:mm a")}</p>
