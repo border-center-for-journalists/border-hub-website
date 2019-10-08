@@ -116,6 +116,7 @@ const Row = styled.div`
   ${props => props.theme.largeBreakPoint} {
     flex: ${props => (props.widthXl ? "0 1 " + props.widthXl : "1 0 auto")};
     max-width: ${props => (props.widthXl ? props.widthXl : "100%")};
+    ${props => (props.shrinkXl ? "flex: 0 1 auto;" : "")}
   }
   ${props => props.theme.mediumBreakPoint} {
     flex: ${props => (props.widthXs ? "0 1 " + props.widthXs : "1 0 auto")};
