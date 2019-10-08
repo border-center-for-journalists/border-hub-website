@@ -76,7 +76,7 @@ const RowGap = gap => {
 const Rows = styled.div`
   display: flex;
   flex-direction: row;
-  width:100%;
+  width: 100%;
   justify-content: ${props =>
     props.align && props.align === "start" ? "flex-start" : props.align};
   ${props => (props.wrap ? "flex-wrap: wrap;" : "")}
@@ -86,9 +86,6 @@ const Rows = styled.div`
     flex-direction: ${props => (props.rowM ? "row" : "column")};
     justify-content: ${props =>
       props.alignM && props.alignM === "start" ? "flex-start" : props.alignM};
-  }
-  ${props => props.theme.smallBreakPoint} {
-    flex-direction: ${props => (props.keepRow ? "row" : "column")};
   }
   ${props => props.theme.smallBreakPoint} {
     flex-direction: ${props => (props.rowS ? "row" : "column")};
@@ -113,13 +110,17 @@ const Row = styled.div`
     props.alignColumn
       ? "align-items: center;justify-content: center;display: flex;"
       : ""}
-  ${props => props.theme.largeBreakPoint} {
+   ${props => props.theme.largeBreakPoint} {
     flex: ${props => (props.widthXl ? "0 1 " + props.widthXl : "1 0 auto")};
     max-width: ${props => (props.widthXl ? props.widthXl : "100%")};
-  }
+  } 
   ${props => props.theme.mediumBreakPoint} {
     flex: ${props => (props.widthXs ? "0 1 " + props.widthXs : "1 0 auto")};
     max-width: ${props => (props.widthXs ? props.widthXs : "100%")};
+    ${props =>
+      props.contact
+        ? "h4{display: inline-block;}p{display: inline-block;}"
+        : ""}
   }
   ${props => props.theme.smallBreakPoint} {
     flex: ${props => (props.widthS ? "0 1 " + props.widthS : "1 0 auto")};
