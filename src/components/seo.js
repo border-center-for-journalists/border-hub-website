@@ -94,7 +94,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         href="https://fonts.googleapis.com/css?family=Aleo:300,400,400i,700&display=swap"
         rel="stylesheet"
       />
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149357897-1"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149565112-1"></script>
 
       <script>
         {
@@ -103,7 +103,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());  
           
-          gtag('config', 'UA-149357897-1');
+          gtag('config', 'UA-149565112-1');
           `
         }
       </script>
