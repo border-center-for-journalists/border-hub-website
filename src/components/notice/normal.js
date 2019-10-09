@@ -35,6 +35,7 @@ class NormalNoticeComponent extends Component {
     return (
       <NoticeSection color="black">
         <HeaderNoticeComponent
+        noticetype='normal'
           align="left"
           notice={this.props.notice}
           url={this.props.url}

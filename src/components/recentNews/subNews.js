@@ -26,6 +26,8 @@ class SubNewComponent extends Component {
       custom_publishdate,
     } = this.props.notice.data
     const limit = 50
+  console.log('NOTICE',this.props.notice)
+
     return (
       <NewsContainer>
         <TextCol>
