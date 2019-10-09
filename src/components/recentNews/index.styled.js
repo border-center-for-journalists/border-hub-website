@@ -81,7 +81,7 @@ const NewsText = styled(Container)`
   }
 
   ${props => props.theme.xlBreakPoint} {
-    h3 {
+    p {
       display: none;
     }
   }
