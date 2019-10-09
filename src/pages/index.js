@@ -6,6 +6,21 @@ import HomeContainer from "../containers/home.js"
 
 const temp = data => {
   const common = data.data.prismicDatosComunes.data
+
+  const specialNotice = { 
+    nodes: common.special_section[0].nodes.document 
+  }
+
+  const maxNumberOfPrincipalNews = 3
+  const principalNotices = {
+    nodes: common.principal_notices.reduce((notices,notice) => {
+      if(notices.length < maxNumberOfPrincipalNews) {
+        notices.push(notice.nodes.document[0]);
+      }
+      return notices;
+    },[])
+  }
+  
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
   console.log("BANNER ???", common.banner.document)
@@ -16,8 +31,8 @@ const temp = data => {
         bannerNotice={common.banner.document}
         normalNotices={data.data.normalNotices}
         recentNotices={data.data.recentNotices}
-        noticeP={data.data.allPrismicNoticias}
-        noticeS={data.data.allPrismicNoticiasEspeciales}
+        noticeS={specialNotice} 
+        noticeP={principalNotices}
       />
     </Layout>
   )
@@ -49,6 +64,65 @@ export const pageQuery = graphql`
               author {
                 name {
                   text
+                }
+              }
+            }
+          }
+        }
+        special_section {
+          nodes {
+            document {
+              uid
+              type
+              data {
+                title {
+                  text
+                }
+                excerpt {
+                  text
+                }
+                banner {
+                  url
+                  thumbnail {
+                    url
+                  }
+                }
+                custom_publishdate
+                author {
+                  name {
+                    text
+                  }
+                }
+              }
+            }
+          }
+        }
+        principal_notices {
+          nodes {
+            document {
+              uid
+              type
+              data {
+                title {
+                  text
+                }
+                excerpt {
+                  text
+                }
+                banner {
+                  url
+                  thumbnail {
+                    url
+                  }
+                }
+                content {
+                  html
+                }
+                custom_publishdate
+                author {
+                  name {
+                    text
+                  }
                 }
               }
             }
