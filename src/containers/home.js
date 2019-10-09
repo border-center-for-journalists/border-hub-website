@@ -14,7 +14,7 @@ class HomeContainer extends Component {
     },[])
   }
 
-  removeDuplicateds(priorityNotices, normalNotices){
+  removeDuplicated(priorityNotices, normalNotices){
     let priorityUids = this.getNoticeUids(priorityNotices);
 
     return normalNotices.reduce((acc,notice)=>{
