@@ -15,7 +15,7 @@ import moment from "moment"
 import "moment/locale/es"
 moment.locale("es")
 
-const HeaderNoticeComponent = ({ url, notice, align }) => {
+const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
   //const { publish_date, title, authors } = data
   const { title, banner } = notice.data
   const getAuthorName = () => {
@@ -29,10 +29,23 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
         : ""
     }
   }
+  const getAlliance = () => {
+    if( noticetype === 'normal'  ){
+      return notice.data.alliance_name && notice.data.alliance_name.text
+        ? {name: notice.data.alliance_name.text, separation: "|"}
+        : {name: "", separation: ""}
+    }else{
+      const {alliances} = notice.data
+      if( alliances.length > 0 && alliances[0].alliance_name && alliances[0].alliance_name.text )
+        return {name: alliances[0].alliance_name.text, separation: "|"}
+      return {name: "", separation: ""}
+    }
+  }
   const date = notice.data.custom_publishdate
     ? notice.data.custom_publishdate
     : notice.last_publication_date
-
+  const allianceHeader = getAlliance()
+  console.log('allianceHeader',notice,allianceHeader)
   return (
     <React.Fragment>
       <Container size="medium" xlStaticSize>
@@ -42,9 +55,9 @@ const HeaderNoticeComponent = ({ url, notice, align }) => {
             <i>
               Por{" "}
               <YellowText>
-                <b>{getAuthorName()} |</b>
+                <b>{getAuthorName()} {allianceHeader.separation}</b>
               </YellowText>{" "}
-              En alianza con <u>Reforma</u>
+              {allianceHeader.name}
             </i>
           </p>
           <p>{moment(date).format("MMMM DD, YYYY [|] h:mm a")}</p>

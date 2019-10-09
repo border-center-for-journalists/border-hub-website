@@ -104,6 +104,9 @@ export const pageQuery = graphql`
           alliance_url {
             url
           }
+          alliance_name{
+            text
+          }
         }
         body {
           __typename
