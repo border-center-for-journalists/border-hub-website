@@ -62,6 +62,7 @@ class SpecialNoticeComponent extends Component {
     return (
       <NoticeSection>
         <HeaderNoticeComponent
+        noticetype='special'
           align="center"
           notice={this.props.notice}
           url={this.props.url}
