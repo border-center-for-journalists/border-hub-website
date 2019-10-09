@@ -28,7 +28,7 @@ class HomeHeaderComponent extends Component {
         <Rows />
       ) : (
         <Rows>
-          <Row shrink>
+          <Row shrink shrinkXl>
             <AuthorContainer main={true} show={true} color={true}>
               <i>
                 Por <b> {this.getAuthor(notice)}</b>
@@ -36,7 +36,7 @@ class HomeHeaderComponent extends Component {
               <br /> {this.getDate(notice)}
             </AuthorContainer>
           </Row>
-          <Row shrink>
+          <Row shrink shrinkXl>
             <TitleContainer fullHeight={true}>
               <h1>
                 <a href={`/${notice.uid}`}>{notice.data.title.text}</a>
