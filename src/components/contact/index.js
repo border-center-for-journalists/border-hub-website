@@ -40,31 +40,31 @@ class ContactUsComponent extends Component {
           </CustomColForm>
           <CustomColText>
             <Row>
-              <Rows>
-                <Row shrink>
+              <Rows keepRow rowS>
+                <Row shrink widthXl="none" widthXs="40px" widthS="40px">
                   <i className="icon-mail" />
                 </Row>
-                <Row>
+                <Row contact>
                   <h4>Mail:</h4> <p>{emailTo}</p>
                 </Row>
               </Rows>
             </Row>
             <Row>
-              <Rows>
-                <Row shrink>
+              <Rows keepRow rowS>
+                <Row shrink widthXl="none" widthXs="40px" widthS="40px">
                   <i className="icon-location" />
                 </Row>
-                <Row>
+                <Row contact>
                   <h4>Dirección:</h4> <p>{address.text}</p>
                 </Row>
               </Rows>
             </Row>
             <Row>
-              <Rows>
-                <Row shrink>
+              <Rows keepRow rowS>
+                <Row shrink widthXl="none" widthXs="40px" widthS="40px">
                   <i className="icon-phone" />
                 </Row>
-                <Row>
+                <Row contact>
                   <h4>Teléfono:</h4> <p>{phone.text}</p>
                 </Row>
               </Rows>
