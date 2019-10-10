@@ -26,6 +26,8 @@ class SubNewComponent extends Component {
       custom_publishdate,
     } = this.props.notice.data
     const limit = 50
+  console.log('NOTICE',this.props.notice)
+
     return (
       <NewsContainer>
         <TextCol>
@@ -34,7 +36,7 @@ class SubNewComponent extends Component {
               <a href={`/${this.props.notice.uid}`}>{title.text}</a>
             </h3>
             <Paragraph>
-              {excerpt.text.length > limit
+              {excerpt.text && excerpt.text.length > limit
                 ? `${excerpt.text.slice(0, limit)} ...`
                 : excerpt.text}
             </Paragraph> 

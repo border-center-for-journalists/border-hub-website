@@ -20,11 +20,9 @@ class RecentNews extends Component {
     this.props.notices.nodes.map(notice =>
       this.isAllowed(notice, mergeNotices) ? (count += 1) : ""
     )
-    console.log(count)
     return count >= 2 ? "white" : ""
   }
   render() {
-    console.log("res", this.props)
     const mergeNotices = this.props.principalNotices.nodes
     return (
       <RecentSection>

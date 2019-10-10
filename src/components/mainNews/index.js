@@ -44,7 +44,7 @@ class MainNewsComponent extends Component {
         </React.Fragment>
       )
     } else {
-      return <SubNewComponent notice={data} />
+      return <SubNewComponent darkMode={false} notice={data} />
     }
   }
   render() {
