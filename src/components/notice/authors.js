@@ -9,7 +9,7 @@ import {
 } from "./index.styled"
 import { Container, Rows, Row } from "../../theme/index.styled"
 
-const AuthorComponent = ({ color, author, align }) => {
+const AuthorComponent = ({ color, align, author }) => {
   return (
     <Author color={color} align={align}>
       {author.user_picture && author.user_picture.url ? (
@@ -19,27 +19,16 @@ const AuthorComponent = ({ color, author, align }) => {
       ) : (
         ""
       )}
-      {author.author_profile && author.author_profile.url ? (
-        <AuthorProfile align={align}>
-          <img alt={author.author_name.text} src={author.author_profile.url} />
-        </AuthorProfile>
-      ) : (
-        ""
-      )}
-      {author.name && author.name.text ? (
         <Row>
-          <AuthorTitle align="left">{author.name.text}</AuthorTitle>
+        { author.name && author.name.text ? (
+          <AuthorTitle align={align}>{author.name.text}</AuthorTitle>
+        ) : (
+          ""
+        )}
           <ul>
             {author.email && author.email.text ? (
               <li>
                 <i className="icon-email" /> {author.email.text}
-              </li>
-            ) : (
-              ""
-            )}
-            {author.author_email && author.author_email.text ? (
-              <li>
-                <i className="icon-email" /> {author.author_email.text}
               </li>
             ) : (
               ""
@@ -51,39 +40,22 @@ const AuthorComponent = ({ color, author, align }) => {
             ) : (
               ""
             )}
+            {author.twitter && author.twitter.text ? (
+              <li>
+                <i className="icon-twitter" /> {author.author_twitter.text}
+              </li>
+            ) : (
+              ""
+            )}
+            {author.instagram && author.instagram.text? (
+              <li>
+                <i className="icon-insta" /> {author.instagram.text}
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </Row>
-      ) : (
-        ""
-      )}
-      {author.author_name && author.author_name.text ? (
-        <AuthorTitle align="center">{author.author_name.text}</AuthorTitle>
-      ) : (
-        ""
-      )}
-      <ul>
-        {author.author_email && author.author_email.text ? (
-          <li>
-            <i className="icon-email" /> {author.author_email.text}
-          </li>
-        ) : (
-          ""
-        )}
-        {author.author_twitter && author.author_twitter.text ? (
-          <li>
-            <i className="icon-twitter" /> {author.author_twitter.text}
-          </li>
-        ) : (
-          ""
-        )}
-        {author.author_facebook && author.author_facebook.text ? (
-          <li>
-            <i className="icon-facebook" /> {author.author_facebook.text}
-          </li>
-        ) : (
-          ""
-        )}
-      </ul>
     </Author>
   )
 }
