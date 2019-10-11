@@ -291,6 +291,9 @@ export const pageQuery = graphql`
             twitter {
               text
             }
+            instagram {
+              text
+            }
           }
           alliances {
             alliance_image {
