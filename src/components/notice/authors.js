@@ -42,7 +42,7 @@ const AuthorComponent = ({ color, align, author }) => {
             )}
             {author.twitter && author.twitter.text ? (
               <li>
-                <i className="icon-twitter" /> {author.author_twitter.text}
+                <i className="icon-twitter" /> {author.twitter.text}
               </li>
             ) : (
               ""
