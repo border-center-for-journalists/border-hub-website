@@ -7,6 +7,7 @@ import {
   TextCol,
   YellowText,
 } from "./index.styled"
+import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
 import { ImageWrapper, Paragraph } from "../../theme/index.styled"
 import tempImg from "../../theme/images/3.jpg"
 
@@ -26,14 +27,15 @@ class SubNewComponent extends Component {
       custom_publishdate,
     } = this.props.notice.data
     const limit = 50
-  console.log('NOTICE',this.props.notice)
+    const urlSectionType =  (this.props.notice.type == 'noticias_especiales')? SPECIAL_NEWS_URL:NEWS_URL
+    console.log('NOTICE',this.props.notice)
 
     return (
       <NewsContainer>
         <TextCol>
           <NewsText>
             <h3>
-              <a href={`/${this.props.notice.uid}`}>{title.text}</a>
+              <a href={`/${urlSectionType}/${this.props.notice.uid}`}>{title.text}</a>
             </h3>
             <Paragraph>
               {excerpt.text && excerpt.text.length > limit
@@ -49,7 +51,7 @@ class SubNewComponent extends Component {
         </TextCol>
         <ImgCol>
           <ImageWrapper>
-            <a href={`/${this.props.notice.uid}`}>
+            <a href={`/${urlSectionType}/${this.props.notice.uid}`}>
               <img src={banner.thumbnail.url} />
             </a>
           </ImageWrapper>

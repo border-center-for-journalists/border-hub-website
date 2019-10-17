@@ -7,20 +7,20 @@ import HomeContainer from "../containers/home.js"
 const temp = data => {
   const common = data.data.prismicDatosComunes.data
 
-  const specialNotice = { 
-    nodes: common.special_section[0].nodes.document 
+  const specialNotice = {
+    nodes: common.special_section[0].nodes.document
   }
 
   const maxNumberOfPrincipalNews = 3
   const principalNotices = {
-    nodes: common.principal_notices.reduce((notices,notice) => {
-      if(notices.length < maxNumberOfPrincipalNews) {
+    nodes: common.principal_notices.reduce((notices, notice) => {
+      if (notices.length < maxNumberOfPrincipalNews) {
         notices.push(notice.nodes.document[0]);
       }
       return notices;
-    },[])
+    }, [])
   }
-  
+
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
   console.log("BANNER ???", common.banner.document)
@@ -31,7 +31,7 @@ const temp = data => {
         bannerNotice={common.banner.document}
         normalNotices={data.data.normalNotices}
         recentNotices={data.data.recentNotices}
-        noticeS={specialNotice} 
+        noticeS={specialNotice}
         noticeP={principalNotices}
       />
     </Layout>
@@ -50,6 +50,7 @@ export const pageQuery = graphql`
         banner {
           document {
             uid
+            type
             data {
               custom_publishdate
               title {
