@@ -60,12 +60,7 @@ module.exports = {
           children
         ) => {
           if (type === Elements.image) {
-            return `
-              <div class="imageWrapper" >
-                <img src="${element.url}" alt="${element.alt}" />
-                <p>${element.alt || ""}</p>
-              </div>
-            `
+            return `IMG ${element.url},${element.alt} IMG`;
           }
           if (type === Elements.preformatted) {
             //console.log("element", element)
