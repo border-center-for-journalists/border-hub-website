@@ -10,6 +10,8 @@ import {
   ImageWrapper,
   YellowTitle,
 } from "../../theme/index.styled"
+import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
+
 import SubNewComponent from "./subNews.js"
 import moment from "moment"
 import "moment/locale/es"
@@ -19,17 +21,18 @@ class MainNewsComponent extends Component {
   getDate = date => moment(date).format("MMMM DD")
   getComponent = (data, i) => {
     const noticeLen = Object.keys(this.props.notice).length
+    const urlSectionType =  (data.type == 'noticias_especiales')? SPECIAL_NEWS_URL:NEWS_URL
     if (noticeLen === i + 1) {
       return (
         <React.Fragment>
           <ImageWrapper>
-            <a href={`/${data.uid}`}>
+            <a href={`/${urlSectionType}/${data.uid}`}>
               <img alt={data.data.title.text} src={data.data.banner.url} />
             </a>
           </ImageWrapper>
           <TextContainer>
             <h2>
-              <a href={`/${data.uid}`}>{data.data.title.text}</a>
+              <a href={`/${urlSectionType}/${data.uid}`}>{data.data.title.text}</a>
             </h2>
             <SubTitleParagraph>{data.data.excerpt.text}</SubTitleParagraph>
             <AuthorContainer show>

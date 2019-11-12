@@ -6,10 +6,12 @@ import {
   CustomSecondTitle,
   BigArrow,
 } from "./index.styled"
+import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
 import { Rows, Row, Paragraph } from "../../theme/index.styled"
 
 class SpecialNews extends Component {
   render() {
+    const urlSectionType =  (this.props.notice.nodes[0].type)? SPECIAL_NEWS_URL:NEWS_URL
     return (
       <SpecialSection bg={this.props.notice.nodes[0].data.banner.url}>
         <CustomContainer size="large">
@@ -20,7 +22,7 @@ class SpecialNews extends Component {
             <Row shrink>
               <CustomSecondTitle fullHeight={false}>
                 <h1>
-                  <a href={`/${this.props.notice.nodes[0].uid}`}>
+                  <a href={`/${urlSectionType}/${this.props.notice.nodes[0].uid}`}>
                     {this.props.notice.nodes[0].data.title.text}
                   </a>
                 </h1>

@@ -8,6 +8,7 @@ import {
   TitleContainer,
   Paragraph,
 } from "../../theme/index.styled"
+import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
 
 import moment from "moment"
 import "moment/locale/es"
@@ -23,6 +24,7 @@ class HomeHeaderComponent extends Component {
   }
   render() {
     const notice = this.props.bannerNotice[0]
+    const urlSectionType =  (notice.type == 'noticias_especiales')? SPECIAL_NEWS_URL:NEWS_URL
     const rows =
       this.props.bannerNotice.length === 0 ? (
         <Rows />
@@ -39,7 +41,7 @@ class HomeHeaderComponent extends Component {
           <Row shrink shrinkXl>
             <TitleContainer fullHeight={true}>
               <h1>
-                <a href={`/${notice.uid}`}>{notice.data.title.text}</a>
+                <a href={`/${urlSectionType}/${notice.uid}`}>{notice.data.title.text}</a>
               </h1>
               <AuthorContainer show={false} color={true}>
                 <i>

@@ -40,10 +40,11 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const specialNote = path.resolve("src/containers/specialnote.js")
+  const { SPECIAL_NEWS_URL, NEWS_URL } = require('./src/utils/constants');
 
   pages.data.allPrismicNoticiasEspeciales.edges.forEach(edge => {
     createPage({
-      path: `/${edge.node.uid}`,
+      path: `/${SPECIAL_NEWS_URL}/${edge.node.uid}`,
       component: specialNote,
       context: {
         uid: edge.node.uid,
@@ -56,7 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicNoticias.edges.forEach(edge => {
     createPage({
-      path: `/${edge.node.uid}`,
+      path: `/${NEWS_URL}/${edge.node.uid}`,
       component: normalNote,
       context: {
         uid: edge.node.uid,
