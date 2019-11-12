@@ -92,6 +92,9 @@ export const pageQuery = graphql`
           facebook {
             text
           }
+          instagram {
+            text
+          }
           twitter {
             text
           }
