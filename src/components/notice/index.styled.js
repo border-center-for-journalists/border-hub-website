@@ -116,7 +116,7 @@ const MainNewSmallText = styled.div`
 
   h3 {
     color: ${props =>
-      props.color === "black" ? props.theme.Black : props.theme.White};
+    props.color === "black" ? props.theme.Black : props.theme.White};
     font-size: 19px;
     line-height: 25px;
     text-align: left;
@@ -125,11 +125,11 @@ const MainNewSmallText = styled.div`
   h3 a {
     text-decoration: none;
     color: ${props =>
-      props.color === "black" ? props.theme.Black : props.theme.White};
+    props.color === "black" ? props.theme.Black : props.theme.White};
   }
   p {
     color: ${props =>
-      props.color === "black" ? props.theme.Black : props.theme.White};
+    props.color === "black" ? props.theme.Black : props.theme.White};
     text-align: left;
   }
 `
@@ -153,7 +153,7 @@ const NoticeTitleWrapper = styled.div`
     color: white;
     font-size: 39px;
     font-size: ${props =>
-      props.align && props.align === "center" ? "42px" : "39px"};
+    props.align && props.align === "center" ? "42px" : "39px"};
     margin-bottom: 5px;
   }
   hr {
@@ -304,6 +304,14 @@ const TextWrapper = styled.div`
   ${props => props.theme.smallBreakPoint} {
     padding: 15px 24px;
   }
+
+  ${({ theme }) => theme.mediumBreakPoint} {
+    iframe {
+      max-width: 100%;
+      max-height: 68vw !important;
+      margin: 0 auto;
+    }
+  }
 `
 
 const ImageWithFooter = styled.div`
@@ -347,6 +355,10 @@ const MediaWrapper = styled.div`
     width: 100%;
     margin: 0;
     display: block;
+  }
+  ${({ theme }) => theme.mediumBreakPoint} {
+    padding: 0;
+    height: 68vw;
   }
 `
 const Social = styled.a`
