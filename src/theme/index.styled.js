@@ -60,9 +60,9 @@ const Container = styled.div`
 
   ${props => props.theme.largeBreakPoint} {
     ${props =>
-      props.xlStaticSize
-        ? ""
-        : "max-width:" + props.theme.ContainerExtraLarge + "px;"};
+    props.xlStaticSize
+      ? ""
+      : "max-width:" + props.theme.ContainerExtraLarge + "px;"};
   }
 `
 const RowGap = gap => {
@@ -85,19 +85,19 @@ const Rows = styled.div`
   ${props => props.theme.mediumBreakPoint} {
     flex-direction: ${props => (props.rowM ? "row" : "column")};
     justify-content: ${props =>
-      props.alignM && props.alignM === "start" ? "flex-start" : props.alignM};
+    props.alignM && props.alignM === "start" ? "flex-start" : props.alignM};
   }
   ${props => props.theme.smallBreakPoint} {
     flex-direction: ${props => (props.rowS ? "row" : "column")};
     justify-content: ${props =>
-      props.alignS && props.alignS === "start" ? "flex-start" : props.alignS};
+    props.alignS && props.alignS === "start" ? "flex-start" : props.alignS};
   }
   ${props => props.theme.xlBreakPoint} {
     flex-direction: ${props => (props.rowXs ? "row" : "column")};
     justify-content: ${props =>
-      props.alignXs && props.alignXs === "start"
-        ? "flex-start"
-        : props.alignXs};
+    props.alignXs && props.alignXs === "start"
+      ? "flex-start"
+      : props.alignXs};
   }
 `
 const Row = styled.div`
@@ -119,9 +119,9 @@ const Row = styled.div`
     flex: ${props => (props.widthXs ? "0 1 " + props.widthXs : "1 0 auto")};
     max-width: ${props => (props.widthXs ? props.widthXs : "100%")};
     ${props =>
-      props.contact
-        ? "h4{display: inline-block;}p{display: inline-block;}"
-        : ""}
+    props.contact
+      ? "h4{display: inline-block;}p{display: inline-block;}"
+      : ""}
   }
   ${props => props.theme.smallBreakPoint} {
     flex: ${props => (props.widthS ? "0 1 " + props.widthS : "1 0 auto")};
@@ -208,7 +208,7 @@ const AuthorContainer = styled.p`
       content: "";
       display: block;
       border-bottom: ${props =>
-        props.color ? "5px solid" + props.theme.Yellow : "0"};
+    props.color ? "5px solid" + props.theme.Yellow : "0"};
       width: ${props => (props.main ? "158px" : "190px")};
     }
   }
@@ -279,7 +279,7 @@ const TitleMediumContainer = styled(Container)`
     color: ${props => (props.color ? props.theme.Black : props.theme.White)};
     border-bottom: 3px solid;
     border-color: ${props =>
-      props.color ? props.theme.Black : props.theme.Yellow};
+    props.color ? props.theme.Black : props.theme.Yellow};
   }
 
   ${props => props.theme.ipadBreakPoint} {
@@ -302,13 +302,13 @@ const FormBody = styled.div`
     padding: 10px;
     height: 40px;
     background-color: ${props =>
-      props.color ? props.theme.Yellow : props.theme.White};
+    props.color ? props.theme.Yellow : props.theme.White};
     border: 1px solid ${props => props.theme.Black};
     margin-right: 2em;
   }
   textarea {
     background-color: ${props =>
-      props.color ? props.theme.Yellow : props.theme.White};
+    props.color ? props.theme.Yellow : props.theme.White};
     border: 1px solid ${props => props.theme.Black};
     margin-right: 2em;
   }
@@ -379,6 +379,11 @@ const Message = styled.p`
   }
 `
 
+const ImgBackground = styled.div`
+  background-color: white;
+  font-size: 0px;
+`;
+
 export {
   Wrapper,
   Content,
@@ -399,4 +404,5 @@ export {
   RectangleText,
   ColContainer,
   Message,
+  ImgBackground
 }
