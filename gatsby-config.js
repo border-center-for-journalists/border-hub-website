@@ -60,7 +60,7 @@ module.exports = {
           children
         ) => {
           if (type === Elements.image) {
-            return `IMG ${element.url},${element.alt} IMG`;
+            return `OBJIMG${element.url}${element.alt ? `|${element.alt}` : ''}OBJIMG`;
           }
           if (type === Elements.preformatted) {
             //console.log("element", element)

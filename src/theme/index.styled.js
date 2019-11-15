@@ -141,6 +141,7 @@ const ImageWrapper = styled.div`
   img {
     width: 100%;
     margin-bottom: 15px;
+    display: block;
   }
   p {
     font-size: 14px;

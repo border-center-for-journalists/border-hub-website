@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import Modal from 'react-responsive-modal';
-import styled from 'styled-components';
+import React, { Component, Fragment } from 'react';
+import Modal from '../modal';
 import {
   ImageWrapper,
   ImgBackground
@@ -22,17 +21,17 @@ class ImageModal extends Component {
   };
   render() {
     return (
-      <div>
+      <Fragment>
         <ImageWrapper>
           <ImgBackground>
             <img onClick={this.onOpenModal} src={this.props.src} alt={this.props.alt}></img>
           </ImgBackground>
           <p>{(this.props.alt != "null ") ? this.props.alt : ""}</p>
         </ImageWrapper>
-        <Modal open={this.state.open} onClose={this.onCloseModal} center>
+        <Modal visible={this.state.open} onClose={this.onCloseModal}>
           <img src={this.props.src}></img>
         </Modal>
-      </div>);
+      </Fragment>);
   }
 }
 export default ImageModal;
