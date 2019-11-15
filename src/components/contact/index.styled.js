@@ -74,6 +74,11 @@ const CustomRows = styled(Rows)`
     font-size: 12.5px;
     margin: 0;
   }
+  ${props => props.theme.largeBreakPoint} {
+    ${Row} {
+      max-width: 48%;
+    }
+  }
   ${props => props.theme.mediumBreakPoint} {
     padding: 0;
     ${Row} {
@@ -81,8 +86,6 @@ const CustomRows = styled(Rows)`
       max-width: 100%;
       margin-bottom: 25px;
     }
-  }
-  ${props => props.theme.smallBreakPoint} {
   }
 `
 

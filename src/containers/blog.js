@@ -12,12 +12,13 @@ class BlogContainer extends Component {
       page: 2,
       fetchEnd: false,
     }
+    this.noticeType = '';
   }
   componentDidMount() {
     this.ScrollEvent()
     this.inScroll = null
     this.noticeType =
-      this.props.darkMode === true ? "noticiasespeciales" : "noticias"
+      this.props.darkMode === true ? "noticias_especiales" : "noticias"
     window.addEventListener("scroll", this.ScrollEvent)
   }
   ScrollEvent = () => {
@@ -51,7 +52,7 @@ class BlogContainer extends Component {
           const excerptText = excerptLength ? n.data.excerpt[0].text : "";
           const titleText = titleLength ? n.data.title[0].text : "";
           const authorText = authorLength ? n.data.author[0].name[0].text : "Anónimo";
-          
+
           return ({
             uid: n.uid,
             data: {

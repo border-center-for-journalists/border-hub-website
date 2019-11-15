@@ -1,6 +1,7 @@
 import React from "react"
 import { VerticalNotice } from "./index.styled"
 import { Container, Rows, Row } from "../../theme/index.styled"
+import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
 
 import moment from "moment"
 import "moment/locale/es"
@@ -11,6 +12,7 @@ const MultinotesContentComponent = ({ notice }) => {
   const partial = items.map((item, index) => {
     const notice = item.note.document[0]
     const date = notice.data.custom_publishdate
+    const urlSectionType =  (notice.type == 'noticias_especiales')? SPECIAL_NEWS_URL:NEWS_URL
     console.log("notice", notice)
     return (
       <Row key={index} width="45%" widthXs="45%" widthXl="30%">
@@ -23,10 +25,10 @@ const MultinotesContentComponent = ({ notice }) => {
           </a>
           <div className="text-wrapper">
             <h3>
-              <a href={`/${notice.uid}`}>{item.title_note.text}</a>
+              <a href={`/${urlSectionType}/${notice.uid}`}>{item.title_note.text}</a>
             </h3>
             <h4>
-              <a href={`/${notice.uid}`}>{notice.data.title.text}</a>
+              <a href={`/${urlSectionType}/${notice.uid}`}>{notice.data.title.text}</a>
             </h4>
             <div className="excerpt">
               {notice.data.excerpt.text.slice(0, 80)}
