@@ -9,10 +9,10 @@ class BlogContainer extends Component {
     this.state = {
       data: this.props.data,
       isFetching: false,
-      page: 2,
+      page: 1,
       fetchEnd: false,
     }
-    this.noticeType = '';
+    this.noticeType = ""
   }
   componentDidMount() {
     this.ScrollEvent()
@@ -46,14 +46,16 @@ class BlogContainer extends Component {
       )
       .then(response => {
         const newData = response.results.map(n => {
-          const excerptLength = n.data.excerpt.length;
-          const titleLength = n.data.title.length;
-          const authorLength = n.data.author.length;
-          const excerptText = excerptLength ? n.data.excerpt[0].text : "";
-          const titleText = titleLength ? n.data.title[0].text : "";
-          const authorText = authorLength ? n.data.author[0].name[0].text : "Anónimo";
+          const excerptLength = n.data.excerpt.length
+          const titleLength = n.data.title.length
+          const authorLength = n.data.author.length
+          const excerptText = excerptLength ? n.data.excerpt[0].text : ""
+          const titleText = titleLength ? n.data.title[0].text : ""
+          const authorText = authorLength
+            ? n.data.author[0].name[0].text
+            : "Anónimo"
 
-          return ({
+          return {
             uid: n.uid,
             data: {
               banner: {
@@ -64,7 +66,7 @@ class BlogContainer extends Component {
               custom_publishdate: n.data.custom_publishdate,
               author: [{ name: { text: authorText } }],
             },
-          })
+          }
         })
         let newState = {
           data: [...this.state.data, ...newData],
