@@ -19,7 +19,7 @@ const MultinotesContentComponent = ({ notice }) => {
     return (
       <Row key={index} width="45%" widthXs="45%" widthXl="30%">
         <VerticalNotice>
-          <a className="image" href={`/${notice.uid}`}>
+          <a className="image" href={`/${urlSectionType}/${notice.uid}`}>
             <img
               alt={`${notice.data.title.text}`}
               src={notice.data.banner.thumbnail.url}
