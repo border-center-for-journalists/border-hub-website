@@ -62,6 +62,7 @@ export const pageQuery = graphql`
       uid
       prismicId
       last_publication_date
+      type
       data {
         title {
           text
@@ -216,6 +217,7 @@ export const pageQuery = graphql`
               note {
                 document {
                   uid
+                  type
                   data {
                     title {
                       text
