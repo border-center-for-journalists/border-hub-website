@@ -10,11 +10,26 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 `;
 
 export const ModalStyled = styled.div`
-  max-width: 50%;
   position: relative;
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    height: auto;
+    width: auto;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -27,6 +42,11 @@ export const CloseButton = styled.button`
   width: 25px;
   height: 25px;
   cursor: pointer;
+
+  ${props => props.theme.mediumBreakPoint} {
+    top: 0px;
+    right: 0px;
+  }
 
   img {
     margin: 0 !important;
