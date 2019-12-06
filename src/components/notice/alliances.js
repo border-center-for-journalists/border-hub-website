@@ -8,7 +8,7 @@ const AlliancesNoticeContentComponent = ({ alliances }) => {
       <NoticeSectionTitle>Alianzas</NoticeSectionTitle>
       <Rows wrap align="center" vAlign="center" gap="10px">
         {alliances.map((alliance, index) =>
-          alliance.alliance_image.url ? (
+          alliance.alliance_image && alliance.alliance_image.url ? (
             <a href={alliance.alliance_image.url} key={index}>
               <img alt="" src={alliance.alliance_image.url} />
             </a>
