@@ -51,10 +51,15 @@ const BigArrow = styled.i`
   }
 `
 
+const InteractiveContainer = styled.div`
+  width: 100vw;
+`;
+
 export {
   SpecialSection,
   CustomTitle,
   CustomContainer,
   CustomSecondTitle,
   BigArrow,
+  InteractiveContainer,
 }

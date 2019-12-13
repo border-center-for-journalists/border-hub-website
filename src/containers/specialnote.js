@@ -40,7 +40,8 @@ const SpecialNoticeContainer = ({ location, data }) => {
 export default SpecialNoticeContainer
 
 export const pageQuery = graphql`
-  query SingleSpecialNoticeQuery($uid: String!) {
+# Write your query or mutation here
+query SingleSpecialNoticeQuery($uid: String!) {
     prismicDatosComunes {
       data {
         metadescription {
@@ -233,6 +234,14 @@ export const pageQuery = graphql`
                     custom_publishdate
                   }
                 }
+              }
+            }
+          }
+          ... on PrismicNoticiasEspecialesBodyInteractive {
+            slice_type
+            primary {
+              iframe_interactivo {
+                html
               }
             }
           }

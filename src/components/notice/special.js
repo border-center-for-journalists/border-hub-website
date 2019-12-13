@@ -10,6 +10,7 @@ import AlliancesNoticeContentComponent from "./alliances"
 import ChartComponent from "./chart"
 import NormalRelatedComponent from "./related.js"
 import MultinotesComponent from "./multinotes.js"
+import InteractiveIframe from './InteractiveIframe';
 import Prismic from "prismic-javascript"
 
 class SpecialNoticeComponent extends Component {
@@ -51,6 +52,9 @@ class SpecialNoticeComponent extends Component {
         return <ChartComponent key={index} notice={data} type="pie" />
       case "multi-nota":
         return <MultinotesComponent key={index} notice={data} />
+      case "interactive":
+        // return <MultinotesComponent key={index} notice={data} />
+        return <InteractiveIframe key={index} notice={data} />
       default:
         return <p> Esto no debería de pasar (: </p>
     }
@@ -62,7 +66,7 @@ class SpecialNoticeComponent extends Component {
     return (
       <NoticeSection>
         <HeaderNoticeComponent
-        noticetype='special'
+          noticetype='special'
           align="center"
           notice={this.props.notice}
           url={this.props.url}
