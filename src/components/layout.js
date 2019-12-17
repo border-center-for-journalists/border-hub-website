@@ -50,7 +50,13 @@ function Layout({ children, minify }) {
         <HeaderComponent minify={minify} />
         <SidebarComponent minify={minify} data={prismicDatosComunes.data} />
         <Content minify={minify}>{children}</Content>
-        <FooterComponent data={prismicDatosComunes.data}/>
+        <FooterComponent data={prismicDatosComunes.data} />
+        <script>
+          {`window.prismic = {
+          endpoint: 'https://borderhub.cdn.prismic.io/api/v2'
+        };`}
+        </script>
+        <script type="text/javascript" src="https://static.cdn.prismic.io/prismic.min.js?new=true"></script>
       </Wrapper>
     </ThemeProvider>
   )
