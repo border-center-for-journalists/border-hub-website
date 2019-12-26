@@ -1,7 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import Prismic from "prismic-javascript"
+import PrismicDOM from 'prismic-dom'
 
-const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => {
+//containers
+import SpecialNoticeContainer from '../containers/previewspecialnote'
+import NormalNoticeContainer from '../containers/previewnormalnote'
+
+const Elements = PrismicDOM.RichText.Elements
+
+const htmlSerializer = (
+  type,
+  element,
+  content,
+  children
+) => {
+  if (type === Elements.image) {
+    return `OBJIMG${element.url}${element.alt ? `|${element.alt}` : ''}OBJIMG`;
+  }
+  if (type === Elements.preformatted) {
+    //console.log("element", element)
+    return `${element.text}`
+  }
+  return null
+}
+const linkResolver = function (doc) {
+  if (doc.type === 'page') return "/" + doc.uid;
+  if (doc.type === 'noticias_especiales') return "/noticias-especiales/" + doc.uid;
+  if (doc.type === 'noticias') return "/noticias/" + doc.uid;
+  return "/" + doc.uid;
+
+};
+
+const Preview = ({ data, data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => {
   const [pageType, setPageType] = useState('');
   const [post, setPost] = useState('');
   const [documentId, setDocumentId] = useState('');
@@ -12,6 +42,7 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
     const strParams = qryStrParams.map(item => item.split('='));
     const [paramName, docId] = strParams.find(item => item[0] === 'documentId')
     const [paramToken, token] = strParams.find(item => item[0] === 'token')
+
     if (docId !== documentId) {
       Prismic.getApi(API_URL, { accessToken: API_KEY })
         .then(api =>
@@ -26,6 +57,8 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
             setPageType('page-not-found');
           } else {
             const rawData = { ...response.results[0] };
+            setDocumentId(rawData.id)
+            //console.log('RAW', rawData)
             if (rawData.type === 'noticias_especiales') {
               setPageType('noticias_especiales');
               const {
@@ -34,6 +67,7 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                 last_publication_date,
                 type,
                 data: {
+                  custom_publishdate,
                   title: [title = { text: '' }],
                   metadescription: [metadescription = { text: '' }],
                   metakeywords: [metakeywords = { text: '' }],
@@ -58,13 +92,13 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                   twitter: { text: '' }
                 }]
                 : rawAuthors.map(({
-                  user_picture = { url: '' },
-                  name = { text: '' },
-                  author_rol = { text: '' },
-                  email = { text: '' },
-                  facebook = { text: '' },
-                  instagram = { text: '' },
-                  twitter = { text: '' }
+                  user_picture: [user_picture = { url: '' }],
+                  name: [name = { text: '' }],
+                  author_rol: [author_rol = { text: '' }],
+                  email: [email = { text: '' }],
+                  facebook: [facebook = { text: '' }],
+                  instagram: [instagram = { text: '' }],
+                  twitter: [twitter = { text: '' }]
                 }) => ({
                   user_picture,
                   name,
@@ -84,7 +118,7 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                 : rawAlliances.map(({
                   alliance_image = { url: '', alt: '' },
                   alliance_url = { url: '' },
-                  alliance_name = { text: '' }
+                  alliance_name: [alliance_name = { text: '' }]
                 }) => ({
                   alliance_image,
                   alliance_url,
@@ -97,10 +131,27 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                     primary: {
                       chart_title: [chart_title = { text: '' }],
                       axis_x: [axis_x = { text: '' }],
-                      eje_y: [eje_y = { text: '' }]
-                    }
+                      eje_y: [eje_y = { text: '' }],
+                    },
+                    items: itemsRaw
                   } = item;
-
+                  const bodyItems = itemsRaw.length === 0 ? []
+                    : itemsRaw.map((item) => {
+                      //console.log('SECTIOM!!!!!!!!!!!', item);
+                      if (!item.section) return { section: { text: '' }, values: [] }
+                      const { section: [section = { text: '' }], values = [] } = item
+                      return {
+                        section,
+                        values: {
+                          text: values.reduce((result, i) => {
+                            return `${result} ${i.text}`
+                          }, '')
+                        }
+                      }
+                    })
+                  const primaryValues = !item.primary.values || item.primary.values.length === 0 ? ''
+                    : item.primary.values.reduce((result, i) => (`${result} ${i.text}`), '')
+                  //console.log('BODY ITEMS', primaryValues)
                   return {
                     ...item,
                     slice_type,
@@ -108,22 +159,45 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                       ...item.primary,
                       chart_title,
                       axis_x,
-                      eje_y
+                      eje_y,
+                      values: { text: primaryValues }
+                    },
+                    items: bodyItems
+                  }
+                } else {
+                  const {
+                    primary: {
+                      content = []
+                    },
+                    items
+                  } = item;
+                  const bodyItems = items.length === 0 ? []
+                    : items.map(({ itemContent = [] }) => ({
+                      content: { html: PrismicDOM.RichText.asHtml(itemContent, linkResolver, htmlSerializer) }
+                    }))
+
+                  return {
+                    ...item,
+                    slice_type,
+                    primary: {
+                      ...item.primary,
+                      content: { html: PrismicDOM.RichText.asHtml(content, linkResolver, htmlSerializer) },
                     }
                   }
                 }
 
-                return { ...item, slice_type };
+                //return { ...item, slice_type };
 
               });
 
-
+              //console.log('POST BODY', body)
               setPost({
                 uid,
                 prismicId,
                 last_publication_date,
                 type,
                 data: {
+                  custom_publishdate,
                   title,
                   metadescription,
                   metakeywords,
@@ -141,7 +215,10 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                 last_publication_date,
                 type,
                 data: {
+                  custom_publishdate,
                   title: [title = { text: '' }],
+                  alliance_name: [alliance_name = { text: '' }],
+                  alliance_link,
                   metadescription: [metadescription = { text: '' }],
                   metakeywords: [metakeywords = { text: '' }],
                   banner = {
@@ -149,7 +226,6 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                     alt: ''
                   },
                   author: rawAuthors,
-                  alliances: rawAlliances,
                   content
                 }
               } = rawData
@@ -181,22 +257,22 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                   instagram,
                   twitter
                 }));
-
-              const alliances = rawAlliances.length === 0
-                ? [{
-                  alliance_image: { url: '', alt: '' },
-                  alliance_url: { url: '' },
-                  alliance_name: { text: '' }
-                }]
-                : rawAlliances.map(({
-                  alliance_image = { url: '', alt: '' },
-                  alliance_url = { url: '' },
-                  alliance_name = { text: '' }
-                }) => ({
-                  alliance_image,
-                  alliance_url,
-                  alliance_name
-                }));
+              // console.log('RA al', rawAlliances)
+              // const alliances = rawAlliances.length === 0
+              //   ? [{
+              //     alliance_image: { url: '', alt: '' },
+              //     alliance_url: { url: '' },
+              //     alliance_name: { text: '' }
+              //   }]
+              //   : rawAlliances.map(({
+              //     alliance_image = { url: '', alt: '' },
+              //     alliance_url = { url: '' },
+              //     alliance_name = { text: '' }
+              //   }) => ({
+              //     alliance_image,
+              //     alliance_url,
+              //     alliance_name
+              //   }));
 
 
               setPost({
@@ -205,13 +281,15 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
                 last_publication_date,
                 type,
                 data: {
+                  custom_publishdate,
                   title,
                   metadescription,
                   metakeywords,
                   banner,
                   author,
-                  alliances,
-                  content
+                  alliance_link,
+                  alliance_name,
+                  content: { html: PrismicDOM.RichText.asHtml(content, linkResolver, htmlSerializer) }
                 }
               });
             } else {
@@ -221,16 +299,35 @@ const Preview = ({ data: { site: { siteMetadata: { API_KEY, API_URL } } } }) => 
         })
     }
   })
-
+  //console.log('POST!!!!!!!!!!', post)
   return (
-    <div>
-      <h1>Chido liro?</h1>
-    </div>
+    <React.Fragment>
+      {pageType === 'noticias_especiales' && post ?
+        <SpecialNoticeContainer
+          data={{ prismicNoticiasEspeciales: post, prismicDatosComunes: data.prismicDatosComunes, site: data.site }}
+        />
+        : ''}
+      {pageType === 'noticias' && post ?
+        <NormalNoticeContainer
+          data={{ prismicNoticias: post, prismicDatosComunes: data.prismicDatosComunes, site: data.site }}
+        />
+        : ''}
+    </React.Fragment>
   );
 }
 
 export const pageQuery = graphql`
   query previewQuery {
+    prismicDatosComunes {
+      data {
+        metadescription {
+          text
+        }
+        metakeywords {
+          text
+        }
+      }
+    }
     site {
       siteMetadata {
         API_KEY

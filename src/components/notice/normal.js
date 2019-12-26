@@ -27,7 +27,7 @@ class NormalNoticeComponent extends Component {
         ])
       )
       .then(response => {
-        console.log("RELATED", response)
+        //console.log("RELATED", response)
         this.setState({ related: response.results })
       })
   }
@@ -35,7 +35,7 @@ class NormalNoticeComponent extends Component {
     return (
       <NoticeSection color="black">
         <HeaderNoticeComponent
-        noticetype='normal'
+          noticetype='normal'
           align="left"
           notice={this.props.notice}
           url={this.props.url}

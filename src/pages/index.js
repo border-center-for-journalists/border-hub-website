@@ -23,7 +23,7 @@ const temp = data => {
 
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
-  console.log("BANNER ???", common.banner.document)
+  //console.log("BANNER ???", common.banner.document)
   return (
     <Layout>
       <SEO title="Home" description={description} keywords={keywords} />
