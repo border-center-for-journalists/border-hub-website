@@ -5,15 +5,16 @@ import SEO from "../components/seo"
 import SpecialNoticeComponent from "../components/notice/special"
 
 const SpecialNoticeContainer = ({ location, data }) => {
-  let getDescription = data => {
-    if (data.metadescription.text) {
-      return data.metadescription.text
+  let getDescription = n => {
+    if (n.metadescription.text) {
+      return n.metadescription.text
     } else {
       return false
     }
   }
   const notice = data.prismicNoticiasEspeciales
   const common = data.prismicDatosComunes.data
+  //console.log('NOTICE', notice)
   const description =
     getDescription(notice.data) || common.metadescription.text || ""
   const keywords =

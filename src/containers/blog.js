@@ -79,7 +79,7 @@ class BlogContainer extends Component {
             fetchEnd: true,
           }
         }
-        console.log("GET MORE", newData)
+        //console.log("GET MORE", newData)
         this.setState(newState)
       })
   }

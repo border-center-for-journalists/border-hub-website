@@ -21,7 +21,7 @@ class MainNewsComponent extends Component {
   getDate = date => moment(date).format("MMMM DD")
   getComponent = (data, i) => {
     const noticeLen = Object.keys(this.props.notice).length
-    const urlSectionType =  (data.type == 'noticias_especiales')? SPECIAL_NEWS_URL:NEWS_URL
+    const urlSectionType = (data.type === 'noticias_especiales') ? SPECIAL_NEWS_URL : NEWS_URL
     if (noticeLen === i + 1) {
       return (
         <React.Fragment>

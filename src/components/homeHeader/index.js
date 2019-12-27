@@ -24,36 +24,36 @@ class HomeHeaderComponent extends Component {
   }
   render() {
     const notice = this.props.bannerNotice[0]
-    const urlSectionType =  (notice.type == 'noticias_especiales')? SPECIAL_NEWS_URL:NEWS_URL
+    const urlSectionType = (notice.type === 'noticias_especiales') ? SPECIAL_NEWS_URL : NEWS_URL
     const rows =
       this.props.bannerNotice.length === 0 ? (
         <Rows />
       ) : (
-        <Rows>
-          <Row shrink shrinkXl>
-            <AuthorContainer main={true} show={true} color={true}>
-              <i>
-                Por <b> {this.getAuthor(notice)}</b>
-              </i>
-              <br /> {this.getDate(notice)}
-            </AuthorContainer>
-          </Row>
-          <Row shrink shrinkXl>
-            <TitleContainer fullHeight={true}>
-              <h1>
-                <a href={`/${urlSectionType}/${notice.uid}`}>{notice.data.title.text}</a>
-              </h1>
-              <AuthorContainer show={false} color={true}>
+          <Rows>
+            <Row shrink shrinkXl>
+              <AuthorContainer main={true} show={true} color={true}>
                 <i>
                   Por <b> {this.getAuthor(notice)}</b>
                 </i>
                 <br /> {this.getDate(notice)}
               </AuthorContainer>
-              <Paragraph>{notice.data.excerpt.text}</Paragraph>
-            </TitleContainer>
-          </Row>
-        </Rows>
-      )
+            </Row>
+            <Row shrink shrinkXl>
+              <TitleContainer fullHeight={true}>
+                <h1>
+                  <a href={`/${urlSectionType}/${notice.uid}`}>{notice.data.title.text}</a>
+                </h1>
+                <AuthorContainer show={false} color={true}>
+                  <i>
+                    Por <b> {this.getAuthor(notice)}</b>
+                  </i>
+                  <br /> {this.getDate(notice)}
+                </AuthorContainer>
+                <Paragraph>{notice.data.excerpt.text}</Paragraph>
+              </TitleContainer>
+            </Row>
+          </Rows>
+        )
     const banner = notice.data.banner.url ? notice.data.banner.url : bodyImage
     return (
       <Banner>

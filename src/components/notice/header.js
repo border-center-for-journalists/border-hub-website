@@ -30,22 +30,22 @@ const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
     }
   }
   const getAlliance = () => {
-    if( noticetype === 'normal'  ){
+    if (noticetype === 'normal') {
       return notice.data.alliance_name && notice.data.alliance_name.text
-        ? {name: notice.data.alliance_name.text, separation: "|"}
-        : {name: "", separation: ""}
-    }else{
-      const {alliances} = notice.data
-      if( alliances.length > 0 && alliances[0].alliance_name && alliances[0].alliance_name.text )
-        return {name: alliances[0].alliance_name.text, separation: "|"}
-      return {name: "", separation: ""}
+        ? { name: notice.data.alliance_name.text, separation: "|" }
+        : { name: "", separation: "" }
+    } else {
+      const { alliances } = notice.data
+      if (alliances.length > 0 && alliances[0].alliance_name && alliances[0].alliance_name.text)
+        return { name: alliances[0].alliance_name.text, separation: "|" }
+      return { name: "", separation: "" }
     }
   }
   const date = notice.data.custom_publishdate
     ? notice.data.custom_publishdate
     : notice.last_publication_date
   const allianceHeader = getAlliance()
-  console.log('allianceHeader',notice,allianceHeader)
+  //console.log('allianceHeader',notice,allianceHeader)
   return (
     <React.Fragment>
       <Container size="medium" xlStaticSize>
@@ -80,8 +80,8 @@ const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
           <img alt={banner.alt} src={banner.url} />
         </ImageWrapper>
       ) : (
-        ""
-      )}
+          ""
+        )}
     </React.Fragment>
   )
 }

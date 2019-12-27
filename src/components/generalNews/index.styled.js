@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { TitleContainer, Section, Col } from "../../theme/index.styled"
+import { TitleContainer, Section } from "../../theme/index.styled"
 
 const GeneralNewsSection = styled(Section)`
   background-color: white;
