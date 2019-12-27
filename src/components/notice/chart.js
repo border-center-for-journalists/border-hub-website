@@ -12,7 +12,6 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Sector,
   Cell,
 } from "recharts"
 import { Container } from "../../theme/index.styled"
@@ -118,7 +117,7 @@ class ChartComponent extends Component {
   pieChart = () => {
     const colors = ["#9cee91", "#e96c73", "#e1eaf6", "#617184", "685b54"]
     const { data } = this.state
-    console.log("PIE", data)
+    //console.log("PIE", data)
     //label={renderCustomizedLabel}
     return (
       <ResponsiveContainer width="100%" height={350}>

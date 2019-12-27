@@ -27,8 +27,8 @@ class SubNewComponent extends Component {
       custom_publishdate,
     } = this.props.notice.data
     const limit = 50
-    const urlSectionType =  (this.props.notice.type == 'noticias_especiales')? SPECIAL_NEWS_URL:NEWS_URL
-    console.log('NOTICE',this.props.notice)
+    const urlSectionType = (this.props.notice.type == 'noticias_especiales') ? SPECIAL_NEWS_URL : NEWS_URL
+    //console.log('NOTICE',this.props.notice)
 
     return (
       <NewsContainer>
@@ -41,7 +41,7 @@ class SubNewComponent extends Component {
               {excerpt.text && excerpt.text.length > limit
                 ? `${excerpt.text.slice(0, limit)} ...`
                 : excerpt.text}
-            </Paragraph> 
+            </Paragraph>
           </NewsText>
           <DateText>
             {this.getTime(custom_publishdate)} <br />{" "}

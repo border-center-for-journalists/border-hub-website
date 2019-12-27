@@ -3,7 +3,6 @@ import {
   NoticeSectionTitle,
   Author,
   AuthorTitle,
-  AuthorRol,
   AuthorProfile,
   Divider,
 } from "./index.styled"
@@ -17,52 +16,52 @@ const AuthorComponent = ({ color, align, author }) => {
           <img alt={author.name.text} src={author.user_picture.url} />
         </AuthorProfile>
       ) : (
-        ""
-      )}
-        <Row>
-        { author.name && author.name.text ? (
-          <AuthorTitle align={align}>{author.name.text}</AuthorTitle>
-        ) : (
           ""
         )}
-          <ul>
-            {author.email && author.email.text ? (
-              <li>
-                <i className="icon-email" /> {author.email.text}
-              </li>
-            ) : (
+      <Row>
+        {author.name && author.name.text ? (
+          <AuthorTitle align={align}>{author.name.text}</AuthorTitle>
+        ) : (
+            ""
+          )}
+        <ul>
+          {author.email && author.email.text ? (
+            <li>
+              <i className="icon-email" /> {author.email.text}
+            </li>
+          ) : (
               ""
             )}
-            {author.facebook && author.facebook.text ? (
-              <li>
-                <i className="icon-facebook" /> {author.facebook.text}
-              </li>
-            ) : (
+          {author.facebook && author.facebook.text ? (
+            <li>
+              <i className="icon-facebook" /> {author.facebook.text}
+            </li>
+          ) : (
               ""
             )}
-            {author.twitter && author.twitter.text ? (
-              <li>
-                <i className="icon-twitter" /> {author.twitter.text}
-              </li>
-            ) : (
+          {author.twitter && author.twitter.text ? (
+            <li>
+              <i className="icon-twitter" /> {author.twitter.text}
+            </li>
+          ) : (
               ""
             )}
-            {author.instagram && author.instagram.text? (
-              <li>
-                <i className="icon-insta" /> {author.instagram.text}
-              </li>
-            ) : (
+          {author.instagram && author.instagram.text ? (
+            <li>
+              <i className="icon-insta" /> {author.instagram.text}
+            </li>
+          ) : (
               ""
             )}
-          </ul>
-        </Row>
+        </ul>
+      </Row>
     </Author>
   )
 }
 
 const AuthorsNoticeComponent = ({ color, authors, align }) => {
   let getTitle = special => {
-    return special == "left" ? "Contacta al Autor" : "Créditos"
+    return special === "left" ? "Contacta al Autor" : "Créditos"
   }
   return (
     <Container size="medium" xlStaticSize>

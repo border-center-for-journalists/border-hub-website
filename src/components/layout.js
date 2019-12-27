@@ -18,7 +18,7 @@ import "./layout.css"
 import "../theme/icons.css"
 
 function Layout({ children, minify }) {
-  console.log("minify", minify || false)
+  //console.log("minify", minify || false)
   const { prismicDatosComunes } = useStaticQuery(graphql`
     query SidebarQuery {
       prismicDatosComunes {
@@ -50,7 +50,7 @@ function Layout({ children, minify }) {
         <HeaderComponent minify={minify} />
         <SidebarComponent minify={minify} data={prismicDatosComunes.data} />
         <Content minify={minify}>{children}</Content>
-        <FooterComponent data={prismicDatosComunes.data}/>
+        <FooterComponent data={prismicDatosComunes.data} />
       </Wrapper>
     </ThemeProvider>
   )

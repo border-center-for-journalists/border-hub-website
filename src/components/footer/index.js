@@ -6,7 +6,7 @@ import bcjb from "../../theme/images/logo_footer.jpg"
 
 class FooterComponent extends Component {
   render() {
-    const { facebook, twitter, youtube, menu } = this.props.data
+    const { facebook, twitter, youtube } = this.props.data
     return (
       <Footer>
         <BlackContainer>
@@ -18,7 +18,7 @@ class FooterComponent extends Component {
           </a>
         </BlackContainer>
         <YellowContainer>
-          <img src={bcjb}/>
+          <img alt='' src={bcjb} />
           <Social
             target="_blank"
             bigger
