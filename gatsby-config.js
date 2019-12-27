@@ -17,6 +17,7 @@ module.exports = {
     API_REF: process.env.API_REF,
     API_URL: process.env.API_URL,
     SITE_URL: process.env.SITE_URL || "",
+    siteUrl: process.env.SITE_URL || "",
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -70,6 +71,22 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        policy: [
+          { userAgent: `*`, allow: `/`, },
+          { userAgent: `*`, disallow: `/preview`, },
+        ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `sitemap.xml`,
+        exclude: ['/preview'],
+      }
+    }
     // {
     //   resolve: `gatsby-plugin-create-client-paths`,
     //   options: { prefixes: [`/preview/*`] },

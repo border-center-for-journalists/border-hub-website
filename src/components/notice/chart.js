@@ -12,7 +12,6 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Sector,
   Cell,
 } from "recharts"
 import { Container } from "../../theme/index.styled"

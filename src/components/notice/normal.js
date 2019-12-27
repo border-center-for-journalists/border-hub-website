@@ -6,7 +6,7 @@ import TextNoticeContentComponent from "./textContent"
 import NormalSubscribeComponent from "./suscribe.js"
 import NormalDonateComponent from "./donate.js"
 import NormalRelatedComponent from "./related.js"
-import myData from "./prueba.json"
+// import myData from "./prueba.json"
 import Prismic from "prismic-javascript"
 
 class NormalNoticeComponent extends Component {
