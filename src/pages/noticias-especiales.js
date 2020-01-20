@@ -18,7 +18,6 @@ const Noticias = data => {
       <BlogContainer
         darkMode={true}
         site={data.data.site.siteMetadata}
-        data={data.data.allPrismicNoticiasEspeciales.nodes}
       />
     </Layout>
   )
@@ -39,34 +38,6 @@ export const pageQuery = graphql`
         }
         metakeywords {
           text
-        }
-      }
-    }
-    allPrismicNoticiasEspeciales(
-      limit: 5
-      sort: { fields: [data___custom_publishdate], order: [DESC] }
-    ) {
-      nodes {
-        uid
-        data {
-          custom_publishdate
-          banner {
-            url
-            thumbnail {
-              url
-            }
-          }
-          title {
-            text
-          }
-          excerpt {
-            text
-          }
-          author {
-            name {
-              text
-            }
-          }
         }
       }
     }

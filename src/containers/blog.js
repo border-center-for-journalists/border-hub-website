@@ -7,7 +7,8 @@ class BlogContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: this.props.data,
+      // data: this.props.data,
+      data: [],
       isFetching: false,
       page: 1,
       fetchEnd: false,
@@ -15,6 +16,7 @@ class BlogContainer extends Component {
     this.noticeType = ""
   }
   componentDidMount() {
+    this.FetchMoreListItems()
     this.ScrollEvent()
     this.inScroll = null
     this.noticeType =
@@ -42,6 +44,7 @@ class BlogContainer extends Component {
         api.query(Prismic.Predicates.at("document.type", this.noticeType), {
           pageSize: 5,
           page: this.state.page,
+          orderings: `[my.${this.noticeType}.custom_publishdate desc]`
         })
       )
       .then(response => {
