@@ -15,22 +15,24 @@ export const Overlay = styled.div`
 
 export const ModalStyled = styled.div`
   position: relative;
-  width: fit-content;
-  height: fit-content;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0;
-    height: auto;
-    width: auto;
-  }
+  width: 95vw;
+  height: 95vh;
 `;
+
+export const ModalImage = styled.div`
+  background-color: transparent;
+  background-image: url(${({ imageUrl }) => imageUrl});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+`;
+
+/**
+ * background: transparent url(${({ imageUrl }) => imageUrl}) no-repeat center;
+ */
 
 export const CloseButton = styled.button`
   position: absolute;

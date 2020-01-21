@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Modal from '../modal';
+import ModalImage from '../modal/image';
 import {
   ImageWrapper,
   ImgBackground
@@ -29,7 +30,7 @@ class ImageModal extends Component {
           <p>{(this.props.alt != "null ") ? this.props.alt : ""}</p>
         </ImageWrapper>
         <Modal visible={this.state.open} onClose={this.onCloseModal}>
-          <img src={this.props.src}></img>
+          <ModalImage imageUrl={this.props.src} />
         </Modal>
       </Fragment>);
   }
