@@ -25,7 +25,9 @@ const SpecialSection = styled(Section)`
   }
 `
 
-const CustomContainer = styled(Container)``
+const CustomContainer = styled(Container)`
+  min-height: 400px;
+`;
 
 const CustomTitle = styled(YellowTitle)`
   width: auto;
@@ -33,21 +35,40 @@ const CustomTitle = styled(YellowTitle)`
   a {
     margin-left: 40px;
   }
+  margin-left: 110px;
 `
 
 const CustomSecondTitle = styled(TitleContainer)`
   margin: 0;
-  padding: 0;
+  padding: 0px 110px;
 `
 
+const RightArrowContainer = styled.div`
+  position: absolute;
+  margin: 0;
+  right: 0px;
+  top: 0px;
+  z-index: 999;
+`;
+
+const LeftArrowContainer = styled.div`
+  position: absolute;
+  margin: 0;
+  left: 0px;
+  top: 0px;
+  transform: rotate(180deg);
+  z-index: 999;
+`;
+
 const BigArrow = styled.i`
-  font-size: 165px;
+  font-size: 150px;
   color: #fff;
   margin-left: 40px;
-  width: 130px;
+  width: 115px;
   display: block;
-  ${props => props.theme.mediumBreakPoint} {
-    display: none;
+
+  :hover {
+    cursor: pointer;
   }
 `
 
@@ -62,4 +83,6 @@ export {
   CustomSecondTitle,
   BigArrow,
   InteractiveContainer,
+  RightArrowContainer,
+  LeftArrowContainer
 }

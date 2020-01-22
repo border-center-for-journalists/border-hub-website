@@ -5,11 +5,10 @@ import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
 
 const temp = data => {
+
   const common = data.data.prismicDatosComunes.data
 
-  const specialNotice = {
-    nodes: common.special_section[0].nodes.document
-  }
+  const specialNotices = data.data.specialNotices;
 
   const maxNumberOfPrincipalNews = 3
   const principalNotices = {
@@ -31,7 +30,7 @@ const temp = data => {
         bannerNotice={common.banner.document}
         normalNotices={data.data.normalNotices}
         recentNotices={data.data.recentNotices}
-        noticeS={specialNotice}
+        specialNotices={specialNotices}
         noticeP={principalNotices}
       />
     </Layout>
@@ -194,6 +193,38 @@ export const pageQuery = graphql`
         }
       }
     }
+
+    specialNotices: allPrismicNoticiasEspeciales(
+      limit: 5
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    ) {
+      nodes {
+        uid
+        type
+        data {
+          title {
+            text
+          }
+          banner {
+            url
+            alt
+            thumbnail {
+              url
+            }
+          }
+          excerpt {
+            text
+          }
+          author {
+            name {
+              text
+            }
+          }
+          custom_publishdate
+        }
+      }
+    }
+
     recentNotices: allPrismicNoticias(
       limit: 8
       sort: { fields: [data___custom_publishdate], order: [DESC] }
@@ -226,6 +257,7 @@ export const pageQuery = graphql`
         }
       }
     }
+
     allPrismicNoticias(
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
@@ -254,7 +286,7 @@ export const pageQuery = graphql`
       }
     }
     allPrismicNoticiasEspeciales(
-      limit: 1
+      limit: 5
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
