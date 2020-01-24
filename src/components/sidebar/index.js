@@ -10,7 +10,7 @@ class SidebarComponent extends Component {
       menuOpen: false,
     }
   }
-  componentDidMount() {}
+  componentDidMount() { }
   toggleMenu = () => {
     this.setState({
       menuOpen: !this.state.menuOpen,
@@ -25,6 +25,7 @@ class SidebarComponent extends Component {
             this.toggleMenu()
           }}
           className={this.state.menuOpen ? "open" : ""}
+          name='Sidebar Menu'
         >
           <i />
         </Hamburguer>
@@ -33,9 +34,10 @@ class SidebarComponent extends Component {
           bigger
           href={facebook.url}
           className="icon-facebook"
+          rel='noopener'
         />
-        <Social target="_blank" href={twitter.url} className="icon-twitter" />
-        <Social target="_blank" href={youtube.url} className="icon-youtube" />
+        <Social target="_blank" href={twitter.url} className="icon-twitter" rel='noopener' />
+        <Social target="_blank" href={youtube.url} className="icon-youtube" rel='noopener' />
         <Overlay
           onClick={() => {
             this.toggleMenu()
@@ -68,16 +70,19 @@ class SidebarComponent extends Component {
               bigger
               href={facebook.url}
               className="icon-facebook"
+              rel='noopener'
             />
             <Social
               target="_blank"
               href={twitter.url}
               className="icon-twitter"
+              rel='noopener'
             />
             <Social
               target="_blank"
               href={youtube.url}
               className="icon-youtube"
+              rel='noopener'
             />
           </Rows>
         </Menu>

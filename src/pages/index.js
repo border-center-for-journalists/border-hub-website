@@ -57,6 +57,11 @@ export const pageQuery = graphql`
               }
               banner {
                 url
+                alt
+                thumbnail {
+                  alt
+                  url
+                }
               }
               excerpt {
                 text
@@ -83,8 +88,10 @@ export const pageQuery = graphql`
                 }
                 banner {
                   url
+                  alt
                   thumbnail {
                     url
+                    alt
                   }
                 }
                 custom_publishdate
@@ -111,8 +118,10 @@ export const pageQuery = graphql`
                 }
                 banner {
                   url
+                  alt
                   thumbnail {
                     url
+                    alt
                   }
                 }
                 content {
@@ -130,6 +139,7 @@ export const pageQuery = graphql`
         }
       }
     }
+  
     bannerNotice: allPrismicNoticias(
       limit: 1
       filter: { data: { type: { eq: "banner" } } }
@@ -142,6 +152,11 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
+            thumbnail {
+              alt
+              url
+            }
           }
           title {
             text
@@ -160,6 +175,7 @@ export const pageQuery = graphql`
         }
       }
     }
+  
     normalNotices: allPrismicNoticias(
       limit: 3
       filter: { data: { type: { eq: "normal" } } }
@@ -172,8 +188,10 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
             thumbnail {
               url
+              alt
             }
           }
           title {
@@ -210,6 +228,7 @@ export const pageQuery = graphql`
             alt
             thumbnail {
               url
+              alt
             }
           }
           excerpt {
@@ -236,8 +255,10 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
             thumbnail {
               url
+              alt
             }
           }
           title {
@@ -267,6 +288,11 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
+            thumbnail {
+              url
+              alt
+            }
           }
           title {
             text
@@ -300,6 +326,7 @@ export const pageQuery = graphql`
             alt
             thumbnail {
               url
+              alt
             }
           }
           excerpt {

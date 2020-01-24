@@ -32,7 +32,6 @@ class SpecialNews extends Component {
   }
 
   handleSlide = (oldSlide, newSlide) => {
-    console.log('Si llega! :p')
     this.setState({ currentSlide: newSlide });
   }
 
