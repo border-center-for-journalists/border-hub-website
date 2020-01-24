@@ -10,7 +10,7 @@ const NoticeSection = styled.section`
 `
 
 const NormalNoticeContainer = styled.div`
-  widht: 100%;
+  width: 100%;
   height: 100%;
   background-color: ${props => props.theme.White};
 `
@@ -301,15 +301,21 @@ const TextWrapper = styled.div`
     color: ${props => props.theme.Black};
     color: ${props => (props.color ? props.color : "white")};
   }
+
+  iframe {
+    margin-bottom: 20px;
+  }
+
   ${props => props.theme.smallBreakPoint} {
     padding: 15px 24px;
   }
+
 
   ${({ theme }) => theme.mediumBreakPoint} {
     iframe {
       max-width: 100%;
       max-height: 68vw !important;
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
   }
 `

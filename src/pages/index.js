@@ -5,11 +5,10 @@ import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
 
 const temp = data => {
+
   const common = data.data.prismicDatosComunes.data
 
-  const specialNotice = {
-    nodes: common.special_section[0].nodes.document
-  }
+  const specialNotices = data.data.specialNotices;
 
   const maxNumberOfPrincipalNews = 3
   const principalNotices = {
@@ -31,7 +30,7 @@ const temp = data => {
         bannerNotice={common.banner.document}
         normalNotices={data.data.normalNotices}
         recentNotices={data.data.recentNotices}
-        noticeS={specialNotice}
+        specialNotices={specialNotices}
         noticeP={principalNotices}
       />
     </Layout>
@@ -58,6 +57,11 @@ export const pageQuery = graphql`
               }
               banner {
                 url
+                alt
+                thumbnail {
+                  alt
+                  url
+                }
               }
               excerpt {
                 text
@@ -84,8 +88,10 @@ export const pageQuery = graphql`
                 }
                 banner {
                   url
+                  alt
                   thumbnail {
                     url
+                    alt
                   }
                 }
                 custom_publishdate
@@ -112,8 +118,10 @@ export const pageQuery = graphql`
                 }
                 banner {
                   url
+                  alt
                   thumbnail {
                     url
+                    alt
                   }
                 }
                 content {
@@ -131,6 +139,7 @@ export const pageQuery = graphql`
         }
       }
     }
+  
     bannerNotice: allPrismicNoticias(
       limit: 1
       filter: { data: { type: { eq: "banner" } } }
@@ -143,6 +152,11 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
+            thumbnail {
+              alt
+              url
+            }
           }
           title {
             text
@@ -161,6 +175,7 @@ export const pageQuery = graphql`
         }
       }
     }
+  
     normalNotices: allPrismicNoticias(
       limit: 3
       filter: { data: { type: { eq: "normal" } } }
@@ -173,8 +188,10 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
             thumbnail {
               url
+              alt
             }
           }
           title {
@@ -194,6 +211,39 @@ export const pageQuery = graphql`
         }
       }
     }
+
+    specialNotices: allPrismicNoticiasEspeciales(
+      limit: 5
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    ) {
+      nodes {
+        uid
+        type
+        data {
+          title {
+            text
+          }
+          banner {
+            url
+            alt
+            thumbnail {
+              url
+              alt
+            }
+          }
+          excerpt {
+            text
+          }
+          author {
+            name {
+              text
+            }
+          }
+          custom_publishdate
+        }
+      }
+    }
+
     recentNotices: allPrismicNoticias(
       limit: 8
       sort: { fields: [data___custom_publishdate], order: [DESC] }
@@ -205,8 +255,10 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
             thumbnail {
               url
+              alt
             }
           }
           title {
@@ -226,6 +278,7 @@ export const pageQuery = graphql`
         }
       }
     }
+
     allPrismicNoticias(
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
@@ -235,6 +288,11 @@ export const pageQuery = graphql`
           type
           banner {
             url
+            alt
+            thumbnail {
+              url
+              alt
+            }
           }
           title {
             text
@@ -254,7 +312,7 @@ export const pageQuery = graphql`
       }
     }
     allPrismicNoticiasEspeciales(
-      limit: 1
+      limit: 5
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
@@ -268,6 +326,7 @@ export const pageQuery = graphql`
             alt
             thumbnail {
               url
+              alt
             }
           }
           excerpt {

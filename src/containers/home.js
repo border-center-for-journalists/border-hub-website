@@ -7,27 +7,27 @@ import SpecialNews from "../components/specials/index.js"
 
 class HomeContainer extends Component {
 
-  getNoticeUids(notices){
-    return notices.reduce((acc,notice)=>{
+  getNoticeUids(notices) {
+    return notices.reduce((acc, notice) => {
       acc.push(notice.uid);
       return acc;
-    },[])
+    }, [])
   }
 
-  removeDuplicated(priorityNotices, normalNotices){
+  removeDuplicated(priorityNotices, normalNotices) {
     let priorityUids = this.getNoticeUids(priorityNotices);
 
-    return normalNotices.reduce((acc,notice)=>{
-      if(!acc.includes(notice) && !priorityUids.includes(notice.uid)){
+    return normalNotices.reduce((acc, notice) => {
+      if (!acc.includes(notice) && !priorityUids.includes(notice.uid)) {
         acc.push(notice);
       }
       return acc;
-    },[])
+    }, [])
   }
 
   render() {
     const removeSpecialNotices = this.removeDuplicated(
-      this.props.noticeS.nodes,
+      this.props.specialNotices.nodes,
       this.props.recentNotices.nodes
     );
     const recentNoticesFiltered = {
@@ -46,7 +46,7 @@ class HomeContainer extends Component {
           bannerNotices={this.props.bannerNotice}
           principalNotices={this.props.normalNotices}
         />
-        <SpecialNews notice={this.props.noticeS} />
+        <SpecialNews notices={this.props.specialNotices} />
       </React.Fragment>
     )
   }
