@@ -25,8 +25,8 @@ class FooterComponent extends Component {
             href={facebook.url}
             className="icon-facebook"
           />
-          <Social target="_blank" href={twitter.url} className="icon-twitter" />
-          <Social target="_blank" href={youtube.url} className="icon-youtube" />
+          <Social target="_blank" href={twitter.url} className="icon-twitter" rel='noopener' />
+          <Social target="_blank" href={youtube.url} className="icon-youtube" rel='noopener' />
         </YellowContainer>
       </Footer>
     )

@@ -52,7 +52,7 @@ class SubNewComponent extends Component {
         <ImgCol>
           <ImageWrapper>
             <a href={`/${urlSectionType}/${this.props.notice.uid}`}>
-              <img src={banner.thumbnail.url} />
+              <img src={banner.thumbnail.url} alt={banner.thumbnail.url || banner.alt || ''} />
             </a>
           </ImageWrapper>
         </ImgCol>
