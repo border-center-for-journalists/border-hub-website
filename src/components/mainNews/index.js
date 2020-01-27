@@ -26,13 +26,13 @@ class MainNewsComponent extends Component {
       return (
         <React.Fragment>
           <ImageWrapper>
-            <a href={`/${urlSectionType}/${data.uid}`}>
+            <a href={`/${urlSectionType}/${data.uid}/`}>
               <img alt={data.data.title.text} src={data.data.banner.url} />
             </a>
           </ImageWrapper>
           <TextContainer>
             <h2>
-              <a href={`/${urlSectionType}/${data.uid}`}>{data.data.title.text}</a>
+              <a href={`/${urlSectionType}/${data.uid}/`}>{data.data.title.text}</a>
             </h2>
             <SubTitleParagraph>{data.data.excerpt.text}</SubTitleParagraph>
             <AuthorContainer show>
@@ -57,7 +57,7 @@ class MainNewsComponent extends Component {
     return (
       <NewsContainer>
         <YellowTitle>
-          <a href="/noticias">Ver todas</a> Notas Principales
+          <a href="/noticias/">Ver todas</a> Notas Principales
         </YellowTitle>
         <MainNewBig size="Common">{htmlContent}</MainNewBig>
       </NewsContainer>

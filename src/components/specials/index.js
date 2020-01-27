@@ -43,7 +43,7 @@ class SpecialNews extends Component {
       <SpecialSection bg={this.props.notices.nodes[currentSlide].data.banner.url}>
         <CustomContainer size="large">
           <CustomTitle>
-            <a href="/noticias-especiales">Ver todas</a> Especiales
+            <a href="/noticias-especiales/">Ver todas</a> Especiales
           </CustomTitle>
           <Slider
             adaptiveHeight
@@ -60,7 +60,7 @@ class SpecialNews extends Component {
               return (
                 <CustomSecondTitle fullHeight={false} key={item.uid}>
                   <h1>
-                    <a href={`/${urlSectionType}/${item.uid}`}>
+                    <a href={`/${urlSectionType}/${item.uid}/`}>
                       {item.data.title.text}
                     </a>
                   </h1>

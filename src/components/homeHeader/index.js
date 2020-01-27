@@ -41,7 +41,7 @@ class HomeHeaderComponent extends Component {
             <Row shrink shrinkXl>
               <TitleContainer fullHeight={true}>
                 <h1>
-                  <a href={`/${urlSectionType}/${notice.uid}`}>{notice.data.title.text}</a>
+                  <a href={`/${urlSectionType}/${notice.uid}/`}>{notice.data.title.text}</a>
                 </h1>
                 <AuthorContainer show={false} color={true}>
                   <i>

@@ -19,7 +19,7 @@ const MultinotesContentComponent = ({ notice }) => {
     return (
       <Row key={index} width="45%" widthXs="45%" widthXl="30%">
         <VerticalNotice>
-          <a className="image" href={`/${urlSectionType}/${notice.uid}`}>
+          <a className="image" href={`/${urlSectionType}/${notice.uid}/`}>
             <img
               alt={`${notice.data.title.text}`}
               src={notice.data.banner.thumbnail.url}
@@ -27,10 +27,10 @@ const MultinotesContentComponent = ({ notice }) => {
           </a>
           <div className="text-wrapper">
             <h3>
-              <a href={`/${urlSectionType}/${notice.uid}`}>{item.title_note.text}</a>
+              <a href={`/${urlSectionType}/${notice.uid}/`}>{item.title_note.text}</a>
             </h3>
             <h4>
-              <a href={`/${urlSectionType}/${notice.uid}`}>{notice.data.title.text}</a>
+              <a href={`/${urlSectionType}/${notice.uid}/`}>{notice.data.title.text}</a>
             </h4>
             <div className="excerpt">
               {notice.data.excerpt.text.slice(0, 80)}
