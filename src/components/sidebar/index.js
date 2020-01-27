@@ -59,7 +59,7 @@ class SidebarComponent extends Component {
           <ul>
             {menu.map((item, index) => (
               <li key={index}>
-                <a href={item.item_link.url}>{item.item_name.text}</a>
+                <a href={`${item.item_link.url}/`}>{item.item_name.text}</a>
               </li>
             ))}
           </ul>

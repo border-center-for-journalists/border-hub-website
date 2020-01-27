@@ -35,7 +35,7 @@ class SubNewComponent extends Component {
         <TextCol>
           <NewsText>
             <h3>
-              <a href={`/${urlSectionType}/${this.props.notice.uid}`}>{title.text}</a>
+              <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>{title.text}</a>
             </h3>
             <Paragraph>
               {excerpt.text && excerpt.text.length > limit
@@ -51,7 +51,7 @@ class SubNewComponent extends Component {
         </TextCol>
         <ImgCol>
           <ImageWrapper>
-            <a href={`/${urlSectionType}/${this.props.notice.uid}`}>
+            <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>
               <img src={banner.thumbnail.url} alt={banner.thumbnail.url || banner.alt || ''} />
             </a>
           </ImageWrapper>
