@@ -9,13 +9,13 @@ moment.locale("es")
 
 class SubNewComponent extends Component {
   render() {
-    const urlSectionType =  (this.props.darkMode)? SPECIAL_NEWS_URL:NEWS_URL
+    const urlSectionType = (this.props.darkMode) ? SPECIAL_NEWS_URL : NEWS_URL
     return (
       <MainNewSmall>
         <hr />
         <Col>
           <ImageWrapper>
-            <a href={`/${urlSectionType}/${this.props.notice.uid}`}>
+            <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>
               <img
                 alt="prueba"
                 src={this.props.notice.data.banner.thumbnail.url}
@@ -26,7 +26,7 @@ class SubNewComponent extends Component {
         <Col>
           <MainNewSmallText darkMode={this.props.darkMode}>
             <h3>
-              <a href={`/${urlSectionType}/${this.props.notice.uid}`}>
+              <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>
                 {this.props.notice.data.title.text}
               </a>
             </h3>
