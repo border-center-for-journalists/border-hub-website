@@ -636,3 +636,33 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+/* Custom css */
+iframe#iFrameVisTijuanaMap{
+    width: calc(100vw - 40px);
+    height: calc(50vw + 200px)
+}
+iframe#iFrameVisTijuanaTiempo{
+    width: calc(100vw - 40px);
+    height: calc(55vw + 200px)
+}
+@media (min-width: 575px) and (max-width: 768px) {
+    iframe#iFrameVisTijuanaMap{
+        width: calc(100vw - 40px);
+        height: calc(220vw);
+    }
+    iframe#iFrameVisTijuanaTiempo{
+        width: calc(100vw - 40px);
+        height: calc(200vw);
+    }
+}
+@media  (max-width: 575px) {
+    iframe#iFrameVisTijuanaTiempo{
+        width: calc(100vw - 40px);
+        height: calc(200vw);
+    }
+    iframe#iFrameVisTijuanaMap{
+        width: calc(100vw - 40px);
+        height: calc(340vw);
+    }
+}
