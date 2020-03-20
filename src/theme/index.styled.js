@@ -146,7 +146,7 @@ const ImageWrapper = styled.div`
   p {
     font-size: 14px;
     font-style: italic;
-    color: ${props => props.theme.Black};
+    color: ${({ theme, color }) => color === 'white' ? color : theme.Black};
     text-align: right;
   }
 `
