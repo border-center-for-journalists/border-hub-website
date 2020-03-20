@@ -23,7 +23,7 @@ class ImageModal extends Component {
   render() {
     return (
       <Fragment>
-        <ImageWrapper>
+        <ImageWrapper color={this.props.color}>
           <ImgBackground>
             <img onClick={this.onOpenModal} src={this.props.src} alt={this.props.alt}></img>
           </ImgBackground>

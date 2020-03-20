@@ -48,7 +48,7 @@ const TextNoticeContentComponent = ({ notice }) => {
                   dangerouslySetInnerHTML={{ __html: obj.data }}
                 />
               )
-            return <ImageModal alt={obj.alt} src={obj.img}></ImageModal>
+            return <ImageModal color={getColor()} alt={obj.alt} src={obj.img}></ImageModal>
           })
         }
       </Container>
