@@ -253,6 +253,7 @@ const ImageWrapper = styled.div`
     display: block;
     width: 100%;
   }
+  ${({color}) => color ==='white' ? `p{ color:white; }`: '' }
 `
 
 const TextWrapper = styled.div`
@@ -266,6 +267,7 @@ const TextWrapper = styled.div`
       font-size: 15px;
       font-style: italic;
       margin: 5px 0;
+      color: ${props => (props.color ? props.color : "white")};
     }
     img {
       display: block;
