@@ -292,6 +292,9 @@ const TextWrapper = styled.div`
     font-weight: bold;
     color: ${props => (props.color ? props.color : "white")};
   }
+  h6{
+    margin-top: -30px;
+  }
   ul {
     margin: 0 auto 42px;
   }

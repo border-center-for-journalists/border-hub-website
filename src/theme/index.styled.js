@@ -138,6 +138,7 @@ const Paragraph = styled.p`
 `
 
 const ImageWrapper = styled.div`
+  margin-bottom: 30px;
   img {
     width: 100%;
     margin-bottom: 15px;
