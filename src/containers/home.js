@@ -43,11 +43,11 @@ class HomeContainer extends Component {
         <MainNewsComponent notice={this.props.noticeP} />
         {
           this.props.categories.map(category => 
-            <CategoryBlockComponent
+            (category.active && <CategoryBlockComponent
               key={`category-block-${category.prismicId}`}
               category={category}
               site={this.props.site}
-            />
+            />)
           )
         }
         <SubscribeComponent />
