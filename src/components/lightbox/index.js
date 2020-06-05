@@ -27,7 +27,7 @@ class ImageModal extends Component {
           <ImgBackground>
             <img onClick={this.onOpenModal} src={this.props.src} alt={this.props.alt}></img>
           </ImgBackground>
-          <p>{(this.props.alt != "null ") ? this.props.alt : ""}</p>
+          {/*<p>{(this.props.alt != "null ") ? this.props.alt : ""}</p>*/}
         </ImageWrapper>
         <Modal visible={this.state.open} onClose={this.onCloseModal}>
           <ModalImage imageUrl={this.props.src} />

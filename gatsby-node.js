@@ -36,6 +36,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allPrismicCategorias {
+        edges{
+          node{
+            uid
+            prismicId
+          }
+        }
+      }
+
     }
   `)
 
@@ -59,6 +68,19 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/${NEWS_URL}/${edge.node.uid}/`,
       component: normalNote,
+      context: {
+        uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
+      },
+    })
+  })
+
+  const category = path.resolve("src/containers/category.js")
+
+  pages.data.allPrismicCategorias.edges.forEach(edge => {
+    createPage({
+      path: `/categoria/${edge.node.uid}/`,
+      component: category,
       context: {
         uid: edge.node.uid,
         prismicId: edge.node.prismicId,

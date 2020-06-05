@@ -28,16 +28,26 @@ const temp = data => {
       <SEO title="Home" description={description} keywords={keywords} />
       <HomeContainer
         bannerNotice={common.banner.document}
+        categories={common.categories}
         normalNotices={data.data.normalNotices}
         recentNotices={data.data.recentNotices}
         specialNotices={specialNotices}
-        noticeP={principalNotices}
+        noticeP={common.principal_notices_active ? principalNotices : { nodes: [] }}
+        site={data.data.site.siteMetadata}
       />
     </Layout>
   )
 }
 export const pageQuery = graphql`
   query HomeNoticeQuery {
+    site {
+      siteMetadata {
+        API_KEY
+        API_REF
+        API_URL
+      }
+    }
+
     prismicDatosComunes {
       data {
         metadescription {
@@ -46,6 +56,22 @@ export const pageQuery = graphql`
         metakeywords {
           text
         }
+
+        categories{
+          category {
+            id
+            uid
+            document{
+              data{
+                title{
+                  text
+                }
+              }
+            }
+          }
+          active
+        }
+
         banner {
           document {
             uid
@@ -104,6 +130,7 @@ export const pageQuery = graphql`
             }
           }
         }
+        principal_notices_active
         principal_notices {
           nodes {
             document {
@@ -134,42 +161,6 @@ export const pageQuery = graphql`
                   }
                 }
               }
-            }
-          }
-        }
-      }
-    }
-  
-    bannerNotice: allPrismicNoticias(
-      limit: 1
-      filter: { data: { type: { eq: "banner" } } }
-      sort: { fields: [data___custom_publishdate], order: [DESC] }
-    ) {
-      nodes {
-        uid
-        data {
-          custom_publishdate
-          type
-          banner {
-            url
-            alt
-            thumbnail {
-              alt
-              url
-            }
-          }
-          title {
-            text
-          }
-          content {
-            html
-          }
-          excerpt {
-            text
-          }
-          author {
-            name {
-              text
             }
           }
         }
@@ -279,94 +270,6 @@ export const pageQuery = graphql`
       }
     }
 
-    allPrismicNoticias(
-      sort: { fields: [data___custom_publishdate], order: [DESC] }
-    ) {
-      nodes {
-        data {
-          custom_publishdate
-          type
-          banner {
-            url
-            alt
-            thumbnail {
-              url
-              alt
-            }
-          }
-          title {
-            text
-          }
-          content {
-            html
-          }
-          excerpt {
-            text
-          }
-          author {
-            name {
-              text
-            }
-          }
-        }
-      }
-    }
-    allPrismicNoticiasEspeciales(
-      limit: 5
-      sort: { fields: [data___custom_publishdate], order: [DESC] }
-    ) {
-      nodes {
-        uid
-        data {
-          title {
-            text
-          }
-          banner {
-            url
-            alt
-            thumbnail {
-              url
-              alt
-            }
-          }
-          excerpt {
-            text
-          }
-          author {
-            user_picture {
-              url
-            }
-            name {
-              text
-            }
-            author_rol {
-              text
-            }
-            email {
-              text
-            }
-            facebook {
-              text
-            }
-            twitter {
-              text
-            }
-            instagram {
-              text
-            }
-          }
-          alliances {
-            alliance_image {
-              url
-              alt
-            }
-            alliance_url {
-              url
-            }
-          }
-        }
-      }
-    }
   }
 `
 
