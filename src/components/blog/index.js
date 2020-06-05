@@ -7,12 +7,13 @@ import {
 } from "../../theme/index.styled"
 import SubNewComponent from "../mainNews/subNews"
 
-const BlogComponent = ({ data, darkMode, isFetching, fetchEnd }) => {
+const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
   return (
     <Section paddingTop darkMode={darkMode}>
       <Container xlStaticSize wrapPadding>
         <TitleYellow>
-          Noticias {darkMode === true ? "Especiales" : ""}
+          {category ? `${category.data.title.text}` : 'Noticias '}
+          {darkMode === true ? "Especiales" : ""}
         </TitleYellow>
         {data.map((notice, index) => (
           <SubNewComponent darkMode={darkMode} notice={notice} key={index} />

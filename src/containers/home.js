@@ -4,6 +4,7 @@ import MainNewsComponent from "../components/mainNews/index.js"
 import SubscribeComponent from "../components/subscribe/index.js"
 import RecentNews from "../components/recentNews/index.js"
 import SpecialNews from "../components/specials/index.js"
+import CategoryBlockComponent from "../components/categoryblock/index.js"
 
 class HomeContainer extends Component {
 
@@ -40,6 +41,15 @@ class HomeContainer extends Component {
       <React.Fragment>
         <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
         <MainNewsComponent notice={this.props.noticeP} />
+        {
+          this.props.categories.map(category => 
+            <CategoryBlockComponent
+              key={`category-block-${category.prismicId}`}
+              category={category}
+              site={this.props.site}
+            />
+          )
+        }
         <SubscribeComponent />
         <RecentNews
           notices={recentNoticesFiltered}

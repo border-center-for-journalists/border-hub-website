@@ -16,11 +16,11 @@ class BlogContainer extends Component {
     this.noticeType = ""
   }
   componentDidMount() {
-    this.FetchMoreListItems()
     this.ScrollEvent()
     this.inScroll = null
     this.noticeType =
-      this.props.darkMode === true ? "noticias_especiales" : "noticias"
+    this.props.darkMode === true ? "noticias_especiales" : "noticias"
+    this.FetchMoreListItems()
     window.addEventListener("scroll", this.ScrollEvent)
   }
   ScrollEvent = () => {
@@ -39,9 +39,15 @@ class BlogContainer extends Component {
   FetchMoreListItems = () => {
     const { API_KEY, API_URL } = this.props.site
     this.setState({ isFetching: true })
+    const query = this.props.category
+      ? [
+        Prismic.Predicates.at("document.type", this.noticeType),
+        Prismic.Predicates.at('my.noticias.category', this.props.category.prismicId)
+      ]
+      : Prismic.Predicates.at("document.type", this.noticeType)
     Prismic.getApi(API_URL, { accessToken: API_KEY })
       .then(api =>
-        api.query(Prismic.Predicates.at("document.type", this.noticeType), {
+        api.query(query, {
           pageSize: 5,
           page: this.state.page,
           orderings: `[my.${this.noticeType}.custom_publishdate desc]`
@@ -94,6 +100,7 @@ class BlogContainer extends Component {
         data={this.state.data}
         isFetching={this.state.isFetching}
         fetchEnd={this.state.fetchEnd}
+        category={this.props.category}
       />
     )
   }

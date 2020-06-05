@@ -62,7 +62,7 @@ class SubscribeComponent extends Component {
                         value=""
                         placeholder="MM"
                         size="2"
-                        maxlength="2"
+                        maxLength="2"
                         name="BIRTHDAY[month]"
                         id="mce-BIRTHDAY-month"
                       />
@@ -76,7 +76,7 @@ class SubscribeComponent extends Component {
                         value=""
                         placeholder="DD"
                         size="2"
-                        maxlength="2"
+                        maxLength="2"
                         name="BIRTHDAY[day]"
                         id="mce-BIRTHDAY-day"
                       />
@@ -103,7 +103,7 @@ class SubscribeComponent extends Component {
                   <input
                     type="text"
                     name="b_7e8c52a85a62c87db4816ca56_d871cf9a52"
-                    tabindex="-1"
+                    tabIndex="-1"
                     value=""
                   />
                 </div>
@@ -113,7 +113,7 @@ class SubscribeComponent extends Component {
                     value="Enviar"
                     name="subscribe"
                     id="mc-embedded-subscribe"
-                    class="button"
+                    className="button"
                   />
                 </CustomRow>
               </Rows>
