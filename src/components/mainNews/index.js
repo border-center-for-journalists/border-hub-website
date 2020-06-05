@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import {
   NewsContainer,
   MainNewBig,
@@ -22,6 +22,7 @@ class MainNewsComponent extends Component {
   getComponent = (data, i) => {
     const noticeLen = Object.keys(this.props.notice).length
     const urlSectionType = (data.type === 'noticias_especiales') ? SPECIAL_NEWS_URL : NEWS_URL
+    //console.log('DATA',data)
     if (noticeLen === i + 1) {
       return (
         <React.Fragment>
@@ -51,13 +52,20 @@ class MainNewsComponent extends Component {
     }
   }
   render() {
+    if (this.props.notice.nodes.length === 0) return null
+    
     const htmlContent = this.props.notice.nodes.map((data, index) =>
       this.getComponent(data, index)
     )
+    const category = this.props.category
     return (
       <NewsContainer>
         <YellowTitle>
-          <a href="/noticias/">Ver todas</a> Notas Principales
+          {
+            category
+              ? (<Fragment><a href={`/categoria/${category.uid}`}>Ver todas</a> {category.document[0].data.title.text}</Fragment>)
+              : (<Fragment><a href="/noticias/">Ver todas</a> Notas Principales</Fragment>)
+          }
         </YellowTitle>
         <MainNewBig size="Common">{htmlContent}</MainNewBig>
       </NewsContainer>
