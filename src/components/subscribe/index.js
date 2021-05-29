@@ -30,15 +30,15 @@ class SubscribeComponent extends Component {
             >
               <Rows align="space-between" wrap id="mc_embed_signup_scroll">
                 <CustomRow width="48%" widthXl="24%" className="mc-field-group">
-                  <label for="mce-FNAME">Nombre </label>
+                  <label htmlFor="mce-FNAME">Nombre </label>
                   <input type="text" name="FNAME" className="" id="mce-FNAME" />
                 </CustomRow>
                 <CustomRow width="48%" widthXl="24%" className="mc-field-group">
-                  <label for="mce-LNAME">Apellido </label>
+                  <label htmlFor="mce-LNAME">Apellido </label>
                   <input type="text" name="LNAME" className="" id="mce-LNAME" />
                 </CustomRow>
                 <CustomRow width="48%" widthXl="24%" className="mc-field-group">
-                  <label for="mce-EMAIL">
+                  <label htmlFor="mce-EMAIL">
                     Correo <span className="asterisk">*</span>
                   </label>
                   <input
@@ -52,7 +52,7 @@ class SubscribeComponent extends Component {
                   className="mc-field-group size1of2"
                   style={{ display: "none" }}
                 >
-                  <label for="mce-BIRTHDAY-month">Birthday </label>
+                  <label htmlFor="mce-BIRTHDAY-month">Birthday </label>
                   <div className="datefield">
                     <span className="subfield monthfield">
                       <input
