@@ -33,8 +33,8 @@ class IncidentBox extends Component {
             {/*<Paragraph>{this.props.notice.data.excerpt.text}</Paragraph>*/}
             <MobileParagraph>
               {moment(this.props.notice.data.custom_publishdate).format(
-                "MMMM DD [|] YYYY"
-              )}
+                "DD MMMM YYYY"
+              ).toUpperCase()}
             </MobileParagraph>
             <hr />
             <MobileParagraph>
