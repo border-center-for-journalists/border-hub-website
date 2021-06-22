@@ -45,7 +45,7 @@ class IncidentBox extends Component {
             <AuthorContainer show yellowMode={darkMode}>
               <i>
                 {" "}
-                Organizaciones participantes
+                {(this.props.notice.data.organizations|| []).length > 0  ? 'Organizaciones participantes' : "" }
               </i>{" "}
             </AuthorContainer>
             <ParticipantOrganizations>
