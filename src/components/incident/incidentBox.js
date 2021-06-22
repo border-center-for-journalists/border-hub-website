@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import { MainNewSmall, MainNewSmallText, MobileParagraph } from "./index.styled"
-import { AuthorContainer, ImageWrapper, Col, ParticipantOrganizations } from "../../theme/index.styled"
+import { MainIncidentSmall, MainNewSmallText, MobileParagraph } from "./index.styled"
+import { AuthorContainer, ImageWrapper, Col, ParticipantOrganizations, InvertedImage } from "../../theme/index.styled"
 import moment from "moment"
 import "moment/locale/es"
 moment.locale("es")
@@ -12,7 +12,7 @@ class IncidentBox extends Component {
     const darkMode = true;
     console.log({IncidentBox: this.props.notice.data})
     return (
-      <MainNewSmall>
+      <MainIncidentSmall>
         <Col>
           <ImageWrapper>
             <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>
@@ -50,14 +50,17 @@ class IncidentBox extends Component {
             </AuthorContainer>
             <ParticipantOrganizations>
               {(this.props.notice.data.organizations|| []).map(organization=>(
-                <img key={organization.image.url} src={organization.image.url}/>
+                <InvertedImage 
+                  key={organization.image.url} 
+                  src={organization.image.url}
+                />
                 )
               )}  
                           
             </ParticipantOrganizations>
           </MainNewSmallText>
         </Col>
-      </MainNewSmall>
+      </MainIncidentSmall>
     )
   }
 }

@@ -409,6 +409,10 @@ flex-wrap:wrap;
   margin:2% !important;
 }
 `;
+
+const InvertedImage = styled.img`
+  filter: invert(100%);
+`;
 export {
   Wrapper,
   Content,
@@ -431,5 +435,6 @@ export {
   ColContainer,
   Message,
   ImgBackground,
-  ParticipantOrganizations
+  ParticipantOrganizations,
+  InvertedImage
 }

@@ -12,7 +12,7 @@ const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
     <Section paddingTop darkMode={darkMode}>
       <Container wrapPadding>  
         <Title>
-          {category ? `${category.data.title.text}` : 'Incidencias'}
+          {category ? `${category.data.title.text}` : 'Incidencia'}
         </Title>
         {data.map((notice, index) => (
           <IncidentBox darkMode={darkMode} notice={notice} key={index} />

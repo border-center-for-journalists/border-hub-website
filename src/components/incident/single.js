@@ -50,13 +50,6 @@ class SingleIncidentComponent extends Component {
         <StatusSection color="#f2f2f2">
             <StatusIncidentComponent incident={this.props.notice} />
         </StatusSection>
-        <NoticeSection color="white">
-          <NormalNoticeContainer>
-            <NormalSubscribeComponent />
-            <NormalDonateComponent />
-            <NormalRelatedComponent color="black" related={this.state.related} />
-          </NormalNoticeContainer>
-        </NoticeSection>
       </React.Fragment>
     )
   }

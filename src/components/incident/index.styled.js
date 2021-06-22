@@ -84,7 +84,36 @@ const MainNewSmall = styled(Container)`
   }
   
 `
-
+const MainIncidentSmall = styled(Container)`
+  margin-top:20px;
+  max-width: 100%;
+  padding: 15px 0 0 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background-color: black;
+  hr {
+    width: 100%;
+    margin: 10px 0;
+    background-color: ${props => props.theme.Yellow};
+  }
+  img {
+    margin: 0;
+  }
+  ${props => props.theme.xlBreakPoint} {
+    padding: 0 24px;
+  }
+  &>div {
+    width:100%;
+    margin:10px 20px;
+  }
+  &>div:nth-child(1) {
+    max-width:30%;
+    margin:10px 20px;
+  }
+  
+`
 const MainNewSmallText = styled(Container)`
   width:100%;
   margin-bottom: 20px;
@@ -129,6 +158,7 @@ export {
   MainNewBig,
   SubTitleParagraph,
   MainNewSmall,
+  MainIncidentSmall,
   MainNewSmallText,
   TextContainer,
   MobileParagraph,
