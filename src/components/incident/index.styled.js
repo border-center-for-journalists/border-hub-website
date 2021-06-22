@@ -106,11 +106,11 @@ const MainIncidentSmall = styled(Container)`
   }
   &>div {
     width:100%;
-    margin:10px 20px;
+    margin:10px 20px 0 20px;
   }
   &>div:nth-child(1) {
     max-width:30%;
-    margin:10px 20px;
+    margin:10px 20px 0 20px;
   }
   
 `

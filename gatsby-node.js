@@ -98,7 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const IncidenciaTemplate = path.resolve("src/containers/incidentSingle.js")
   pages.data.allPrismicIncidencia.edges.forEach(edge => {
     createPage({
-      path: `/incidencias/${edge.node.uid}/`,
+      path: `/incidencia/${edge.node.uid}/`,
       component: IncidenciaTemplate,
       context: {
         uid: edge.node.uid,

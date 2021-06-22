@@ -11,7 +11,7 @@ const Incidencias = data => {
   return (
     <Layout>
       <SEO
-        title="Incidencias"
+        title="Incidencia"
         description={description}
         keywords={keywords}
       />

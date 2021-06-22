@@ -8,7 +8,7 @@ moment.locale("es")
 class IncidentBox extends Component {
 
   render() {
-    const urlSectionType = 'incidencias'
+    const urlSectionType = 'incidencia'
     const darkMode = true;
     console.log({IncidentBox: this.props.notice.data})
     return (
@@ -56,7 +56,6 @@ class IncidentBox extends Component {
                 />
                 )
               )}  
-                          
             </ParticipantOrganizations>
           </MainNewSmallText>
         </Col>

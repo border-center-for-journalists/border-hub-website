@@ -404,9 +404,9 @@ flex-direction:row;
 flex-wrap:wrap;
 & > img {
   display:flex;
-  width:20%;
+  width:33%;
   max-height: 100px;
-  margin:2% !important;
+  margin: 0 10px 3px 0 !important;
 }
 `;
 
