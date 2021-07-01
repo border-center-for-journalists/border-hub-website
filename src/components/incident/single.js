@@ -47,9 +47,12 @@ class SingleIncidentComponent extends Component {
             <TextNoticeContentComponent notice={this.props.notice} />
           </NormalNoticeContainer>
         </NoticeSection>
-        <StatusSection color="#f2f2f2">
+        {this.props.notice.data.status && this.props.notice.data.status[0].status_type != null ? (
+          <StatusSection color="#f2f2f2">
             <StatusIncidentComponent incident={this.props.notice} />
-        </StatusSection>
+          </StatusSection>
+        ) : null
+        }
       </React.Fragment>
     )
   }

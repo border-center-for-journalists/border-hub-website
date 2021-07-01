@@ -23,11 +23,14 @@ const HeaderIncidentComponent = ({ notice, align }) => {
           <p>{excerpt.text}</p>
           <br/>
           {organizaciones_participantes.length > 0  ? <strong>Organizaciones participantes:</strong> : "" }
-          <ParticipantOrganizations>
-            {organizaciones_participantes.map(organization => (
-              <img src={organization.image.url} />   
-            ))}
-          </ParticipantOrganizations>
+          {organizaciones_participantes.length > 0  ? (
+            <ParticipantOrganizations>
+              {organizaciones_participantes.map(organization => (
+                <img src={organization.image.url} />   
+              ))}
+            </ParticipantOrganizations>
+          ): "" }
+
         </NoticeTitleWrapper>
       </Container>
       

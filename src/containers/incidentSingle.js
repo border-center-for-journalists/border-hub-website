@@ -68,11 +68,6 @@ export const pageQuery = graphql`
         excerpt {
           text
         }
-        organizaciones_participantes {
-          image {
-            url
-          }
-        }
         status {
           status_type
           status_description {
