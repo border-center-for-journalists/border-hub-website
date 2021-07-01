@@ -68,14 +68,6 @@ export const pageQuery = graphql`
         excerpt {
           text
         }
-        status {
-          status_type
-          status_description {
-            text
-          }
-          from_date
-          to_date
-        }
       }
     }
   }
