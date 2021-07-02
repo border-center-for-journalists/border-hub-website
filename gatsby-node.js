@@ -44,7 +44,14 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-
+      allPrismicIncidencia {
+        edges{
+          node{
+            uid
+            prismicId
+          }
+        }
+      }
     }
   `)
 
@@ -88,6 +95,17 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  const IncidenciaTemplate = path.resolve("src/containers/incidentSingle.js")
+  pages.data.allPrismicIncidencia.edges.forEach(edge => {
+    createPage({
+      path: `/incidencia/${edge.node.uid}/`,
+      component: IncidenciaTemplate,
+      context: {
+        uid: edge.node.uid,
+        prismicId: edge.node.prismicId,
+      },
+    })
+  })
   const general = path.resolve("src/containers/general.js")
 
   pages.data.allPrismicComun.edges.forEach(edge => {
@@ -100,4 +118,5 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
 }

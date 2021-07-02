@@ -24,7 +24,7 @@ const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
         ? notice.data.authors[0].author_name.text
         : ""
     } else {
-      return notice.data.author.length > 0
+      return (notice.data.author && notice.data.author.length > 0)
         ? notice.data.author[0].name.text
         : ""
     }
@@ -52,13 +52,16 @@ const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
         <NoticeTitleWrapper align={align}>
           <h1>{title.text}</h1>
           <p>
-            <i>
-              Por{" "}
-              <YellowText>
-                <b>{getAuthorName()} {allianceHeader.separation}</b>
-              </YellowText>{" "}
-              {allianceHeader.name}
-            </i>
+            {getAuthorName() !== "" ? (
+              <i>
+                Por{" "}
+                <YellowText>
+                  <b>{getAuthorName()} {allianceHeader.separation}</b>
+                </YellowText>{" "}
+                {allianceHeader.name}
+              </i>
+            ):null}
+            
           </p>
           <p>{moment(date).format("MMMM DD, YYYY [|] h:mm a")}</p>
           <hr />

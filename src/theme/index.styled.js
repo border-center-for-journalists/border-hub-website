@@ -164,6 +164,17 @@ const TitleYellow = styled.h1`
     margin: 0;
   }
 `
+const Title = styled.h1`
+  font-size: 48px;
+  line-height: 34.5px;
+  width: 100%;
+  padding: 15px 0px 15px 31px;
+  color: black;
+  text-align: left;
+  ${props => props.theme.xlBreakPoint} {
+    margin: 0;
+  }
+`
 
 const YellowTitle = styled.h3`
   background-color: ${props => props.theme.Yellow};
@@ -386,6 +397,22 @@ const ImgBackground = styled.div`
   font-size: 0px;
 `;
 
+const ParticipantOrganizations = styled.div`
+display:flex;
+flex:1;
+flex-direction:row;
+flex-wrap:wrap;
+& > img {
+  display:flex;
+  width:33%;
+  max-height: 100px;
+  margin: 0 10px 3px 0 !important;
+}
+`;
+
+const InvertedImage = styled.img`
+  filter: invert(100%);
+`;
 export {
   Wrapper,
   Content,
@@ -397,6 +424,7 @@ export {
   ImageWrapper,
   YellowTitle,
   TitleYellow,
+  Title,
   AuthorContainer,
   Col,
   TitleContainer,
@@ -406,5 +434,7 @@ export {
   RectangleText,
   ColContainer,
   Message,
-  ImgBackground
+  ImgBackground,
+  ParticipantOrganizations,
+  InvertedImage
 }

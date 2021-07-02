@@ -17,11 +17,11 @@ class NormalSubscribeComponent extends Component {
               name="mc-embedded-subscribe-form"
               className="validate"
               target="_blank"
-              novalidate
+              noValidate
             >
               <Rows align="space-between" wrap id="mc_embed_signup_scroll">
                 <CustomRow width="48%" className="mc-field-group">
-                  <label for="mce-FNAME">First Name </label>
+                  <label htmlFor="mce-FNAME">First Name </label>
                   <input
                     type="text"
                     value=""
@@ -31,7 +31,7 @@ class NormalSubscribeComponent extends Component {
                   />
                 </CustomRow>
                 <CustomRow width="48%" className="mc-field-group">
-                  <label for="mce-LNAME">Last Name </label>
+                  <label htmlFor="mce-LNAME">Last Name </label>
                   <input
                     type="text"
                     value=""
@@ -41,7 +41,7 @@ class NormalSubscribeComponent extends Component {
                   />
                 </CustomRow>
                 <CustomRow width="48%" className="mc-field-group">
-                  <label for="mce-EMAIL">
+                  <label htmlFor="mce-EMAIL">
                     Email Address <span className="asterisk">*</span>
                   </label>
                   <input
@@ -56,7 +56,7 @@ class NormalSubscribeComponent extends Component {
                   className="mc-field-group size1of2"
                   style={{ display: "none" }}
                 >
-                  <label for="mce-BIRTHDAY-month">Birthday </label>
+                  <label htmlFor="mce-BIRTHDAY-month">Birthday </label>
                   <div className="datefield">
                     <span className="subfield monthfield">
                       <input
@@ -66,7 +66,7 @@ class NormalSubscribeComponent extends Component {
                         value=""
                         placeholder="MM"
                         size="2"
-                        maxlength="2"
+                        maxLength="2"
                         name="BIRTHDAY[month]"
                         id="mce-BIRTHDAY-month"
                       />
@@ -80,7 +80,7 @@ class NormalSubscribeComponent extends Component {
                         value=""
                         placeholder="DD"
                         size="2"
-                        maxlength="2"
+                        maxLength="2"
                         name="BIRTHDAY[day]"
                         id="mce-BIRTHDAY-day"
                       />
@@ -107,7 +107,7 @@ class NormalSubscribeComponent extends Component {
                   <input
                     type="text"
                     name="b_7e8c52a85a62c87db4816ca56_d871cf9a52"
-                    tabindex="-1"
+                    tabIndex="-1"
                     value=""
                   />
                 </div>
@@ -117,7 +117,7 @@ class NormalSubscribeComponent extends Component {
                     value="Enviar"
                     name="subscribe"
                     id="mc-embedded-subscribe"
-                    class="button"
+                    className="button"
                   />
                 </CustomRow>
               </Rows>
