@@ -11,7 +11,7 @@ const Noticias = data => {
   return (
     <Layout>
       <SEO
-        title="Noticas Especiales"
+        title="Noticias Especiales"
         description={description}
         keywords={keywords}
       />
