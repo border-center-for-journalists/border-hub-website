@@ -114,12 +114,22 @@ const ImgCol = styled(Col)`
     display: block;
     margin: 0 auto;
   }
-  ${props => props.theme.smallBreakPoint} {
+  ${props => props.theme.mediumBreakpoint} {
     flex: 1;
     max-width: 100%;
     
     img {
       height:280px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  ${props => props.theme.smallBreakPoint} {
+    flex: 1;
+    max-width: 100%;
+    
+    img {
+      height:180px;
       display: block;
       margin: 0 auto;
     }
