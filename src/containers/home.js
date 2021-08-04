@@ -58,12 +58,12 @@ class HomeContainer extends Component {
           bannerNotices={this.props.bannerNotice}
           principalNotices={this.props.normalNotices}
         />
-        <SpecialNews notices={this.props.specialNotices} />
         <RecentIncidencias
           notices={this.props.recentIncidencias}
           bannerNotices={this.props.bannerNotice}
           principalNotices={this.props.normalNotices}
         />
+        <SpecialNews notices={this.props.specialNotices} />
       </React.Fragment>
     )
   }

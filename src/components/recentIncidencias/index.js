@@ -28,7 +28,7 @@ class RecentIncidencias extends Component {
       <RecentSection>
         <Container size="large">
           <CustomTitle>
-              <a href={`/incidencia/`}>Ver todas las Incidencias</a> Incidencias
+              <a href={`/incidencia/`}>Ver todas las Incidencias</a> Incidencia
           </CustomTitle>
           <PrincipalContainer>
             {this.props.notices.nodes.map(notice =>
