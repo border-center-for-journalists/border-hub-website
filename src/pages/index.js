@@ -34,6 +34,7 @@ const temp = data => {
         specialNotices={specialNotices}
         noticeP={common.principal_notices_active ? principalNotices : { nodes: [] }}
         site={data.data.site.siteMetadata}
+        recentIncidencias={data.data.recentIncidencias}
       />
     </Layout>
   )
@@ -269,7 +270,30 @@ export const pageQuery = graphql`
         }
       }
     }
-
+    recentIncidencias: allPrismicIncidencia(
+      limit: 3
+      sort: { fields: [data___custom_publishdate], order: [DESC] }
+    )  {
+        nodes{
+          uid
+          prismicId
+          data {
+            custom_publishdate
+            title {
+              text
+            }
+            banner{
+              url
+              alt
+              thumbnail
+              {
+              	url
+              	alt  
+              }
+            }
+          }
+        }
+    }
   }
 `
 

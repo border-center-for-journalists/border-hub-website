@@ -3,6 +3,7 @@ import HomeHeaderComponent from "../components/homeHeader/index.js"
 import MainNewsComponent from "../components/mainNews/index.js"
 import SubscribeComponent from "../components/subscribe/index.js"
 import RecentNews from "../components/recentNews/index.js"
+import RecentIncidencias from "../components/recentIncidencias/index.js"
 import SpecialNews from "../components/specials/index.js"
 import CategoryBlockComponent from "../components/categoryblock/index.js"
 
@@ -37,13 +38,14 @@ class HomeContainer extends Component {
         removeSpecialNotices
       )
     }
+    console.log(this.props)
     return (
       <React.Fragment>
         <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
         <MainNewsComponent notice={this.props.noticeP} />
         {
           this.props.categories.map(category => 
-            (category.active && <CategoryBlockComponent
+            ((category.active && category.category !== null) && <CategoryBlockComponent
               key={`category-block-${category.prismicId}`}
               category={category}
               site={this.props.site}
@@ -53,6 +55,11 @@ class HomeContainer extends Component {
         <SubscribeComponent />
         <RecentNews
           notices={recentNoticesFiltered}
+          bannerNotices={this.props.bannerNotice}
+          principalNotices={this.props.normalNotices}
+        />
+        <RecentIncidencias
+          notices={this.props.recentIncidencias}
           bannerNotices={this.props.bannerNotice}
           principalNotices={this.props.normalNotices}
         />

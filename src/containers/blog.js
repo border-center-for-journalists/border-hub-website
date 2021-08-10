@@ -54,7 +54,7 @@ class BlogContainer extends Component {
         })
       )
       .then(response => {
-        const newData = response.results.map(n => {
+        const almostNewData = response.results.map(n => {
           const excerptLength = n.data.excerpt.length
           const titleLength = n.data.title.length
           const authorLength = n.data.author.length
@@ -64,7 +64,7 @@ class BlogContainer extends Component {
             ? n.data.author[0].name[0].text
             : "Anónimo"
 
-          return {
+          return this.noticeType=="noticias_especiales" ? ({
             uid: n.uid,
             data: {
               banner: {
@@ -75,8 +75,26 @@ class BlogContainer extends Component {
               custom_publishdate: n.data.custom_publishdate,
               author: [{ name: { text: authorText } }],
             },
-          }
+            showOnSpecialNews: n.data.show_on_special_news
+          }): ({
+            uid: n.uid,
+            data: {
+              banner: {
+                thumbnail: { url: n.data.banner.thumbnail.url },
+              },
+              title: { text: titleText },
+              excerpt: { text: excerptText },
+              custom_publishdate: n.data.custom_publishdate,
+              author: [{ name: { text: authorText } }],
+            },
+          })
         })
+        let newData;
+        if(this.noticeType=="noticias_especiales"){
+          newData = almostNewData.filter(n=>n.showOnSpecialNews === null || n.showOnSpecialNews=== true);
+        } else {
+          newData = almostNewData;
+        }
         let newState = {
           data: [...this.state.data, ...newData],
           isFetching: false,
