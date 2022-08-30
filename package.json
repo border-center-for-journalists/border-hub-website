@@ -27,7 +27,7 @@
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "gatsby-source-prismic-rich-text-fields": "^1.0.0",
     "gatsby-transformer-sharp": "^2.1.17",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "prismic-javascript": "^2.1.1",
     "prismic-reactjs": "^1.1.0",
     "react": "^16.8.6",
