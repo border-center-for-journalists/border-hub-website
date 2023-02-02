@@ -152,9 +152,6 @@ export const pageQuery = graphql`
                     alt
                   }
                 }
-                content {
-                  html
-                }
                 custom_publishdate
                 author {
                   name {
