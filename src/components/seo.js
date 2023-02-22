@@ -75,6 +75,10 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           content: `${image ? "" : site.siteMetadata.SITE_URL}${image ||
             defaultImage}`,
         },
+        {
+          name: 'google-site-verification',
+          content: "HrwbMkjubcvAKPVRhr8uzSs1BRZB9jVjzwnHH6zXGr8"
+        }
       ]
         .concat(
           keywords.length > 0
@@ -107,7 +111,6 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           `
         }
       </script>
-
     </Helmet>
   )
 }
