@@ -10,7 +10,7 @@ var Elements = PrismicDOM.RichText.Elements
 module.exports = {
   pathPrefix: "/gatsbyPrismic",
   siteMetadata: {
-    title: `Border Hub Center`,
+    title: `Border Hub`,
     description: ``,
     author: `@spaceshiplabs`,
     API_KEY: process.env.API_KEY,
