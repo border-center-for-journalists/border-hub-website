@@ -72,7 +72,7 @@ export const pageQuery = graphql`
           }
           active
         }
-
+        show_banner
         banner {
           document {
             uid

@@ -8,7 +8,7 @@ import SpecialNews from "../components/specials/index.js"
 import CategoryBlockComponent from "../components/categoryblock/index.js"
 
 class HomeContainer extends Component {
-
+  
   getNoticeUids(notices) {
     return notices.reduce((acc, notice) => {
       acc.push(notice.uid);
@@ -41,15 +41,17 @@ class HomeContainer extends Component {
     console.log(this.props)
     return (
       <React.Fragment>
-        <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
+        {this.props.show_banner ? (
+          <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
+        ) : <div style={{ marginTop: "60px" }}></div>}
         <MainNewsComponent notice={this.props.noticeP} />
         {
-          this.props.categories.map(category => 
-            ((category.active && category.category !== null) && <CategoryBlockComponent
-              key={`category-block-${category.prismicId}`}
-              category={category}
-              site={this.props.site}
-            />)
+          this.props.categories.map(category =>
+          ((category.active && category.category !== null) && <CategoryBlockComponent
+            key={`category-block-${category.prismicId}`}
+            category={category}
+            site={this.props.site}
+          />)
           )
         }
         <SubscribeComponent />
