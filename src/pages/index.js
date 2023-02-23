@@ -27,6 +27,7 @@ const temp = data => {
     <Layout>
       <SEO title="Home" description={description} keywords={keywords} />
       <HomeContainer
+        showBanner={common.show_banner}
         bannerNotice={common.banner.document}
         categories={common.categories}
         normalNotices={data.data.normalNotices}
@@ -135,32 +136,7 @@ export const pageQuery = graphql`
         principal_notices {
           nodes {
             document {
-              ... on PrismicNoticias {
-                uid
-                type
-                data {
-                  title {
-                    text
-                  }
-                  excerpt {
-                    text
-                  }
-                  banner {
-                    url
-                    alt
-                    thumbnail {
-                      url
-                      alt
-                    }
-                  }
-                  custom_publishdate
-                  author {
-                    name {
-                      text
-                    }
-                  }
-                }
-              }
+              
               ... on PrismicNoticiasEspeciales {
                 uid
                 type
@@ -323,3 +299,32 @@ export const pageQuery = graphql`
 `
 
 export default temp
+
+/*
+... on PrismicNoticias {
+                uid
+                type
+                data {
+                  title {
+                    text
+                  }
+                  excerpt {
+                    text
+                  }
+                  banner {
+                    url
+                    alt
+                    thumbnail {
+                      url
+                      alt
+                    }
+                  }
+                  custom_publishdate
+                  author {
+                    name {
+                      text
+                    }
+                  }
+                }
+              }
+ */

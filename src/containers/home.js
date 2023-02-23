@@ -41,7 +41,7 @@ class HomeContainer extends Component {
     console.log(this.props)
     return (
       <React.Fragment>
-        {this.props.show_banner ? (
+        {this.props.showBanner ? (
           <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
         ) : <div style={{ marginTop: "60px" }}></div>}
         <MainNewsComponent notice={this.props.noticeP} />
