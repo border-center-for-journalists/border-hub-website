@@ -136,7 +136,32 @@ export const pageQuery = graphql`
         principal_notices {
           nodes {
             document {
-              
+              ... on PrismicNoticias {
+                uid
+                type
+                data {
+                  title {
+                    text
+                  }
+                  excerpt {
+                    text
+                  }
+                  banner {
+                    url
+                    alt
+                    thumbnail {
+                      url
+                      alt
+                    }
+                  }
+                  custom_publishdate
+                  author {
+                    name {
+                      text
+                    }
+                  }
+                }
+              }
               ... on PrismicNoticiasEspeciales {
                 uid
                 type
