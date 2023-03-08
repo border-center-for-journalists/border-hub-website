@@ -38,7 +38,6 @@ class HomeContainer extends Component {
         removeSpecialNotices
       )
     }
-    console.log(this.props)
     return (
       <React.Fragment>
         {this.props.showBanner ? (

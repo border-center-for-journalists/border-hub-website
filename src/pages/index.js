@@ -11,7 +11,16 @@ const temp = data => {
   const specialNotices = data.data.specialNotices;
 
   const maxNumberOfPrincipalNews = 3
-  const principalNotices = {
+  const principalSpecialNotices = {
+    nodes: common.noticias_principales_especiales.reduce((notices, notice) => {
+      if (notices.length < maxNumberOfPrincipalNews) {
+        notices.push(notice.nodes.document[0]);
+      }
+      return notices;
+    }, [])
+
+  }
+  const principalNormalNotices = {
     nodes: common.principal_notices.reduce((notices, notice) => {
       if (notices.length < maxNumberOfPrincipalNews) {
         notices.push(notice.nodes.document[0]);
@@ -19,6 +28,7 @@ const temp = data => {
       return notices;
     }, [])
   }
+  const principalNotices = { nodes: [...principalSpecialNotices.nodes, ...principalNormalNotices.nodes] }
 
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
@@ -136,59 +146,61 @@ export const pageQuery = graphql`
         principal_notices {
           nodes {
             document {
-              ... on PrismicNoticias {
-                uid
-                type
-                data {
-                  title {
-                    text
-                  }
-                  excerpt {
-                    text
-                  }
-                  banner {
+              uid
+              type
+              data {
+                title {
+                  text
+                }
+                excerpt {
+                  text
+                }
+                banner {
+                  url
+                  alt
+                  thumbnail {
                     url
                     alt
-                    thumbnail {
-                      url
-                      alt
-                    }
-                  }
-                  custom_publishdate
-                  author {
-                    name {
-                      text
-                    }
                   }
                 }
-              }
-              ... on PrismicNoticiasEspeciales {
-                uid
-                type
-                data {
-                  title {
+                custom_publishdate
+                author {
+                  name {
                     text
-                  }
-                  excerpt {
-                    text
-                  }
-                  banner {
-                    url
-                    alt
-                    thumbnail {
-                      url
-                      alt
-                    }
-                  }
-                  custom_publishdate
-                  author {
-                    name {
-                      text
-                    }
                   }
                 }
               }
             }
+          }
+        }
+        noticias_principales_especiales {
+          nodes {
+            document {
+                uid
+                type
+                data {
+                  title {
+                    text
+                  }
+                  excerpt {
+                    text
+                  }
+                  banner {
+                    url
+                    alt
+                    thumbnail {
+                      url
+                      alt
+                    }
+                  }
+                  custom_publishdate
+                  author {
+                    name {
+                      text
+                    }
+                  }
+                }
+              }
           }
         }
       }

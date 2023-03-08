@@ -9,8 +9,7 @@ moment.locale("es")
 
 class SubNewComponent extends Component {
   render() {
-    console.log({special: this.props})
-    const urlSectionType = (this.props.notice.type || this.props.darkMode) ? SPECIAL_NEWS_URL : NEWS_URL
+    const urlSectionType = (this.props.notice.type==="noticias_especiales" || this.props.darkMode) ? SPECIAL_NEWS_URL : NEWS_URL
     return (
       <MainNewSmall>
         <hr />
