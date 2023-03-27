@@ -37,7 +37,7 @@ const Section = styled.section`
 `
 
 const Container = styled.div`
-  button {
+  .alignbutton {
     white-space: pre-wrap;
     background-color: ${props => props.theme.Yellow};
     color: black;
