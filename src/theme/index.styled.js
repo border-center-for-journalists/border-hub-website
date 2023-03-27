@@ -37,6 +37,20 @@ const Section = styled.section`
 `
 
 const Container = styled.div`
+  button {
+    white-space: pre-wrap;
+    background-color: ${props => props.theme.Yellow};
+    color: black;
+    cursor: pointer;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: block;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: bold;
+  }
+
   width: 100%;
   margin: 0 auto;
   ${props => (props.darkMode ? ".recharts-legend-wrapper{color: #fff;}" : "")}

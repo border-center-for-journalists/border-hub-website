@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { TextWrapper } from "./index.styled"
 import { Container } from "../../theme/index.styled"
 import ImageModal from "../lightbox/index"
@@ -35,10 +35,15 @@ const TextNoticeContentComponent = ({ notice }) => {
   const getColor = () => {
     return notice.primary ? "white" : "black"
   }
+  const [isJustified, setIsJustified] = useState(true)
+  const toggleAlignment = () => {
+    setIsJustified(!isJustified)
+  }
   const htmlElements = getContent()
   return (
     <React.Fragment>
       <Container size="medium" xlStaticSize>
+        <button onClick={toggleAlignment}>{isJustified ? "Izq." : "X"}</button>
         {
           htmlElements.map((obj) => {
             if (obj.type == 'text')
@@ -46,6 +51,7 @@ const TextNoticeContentComponent = ({ notice }) => {
                 <TextWrapper
                   color={getColor()}
                   dangerouslySetInnerHTML={{ __html: obj.data }}
+                  style={{ textAlign: isJustified ? 'justify' : 'left' }}
                 />
               )
             return <ImageModal color={getColor()} alt={obj.alt} src={obj.img}></ImageModal>
