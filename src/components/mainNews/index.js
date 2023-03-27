@@ -32,9 +32,9 @@ class MainNewsComponent extends Component {
             </a>
           </ImageWrapper>
           <TextContainer>
-            <h2>
+            <h1>
               <a href={`/${urlSectionType}/${data.uid}/`}>{data.data.title.text}</a>
-            </h2>
+            </h1>
             <SubTitleParagraph>{data.data.excerpt.text}</SubTitleParagraph>
             <AuthorContainer show>
               <i>

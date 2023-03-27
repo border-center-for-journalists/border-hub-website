@@ -116,8 +116,12 @@ function SEO({ description, lang, meta, keywords, title, image }) {
 }
 
 SEO.defaultProps = {
-  lang: `es`,
-  meta: [],
+  lang: `ES-MX`,
+  meta: [
+    { name: `author`, content: `Border Hub` },
+    { name: `publisher`, content: `Border Hub` },
+    { name: `robots`, content: `INDEX` },
+  ],
   keywords: [],
   description: ``,
   image: false,

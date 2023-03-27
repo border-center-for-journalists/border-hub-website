@@ -35,7 +35,7 @@ const temp = data => {
   //console.log("BANNER ???", common.banner.document)
   return (
     <Layout>
-      <SEO title="Home" description={description} keywords={keywords} />
+      <SEO title="Border Hub: Periodismo de Investigación de la Frontera Norte" description={description} keywords={keywords} />
       <HomeContainer
         showBanner={common.show_banner}
         bannerNotice={common.banner.document}

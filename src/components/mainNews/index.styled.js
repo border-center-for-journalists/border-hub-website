@@ -35,7 +35,7 @@ const MainNewBig = styled(Container)`
     margin-bottom: 15px;
     font-weight: bold;
   }
-  h2 a {
+  h1 a {
     color: ${props => props.theme.Black};
     text-decoration: none;
   }
