@@ -10,9 +10,44 @@ import {
 import { FormBody, Rows, Row } from "../../theme/index.styled"
 
 class ContactUsComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.formRef = React.createRef(); // creando la referencia
+  }
+
+  handleClick = async (event) => {
+    event.preventDefault();
+    const form = this.formRef.current;
+
+    if (!(form instanceof HTMLFormElement)) {
+      console.error('No se ha encontrado un elemento HTMLFormElement');
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      })
+      if (response.ok) {
+        form.reset(); // limpiar el formulario si el envío es exitoso
+        alert("¡Gracias por contactarnos!");
+      } else {
+        alert("Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.");
+      }
+    } catch (error) {
+      alert("Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.");
+    }
+  }
+
   render() {
-    const { address, email, phone, title, subtitle } = this.props.data
-    const emailTo = email.text
+    const { address, email, phone, title, subtitle } = this.props.data;
+    const emailTo = email.text;
     return (
       <ContactUsSection>
         <TitleYellow>
@@ -21,21 +56,24 @@ class ContactUsComponent extends Component {
         </TitleYellow>
         <ContactContainer>
           <CustomColForm>
-            <FormBody
-              color={false}
-              method="POST"
-              action={`https://formspree.io/${emailTo}`}
-            >
-              <CustomRows align="space-between">
-                <Row width="48%">
-                  <input type="text" name="name" placeholder="Nombre" />
-                </Row>
-                <Row width="48%">
-                  <input type="email" name="email" placeholder="Mail" />
-                </Row>
-              </CustomRows>
-              <textarea rows="6" name="message" placeholder="Message" />
-              <button name="Submit">Enviar</button>
+            <FormBody>
+              <form
+                color={false}
+                method="POST"
+                action={`https://formspree.io/${emailTo}`}
+                ref={this.formRef} // agregando la referencia al formulario
+              >
+                <CustomRows align="space-between">
+                  <Row width="48%">
+                    <input type="text" name="name" placeholder="Nombre" />
+                  </Row>
+                  <Row width="48%">
+                    <input type="email" name="email" placeholder="Mail" />
+                  </Row>
+                </CustomRows>
+                <textarea rows="6" name="message" placeholder="Message" />
+                <button onClick={this.handleClick} name="Submit">Enviar</button>
+              </form>
             </FormBody>
           </CustomColForm>
           <CustomColText>
@@ -71,9 +109,9 @@ class ContactUsComponent extends Component {
             </Row>
           </CustomColText>
         </ContactContainer>
-      </ContactUsSection>
-    )
+      </ContactUsSection >
+    );
   }
 }
 
-export default ContactUsComponent
+export default ContactUsComponent;
