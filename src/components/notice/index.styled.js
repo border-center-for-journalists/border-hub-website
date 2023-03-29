@@ -9,60 +9,6 @@ const NoticeSection = styled.section`
   }
 `
 
-const SocialContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 80px;
-  right: 40px;
-  z-index: 999;
-
-  @media screen and (max-width:767px){
-    position: static;
-    margin-bottom: 20px;
-    flex-direction: row;
-    justify-content: center;
-
-    a {
-      display: inline-block;
-      margin: 0 5px;
-    }
-  }
-`
-
-
-
-const SocialIcon = styled.a`
-  position: relative;
-  display: inline-block;
-  color: ${props => props.theme.Black};
-  border: 2px solid ${props => props.theme.Black};
-  cursor: pointer;
-  background-color: ${props => props.theme.Yellow};
-  width: 40px;
-  height: 40px;
-  text-decoration: none;
-  border-radius: 50%;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 5px;
-  padding: ${props => (props.bigger ? "10px" : "14px")} 0;
-  font-size: ${props => (props.bigger ? "18px" : "14px")};
-  
-  svg{
-    position: absolute;
-    top:0;
-    left:0;
-    margin:auto;
-    width: 100%;
-    height: 100%;
-  }
-
-  svg path{
-    fill: ${props => props.theme.Black};
-  }
-`
-
 const NormalNoticeContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -441,6 +387,62 @@ const Social = styled.a`
   font-size: ${props => (props.bigger ? "18px" : "14px")};
 `
 
+const SocialContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  z-index: 999;
+
+  a {
+    position: relative;
+    display: inline-block;
+    color: ${props => props.theme.Black};
+    border: 2px solid ${props => props.theme.Black};
+    cursor: pointer;
+    background-color: ${props => props.theme.Yellow};
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 5px;
+    padding: ${props => (props.bigger ? "10px" : "14px")} 0;
+    font-size: ${props => (props.bigger ? "18px" : "14px")};
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+    }
+    
+    svg path {
+      fill: ${props => props.theme.Black};
+    }
+  }
+
+  ${props => props.theme.smallBreakPoint} {
+    position: static;
+    margin-bottom: 20px;
+    flex-direction: row;
+    justify-content: center;
+
+    a {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+`
+/*
+const SocialIcon = styled.a`
+  
+`
+*/
 export {
   NoticeTitleWrapper,
   NoticeSection,
@@ -466,5 +468,4 @@ export {
   MediaWrapper,
   Social,
   SocialContainer,
-  SocialIcon
 }
