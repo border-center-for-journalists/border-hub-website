@@ -190,7 +190,7 @@ const Title = styled.h1`
   }
 `
 
-const YellowTitle = styled.h3`
+const YellowTitle = styled.h1`
   background-color: ${props => props.theme.Yellow};
   font-size: 30px;
   line-height: 34.5px;
@@ -256,7 +256,7 @@ const TitleContainer = styled.div`
   position: relative;
   text-align: left;
   padding-left: 40px;
-  h1 {
+  h2 {
     width: 100%;
     font-size: 39px;
     color: white;
@@ -265,7 +265,7 @@ const TitleContainer = styled.div`
     padding-bottom: 0.5em;
     border-bottom: 5px solid ${props => props.theme.Yellow};
   }
-  h1 a {
+  h2 a {
     color: inherit;
     text-decoration: none;
     display: block;
