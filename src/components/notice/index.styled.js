@@ -10,12 +10,27 @@ const NoticeSection = styled.section`
 `
 
 const SocialContainer = styled.div`
-  position: fixed;
+  display: flex;
   flex-direction: column;
+  position: fixed;
   top: 80px;
   right: 40px;
   z-index: 999;
+
+  @media screen and (max-width:767px){
+    position: static;
+    margin-bottom: 20px;
+    flex-direction: row;
+    justify-content: center;
+
+    a {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
 `
+
+
 
 const SocialIcon = styled.a`
   position: relative;
@@ -292,7 +307,7 @@ const ImageWrapper = styled.div`
     display: block;
     width: 100%;
   }
-  ${({color}) => color ==='white' ? `p{ color:white; }`: '' }
+  ${({ color }) => color === 'white' ? `p{ color:white; }` : ''}
 `
 
 const TextWrapper = styled.div`

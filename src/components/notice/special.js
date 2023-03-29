@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { NoticeSection,SocialIcon,SocialContainer } from "./index.styled"
+import { NoticeSection, SocialIcon, SocialContainer } from "./index.styled"
 import HeaderNoticeComponent from "./header.js"
 import AuthorsNoticeComponent from "./authors"
 import TextNoticeContentComponent from "./textContent"
@@ -89,14 +89,6 @@ class SpecialNoticeComponent extends Component {
           url={this.props.url}
         />
         {htmlContent}
-        <AuthorsNoticeComponent
-          color="white"
-          align="center"
-          authors={this.props.notice.data.author}
-        />
-        <AlliancesNoticeContentComponent
-          alliances={this.props.notice.data.alliances}
-        />
         <SocialContainer className={isSticky ? "sideSticky" : ""}>
           <FacebookShareButton url={this.props.url}>
             <SocialIcon bigger className="icon-facebook" />
@@ -123,6 +115,15 @@ class SpecialNoticeComponent extends Component {
             </SocialIcon>
           </WhatsappShareButton>
         </SocialContainer>
+        <AuthorsNoticeComponent
+          color="white"
+          align="center"
+          authors={this.props.notice.data.author}
+        />
+
+        <AlliancesNoticeContentComponent
+          alliances={this.props.notice.data.alliances}
+        />
         <NormalRelatedComponent color="white" related={this.state.related} />
       </NoticeSection>
     )

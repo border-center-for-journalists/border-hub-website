@@ -59,13 +59,6 @@ class NormalNoticeComponent extends Component {
         <NormalNoticeContainer>
           <br />
           <TextNoticeContentComponent notice={this.props.notice} />
-          <NormalSubscribeComponent />
-          <AuthorsNoticeComponent
-            color="black"
-            align="left"
-            authors={this.props.notice.data.author}
-          />
-          <NormalDonateComponent />
           <SocialContainer className={isSticky ? "sideSticky" : ""}>
           <FacebookShareButton url={this.props.url}>
             <SocialIcon bigger className="icon-facebook" />
@@ -92,6 +85,13 @@ class NormalNoticeComponent extends Component {
             </SocialIcon>
           </WhatsappShareButton>
         </SocialContainer>
+          <NormalSubscribeComponent />
+          <AuthorsNoticeComponent
+            color="black"
+            align="left"
+            authors={this.props.notice.data.author}
+          />
+          <NormalDonateComponent />
           <NormalRelatedComponent color="black" related={this.state.related} />
         </NormalNoticeContainer>
       </NoticeSection>
