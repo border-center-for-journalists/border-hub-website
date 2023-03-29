@@ -19,7 +19,7 @@ const NormalRelatedComponent = ({ color, related }) => {
     <React.Fragment>
       <Container size="medium" xlStaticSize>
         <YellowTitle>Notas Relacionadas</YellowTitle>
-        {related.map((item, index) => {
+        {related.slice(0, 5).map((item, index) => {
           const urlSectionType = (item.type == 'noticias_especiales') ? SPECIAL_NEWS_URL : NEWS_URL
           return (
             <MainNewSmall key={index}>

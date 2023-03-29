@@ -36,7 +36,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={title.includes('Border Hub') ? `%s` : `%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
@@ -116,8 +116,12 @@ function SEO({ description, lang, meta, keywords, title, image }) {
 }
 
 SEO.defaultProps = {
-  lang: `es`,
-  meta: [],
+  lang: `ES-MX`,
+  meta: [
+    { name: `author`, content: `Border Hub` },
+    { name: `publisher`, content: `Border Hub` },
+    { name: `robots`, content: `INDEX` },
+  ],
   keywords: [],
   description: ``,
   image: false,

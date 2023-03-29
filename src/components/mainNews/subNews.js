@@ -25,11 +25,11 @@ class SubNewComponent extends Component {
         </Col>
         <Col>
           <MainNewSmallText darkMode={this.props.darkMode}>
-            <h3>
+            <h2>
               <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>
                 {this.props.notice.data.title.text}
               </a>
-            </h3>
+            </h2>
             {/*<Paragraph>{this.props.notice.data.excerpt.text}</Paragraph>*/}
             <MobileParagraph>
               {this.props.notice.data.excerpt.text}
