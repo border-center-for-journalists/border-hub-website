@@ -36,7 +36,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={title.includes('Border Hub') ? `%s` : `%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,

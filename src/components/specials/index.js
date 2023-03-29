@@ -59,11 +59,11 @@ class SpecialNews extends Component {
             {notices.map((item, index) => {
               return (
                 <CustomSecondTitle fullHeight={false} key={item.uid}>
-                  <h1>
+                  <h2>
                     <a href={`/${urlSectionType}/${item.uid}/`}>
                       {item.data.title.text}
                     </a>
-                  </h1>
+                  </h2>
                   <Paragraph>
                     {item.data.excerpt.text}
                   </Paragraph>
