@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import {
   SpecialSection,
-  CustomTitle,
+  SubTitle,
   CustomContainer,
   CustomSecondTitle,
   BigArrow,
@@ -42,9 +42,9 @@ class SpecialNews extends Component {
     return (
       <SpecialSection bg={this.props.notices.nodes[currentSlide].data.banner.url}>
         <CustomContainer size="large">
-          <CustomTitle>
+          <SubTitle>
             <a href="/noticias-especiales/">Ver todas</a> Especiales
-          </CustomTitle>
+          </SubTitle>
           <Slider
             adaptiveHeight
             infinite

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import {
-  CustomTitle,
+  SubTitle,
   RecentSection,
   PrincipalContainer,
   HrCol,
@@ -27,9 +27,9 @@ class RecentIncidencias extends Component {
     return (
       <RecentSection>
         <Container size="large">
-          <CustomTitle>
-              <a href={`/incidencia/`}>Ver todo</a> Incidencia
-          </CustomTitle>
+          <SubTitle>
+            <a href={`/incidencia/`}>Ver todo</a> Incidencia
+          </SubTitle>
           <PrincipalContainer>
             {this.props.notices.nodes.map(notice =>
               this.isAllowed(notice, mergeNotices) ? (

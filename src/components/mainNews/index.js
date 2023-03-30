@@ -25,7 +25,7 @@ class MainNewsComponent extends Component {
     //console.log('DATA',data)
     if (noticeLen === i + 1) {
       return (
-        <React.Fragment>
+        <React.Fragment key={i}>
           <ImageWrapper>
             <a href={`/${urlSectionType}/${data.uid}/`}>
               <img alt={data.data.title.text} src={data.data.banner.url} />
@@ -48,7 +48,7 @@ class MainNewsComponent extends Component {
         </React.Fragment>
       )
     } else {
-      return <SubNewComponent darkMode={false} notice={data} />
+      return <SubNewComponent key={i} darkMode={false} notice={data} />
     }
   }
   render() {

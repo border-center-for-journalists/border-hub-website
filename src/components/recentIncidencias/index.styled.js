@@ -34,6 +34,7 @@ const CustomTitle = styled(YellowTitle)`
     }
   }
 `
+
 const PrincipalContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -150,6 +151,32 @@ const HrCol = styled(Col)`
   }
 `
 
+const SubTitle = styled.h2`
+  background-color: ${props => props.theme.Yellow};
+  font-size: 30px;
+  line-height: 34.5px;
+  width: auto;
+  display: inline-block;
+  padding: 15px 31px;
+  color: black;
+  a {
+    margin-left: 40px;
+    float: right;
+    font-size: 15px;
+    font-style: italic;
+    color: ${props => props.theme.Black};
+    text-decoration: underline;
+  }
+
+  ${props => props.theme.smallBreakPoint} {
+    width: 100%;
+  }
+
+  ${props => props.theme.xlBreakPoint} {
+    margin: 0;
+  }
+`
+
 export {
   CustomTitle,
   NewsContainer,
@@ -161,4 +188,5 @@ export {
   TextCol,
   YellowText,
   HrCol,
+  SubTitle
 }

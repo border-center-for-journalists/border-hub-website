@@ -19,7 +19,7 @@ class SubscribeComponent extends Component {
     return (
       <YellowBody>
         <TitleMediumContainer color={true}>
-          <h3>Suscríbete</h3>
+          <h2>Suscríbete</h2>
           <FormBody color id="mc_embed_signup">
             <form
               action="https://bordercenter.us20.list-manage.com/subscribe/post?u=7e8c52a85a62c87db4816ca56&amp;id=d871cf9a52"
@@ -28,7 +28,7 @@ class SubscribeComponent extends Component {
               name="mc-embedded-subscribe-form"
               target="_blank"
             >
-              <Rows align="space-between" wrap id="mc_embed_signup_scroll">
+              <Rows align="space-between" wrap="true" id="mc_embed_signup_scroll">
                 <CustomRow width="48%" widthXl="24%" className="mc-field-group">
                   <label htmlFor="mce-FNAME">Nombre </label>
                   <input type="text" name="FNAME" className="" id="mce-FNAME" />
@@ -59,7 +59,6 @@ class SubscribeComponent extends Component {
                         className="birthday "
                         type="text"
                         pattern="[0-9]*"
-                        value=""
                         placeholder="MM"
                         size="2"
                         maxLength="2"
@@ -73,7 +72,6 @@ class SubscribeComponent extends Component {
                         className="birthday "
                         type="text"
                         pattern="[0-9]*"
-                        value=""
                         placeholder="DD"
                         size="2"
                         maxLength="2"
@@ -104,7 +102,6 @@ class SubscribeComponent extends Component {
                     type="text"
                     name="b_7e8c52a85a62c87db4816ca56_d871cf9a52"
                     tabIndex="-1"
-                    value=""
                   />
                 </div>
                 <CustomRow width="48%" widthXl="24%" className="clear">
