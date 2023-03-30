@@ -13,7 +13,7 @@ const RecentSection = styled(Section)`
 const CustomTitle = styled(TitleMediumContainer)`
   padding-top: 39px;
   max-width: 1100px;
-  h3 {
+  h2 {
     font-size: 30px;
     line-height: 1.22;
   }
