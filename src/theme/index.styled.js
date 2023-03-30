@@ -270,6 +270,20 @@ const TitleContainer = styled.div`
     text-decoration: none;
     display: block;
   }
+  h3 {
+    width: 100%;
+    font-size: 39px;
+    color: white;
+    line-height: 46px;
+    text-align: left;
+    padding-bottom: 0.5em;
+    border-bottom: 5px solid ${props => props.theme.Yellow};
+  }
+  h3 a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+  }
   p {
     line-height: 31.5px;
     color: white;
@@ -297,10 +311,12 @@ const TitleContainer = styled.div`
   }
 `
 
+
+
 const TitleMediumContainer = styled(Container)`
   padding: 1.5em 0 0.1em;
 
-  h3 {
+  h2 {
     padding-bottom: 15px;
     margin-bottom: 15px;
     color: ${props => (props.color ? props.theme.Black : props.theme.White)};

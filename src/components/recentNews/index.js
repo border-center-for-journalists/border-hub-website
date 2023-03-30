@@ -28,9 +28,9 @@ class RecentNews extends Component {
       <RecentSection>
         <Container size="large">
           <CustomTitle>
-            <h3>
+            <h2>
               <a href="/noticias/">Ver todas</a> Notas Recientes
-            </h3>
+            </h2>
           </CustomTitle>
           <PrincipalContainer>
             {this.props.notices.nodes.map(notice =>

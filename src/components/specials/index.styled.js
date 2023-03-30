@@ -30,12 +30,7 @@ const CustomContainer = styled(Container)`
 `;
 
 const CustomTitle = styled(YellowTitle)`
-  width: auto;
-  display: inline-block;
-  a {
-    margin-left: 40px;
-  }
-  margin-left: 110px;
+  
 `
 
 const CustomSecondTitle = styled(TitleContainer)`
@@ -76,6 +71,33 @@ const InteractiveContainer = styled.div`
   width: 100vw;
 `;
 
+const SubTitle = styled.h2`
+  background-color: ${props => props.theme.Yellow};
+  font-size: 30px;
+  line-height: 34.5px;
+  width: auto;
+  display: inline-block;
+  padding: 15px 31px;
+  color: black;
+  margin-left: 110px;
+  a {
+    margin-left: 40px;
+    float: right;
+    font-size: 15px;
+    font-style: italic;
+    color: ${props => props.theme.Black};
+    text-decoration: underline;
+  }
+
+  ${props => props.theme.smallBreakPoint} {
+    width: 100%;
+  }
+
+  ${props => props.theme.xlBreakPoint} {
+    margin: 0;
+  }
+`
+
 export {
   SpecialSection,
   CustomTitle,
@@ -84,5 +106,6 @@ export {
   BigArrow,
   InteractiveContainer,
   RightArrowContainer,
-  LeftArrowContainer
+  LeftArrowContainer,
+  SubTitle
 }

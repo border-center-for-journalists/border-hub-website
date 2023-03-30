@@ -124,7 +124,7 @@ SEO.defaultProps = {
   ],
   keywords: [],
   description: ``,
-  image: false,
+  image: '',
 }
 
 SEO.propTypes = {
