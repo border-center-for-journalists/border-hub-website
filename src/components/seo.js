@@ -111,6 +111,8 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           `
         }
       </script>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4407224989610340"
+     crossorigin="anonymous"></script>
     </Helmet>
   )
 }
