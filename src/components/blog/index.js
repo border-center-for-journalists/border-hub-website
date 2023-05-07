@@ -8,22 +8,11 @@ import {
 import SubNewComponent from "../mainNews/subNews"
 
 const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
-  let title = "";
-  if (category) {
-    title = category.data.title.text;
-  } else if (!category) {
-    title = "Investigaciones";
-  }
-
-  if (darkMode) {
-    title += " Especiales";
-  }
-
   return (
     <Section paddingTop darkMode={darkMode}>
       <Container xlStaticSize wrapPadding>
         <TitleYellow>
-          {title}
+          {category ? `${category.data.title.text}` : darkMode === true ? "Investigaciones Especiales" : "Noticias"}
         </TitleYellow>
         {data.map((notice, index) => (
           <SubNewComponent darkMode={darkMode} notice={notice} key={index} />
