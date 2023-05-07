@@ -10,7 +10,7 @@ class FooterComponent extends Component {
     return (
       <Footer>
         <BlackContainer>
-          <a href="/">
+          <a href="https://www.bordercenter.net/es/">
             <img alt="Border Hub" src={bh} />
           </a>
           <a href="/">
