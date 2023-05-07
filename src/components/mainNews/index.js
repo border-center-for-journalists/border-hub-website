@@ -64,7 +64,7 @@ class MainNewsComponent extends Component {
           {
             category
               ? (<Fragment><a href={`/categoria/${category.uid}`}>Ver todas</a> {category.document[0].data.title.text}</Fragment>)
-              : (<Fragment><a href="/noticias/">Ver todas</a> Notas Principales</Fragment>)
+              : (<Fragment><a href="/noticias/">Ver todas</a> Investigaciones Especiales</Fragment>)
           }
         </YellowTitle>
         <MainNewBig size="Common">{htmlContent}</MainNewBig>

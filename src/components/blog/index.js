@@ -12,8 +12,7 @@ const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
     <Section paddingTop darkMode={darkMode}>
       <Container xlStaticSize wrapPadding>
         <TitleYellow>
-          {category ? `${category.data.title.text}` : 'Noticias '}
-          {darkMode === true ? "Especiales" : ""}
+          {category ? `${category.data.title.text}` : darkMode === true ? "Investigaciones Especiales" : "Noticias"}
         </TitleYellow>
         {data.map((notice, index) => (
           <SubNewComponent darkMode={darkMode} notice={notice} key={index} />
