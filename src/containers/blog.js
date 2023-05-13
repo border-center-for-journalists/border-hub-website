@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import BlogComponent from "../components/blog"
 import Prismic from "prismic-javascript"
-
 // const BlogContainer = ({ data, darkMode, isFetching }) => {
 class BlogContainer extends Component {
   constructor(props) {
