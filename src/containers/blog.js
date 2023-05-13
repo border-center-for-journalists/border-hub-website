@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import BlogComponent from "../components/blog"
 import Prismic from "prismic-javascript"
-
 // const BlogContainer = ({ data, darkMode, isFetching }) => {
 class BlogContainer extends Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class BlogContainer extends Component {
     this.ScrollEvent()
     this.inScroll = null
     this.noticeType =
-    this.props.darkMode === true ? "noticias_especiales" : "noticias"
+      this.props.darkMode === true ? "noticias_especiales" : "noticias"
     this.FetchMoreListItems()
     window.addEventListener("scroll", this.ScrollEvent)
   }
@@ -60,11 +59,11 @@ class BlogContainer extends Component {
           const authorLength = n.data.author.length
           const excerptText = excerptLength ? n.data.excerpt[0].text : ""
           const titleText = titleLength ? n.data.title[0].text : ""
-          const authorText = authorLength
+          const authorText = n.data.author && authorLength && n.data.author[0].name && n.data.author[0].name.length
             ? n.data.author[0].name[0].text
-            : "Anónimo"
+            : "Anónimo";
 
-          return this.noticeType=="noticias_especiales" ? ({
+          return this.noticeType == "noticias_especiales" ? ({
             uid: n.uid,
             data: {
               banner: {
@@ -76,7 +75,7 @@ class BlogContainer extends Component {
               author: [{ name: { text: authorText } }],
             },
             showOnSpecialNews: n.data.show_on_special_news
-          }): ({
+          }) : ({
             uid: n.uid,
             data: {
               banner: {
@@ -90,8 +89,8 @@ class BlogContainer extends Component {
           })
         })
         let newData;
-        if(this.noticeType=="noticias_especiales"){
-          newData = almostNewData.filter(n=>n.showOnSpecialNews === null || n.showOnSpecialNews=== true);
+        if (this.noticeType == "noticias_especiales") {
+          newData = almostNewData.filter(n => n.showOnSpecialNews === null || n.showOnSpecialNews === true);
         } else {
           newData = almostNewData;
         }
