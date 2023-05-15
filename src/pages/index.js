@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
+import Buymeacoffee from "../components/third/bmc"
 
 const temp = data => {
 

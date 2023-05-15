@@ -631,6 +631,13 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+.bmc-btn-container {
+  position: fixed;
+  z-index: 1000;
+  right: 1em;
+  bottom: 1em;
+}
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
