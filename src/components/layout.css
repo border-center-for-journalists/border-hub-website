@@ -631,6 +631,30 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+  .bmc-btn-container {
+    width: 300px;
+    height: 50px;
+    background-color: #FFDD00;
+    border: 2px solid #000000;
+    border-radius: .5em;
+    outline: none;
+    cursor: pointer;
+    color: #000000;
+    font-size: 1em;
+    font-weight: bold;
+    position: fixed;
+    z-index: 1000;
+    right: 1em;
+    top: 1em;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #FDBF00;
+    }
+  }
+
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;

@@ -10,6 +10,7 @@ class HeaderComponent extends Component {
         <Logo href="/" minify={this.props.minify}>
           <img alt="Border center" src={this.props.minify ? smallLogo : logo} />
         </Logo>
+        <button className="bmc-btn-container"><a href="https://www.buymeacoffee.com/borderhub" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}> 📷 Apoya al periodismo</a></button>
       </Header>
     )
   }
