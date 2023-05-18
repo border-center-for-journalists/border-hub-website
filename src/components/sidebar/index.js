@@ -25,7 +25,7 @@ class SidebarComponent extends Component {
             this.toggleMenu()
           }}
           className={this.state.menuOpen ? "open" : ""}
-          name='Sidebar Menu'
+          name="Sidebar Menu"
         >
           <i />
         </Hamburguer>
@@ -34,10 +34,20 @@ class SidebarComponent extends Component {
           bigger
           href={facebook.url}
           className="icon-facebook"
-          rel='noopener'
+          rel="noopener"
         />
-        <Social target="_blank" href={twitter.url} className="icon-twitter" rel='noopener' />
-        <Social target="_blank" href={youtube.url} className="icon-youtube" rel='noopener' />
+        <Social
+          target="_blank"
+          href={twitter.url}
+          className="icon-twitter"
+          rel="noopener"
+        />
+        <Social
+          target="_blank"
+          href={youtube.url}
+          className="icon-youtube"
+          rel="noopener"
+        />
         <Overlay
           onClick={() => {
             this.toggleMenu()
@@ -70,21 +80,31 @@ class SidebarComponent extends Component {
               bigger
               href={facebook.url}
               className="icon-facebook"
-              rel='noopener'
+              rel="noopener"
             />
             <Social
               target="_blank"
               href={twitter.url}
               className="icon-twitter"
-              rel='noopener'
+              rel="noopener"
             />
             <Social
               target="_blank"
               href={youtube.url}
               className="icon-youtube"
-              rel='noopener'
+              rel="noopener"
             />
           </Rows>
+
+          <a
+            className="bmc-btn-container-side"
+            href="https://www.buymeacoffee.com/borderhub"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            📷 Apoya al periodismo
+          </a>
         </Menu>
       </Sidebar>
     )

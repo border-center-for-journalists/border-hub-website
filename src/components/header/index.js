@@ -8,8 +8,20 @@ class HeaderComponent extends Component {
     return (
       <Header minify={this.props.minify}>
         <Logo href="/" minify={this.props.minify}>
-          <img alt="Border center" src={this.props.minify ? smallLogo : logo} />
+          <img
+            alt="Border center"
+            src={this.props.minify ? smallLogo : logo}
+          />
         </Logo>
+        <a
+          className="bmc-btn-container"
+          href="https://www.buymeacoffee.com/borderhub"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "inherit", textDecoration: "none" }}
+        >
+          📷 Apoya al periodismo
+        </a>
       </Header>
     )
   }
