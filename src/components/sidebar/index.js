@@ -84,8 +84,8 @@ class SidebarComponent extends Component {
               className="icon-youtube"
               rel='noopener'
             />
-            <button className="bmc-btn-container-side"><a href="https://www.buymeacoffee.com/borderhub" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>📷 Apoya al periodismo</a></button>
           </Rows>
+          <button className="bmc-btn-container-side"><a href="https://www.buymeacoffee.com/borderhub" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>📷 Apoya al periodismo</a></button>
         </Menu>
       </Sidebar>
     )

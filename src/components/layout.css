@@ -759,16 +759,16 @@ pre tt:after {
   }
 
   .bmc-btn-container-side {
-    margin: 5px 20px 5px 0;
+    margin-top: 1em;
     display: inline-block;
     border: none !important;
     text-align: center;
-    width: 120px;
-    height: 40px;
+    width: 100%;
+    height: 60px;
     color: #1f191a;
     background-color:#fff200;
     border-radius: 2em;
-    font-size: .5em;
+    font-size: 1em;
     font-weight: bold;
     box-shadow: rgba(1, 0, 1, 0.23) 0px 3px 7px 0px;
   }
