@@ -8,7 +8,7 @@ class NormalSubscribeComponent extends Component {
     return (
       <YellowContainer size="medium" xlStaticSize>
         <TitleMediumContainer color={true}>
-          <h3>Suscríbete y recibe noticias al instante:</h3>
+          <h3>Suscríbete y recibe noticias al momento:</h3>
           <FormBody color id="mc_embed_signup">
             <form
               action="https://bordercenter.us20.list-manage.com/subscribe/post?u=7e8c52a85a62c87db4816ca56&amp;id=d871cf9a52"
