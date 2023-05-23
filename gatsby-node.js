@@ -120,3 +120,10 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
 }
+
+exports.onPostBuild = ({ reporter }) => {
+  reporter.info('Copying ads.txt to public folder');
+  const adsTxtSrc = path.join(__dirname, 'ads.txt');
+  const adsTxtDest = path.join(__dirname, 'public', 'ads.txt');
+  fs.copyFileSync(adsTxtSrc, adsTxtDest);
+};
