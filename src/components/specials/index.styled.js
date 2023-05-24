@@ -30,7 +30,7 @@ const CustomContainer = styled(Container)`
 `;
 
 const CustomTitle = styled(YellowTitle)`
-  
+
 `
 
 const CustomSecondTitle = styled(TitleContainer)`
@@ -44,6 +44,15 @@ const RightArrowContainer = styled.div`
   right: 0px;
   top: 0px;
   z-index: 999;
+
+  @media (max-width: 768px) {
+    right: .1em;
+    top: 3em;
+  }
+
+  @media (max-width: 500px) {
+    display:none;
+  }
 `;
 
 const LeftArrowContainer = styled.div`
@@ -53,18 +62,33 @@ const LeftArrowContainer = styled.div`
   top: 0px;
   transform: rotate(180deg);
   z-index: 999;
+
+  @media (max-width: 768px) {
+    left: .1em;
+    top: 3em;
+  }
+
+  @media (max-width: 500px) {
+    display:none;
+  }
+
 `;
 
 const BigArrow = styled.i`
   font-size: 150px;
   color: #fff;
-  margin-left: 40px;
   width: 115px;
   display: block;
 
   :hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    font-size: 80px; 
+    width: 10px;
+  }
+
 `
 
 const InteractiveContainer = styled.div`
@@ -96,6 +120,11 @@ const SubTitle = styled.h2`
   ${props => props.theme.xlBreakPoint} {
     margin: 0;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 0em;
+  }
+
 `
 
 export {
