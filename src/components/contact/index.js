@@ -52,7 +52,7 @@ class ContactUsComponent extends Component {
     return (
       <ContactUsSection>
         <TitleYellow>
-          <h3>{title.text}</h3>
+          <h1>{title.text}</h1>
           <p>{subtitle.text}</p>
         </TitleYellow>
         <ContactContainer>
@@ -110,7 +110,22 @@ class ContactUsComponent extends Component {
             </Row>
           </CustomColText>
         </ContactContainer>
-
+        <div className="donate-container-contact">
+          <i className="icon-donar" />
+          <h2>El periodismo requiere de tu apoyo</h2>
+          <p>Conviértete en miembro del Border Hub</p>
+          <a
+            href="https://www.buymeacoffee.com/borderhub"
+            target="_blank"
+            className="bmc-button"
+            rel="noopener noreferrer"
+            style={{
+              margin: "1.23em auto 0"
+            }}
+          >
+            Donar
+          </a>
+        </div>
       </ContactUsSection >
     );
   }
