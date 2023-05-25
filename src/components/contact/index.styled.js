@@ -7,7 +7,6 @@ import {
   Container,
   Col,
 } from "../../theme/index.styled"
-import { DonateContainer } from "../notice/index.styled"
 
 const ContactUsSection = styled(Section)`
   background-color: white;
@@ -90,12 +89,6 @@ const CustomRows = styled(Rows)`
   }
 `
 
-const DonateContact = styled(DonateContainer)`
-  @media (min-width: 1024px) {
-    max-width:850px;
-  }
-`
-
 export {
   ContactUsSection,
   ContactContainer,
@@ -103,5 +96,4 @@ export {
   CustomColForm,
   CustomColText,
   CustomRows,
-  DonateContact
 }
