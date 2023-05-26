@@ -28,21 +28,23 @@ class HomeContainer extends Component {
   }
 
   render() {
+    const { showBanner, specialNotices, recentNotices, noticeP } = this.props;
+
     const removeSpecialNotices = this.removeDuplicated(
-      this.props.specialNotices.nodes,
-      this.props.recentNotices.nodes
+      specialNotices.nodes,
+      recentNotices.nodes
     );
     const recentNoticesFiltered = {
       nodes: this.removeDuplicated(
-        this.props.noticeP.nodes,
+        noticeP.nodes,
         removeSpecialNotices
       )
     }
+
     return (
-      <React.Fragment>
-        {this.props.showBanner ? (
-          <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
-        ) : <div style={{ marginTop: "60px" }}></div>}
+      <div style={{ marginTop: (!showBanner ? "60px" : "0px")}}>
+        { showBanner && <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />}
+
         <MainNewsComponent notice={this.props.noticeP} />
         {
           this.props.categories.map(category =>
@@ -65,7 +67,7 @@ class HomeContainer extends Component {
           principalNotices={this.props.normalNotices}
         />
         <SpecialNews notices={this.props.specialNotices} />
-      </React.Fragment>
+      </div>
     )
   }
 }

@@ -1,14 +1,15 @@
 import React, { Component } from "react"
-import { Banner, BannerContainer, BannerImg } from "./index.styled"
-import bodyImage from "../../theme/images/1.jpg"
 import {
-  AuthorContainer,
-  Rows,
-  Row,
-  TitleContainer,
-  Paragraph,
-} from "../../theme/index.styled"
-import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
+  Banner,
+  BannerAuthor,
+  BannerContainer,
+  BannerTitle,
+  BannerText,
+  BannerColumns,
+} from "./index.styled.js"
+import bodyImage from "../../theme/images/1.jpg"
+import { Rows, Row } from "../../theme/index.styled"
+import { SPECIAL_NEWS_URL, NEWS_URL } from "../../utils/constants"
 
 import moment from "moment"
 import "moment/locale/es"
@@ -16,49 +17,57 @@ import "moment/locale/es"
 moment.locale("es")
 
 class HomeHeaderComponent extends Component {
-  getAuthor = notice => {
-    return notice.data.author.length > 0 ? notice.data.author[0].name.text : ""
+  getAuthor = author => {
+    const authorNames = author
+      .filter(author => author.name && author.name.text !== "")
+      .map(author => author.name.text)
+
+    if (authorNames.length > 0) {
+      return authorNames.join(', ');
+    }
+
+    return "Anónimo";
   }
-  getDate = notice => {
-    return moment(notice.data.custom_publishdate).format("MMMM DD [|] YYYY")
+    
+  getDate = date => {
+    return moment(date).format("MMMM DD [|] YYYY")
   }
   render() {
-    const notice = this.props.bannerNotice[0]
-    const urlSectionType = (notice.type === 'noticias_especiales') ? SPECIAL_NEWS_URL : NEWS_URL
-    const rows =
-      this.props.bannerNotice.length === 0 ? (
-        <Rows />
-      ) : (
-          <Rows>
-            <Row shrink shrinkXl>
-              <AuthorContainer main={true} show={true} color={true}>
-                <i>
-                  Por <b> {this.getAuthor(notice)}</b>
-                </i>
-                <br /> {this.getDate(notice)}
-              </AuthorContainer>
-            </Row>
-            <Row shrink shrinkXl>
-              <TitleContainer fullHeight={true}>
-                <h2>
-                  <a href={`/${urlSectionType}/${notice.uid}/`}>{notice.data.title.text}</a>
-                </h2>
-                <AuthorContainer show={false} color={true}>
-                  <i>
-                    Por <b> {this.getAuthor(notice)}</b>
-                  </i>
-                  <br /> {this.getDate(notice)}
-                </AuthorContainer>
-                <Paragraph>{notice.data.excerpt.text}</Paragraph>
-              </TitleContainer>
-            </Row>
-          </Rows>
-        )
-    const banner = notice.data.banner.url ? notice.data.banner.url : bodyImage
+    const { bannerNotice } = this.props
+    const { uid, data, type } = bannerNotice[0]
+    const { title, excerpt, author, custom_publishdate, banner } = data
+    const bannerBg = banner.url ? banner.url : bodyImage
+    const section =
+      type === "noticias_especiales" ? SPECIAL_NEWS_URL : NEWS_URL
+
+      
     return (
-      <Banner>
-        <BannerImg fullHeight={true} bg={banner} />
-        <BannerContainer fullHeight={false}>{rows}</BannerContainer>
+      <Banner bg={bannerBg}>
+        <BannerContainer fullHeight={false}>
+          {bannerNotice.length === 0 ? (
+            <Rows />
+          ) : (
+            <Rows>
+              <Row shrink shrinkXl>
+                <BannerTitle>
+                  <a href={`/${section}/${uid}/`}>{title.text}</a>
+                </BannerTitle>
+                <BannerColumns>
+                  <BannerText>{excerpt.text}</BannerText>
+                  <BannerAuthor>
+                    <div>
+                      <i>
+                        Por <b> {this.getAuthor(author)}</b>
+                      </i>{" "}
+                      <br />
+                      {this.getDate(custom_publishdate)}
+                    </div>
+                  </BannerAuthor>
+                </BannerColumns>
+              </Row>
+            </Rows>
+          )}
+        </BannerContainer>
       </Banner>
     )
   }
