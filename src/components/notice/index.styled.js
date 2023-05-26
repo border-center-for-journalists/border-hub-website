@@ -426,9 +426,9 @@ const SocialContainer = styled.div`
     }
   }
 
-  ${props => props.theme.smallBreakPoint} {
+  ${props => props.theme.mediumBreakPoint} {
     position: static;
-    margin-bottom: 20px;
+    margin: 20px 0;
     flex-direction: row;
     justify-content: center;
 
