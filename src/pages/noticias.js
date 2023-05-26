@@ -6,12 +6,12 @@ import BlogContainer from "../containers/blog.js"
 
 const Noticias = data => {
   const common = data.data.prismicDatosComunes.data
-  const description = common.metadescription.text
+  const description = "Mantente informado con las últimas noticias y reportajes del periodismo en la Frontera Norte. Aquí discutimos noticias de última hora." 
   const keywords = common.metakeywords.text
 
   return (
     <Layout>
-      <SEO title="Blog" description={description} keywords={keywords} />
+      <SEO title="Noticias" description={description} keywords={keywords} />
       <div className="donate-container-news">
         <i className="icon-donar" />
         <h2>El periodismo requiere de tu apoyo</h2>
