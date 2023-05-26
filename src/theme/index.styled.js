@@ -49,6 +49,10 @@ const Container = styled.div`
     font-size: 15px;
     line-height: 1;
     font-weight: bold;
+
+    ${props => props.theme.smallBreakPoint} {
+      display:none;
+    }
   }
 
   width: 100%;
