@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import bg from "../../theme/images/1.jpg"
 
-const Banner = styled.div`
+const Banner = styled.section`
   display: flex;
   background-position: center;
   background-size: cover;

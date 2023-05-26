@@ -42,19 +42,24 @@ class HomeContainer extends Component {
     }
 
     return (
-      <div style={{ marginTop: (!showBanner ? "60px" : "0px")}}>
-        { showBanner && <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />}
+      <div style={{ marginTop: !showBanner ? "60px" : "0px" }}>
+        {showBanner && (
+          <HomeHeaderComponent bannerNotice={this.props.bannerNotice} />
+        )}
 
         <MainNewsComponent notice={this.props.noticeP} />
-        {
-          this.props.categories.map(category =>
-          ((category.active && category.category !== null) && <CategoryBlockComponent
-            key={`category-block-${category.prismicId}`}
-            category={category}
-            site={this.props.site}
-          />)
-          )
-        }
+        
+        {this.props.categories.map(
+          category =>
+            category.active &&
+            category.category !== null && (
+              <CategoryBlockComponent
+                key={`category-block-${category.prismicId}`}
+                category={category}
+                site={this.props.site}
+              />
+            )
+        )}
         <SubscribeComponent />
         <RecentNews
           notices={recentNoticesFiltered}
