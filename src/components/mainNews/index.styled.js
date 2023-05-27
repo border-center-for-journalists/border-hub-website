@@ -1,122 +1,60 @@
 import styled from "styled-components"
-import {
-  Section,
-  Container,
-  Paragraph,
-} from "../../theme/index.styled"
 
-const NewsContainer = styled(Section)`
-  background-color: white;
-  padding: 36px;
-  margin: 0 auto;
-  max-width: 1000px;
+const MainNewsSection = styled.section`
+  min-height: 100vh;
+  padding: 0 0.5em;
+  margin: 1em auto;
 
-  ${props => props.theme.mediumBreakPoint} {
+  ${props => props.theme.mdBP} {
     max-width: 700px;
+    padding: 0 1em;
   }
 
-  ${props => props.theme.ipadBreakPoint} {
-    padding: 2em 24px 0 24px;
+  ${props => props.theme.lgBP} {
+    max-width: 768px;
   }
 
-  ${props => props.theme.xlBreakPoint} {
+  ${props => props.theme.xlBP} {
     padding: 0;
+    max-width: 1000px;
   }
 `
-const MainNewBig = styled(Container)`
-  padding-bottom: 2em;
+const Subtitle = styled.div`
+  background-color: ${props => props.theme.Yellow};
   display: flex;
-  flex-direction: column;
-  h2 {
-    text-align: left;
-    color: ${props => props.theme.Black};
-    font-size: 30px;
-    line-height: 38px;
-    margin-bottom: 15px;
-    font-weight: bold;
-  }
-  h2 a {
-    color: ${props => props.theme.Black};
-    text-decoration: none;
-  }
-`
-const TextContainer = styled(Container)`
-  max-width: 100%;
-  ${props => props.theme.xlBreakPoint} {
-    padding: 0 1.5em;
-  }
-`
-
-const SubTitleParagraph = styled(Paragraph)`
-  font-size: 17px;
-  line-height: 1.35;
-  ${props => props.theme.smallBreakPoint} {
-    display: none;
-  }
-`
-
-const MainNewSmall = styled(Container)`
-  max-width: 100%;
-  padding: 15px 0 0 0;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
+  flex-direction: row;
   flex-wrap: wrap;
-  hr {
-    width: 100%;
-    color: ${props => props.theme.DarkGray};
-  }
-  img {
+  justify-content: space-between;
+  vertical-align: middle;
+  align-items: center;
+  color: rgb(31, 25, 26);
+  padding: 1em 1.5em;
+  margin: 1em auto;
+
+  h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.16;
     margin: 0;
   }
-  ${props => props.theme.xlBreakPoint} {
-    padding: 0 24px;
-  }
-`
 
-const MainNewSmallText = styled(Container)`
-  padding-left: 30px;
-  * {
-    color: ${props =>
-      props.darkMode === true ? props.theme.White : props.theme.Black};
-  }
-  h3 {
-    color: ${props =>
-      props.darkMode === true ? props.theme.White : props.theme.Black};
-    font-size: 24px;
-    line-height: 1.47;
-    text-align: left;
-    margin-bottom: 5px;
-  }
   a {
-    color: ${props =>
-      props.darkMode === true ? props.theme.White : props.theme.Black};
-    text-decoration: none;
+    font-size: 0.8em;
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(31, 25, 26);
+    text-decoration: underline;
   }
-  p {
-    color: ${props =>
-      props.darkMode === true ? props.theme.White : props.theme.Black};
-    text-align: left;
-    font-size: 17px;
-    margin-bottom: 15px;
-  }
-  ${props => props.theme.smallBreakPoint} {
-    padding-left: 0px;
-  }
-
 `
-const MobileParagraph = styled(Paragraph)`
-  ${props => props.theme.smallBreakPoint} {
-    display: none;
+const NewsList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin: 0;
+    padding: 0.5em 0;
   }
 `
 
-export {
-  NewsContainer,
-  MainNewBig,
-  SubTitleParagraph,
-  MainNewSmall,
-  MainNewSmallText,
-  TextContainer,
-  MobileParagraph,
-}
+export { Subtitle, MainNewsSection, NewsList }

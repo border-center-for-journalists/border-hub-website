@@ -1,22 +1,33 @@
 import React from "react"
 import {
   Section,
-  Container,
-  TitleYellow,
   Message,
 } from "../../theme/index.styled"
-import SubNewComponent from "../mainNews/subNews"
+import { MainNewsSection, Subtitle, NewsList } from "./index.styled"
+import SecondaryComponent from "../news/secondary"
 
 const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
   return (
     <Section paddingTop={!category && darkMode === true} darkMode={darkMode}>
-      <Container xlStaticSize wrapPadding>
-        <TitleYellow>
-          {category ? `${category.data.title.text}` : darkMode === true ? "Investigaciones Especiales" : "Noticias"}
-        </TitleYellow>
-        {data.map((notice, index) => (
-          <SubNewComponent darkMode={darkMode} notice={notice} key={index} />
-        ))}
+      <MainNewsSection>
+        <Subtitle>
+          <h1>
+            {category
+              ? `${category.data.title.text}`
+              : darkMode === true
+              ? "Investigaciones Especiales"
+              : "Noticias"}
+          </h1>
+        </Subtitle>
+
+        <NewsList>
+          {data.map((notice, index) => (
+            <li key={index}>
+              <SecondaryComponent darkMode={darkMode} size={"contain"} notice={notice} />
+            </li>
+          ))}
+        </NewsList>
+
         {isFetching && !fetchEnd ? (
           <Message darkMode={darkMode}>
             <span>Cargando noticias ...</span>
@@ -31,7 +42,7 @@ const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
         ) : (
           ""
         )}
-      </Container>
+      </MainNewsSection>
     </Section>
   )
 }
