@@ -46,8 +46,6 @@ const NoticeDetails = styled.div`
   flex: 2 1;
   flex-direction: column;
   padding: 0.5em 1em;
-  border: 3px solid
-    ${props => (!props.darkMode ? props.theme.Black : props.theme.White)};
   background-color: ${props =>
     props.darkMode ? props.theme.Black : props.theme.White};
   margin-top: 0.5em;
@@ -75,8 +73,8 @@ const NoticeTitle = styled.h2`
     bottom: -0.7em;
     left: 0;
     width: 66%;
-    border-bottom: 4px solid
-      ${props => (!props.darkMode ? props.theme.Black : props.theme.White)};
+    border-bottom: 3px solid
+      ${props => (!props.darkMode ? props.theme.Yellow : props.theme.White)};
   }
 `
 const NoticeText = styled.p`
@@ -91,6 +89,92 @@ const NoticeFooter = styled.div`
   color: ${props => (!props.darkMode ? props.theme.Black : props.theme.White)};
 `
 
+const ColContainer = styled.div`
+  height: 100%;
+  margin-bottom: 1em;
+`
+const ColHero = styled.div`
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`
+const ColDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 180px - 1em);
+  padding: 0 1em;
+  margin-top: 1em;
+}
+`
+const ColTitle = styled.h3`
+  position: relative;
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1.16;
+  margin: 0 0 0.5em;
+
+  a {
+    color: ${props => props.darkMode ? props.theme.White : props.theme.Black};
+    text-decoration: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -0.7em;
+    left: 0;
+    width: 66%;
+    border-bottom: 3px solid
+      ${props => props.theme.Yellow};
+  }
+`
+const ColText = styled.div`
+  color: ${props => props.darkMode ? props.theme.White : props.theme.Black};
+  font-size: 0.8em;
+  margin-top: 0.75em;
+  height: 80px;
+  overflow: hidden;
+  display: none;
+
+  p {
+    margin: 0;
+  }
+
+  ${props => props.theme.lgBP} {
+    display: block;
+  }
+
+  ${props => props.theme.xlBP} {
+    display: block;
+  }
+`
+const ColFooter = styled.small`
+  color: ${props => props.darkMode ? props.theme.Yellow : props.theme.Black};
+  font-size: 0.8em;
+  margin: 0.75em 0;
+
+  ${props => props.theme.lgBP} {
+    margin: 0;
+  }
+
+  ${props => props.theme.xlBP} {
+    margin: 0;
+  }
+`
+
 export {
   NoticeContainer,
   NoticeHero,
@@ -98,4 +182,10 @@ export {
   NoticeTitle,
   NoticeText,
   NoticeFooter,
+  ColContainer,
+  ColHero,
+  ColDetails,
+  ColTitle,
+  ColText,
+  ColFooter,
 }

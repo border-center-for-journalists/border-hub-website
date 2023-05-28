@@ -1,49 +1,34 @@
 import React, { Component } from "react"
 import {
-  SubTitle,
-  RecentSection,
-  PrincipalContainer,
-  HrCol,
+  RecentIncidenceSection,
+  Container,
+  Subtitle,
+  RecentNewsList,
+  RecentNewsColumn,
 } from "./index.styled"
-import SubNewComponent from "./subNews.js"
-import { Container } from "../../theme/index.styled"
+import ColComponent from "../news/col"
 
 class RecentIncidencias extends Component {
-  isAllowed = (notice, mergeNotices) => {
-    const r = mergeNotices.reduce((result, item) => {
-      return result && item.uid === notice.uid ? false : result
-    }, true)
-    return r
-  }
-  getColor = mergeNotices => {
-    let count = 0
-    this.props.notices.nodes.map(notice =>
-      this.isAllowed(notice, mergeNotices) ? (count += 1) : ""
-    )
-    return count >= 2 ? "white" : ""
-  }
   render() {
-    const mergeNotices = this.props.principalNotices.nodes
+    const discardNews = this.props.principalNotices.nodes.map((item) => item.uid)
+    const news = this.props.notices.nodes.filter((item) => discardNews.indexOf(item.uid) === -1)
+
     return (
-      <RecentSection>
+      <RecentIncidenceSection>
         <Container size="large">
-          <SubTitle>
+          <Subtitle>
             <h2>Incidencias</h2>
             <a href={`/incidencia/`}>Ver todas</a>
-          </SubTitle>
-          <PrincipalContainer>
-            {this.props.notices.nodes.map(notice =>
-              this.isAllowed(notice, mergeNotices) ? (
-                <HrCol color={this.getColor(mergeNotices)} key={notice.uid}>
-                  <SubNewComponent notice={notice} />
-                </HrCol>
-              ) : (
-                  ""
-                )
-            )}
-          </PrincipalContainer>
+          </Subtitle>
+          <RecentNewsList>
+            {news.map((notice, index) => (
+              <RecentNewsColumn key={index}>
+                <ColComponent notice={notice} darkMode={false} />
+              </RecentNewsColumn>
+            ))}
+          </RecentNewsList>
         </Container>
-      </RecentSection>
+      </RecentIncidenceSection>
     )
   }
 }
