@@ -12,14 +12,20 @@ import { getDate, getAuthor } from "../../utils/generic"
 
 class SecondaryComponent extends Component {
   render() {
-    const { notice, darkMode, size } = this.props
+    const { notice, darkMode, size, url } = this.props
     const { type, data, uid } = notice
-    const url = type === "noticias_especiales" ? SPECIAL_NEWS_URL : NEWS_URL
     const { banner, title, excerpt, author, custom_publishdate: date } = data
+
+    const rewriteUrl =
+      type !== undefined
+        ? type === "noticias_especiales"
+          ? SPECIAL_NEWS_URL
+          : NEWS_URL
+        : null
 
     return (
       <NoticeContainer direction="row">
-        <a href={`/${url}/${uid}`}>
+        <a href={`/${rewriteUrl || url}/${uid}`}>
           <NoticeHero size={size}>
             <img src={banner.url || banner.thumbnail.url} alt={title.text} />
           </NoticeHero>

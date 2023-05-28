@@ -18,9 +18,9 @@ class SubscribeComponent extends Component {
   render() {
     return (
       <YellowBody>
-        <TitleMediumContainer color={true}>
+        <TitleMediumContainer color={"black"}>
           <h2>Suscríbete y recibe noticias al momento:</h2>
-          <FormBody color id="mc_embed_signup">
+          <FormBody color="transparent" id="mc_embed_signup">
             <form
               action="https://bordercenter.us20.list-manage.com/subscribe/post?u=7e8c52a85a62c87db4816ca56&amp;id=d871cf9a52"
               method="post"

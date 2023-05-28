@@ -59,7 +59,6 @@ class ContactUsComponent extends Component {
           <CustomColForm>
             <FormBody>
               <form
-                color={false}
                 method="POST"
                 action={`https://formspree.io/${emailTo}`}
                 ref={this.formRef} // agregando la referencia al formulario

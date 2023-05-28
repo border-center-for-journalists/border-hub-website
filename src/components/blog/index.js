@@ -5,25 +5,29 @@ import {
 } from "../../theme/index.styled"
 import { MainNewsSection, Subtitle, NewsList } from "./index.styled"
 import SecondaryComponent from "../news/secondary"
+import { SPECIAL_NEWS_URL, NEWS_URL } from "../../utils/constants"
 
 const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
+  const title = category
+    ? `${category.data.title.text}`
+    : darkMode === true
+    ? "Investigaciones Especiales"
+    : "Noticias"
+
+  const url = title === "Noticias" ? NEWS_URL : SPECIAL_NEWS_URL
   return (
     <Section paddingTop={!category && darkMode === true} darkMode={darkMode}>
       <MainNewsSection>
         <Subtitle>
           <h1>
-            {category
-              ? `${category.data.title.text}`
-              : darkMode === true
-              ? "Investigaciones Especiales"
-              : "Noticias"}
+            {title}
           </h1>
         </Subtitle>
 
         <NewsList>
           {data.map((notice, index) => (
             <li key={index}>
-              <SecondaryComponent darkMode={darkMode} size={"contain"} notice={notice} />
+              <SecondaryComponent url={url} darkMode={darkMode} size={"contain"} notice={notice} />
             </li>
           ))}
         </NewsList>

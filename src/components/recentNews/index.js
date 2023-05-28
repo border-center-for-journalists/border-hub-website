@@ -25,7 +25,7 @@ class RecentNews extends Component {
           <RecentNewsList>
             {news.map((notice, index) => (
               <RecentNewsColumn key={index}>
-                <ColComponent notice={notice} darkMode={true} />
+                <ColComponent notice={notice} section="noticias" darkMode={true} />
               </RecentNewsColumn>
             ))}
           </RecentNewsList>

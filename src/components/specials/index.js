@@ -4,26 +4,27 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import {
   SpecialSection,
-  SubTitle,
+  Subtitle,
   CustomContainer,
-  CustomSecondTitle,
-  BigArrow,
-  RightArrowContainer,
-  LeftArrowContainer
+  Arrow,
+  ArrowContainer,
+  NewsContainer,
+  NewsTitle,
+  NewsContent,
+  SliderContainer
 } from "./index.styled"
 import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
-import { Rows, Row, Paragraph } from "../../theme/index.styled"
 
 const RightArrow = ({ onClick }) => (
-  <RightArrowContainer onClick={onClick}>
-    <BigArrow className="icon-arrow-right" />
-  </RightArrowContainer>
+  <ArrowContainer onClick={onClick}>
+    <Arrow className="icon-arrow-right" />
+  </ArrowContainer>
 );
 
 const LeftArrow = ({ onClick }) => (
-  <LeftArrowContainer left onClick={onClick}>
-    <BigArrow className="icon-arrow-right" />
-  </LeftArrowContainer>
+  <ArrowContainer rotate={"transform: rotate(180deg);"} onClick={onClick}>
+    <Arrow className="icon-arrow-right" />
+  </ArrowContainer>
 );
 class SpecialNews extends Component {
   constructor(props) {
@@ -37,40 +38,53 @@ class SpecialNews extends Component {
 
   render() {
     const { currentSlide = 0 } = this.state;
-    const urlSectionType = (this.props.notices.nodes[currentSlide].type) ? SPECIAL_NEWS_URL : NEWS_URL
     const notices = this.props.notices.nodes;
+
+    const settings = {
+      adaptiveHeight: true,
+      infinite: true,
+      speed: 1000,
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      beforeChange: this.handleSlide,
+      nextArrow: <RightArrow />,
+      prevArrow: <LeftArrow />
+    }
+
     return (
-      <SpecialSection bg={this.props.notices.nodes[currentSlide].data.banner.url}>
+      <SpecialSection
+        bg={this.props.notices.nodes[currentSlide].data.banner.url}
+      >
         <CustomContainer size="large">
-          <SubTitle>
-            <a href="/noticias-especiales/">Ver todas</a> Especiales
-          </SubTitle>
-          <Slider
-            adaptiveHeight
-            infinite
-            speed={500}
-            slidesToShow={1}
-            slidesToScroll={1}
-            nextArrow={<RightArrow />}
-            prevArrow={<LeftArrow />}
-            initialSlide={currentSlide}
-            beforeChange={this.handleSlide}
-          >
-            {notices.map((item, index) => {
-              return (
-                <CustomSecondTitle fullHeight={false} key={item.uid}>
-                  <h3>
-                    <a href={`/${urlSectionType}/${item.uid}/`}>
-                      {item.data.title.text}
-                    </a>
-                  </h3>
-                  <Paragraph>
-                    {item.data.excerpt.text}
-                  </Paragraph>
-                </CustomSecondTitle>
-              )
-            })}
-          </Slider>
+          <Subtitle>
+            <h2>Especiales</h2>
+            <a href="/noticias-especiales/">Ver todas</a>
+          </Subtitle>
+          <SliderContainer>
+            <Slider {...settings}>
+              {notices.map((notice, index) => {
+                const { type, uid, data } = notice
+                const { title, excerpt } = data
+                const section =
+                  type === "noticias_especiales"
+                    ? SPECIAL_NEWS_URL
+                    : NEWS_URL
+                return (
+                  <NewsContainer key={index}>
+                    <NewsTitle>
+                      <a
+                        href={`/${section}/${uid}`}
+                        alt={title.text}
+                      >
+                        {title.text}
+                      </a>
+                    </NewsTitle>
+                    <NewsContent>{excerpt.text}</NewsContent>
+                  </NewsContainer>
+                )
+              })}
+            </Slider>
+          </SliderContainer>
         </CustomContainer>
       </SpecialSection>
     )
