@@ -3,13 +3,18 @@ import bg from "../../theme/images/1.jpg"
 
 const Banner = styled.section`
   display: flex;
-  background-position: center;
+  background-position: top;
   background-size: cover;
-  background-image: linear-gradient(to bottom, transparent, 50%, black), url(${props => props.bg || bg});
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), 50%, rgba(0, 0, 0, 0.8)), url(${props => props.bg || bg});
   min-height: 100vh;
   text-align: right;
 
+  ${props => props.theme.lgBP} {
+    background-image: linear-gradient(to bottom, transparent, 50%, rgba(0, 0, 0, 0.8)), url(${props => props.bg || bg});
+  }
+
   ${props => props.theme.xlBP} {
+    background-image: linear-gradient(to bottom, transparent, 50%, rgba(0, 0, 0, 0.8)), url(${props => props.bg || bg});
     min-height: 80vh;
     margin-top: 0px;
   }
@@ -37,6 +42,7 @@ const BannerTitle = styled.h2`
   text-align: right;
   margin-top: 80px;
   font-size: 1.5em;
+  
   a {
     text-decoration: none;
     color: white;
@@ -45,11 +51,11 @@ const BannerTitle = styled.h2`
     font-size: 2em;
   }
   ${props => props.theme.lgBP} {
-    font-size: 2.5em;
+    font-size: 2em;
     margin-top: 0px;
   }
   ${props => props.theme.xlBP} {
-    font-size: 2.5em;
+    font-size: 2em;
   }
 `
 const BannerColumns = styled.div`
@@ -60,7 +66,7 @@ const BannerAuthor = styled.div`
   display: flex;
   justify-content: end;
   color: white;
-  font-size: 0.9em;
+  font-size: 0.8em;
 
   div {
     text-align: right;

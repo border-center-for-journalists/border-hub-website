@@ -96,7 +96,15 @@ const Subtitle = styled.div`
 const NewsContainer = styled.div`
   display: flex;
   flex: 1 1;
-  padding: 0 1em;
+  padding: 0;
+
+  ${props => props.theme.lgBP} {
+    padding: 0 1em;
+  }
+
+  ${props => props.theme.xlBP} {
+    padding: 0 1em;
+  }
 `
 const NewsTitle = styled.h3`
   margin: 0 0 1em;
@@ -118,13 +126,20 @@ const NewsTitle = styled.h3`
   }
 `
 const NewsContent = styled.p`
-  font-size: 0.9em;
-
+  font-size: 0.8em;
   color: ${props => props.theme.White};
   text-align: right;
   line-height: 1.8em;
   margin: 1em 0 0;
   padding: 0;
+
+  ${props => props.theme.xlBP} {
+    font-size: 0.9em;
+  }
+
+  ${props => props.theme.xlBP} {
+    font-size: 1em;
+  }
 `
 const SliderContainer = styled.div`
   display: flex;

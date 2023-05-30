@@ -43,7 +43,7 @@ const TextNoticeContentComponent = ({ notice }) => {
   return (
     <React.Fragment>
       <Container size="medium" xlStaticSize>
-        <button className="alignbutton" onClick={toggleAlignment}>{isJustified ? "Izq." : "X"}</button>
+        <button type="button" className="alignbutton" onClick={toggleAlignment}>{isJustified ? "Izq." : "X"}</button>
         {
           htmlElements.map((obj) => {
             if (obj.type == 'text')

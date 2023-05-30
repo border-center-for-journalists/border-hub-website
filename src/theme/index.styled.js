@@ -1,5 +1,31 @@
 import styled from "styled-components"
 
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+
+  h1, h2, h3, h4, h5, h6, p, a, button {
+    font-family: Aleo, serif;
+  }  
+`
+
+const MainContainer = styled.main`
+  display: flex:
+  flex-direction: column;
+  flex: 1 1;
+  max-width: 100%;
+
+  ${props => props.theme.lgBP} {
+    max-width: ${props => props.minify ? "100vw" : "calc(100vw - 60px)"};
+  }
+  ${props => props.theme.xlBP} {
+    max-width: ${props => props.minify ? "100vw" : "calc(100vw - 60px)"};
+  }
+`
+
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
@@ -43,8 +69,8 @@ const Container = styled.div`
     color: black;
     cursor: pointer;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     display: block;
     font-size: 15px;
     line-height: 1;
@@ -466,5 +492,8 @@ export {
   Message,
   ImgBackground,
   ParticipantOrganizations,
-  InvertedImage
+  InvertedImage,
+  
+  ContentWrapper,
+  MainContainer
 }
