@@ -1,12 +1,12 @@
 import React, { Component } from "react"
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   ContactUsSection,
   ContactContainer,
   TitleYellow,
   CustomColText,
   CustomColForm,
-  CustomRows,
-  DonateContact
+  CustomRows
 } from "./index.styled"
 import { FormBody, Rows, Row } from "../../theme/index.styled"
 
@@ -14,14 +14,16 @@ class ContactUsComponent extends Component {
   constructor(props) {
     super(props);
     this.formRef = React.createRef(); // creando la referencia
+    this.recaptchaRef = React.createRef(); // creando la referencia para reCAPTCHA
   }
 
   handleClick = async (event) => {
     event.preventDefault();
     const form = this.formRef.current;
+    const recaptchaValue = this.recaptchaRef.current.getValue();
 
-    if (!(form instanceof HTMLFormElement)) {
-      console.error('No se ha encontrado un elemento HTMLFormElement');
+    if (!recaptchaValue) {
+      alert("Por favor, completa el reCAPTCHA.");
       return;
     }
 
@@ -34,17 +36,23 @@ class ContactUsComponent extends Component {
         headers: {
           Accept: "application/json",
         },
-      })
+      });
       if (response.ok) {
-        form.reset(); // limpiar el formulario si el envío es exitoso
+        form.reset();
         alert("¡Gracias por contactarnos!");
       } else {
-        alert("Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.");
+        alert(
+          "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde."
+        );
       }
     } catch (error) {
-      alert("Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.");
+      alert(
+        "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde."
+      );
     }
-  }
+  };
+
+  
 
   render() {
     const { address, email, phone, title, subtitle } = this.props.data;
@@ -61,7 +69,7 @@ class ContactUsComponent extends Component {
               <form
                 color={false}
                 method="POST"
-                action={`https://formspree.io/${emailTo}`}
+                action="https://jonquil-quoll-1694.twil.io/contact-server"
                 ref={this.formRef} // agregando la referencia al formulario
               >
                 <CustomRows align="space-between">
@@ -73,6 +81,11 @@ class ContactUsComponent extends Component {
                   </Row>
                 </CustomRows>
                 <textarea rows="6" name="message" placeholder="Message" />
+                <ReCAPTCHA
+                  sitekey="6Lej5XImAAAAAEu5-5pS_hZt1QUYxlmiA5DjI-7E"
+                  onChange={this.handleRecaptchaChange}
+                  ref={this.recaptchaRef}
+                />
                 <button onClick={this.handleClick} name="Submit">Enviar</button>
               </form>
             </FormBody>
