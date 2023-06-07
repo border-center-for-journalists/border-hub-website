@@ -59,7 +59,7 @@ class ContactUsComponent extends Component {
     try {
       const response = await fetch(form.action, {
         method: form.method,
-        body: new URLSearchParams({ name, email, message, subject }).toString(),
+        body: new URLSearchParams({ name, email, message, subject, verification: reCaptcha.getValue() }).toString(),
         headers: {
           "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
         },
