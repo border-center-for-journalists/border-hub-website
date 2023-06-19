@@ -10,7 +10,7 @@ const ContactPage = ({ data }) => {
   const keywords = common.metakeywords.text
   return (
     <Layout>
-      <SEO title="Contacto" description={description} keywords={keywords} />
+      <SEO title="Contáctanos" description={description} keywords={keywords} />
       <ContactUsComponent data={data.prismicContacto.data} />
     </Layout>
   )

@@ -6,7 +6,7 @@ import BlogContainer from "../containers/blog.js"
 
 const Noticias = data => {
   const common = data.data.prismicDatosComunes.data
-  const description = common.metadescription.text
+  const description = "Todos nuestras noticias especiales y reportajes en un solo lugar. Entérate de lo más relevante sobre el periodismo en México y la Frontera Norte."
   const keywords = common.metakeywords.text
   return (
     <Layout>
