@@ -66,22 +66,21 @@ const NoticeTitle = styled.h2`
   position: relative;
   margin-bottom: 1.5em;
   color: ${props => (!props.darkMode ? props.theme.Black : props.theme.White)};
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -0.7em;
-    left: 0;
-    width: 66%;
-    border-bottom: 3px solid
-      ${props => (!props.darkMode ? props.theme.Yellow : props.theme.White)};
-  }
 `
 const NoticeText = styled.p`
   font-size: 0.8em;
   margin-bottom: 0.5em;
   text-align: justify;
   color: ${props => (!props.darkMode ? props.theme.Black : props.theme.White)};
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0em;
+    left: 0;
+    width: 100%;
+    border-bottom: 3px solid ${props => (!props.darkMode ? props.theme.Yellow : props.theme.White)};
+  }
 `
 const NoticeFooter = styled.div`
   font-size: 0.8em;
@@ -92,6 +91,7 @@ const NoticeFooter = styled.div`
 const ColContainer = styled.div`
   height: 100%;
   margin-bottom: 1em;
+  border-bottom: 3px solid ${props => (props.theme.Yellow)};
 `
 const ColHero = styled.div`
   height: 180px;
@@ -129,16 +129,6 @@ const ColTitle = styled.h3`
   a {
     color: ${props => props.darkMode ? props.theme.White : props.theme.Black};
     text-decoration: none;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -0.7em;
-    left: 0;
-    width: 66%;
-    border-bottom: 3px solid
-      ${props => props.theme.Yellow};
   }
 `
 const ColText = styled.div`
