@@ -1,8 +1,9 @@
 import moment from "moment"
 import "moment/locale/es"
-moment.locale("es")
 
-const getDate = (date) => {
+const getDate = (date, locale = "es") => {
+  moment.locale(locale)
+
   return moment(date).format("MMMM DD | YYYY");
 }
 

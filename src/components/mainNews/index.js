@@ -6,13 +6,14 @@ import {
 } from "./index.styled"
 import SecondaryComponent from "../news/secondary";
 import MainComponent from "../news/main";
-
+import { Context } from "../../lang/context";
 class MainNewsComponent extends Component {
+  static contextType = Context;
+  
   render() {
     const { notice } = this.props;
 
     if (notice.nodes.length === 0) return null
-  
     
     const category = this.props.category
     const text = category ? category.document[0].data.title.text : "Investigaciones Especiales"
@@ -22,7 +23,7 @@ class MainNewsComponent extends Component {
       <MainNewsSection>
         <Subtitle>
           <h1>{text}</h1>
-          <a href={url}>Ver todas</a>
+          <a href={url}>{this.context.news.see_all}</a>
         </Subtitle>
         <NewsList>
           {

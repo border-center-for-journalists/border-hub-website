@@ -9,11 +9,13 @@ import {
 } from "./index.styled.js"
 import bodyImage from "../../theme/images/1.jpg"
 import { Rows, Row } from "../../theme/index.styled"
-
+import { Context } from "../../lang/context.js"
 import { getDate, getAuthor } from "../../utils/generic.js"
 import { SPECIAL_NEWS_URL, NEWS_URL } from "../../utils/constants"
 
 class HomeHeaderComponent extends Component {
+  static contextType = Context;
+
   render() {
     const { bannerNotice } = this.props
     const { uid, data, type } = bannerNotice[0]
@@ -37,10 +39,10 @@ class HomeHeaderComponent extends Component {
                   <BannerAuthor>
                     <div>
                       <i>
-                        Por <b> {getAuthor(author)}</b>
+                        {this.context.news.by} <b> {getAuthor(author)}</b>
                       </i>{" "}
                       <br />
-                      {getDate(custom_publishdate)}
+                      {getDate(custom_publishdate, this.context.locale)}
                     </div>
                   </BannerAuthor>
                 </BannerColumns>

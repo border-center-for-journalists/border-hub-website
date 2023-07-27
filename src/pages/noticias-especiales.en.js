@@ -23,7 +23,7 @@ const Noticias = data => {
   )
 }
 export const pageQuery = graphql`
-  query blogEspecialesQuery {
+  query blogEspecialesQueryEN {
     site {
       siteMetadata {
         API_KEY

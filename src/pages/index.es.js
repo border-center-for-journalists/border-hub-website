@@ -51,7 +51,7 @@ const temp = data => {
   )
 }
 export const pageQuery = graphql`
-  query HomeNoticeQuery {
+  query HomeNoticeQueryES($lang: String!) {
     site {
       siteMetadata {
         API_KEY
@@ -60,7 +60,7 @@ export const pageQuery = graphql`
       }
     }
 
-    prismicDatosComunes {
+    prismicDatosComunes(lang: { eq: $lang }) {
       data {
         metadescription {
           text
@@ -117,6 +117,7 @@ export const pageQuery = graphql`
             document {
               uid
               type
+              lang
               data {
                 title {
                   text
@@ -148,6 +149,7 @@ export const pageQuery = graphql`
             document {
               uid
               type
+              lang
               data {
                 title {
                   text
@@ -178,6 +180,7 @@ export const pageQuery = graphql`
             document {
                 uid
                 type
+                lang
                 data {
                   title {
                     text
@@ -208,7 +211,12 @@ export const pageQuery = graphql`
   
     normalNotices: allPrismicNoticias(
       limit: 3
-      filter: { data: { type: { eq: "normal" } } }
+      filter: { 
+        data: { 
+          type: { eq: "normal" } 
+        } 
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
@@ -244,6 +252,9 @@ export const pageQuery = graphql`
 
     specialNotices: allPrismicNoticiasEspeciales(
       limit: 5
+      filter: {
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
@@ -276,6 +287,9 @@ export const pageQuery = graphql`
 
     recentNotices: allPrismicNoticias(
       limit: 8
+      filter: {
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
@@ -310,6 +324,9 @@ export const pageQuery = graphql`
     }
     recentIncidencias: allPrismicIncidencia(
       limit: 3
+      filter: {
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     )  {
         nodes{

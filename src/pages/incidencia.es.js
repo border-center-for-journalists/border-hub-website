@@ -22,7 +22,7 @@ const Incidencias = data => {
   )
 }
 export const pageQuery = graphql`
-  query blogIncidenciasQuery {
+  query blogIncidenciasQueryES($lang: String!) {
     site {
       siteMetadata {
         API_KEY
@@ -30,7 +30,7 @@ export const pageQuery = graphql`
         API_URL
       }
     }
-    prismicDatosComunes {
+    prismicDatosComunes(lang: { eq: $lang }) {
       data {
         metadescription {
           text

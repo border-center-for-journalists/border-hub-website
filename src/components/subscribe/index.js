@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import { TitleMediumContainer, Rows, FormBody } from "../../theme/index.styled"
 import { YellowBody, CustomRow, XContainer } from "./index.styled"
-
+import { Context } from "../../lang/context"
 /*
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
@@ -15,11 +15,13 @@ import { YellowBody, CustomRow, XContainer } from "./index.styled"
 */
 
 class SubscribeComponent extends Component {
+  static contextType = Context;
+
   render() {
     return (
       <YellowBody>
         <TitleMediumContainer color={"black"}>
-          <h2>Suscríbete y recibe noticias al momento:</h2>
+          <h2>{this.context.subscribe.subscribe_and_receive_news}</h2>
           <FormBody color="transparent" id="mc_embed_signup">
             <form
               action="https://bordercenter.us20.list-manage.com/subscribe/post?u=7e8c52a85a62c87db4816ca56&amp;id=d871cf9a52"
@@ -30,16 +32,16 @@ class SubscribeComponent extends Component {
             >
               <Rows align="space-between" wrap="true" id="mc_embed_signup_scroll">
                 <CustomRow width="48%" widthXl="24%" className="mc-field-group">
-                  <label htmlFor="mce-FNAME">Nombre </label>
+                  <label htmlFor="mce-FNAME">{this.context.subscribe.name}</label>
                   <input type="text" name="FNAME" className="" id="mce-FNAME" />
                 </CustomRow>
                 <CustomRow width="48%" widthXl="24%" className="mc-field-group">
-                  <label htmlFor="mce-LNAME">Apellido </label>
+                  <label htmlFor="mce-LNAME">{this.context.subscribe.last_name}</label>
                   <input type="text" name="LNAME" className="" id="mce-LNAME" />
                 </CustomRow>
                 <CustomRow width="48%" widthXl="24%" className="mc-field-group">
                   <label htmlFor="mce-EMAIL">
-                    Correo <span className="asterisk">*</span>
+                    {this.context.subscribe.email} <span className="asterisk">*</span>
                   </label>
                   <input
                     type="email"
@@ -107,7 +109,7 @@ class SubscribeComponent extends Component {
                 <CustomRow width="48%" widthXl="24%" className="clear">
                   <input
                     type="submit"
-                    value="Enviar"
+                    value={this.context.subscribe.submit}
                     name="subscribe"
                     id="mc-embedded-subscribe"
                     className="button"

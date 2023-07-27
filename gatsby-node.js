@@ -7,6 +7,40 @@
 // You can delete this file if you're not using it
 const fs = require('fs')
 const path = require("path")
+const languages = require("./src/lang/index")
+
+const getLangUrl = zone => languages.langsWithCode[zone]
+
+const getLangWithCode = langKey => {
+  const l = {
+    es: "es-mx",
+    en: "en-us",
+  }
+  return l[langKey] ? l[langKey] : langKey
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage, createRedirect } = actions
+
+  deletePage(page)
+
+  const newContext = {
+    ...page.context,
+    lang: getLangWithCode(page.context.langKey),
+  }
+
+  createPage({
+    ...page,
+    context: newContext,
+  })
+
+  createRedirect({
+    fromPath: `/`,
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: `/es`,
+  })
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -17,6 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             uid
             prismicId
+            lang
           }
         }
       }
@@ -25,6 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             uid
             prismicId
+            lang
           }
         }
       }
@@ -33,6 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             uid
             prismicId
+            lang
           }
         }
       }
@@ -41,6 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node{
             uid
             prismicId
+            lang
           }
         }
       }
@@ -49,6 +87,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node{
             uid
             prismicId
+            lang
           }
         }
       }
@@ -60,10 +99,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicNoticiasEspeciales.edges.forEach(edge => {
     createPage({
-      path: `/${SPECIAL_NEWS_URL}/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/${SPECIAL_NEWS_URL}/${edge.node.uid}/`,
       component: specialNote,
       context: {
         uid: edge.node.uid,
+        lang: edge.node.lang,
         prismicId: edge.node.prismicId,
       },
     })
@@ -73,10 +113,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicNoticias.edges.forEach(edge => {
     createPage({
-      path: `/${NEWS_URL}/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/${NEWS_URL}/${edge.node.uid}/`,
       component: normalNote,
       context: {
         uid: edge.node.uid,
+        lang: edge.node.lang,
         prismicId: edge.node.prismicId,
       },
     })
@@ -86,10 +127,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicCategorias.edges.forEach(edge => {
     createPage({
-      path: `/categoria/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/categoria/${edge.node.uid}/`,
       component: category,
       context: {
         uid: edge.node.uid,
+        lang: edge.node.lang,
         prismicId: edge.node.prismicId,
       },
     })
@@ -98,10 +140,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const IncidenciaTemplate = path.resolve("src/containers/incidentSingle.js")
   pages.data.allPrismicIncidencia.edges.forEach(edge => {
     createPage({
-      path: `/incidencia/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/incidencia/${edge.node.uid}/`,
       component: IncidenciaTemplate,
       context: {
         uid: edge.node.uid,
+        lang: edge.node.lang,
         prismicId: edge.node.prismicId,
       },
     })
@@ -110,10 +153,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicComun.edges.forEach(edge => {
     createPage({
-      path: `/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/${edge.node.uid}/`,
       component: general,
       context: {
         uid: edge.node.uid,
+        lang: edge.node.lang,
         prismicId: edge.node.prismicId,
       },
     })

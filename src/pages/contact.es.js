@@ -16,8 +16,8 @@ const ContactPage = ({ data }) => {
   )
 }
 export const pageQuery = graphql`
-  query ContactPage {
-    prismicDatosComunes {
+  query ContactPageES($lang: String!) {
+    prismicDatosComunes(lang: { eq: $lang}) {
       data {
         metadescription {
           text
@@ -27,7 +27,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    prismicContacto {
+    prismicContacto(lang: { eq: $lang}) {
       data {
         title {
           text
