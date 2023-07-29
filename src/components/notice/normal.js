@@ -9,8 +9,10 @@ import NormalRelatedComponent from "./related.js"
 // import myData from "./prueba.json"
 import Prismic from "prismic-javascript"
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, WhatsappShareButton } from "react-share"
-
+import { Context } from "../../lang/context"
+import DonateComponent from "../../components/donate"
 class NormalNoticeComponent extends Component {
+  static contextType = Context
   constructor(props) {
     super(props)
     this.state = {
@@ -39,7 +41,9 @@ class NormalNoticeComponent extends Component {
         api.query([
           Prismic.Predicates.at("document.type", "noticias"),
           Prismic.Predicates.similar(prismicId, 3),
-        ])
+        ], {
+          lang: this.context.locale_zone
+        })
       )
       .then(response => {
         //console.log("RELATED", response)
@@ -55,10 +59,14 @@ class NormalNoticeComponent extends Component {
           align="left"
           notice={this.props.notice}
           url={this.props.url}
+          lang={this.context}
         />
         <NormalNoticeContainer>
           <br />
-          <TextNoticeContentComponent notice={this.props.notice} />
+          <TextNoticeContentComponent
+            notice={this.props.notice}
+            lang={this.context}
+          />
           <SocialContainer className={isSticky ? "sideSticky" : ""}>
             <FacebookShareButton url={this.props.url}>
               <a bigger className="icon-facebook" />
@@ -92,12 +100,21 @@ class NormalNoticeComponent extends Component {
           <AuthorsNoticeComponent
             color="black"
             align="left"
+            lang={this.context}
             authors={this.props.notice.data.author}
           />
-          <NormalDonateComponent />
+          <div
+            style={{
+              marginTop: "-100px",
+              marginBottom: "2em",
+            }}
+          >
+            <DonateComponent />
+          </div>
           <NormalRelatedComponent
             color="black"
             related={this.state.related}
+            lang={this.context}
           />
         </NormalNoticeContainer>
       </NoticeSection>

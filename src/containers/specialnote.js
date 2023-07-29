@@ -1,10 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import LayoutES from "../components/layoutES"
+import LayoutEN from "../components/layoutEN"
 import SEO from "../components/seo"
 import SpecialNoticeComponent from "../components/notice/special"
+import { Context, EN, ES } from "../lang/context"
 
 const SpecialNoticeContainer = ({ location, data }) => {
+  const lang = data.prismicDatosComunes.lang === "es-mx" ? ES : EN
+  const Layout = data.prismicDatosComunes.lang === "es-mx" ? LayoutES : LayoutEN
   let getDescription = n => {
     if (n.metadescription.text) {
       return n.metadescription.text
@@ -21,20 +25,22 @@ const SpecialNoticeContainer = ({ location, data }) => {
     notice.data.metakeywords.text || common.metakeywords.text || ""
   const image = notice.data.banner.url || false
   return (
-    <Layout minify>
-      <SEO
-        title={notice.data.title.text}
-        description={description}
-        keywords={keywords}
-        image={image}
-      />
-      <SpecialNoticeComponent
-        notice={notice}
-        related={data.relatedNotes}
-        site={data.site.siteMetadata}
-        url={location.href}
-      />
-    </Layout>
+    <Context.Provider value={lang}>
+      <Layout minify>
+        <SEO
+          title={notice.data.title.text}
+          description={description}
+          keywords={keywords}
+          image={image}
+        />
+        <SpecialNoticeComponent
+          notice={notice}
+          related={data.relatedNotes}
+          site={data.site.siteMetadata}
+          url={location.href}
+        />
+      </Layout>
+    </Context.Provider>
   )
 }
 
@@ -42,8 +48,9 @@ export default SpecialNoticeContainer
 
 export const pageQuery = graphql`
 # Write your query or mutation here
-query SingleSpecialNoticeQuery($uid: String!) {
-    prismicDatosComunes {
+query SingleSpecialNoticeQuery($lang: String!, $uid: String!) {
+    prismicDatosComunes(lang: { eq: $lang }) {
+      lang
       data {
         metadescription {
           text
@@ -60,7 +67,7 @@ query SingleSpecialNoticeQuery($uid: String!) {
         API_URL
       }
     }
-    prismicNoticiasEspeciales(uid: { eq: $uid }) {
+    prismicNoticiasEspeciales(uid: { eq: $uid }, lang: { eq: $lang }) {
       uid
       prismicId
       last_publication_date

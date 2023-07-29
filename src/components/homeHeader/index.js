@@ -11,7 +11,6 @@ import bodyImage from "../../theme/images/1.jpg"
 import { Rows, Row } from "../../theme/index.styled"
 import { Context } from "../../lang/context.js"
 import { getDate, getAuthor } from "../../utils/generic.js"
-import { SPECIAL_NEWS_URL, NEWS_URL } from "../../utils/constants"
 
 class HomeHeaderComponent extends Component {
   static contextType = Context;
@@ -21,7 +20,7 @@ class HomeHeaderComponent extends Component {
     const { uid, data, type } = bannerNotice[0]
     const { title, excerpt, author, custom_publishdate, banner } = data
     const bannerBg = banner.url ? banner.url : bodyImage
-    const section = type === "noticias_especiales" ? SPECIAL_NEWS_URL : NEWS_URL
+    const section = type === "noticias_especiales" ? this.context.news.to_specials : this.context.news.to_recent_news
 
     return (
       <Banner id="hero" bg={bannerBg}>
@@ -32,7 +31,7 @@ class HomeHeaderComponent extends Component {
             <Rows>
               <Row shrink shrinkXl>
                 <BannerTitle>
-                  <a href={`/${section}/${uid}/`}>{title.text}</a>
+                  <a href={`${section}/${uid}/`}>{title.text}</a>
                 </BannerTitle>
                 <BannerColumns>
                   <BannerText>{excerpt.text}</BannerText>

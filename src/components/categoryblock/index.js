@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import Prismic from "prismic-javascript"
 import MainNewsComponent from "../mainNews"
-
+import { Context } from "../../lang/context"
 class CategoryBlockComponent extends Component{
+  static contextType = Context
   constructor(props) {
     super(props)
     this.state = {
@@ -26,7 +27,8 @@ class CategoryBlockComponent extends Component{
         ], {
           pageSize: 3,
           page: 1,
-          orderings: `[my.noticias.custom_publishdate desc]`
+          orderings: `[my.noticias.custom_publishdate desc]`,
+          lang: this.context.locale_zone
         })
       )
       .then(response => {

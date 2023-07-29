@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/layoutEN"
 import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
 import { Context, EN } from "../lang/context"
@@ -31,6 +31,7 @@ const temp = data => {
   }
   const principalNotices = { nodes: [...principalSpecialNotices.nodes, ...principalNormalNotices.nodes] }
 
+  const title = EN.seo.title
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
   //console.log("BANNER ???", common.banner.document)
@@ -38,7 +39,8 @@ const temp = data => {
     <Context.Provider value={EN}>
       <Layout>
         <SEO
-          title="Border Hub: Periodismo de Investigación de la Frontera Norte"
+          lang="en-US"
+          title={title}
           description={description}
           keywords={keywords}
         />
@@ -295,7 +297,7 @@ export const pageQuery = graphql`
     }
 
     recentNotices: allPrismicNoticias(
-      limit: 8
+      limit: 6
       filter: {
         lang: { eq: $lang }
       }

@@ -7,8 +7,9 @@ import {
   RecentNewsColumn,
 } from "./index.styled"
 import ColComponent from "../news/col"
-
+import { Context } from "../../lang/context"
 class RecentNews extends Component {
+  static contextType = Context;
   
   render() {
     const discardNews = this.props.principalNotices.nodes.map((item) => item.uid)
@@ -18,14 +19,14 @@ class RecentNews extends Component {
       <RecentNewsSection>
         <Container>
           <SubtitleDark>
-            <h2>Notas Recientes</h2>
-            <a href="/noticias/">Ver todas</a>
+            <h2>{this.context.news.recent_news}</h2>
+            <a href={this.context.news.to_recent_news + "/"}>{this.context.news.see_all}</a>
           </SubtitleDark>
 
           <RecentNewsList>
             {news.map((notice, index) => (
               <RecentNewsColumn key={index}>
-                <ColComponent notice={notice} section="noticias" darkMode={true} />
+                <ColComponent notice={notice} section={this.context.news.to_recent_news} darkMode={true} />
               </RecentNewsColumn>
             ))}
           </RecentNewsList>

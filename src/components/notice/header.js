@@ -11,11 +11,9 @@ import {
   TwitterShareButton,
   EmailShareButton,
 } from "react-share"
-import moment from "moment"
-import "moment/locale/es"
-moment.locale("es")
+import { getDate } from "../../utils/generic"
 
-const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
+const HeaderNoticeComponent = ({ url, notice, align, noticetype, lang }) => {
   //const { publish_date, title, authors } = data
   const { title, banner } = notice.data
   const getAuthorName = () => {
@@ -54,7 +52,7 @@ const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
           <p>
             {getAuthorName() !== "" ? (
               <i>
-                Por{" "}
+                {lang.news.by}{" "}
                 <YellowText>
                   <b>{getAuthorName()} {allianceHeader.separation}</b>
                 </YellowText>{" "}
@@ -63,7 +61,7 @@ const HeaderNoticeComponent = ({ url, notice, align, noticetype }) => {
             ):null}
             
           </p>
-          <p>{moment(date).format("MMMM DD, YYYY [|] h:mm a")}</p>
+          <p>{getDate(date, lang.locale, "MMMM DD, YYYY [|] h:mm a")}</p>
           <hr />
           <Rows rowM="row" rowS="row" rowXs="row" align="flex-end">
             <FacebookShareButton url={url}>

@@ -1,21 +1,19 @@
 import React, { Component } from "react"
 import { MainIncidentSmall, MainNewSmallText, MobileParagraph } from "./index.styled"
 import { AuthorContainer, ImageWrapper, Col, ParticipantOrganizations, InvertedImage } from "../../theme/index.styled"
-import moment from "moment"
-import "moment/locale/es"
-moment.locale("es")
-
+import { Context } from "../../lang/context"
+import { getDate } from "../../utils/generic"
 class IncidentBox extends Component {
-
+  static contextType = Context
   render() {
-    const urlSectionType = 'incidencia'
+    const urlSectionType = this.context.news.to_incidence
     const darkMode = true;
-    console.log({IncidentBox: this.props.notice.data})
+    
     return (
       <MainIncidentSmall>
         <Col>
           <ImageWrapper>
-            <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>
+            <a href={`${urlSectionType}/${this.props.notice.uid}/`}>
               <img
                 alt="prueba"
                 src={this.props.notice.data.banner.thumbnail.url}
@@ -26,15 +24,13 @@ class IncidentBox extends Component {
         <Col>
           <MainNewSmallText darkMode={darkMode}>
             <h3>
-              <a href={`/${urlSectionType}/${this.props.notice.uid}/`}>
+              <a href={`${urlSectionType}/${this.props.notice.uid}/`}>
                 {this.props.notice.data.title.text}
               </a>
             </h3>
             {/*<Paragraph>{this.props.notice.data.excerpt.text}</Paragraph>*/}
             <MobileParagraph>
-              {moment(this.props.notice.data.custom_publishdate).format(
-                "DD MMMM YYYY"
-              ).toUpperCase()}
+              {getDate(this.props.notice.data.custom_publishdate, this.context.locale).toUpperCase()}
             </MobileParagraph>
             <hr />
             <MobileParagraph>

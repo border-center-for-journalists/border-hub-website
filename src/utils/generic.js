@@ -1,13 +1,13 @@
 import moment from "moment"
 import "moment/locale/es"
 
-const getDate = (date, locale = "es") => {
+const getDate = (date, locale = "es", format = "MMMM DD | YYYY") => {
   moment.locale(locale)
 
-  return moment(date).format("MMMM DD | YYYY");
+  return moment(date).format(format);
 }
 
-const getAuthor = (author) => {
+const getAuthor = (author, locale = "es") => {
   const excludedTitles = ["Ilustración", "Verificado", "Edición"];
 
   const authorNames = author
@@ -31,13 +31,13 @@ const getAuthor = (author) => {
     const names =  authorNames.join(', ');
 
     if (names === "") {
-      return "Anónimo"
+      return locale === "es" ? "Anónimo" : "Anonymous"
     }
 
     return names;
   }
 
-  return "Anónimo"
+  return locale === "es" ? "Anónimo" : "Anonymous"
 }
 
 export {

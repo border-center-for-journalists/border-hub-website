@@ -7,19 +7,19 @@ import {
   NoticeText,
   NoticeFooter,
 } from "./index.styled"
-import { SPECIAL_NEWS_URL, NEWS_URL } from "../../utils/constants"
 import { getDate, getAuthor } from "../../utils/generic"
-
+import { Context } from "../../lang/context"
 class MainComponent extends Component {
+  static contextType = Context
   render() {
     const { notice } = this.props
     const { type, data, uid } = notice
-    const url = type === "noticias_especiales" ? SPECIAL_NEWS_URL : NEWS_URL
+    const url = type === "noticias_especiales" ? this.context.news.to_specials : this.context.to_recent_news
     const { banner, title, excerpt, author, custom_publishdate: date } = data
 
     return (
       <NoticeContainer direction="column">
-        <a href={`/${url}/${uid}`}>
+        <a href={`${url}/${uid}`}>
           <NoticeHero main size="cover">
             <img src={banner.url} alt={title.text} />
           </NoticeHero>
@@ -28,10 +28,10 @@ class MainComponent extends Component {
             <NoticeText>{excerpt.text}</NoticeText>
             <NoticeFooter>
               <i>
-                Por <strong>{getAuthor(author)}</strong>
+                {this.context.news.by} <strong>{getAuthor(author, this.context.locale)}</strong>
               </i>
               <br />
-              {getDate(date)}
+              {getDate(date, this.context.locale)}
             </NoticeFooter>
           </NoticeDetails>
         </a>

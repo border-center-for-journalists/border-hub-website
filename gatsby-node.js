@@ -5,11 +5,32 @@
  */
 
 // You can delete this file if you're not using it
-const fs = require('fs')
+const fs = require("fs")
 const path = require("path")
 const languages = require("./src/lang/index")
 
 const getLangUrl = zone => languages.langsWithCode[zone]
+
+const getLangSection = (zone, section) => {
+  const lang = getLangUrl(zone)
+  // must match src/lang/context
+  const data = {
+    "en": {
+      to_category: 'category',
+      to_recent_news: 'news',
+      to_incidence: 'incidence',
+      to_specials: 'special-news',
+    },
+    "es": {
+      to_category: 'categoria',
+      to_recent_news: 'noticias',
+      to_incidence: 'incidencia',
+      to_specials: 'noticias-especiales',
+    }
+  }
+
+  return data[lang][section]
+}
 
 const getLangWithCode = langKey => {
   const l = {
@@ -38,7 +59,21 @@ exports.onCreatePage = ({ page, actions }) => {
     fromPath: `/`,
     isPermanent: true,
     redirectInBrowser: true,
-    toPath: `/es`,
+    toPath: `/es/`,
+  })
+
+  createRedirect({
+    fromPath: `/es`,
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: `/es/`,
+  })
+
+  createRedirect({
+    fromPath: `/en`,
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: `/en/`,
   })
 }
 
@@ -74,8 +109,8 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allPrismicCategorias {
-        edges{
-          node{
+        edges {
+          node {
             uid
             prismicId
             lang
@@ -83,8 +118,8 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allPrismicIncidencia {
-        edges{
-          node{
+        edges {
+          node {
             uid
             prismicId
             lang
@@ -95,11 +130,13 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const specialNote = path.resolve("src/containers/specialnote.js")
-  const { SPECIAL_NEWS_URL, NEWS_URL } = require('./src/utils/constants');
 
   pages.data.allPrismicNoticiasEspeciales.edges.forEach(edge => {
     createPage({
-      path: `${getLangUrl(edge.node.lang)}/${SPECIAL_NEWS_URL}/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/${getLangSection(
+        edge.node.lang,
+        "to_specials"
+      )}/${edge.node.uid}/`,
       component: specialNote,
       context: {
         uid: edge.node.uid,
@@ -113,7 +150,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicNoticias.edges.forEach(edge => {
     createPage({
-      path: `${getLangUrl(edge.node.lang)}/${NEWS_URL}/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/${getLangSection(
+        edge.node.lang,
+        "to_recent_news"
+      )}/${edge.node.uid}/`,
       component: normalNote,
       context: {
         uid: edge.node.uid,
@@ -127,7 +167,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
   pages.data.allPrismicCategorias.edges.forEach(edge => {
     createPage({
-      path: `${getLangUrl(edge.node.lang)}/categoria/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/${getLangSection(
+        edge.node.lang,
+        "to_category"
+      )}/${edge.node.uid}/`,
       component: category,
       context: {
         uid: edge.node.uid,
@@ -140,7 +183,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const IncidenciaTemplate = path.resolve("src/containers/incidentSingle.js")
   pages.data.allPrismicIncidencia.edges.forEach(edge => {
     createPage({
-      path: `${getLangUrl(edge.node.lang)}/incidencia/${edge.node.uid}/`,
+      path: `${getLangUrl(edge.node.lang)}/${getLangSection(
+        edge.node.lang,
+        "to_incidence"
+      )}/${edge.node.uid}/`,
       component: IncidenciaTemplate,
       context: {
         uid: edge.node.uid,
@@ -163,7 +209,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const adsTxtSrc = path.join(__dirname, 'ads.txt');
-  const adsTxtDest = path.join(__dirname, 'public', 'ads.txt');
-  fs.copyFileSync(adsTxtSrc, adsTxtDest);
+  const adsTxtSrc = path.join(__dirname, "ads.txt")
+  const adsTxtDest = path.join(__dirname, "public", "ads.txt")
+  fs.copyFileSync(adsTxtSrc, adsTxtDest)
 }

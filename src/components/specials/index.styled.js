@@ -2,7 +2,8 @@ import styled from "styled-components"
 import bg from "../../theme/images/1.jpg"
 
 const SpecialSection = styled.section`
-  background: linear-gradient(to bottom, rgba(31, 25, 26, 0.6), 50%, rgba(153, 18, 18, 0.6)),
+  // background: linear-gradient(to bottom, rgba(31, 25, 26, 0.6), 80%, rgba(153, 18, 18, 0.6)),
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 100%,rgba(0, 0, 0, 0)),
     url(${props => (props.bg ? props.bg : bg)});
   background-position: center;
   background-size: cover;
@@ -132,7 +133,6 @@ const NewsContent = styled.p`
   line-height: 1.8em;
   margin: 1em 0 0;
   padding: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
   background-color: transparent;
   position: relative;
   z-index: 1;

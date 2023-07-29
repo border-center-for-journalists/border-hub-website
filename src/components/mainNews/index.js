@@ -16,8 +16,8 @@ class MainNewsComponent extends Component {
     if (notice.nodes.length === 0) return null
     
     const category = this.props.category
-    const text = category ? category.document[0].data.title.text : "Investigaciones Especiales"
-    const url  = category ? `/categoria/${category.uid}` : "/noticias-especiales/"
+    const text = category ? category.document[0].data.title.text : this.context.news.special_investigations
+    const url  = category ? `${this.context.news.to_category}/${category.uid}` : this.context.news.to_specials
 
     return (
       <MainNewsSection>

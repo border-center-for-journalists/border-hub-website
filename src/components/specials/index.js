@@ -13,8 +13,7 @@ import {
   NewsContent,
   SliderContainer
 } from "./index.styled"
-import { SPECIAL_NEWS_URL, NEWS_URL } from '../../utils/constants'
-
+import { Context } from "../../lang/context";
 const RightArrow = ({ onClick }) => (
   <ArrowContainer onClick={onClick}>
     <Arrow className="icon-arrow-right" />
@@ -27,6 +26,7 @@ const LeftArrow = ({ onClick }) => (
   </ArrowContainer>
 );
 class SpecialNews extends Component {
+  static contextType = Context
   constructor(props) {
     super(props);
     this.state = { currentSlide: 0 };
@@ -57,8 +57,8 @@ class SpecialNews extends Component {
       >
         <CustomContainer size="large">
           <Subtitle>
-            <h2>Especiales</h2>
-            <a href="/noticias-especiales/">Ver todas</a>
+            <h2>{this.context.news.specials}</h2>
+            <a href={this.context.news.to_specials}>{this.context.news.see_all}</a>
           </Subtitle>
           <SliderContainer>
             <Slider {...settings}>
@@ -67,8 +67,8 @@ class SpecialNews extends Component {
                 const { title, excerpt } = data
                 const section =
                   type === "noticias_especiales"
-                    ? SPECIAL_NEWS_URL
-                    : NEWS_URL
+                    ? this.context.news.to_specials
+                    : this.context.news.to_recent_news
                 return (
                   <NewsContainer key={index}>
                     <NewsTitle>

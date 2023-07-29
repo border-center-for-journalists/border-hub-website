@@ -7,10 +7,10 @@ import {
   NoticeText,
   NoticeFooter,
 } from "./index.styled"
-import { SPECIAL_NEWS_URL, NEWS_URL } from "../../utils/constants"
 import { getDate, getAuthor } from "../../utils/generic"
-
+import { Context } from "../../lang/context"
 class SecondaryComponent extends Component {
+  static contextType = Context
   render() {
     const { notice, darkMode, size, url } = this.props
     const { type, data, uid } = notice
@@ -19,13 +19,13 @@ class SecondaryComponent extends Component {
     const rewriteUrl =
       type !== undefined
         ? type === "noticias_especiales"
-          ? SPECIAL_NEWS_URL
-          : NEWS_URL
+          ? this.context.news.to_specials
+          : this.context.news.to_recent_news
         : null
 
     return (
       <NoticeContainer direction="row">
-        <a href={`/${rewriteUrl || url}/${uid}`}>
+        <a href={`${rewriteUrl || url}/${uid}`}>
           <NoticeHero size={size}>
             <img src={banner.url || banner.thumbnail.url} alt={title.text} />
           </NoticeHero>
@@ -34,10 +34,10 @@ class SecondaryComponent extends Component {
             <NoticeText darkMode={darkMode}>{excerpt.text}</NoticeText>
             <NoticeFooter darkMode={darkMode}>
               <i>
-                Por <strong>{getAuthor(author)}</strong>
+                {this.context.news.by} <strong>{getAuthor(author, this.context.locale)}</strong>
               </i>
               <br />
-              {getDate(date)}
+              {getDate(date, this.context.locale)}
             </NoticeFooter>
           </NoticeDetails>
         </a>

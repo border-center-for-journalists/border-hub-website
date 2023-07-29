@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { Hamburguer, Menu, MenuHeader, MenuBody, SocialContainer } from "./index.styled";
 import logo from "../../../theme/images/borderhubcenter.jpg"
 import DonateComponent from "../donate";
-
+import { Context } from "../../../lang/context";
 class MenuComponent extends Component {
+  static contextType = Context
   constructor(props) {
     super(props);
 
@@ -49,7 +50,7 @@ class MenuComponent extends Component {
 
         <Menu className={openClassName}>
           <MenuHeader>
-            <a href="/">
+            <a href={"/" + this.context.locale + "/"}>
               <img alt="Borderhub" src={logo} />
             </a>
             <Hamburguer
@@ -73,7 +74,7 @@ class MenuComponent extends Component {
               ))}
             </ul>
 
-            <DonateComponent type="rounded" />
+            <DonateComponent text={this.context.donate.fund} type="rounded" />
 
             <SocialContainer>
               <a

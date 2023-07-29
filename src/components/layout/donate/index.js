@@ -3,7 +3,7 @@ import { Donate } from "./index.styled"
 
 class DonateComponent extends Component {
   render() {
-    const { type } = this.props;
+    const { type, text } = this.props;
 
     return (
       <Donate
@@ -12,7 +12,7 @@ class DonateComponent extends Component {
         rel="noopener noreferrer"
         className={type}
       >
-        📷 Apoya al periodismo
+        📷 {text}
       </Donate>
     )
   }

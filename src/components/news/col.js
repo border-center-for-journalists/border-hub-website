@@ -8,8 +8,10 @@ import {
   ColFooter,
 } from "./index.styled"
 import { getDate } from "../../utils/generic"
-
+import { Context } from "../../lang/context"
 class ColComponent extends Component {
+  static contextType = Context
+
   render() {
     const { notice, section, darkMode } = this.props
     const { uid, data } = notice
@@ -18,7 +20,7 @@ class ColComponent extends Component {
     return (
       <ColContainer darkMode={darkMode}>
         <ColHero>
-          <a href={`/${section}/${uid}/`}>
+          <a href={`${section}/${uid}/`}>
             <img
               src={banner.thumbnail.url}
               alt={banner.alt || banner.thumbnail.url || title.text}
@@ -27,7 +29,7 @@ class ColComponent extends Component {
         </ColHero>
         <ColDetails>
           <ColTitle darkMode={darkMode}>
-            <a href={`/${section}/${uid}/`}>{title.text}</a>
+            <a href={`${section}/${uid}/`}>{title.text}</a>
           </ColTitle>
           {excerpt ? (
             <ColText darkMode={darkMode}>
@@ -36,7 +38,7 @@ class ColComponent extends Component {
           ) : null}
 
           <ColFooter darkMode={darkMode}>
-            {getDate(custom_publishdate)}
+            {getDate(custom_publishdate, this.context.locale)}
           </ColFooter>
         </ColDetails>
       </ColContainer>

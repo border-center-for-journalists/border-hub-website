@@ -8,7 +8,7 @@ import {
 } from "./index.styled"
 import { Container, Rows, Row } from "../../theme/index.styled"
 
-const AuthorComponent = ({ color, align, author }) => {
+const AuthorComponent = ({ color, align, author, }) => {
   return (
     <Author color={color} align={align}>
       {author.user_picture && author.user_picture.url ? (
@@ -59,9 +59,9 @@ const AuthorComponent = ({ color, align, author }) => {
   )
 }
 
-const AuthorsNoticeComponent = ({ color, authors, align }) => {
+const AuthorsNoticeComponent = ({ color, authors, align, lang }) => {
   let getTitle = special => {
-    return special === "left" ? "Contacta al Autor" : "Créditos"
+    return special === "left" ? lang.news.contact_author : lang.news.credits
   }
   return (
     <Container size="medium" xlStaticSize>

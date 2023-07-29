@@ -1,29 +1,30 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layoutES"
+import Layout from "../components/layoutEN"
 import SEO from "../components/seo"
-import BlogContainer from "../containers/incidents.js"
-import { Context, ES } from "../lang/context"
+import BlogContainer from "../containers/blog.js"
+import { Context, EN } from "../lang/context"
 
-const Incidencias = data => {
+const Noticias = data => {
   const common = data.data.prismicDatosComunes.data
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
   return (
-    <Context.Provider value={ES}>
+    <Context.Provider value={EN}>
       <Layout>
         <SEO
-          title="Incidencia"
+          lang="en-US"
+          title={EN.news.special_investigations}
           description={description}
           keywords={keywords}
         />
-        <BlogContainer site={data.data.site.siteMetadata} />
+        <BlogContainer darkMode={true} site={data.data.site.siteMetadata} />
       </Layout>
     </Context.Provider>
   )
 }
 export const pageQuery = graphql`
-  query blogIncidenciasQueryES($lang: String!) {
+  query blogEspecialesQueryEN($lang: String!) {
     site {
       siteMetadata {
         API_KEY
@@ -45,4 +46,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default Incidencias
+export default Noticias
