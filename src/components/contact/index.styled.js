@@ -89,6 +89,24 @@ const CustomRows = styled(Rows)`
   }
 `
 
+const FormRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 -1em 1em;
+`
+const FormCol = styled.div`
+  display: flex;
+  flex: 1 1;  
+  margin: 0 1em 0;
+
+  input {
+    width: 100%;
+    margin: 0;
+  }
+`
+
+
 export {
   ContactUsSection,
   ContactContainer,
@@ -96,4 +114,6 @@ export {
   CustomColForm,
   CustomColText,
   CustomRows,
+  FormRow,
+  FormCol,
 }

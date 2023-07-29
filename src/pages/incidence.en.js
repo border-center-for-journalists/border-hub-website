@@ -7,7 +7,7 @@ import { Context, EN } from "../lang/context"
 
 const Incidencias = data => {
   const common = data.data.prismicDatosComunes.data
-  const description = common.metadescription.text
+  const description = "Entérate de las últimas incidencias en español sobre periodistas en la Frontera Norte. ¡Descubre como puedes apoyarlos a través de una donación! "
   const keywords = common.metakeywords.text
   return (
     <Context.Provider value={EN}>
