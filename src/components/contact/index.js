@@ -6,7 +6,8 @@ import {
   TitleYellow,
   CustomColText,
   CustomColForm,
-  CustomRows,
+  FormRow,
+  FormCol
 } from "./index.styled"
 import { FormBody, Rows, Row } from "../../theme/index.styled"
 import { Context } from "../../lang/context";
@@ -98,16 +99,57 @@ class ContactUsComponent extends Component {
                 action="https://jonquil-quoll-1694.twil.io/contact-server"
                 ref={this.formRef} // agregando la referencia al formulario
               >
-                <CustomRows align="space-between">
-                  <Row width="48%">
-                    <input type="text" name="name" placeholder={this.context.contact.name} />
-                  </Row>
-                  <Row width="48%">
-                    <input type="email" name="email" placeholder={this.context.contact.mail} />
-                  </Row>
-                </CustomRows>
-                <textarea rows="6" name="message" placeholder={this.context.contact.message} />
-                <button onClick={this.handleClick} name="Submit">{this.context.contact.submit}</button>
+                <FormRow>
+                  <FormCol>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder={this.context.contact.name}
+                      required
+                    />
+                  </FormCol>
+                  <FormCol>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder={this.context.contact.mail}
+                      required
+                    />
+                  </FormCol>
+                </FormRow>
+
+                <FormRow>
+                  <FormCol>
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder="Asunto"
+                      required
+                    />
+                  </FormCol>
+                </FormRow>
+
+                <FormRow>
+                  <FormCol>
+                    <textarea
+                      rows="6"
+                      maxLength={500}
+                      name="message"
+                      placeholder={this.context.contact.message + " 🖊️"}
+                      required
+                    />
+                  </FormCol>
+                </FormRow>
+
+                <ReCAPTCHA
+                  sitekey="6Lej5XImAAAAAEu5-5pS_hZt1QUYxlmiA5DjI-7E"
+                  onChange={this.handleRecaptchaChange}
+                  ref={this.recaptchaRef}
+                />
+
+                <button onClick={this.handleClick} name="Submit">
+                  {this.context.contact.submit}
+                </button>
               </form>
             </FormBody>
           </CustomColForm>
