@@ -6,7 +6,7 @@ import { getDate } from "../../utils/generic"
 class IncidentBox extends Component {
   static contextType = Context
   render() {
-    const urlSectionType = this.context.news.to_incidence
+    const urlSectionType = `/${this.context.locale}/` +  this.context.news.to_incidence
     const darkMode = true;
     
     return (
