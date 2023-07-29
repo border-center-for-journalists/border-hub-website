@@ -4,6 +4,8 @@ if (process.env.NODE_ENV === "development") {
   })
 }
 
+const languages = require("./src/lang/index")
+
 var PrismicDOM = require("prismic-dom")
 var Elements = PrismicDOM.RichText.Elements
 
@@ -18,6 +20,7 @@ module.exports = {
     API_URL: process.env.API_URL,
     SITE_URL: process.env.SITE_URL || "",
     siteUrl: process.env.SITE_URL || "",
+    languages
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -69,6 +72,14 @@ module.exports = {
           }
           return null
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: languages.defaultLangKey,
+        useLangKeyLayout: false,
+        prefixDefault: true,
       },
     },
     {

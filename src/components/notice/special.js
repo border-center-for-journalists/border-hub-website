@@ -13,8 +13,9 @@ import MultinotesComponent from "./multinotes.js"
 import InteractiveIframe from './InteractiveIframe';
 import Prismic from "prismic-javascript"
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, WhatsappShareButton } from "react-share"
-
+import { Context } from "../../lang/context"
 class SpecialNoticeComponent extends Component {
+  static contextType = Context
   constructor(props) {
     super(props)
     this.state = {
@@ -44,7 +45,9 @@ class SpecialNoticeComponent extends Component {
         api.query([
           Prismic.Predicates.at("document.type", "noticias_especiales"),
           Prismic.Predicates.similar(prismicId, 3),
-        ])
+        ], {
+          lang: this.context.locale_zone
+        })
       )
       .then(response => {
         this.setState({ related: response.results })
@@ -53,7 +56,7 @@ class SpecialNoticeComponent extends Component {
   getComponent = (data, index) => {
     switch (data.slice_type) {
       case "texto":
-        return <TextNoticeContentComponent key={index} notice={data} />
+        return <TextNoticeContentComponent key={index} notice={data} lang={this.context} />
       case "multimedia":
         return <MediaNoticeContentComponent key={index} notice={data} />
       case "citado":
@@ -87,6 +90,7 @@ class SpecialNoticeComponent extends Component {
           align="center"
           notice={this.props.notice}
           url={this.props.url}
+          lang={this.context}
         />
         {htmlContent}
         <SocialContainer className={isSticky ? "sideSticky" : ""}>
@@ -122,14 +126,17 @@ class SpecialNoticeComponent extends Component {
           color="white"
           align="center"
           authors={this.props.notice.data.author}
+          lang={this.context}
         />
 
         <AlliancesNoticeContentComponent
           alliances={this.props.notice.data.alliances}
+          lang={this.context}
         />
         <NormalRelatedComponent
           color="white"
           related={this.state.related}
+          lang={this.context}
         />
       </NoticeSection>
     )

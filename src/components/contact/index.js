@@ -7,12 +7,12 @@ import {
   CustomColText,
   CustomColForm,
   CustomRows,
-  FormRow,
-  FormCol
 } from "./index.styled"
 import { FormBody, Rows, Row } from "../../theme/index.styled"
-
+import { Context } from "../../lang/context";
+import DonateComponent from "../../components/donate"
 class ContactUsComponent extends Component {
+  static contextType = Context
   constructor(props) {
     super(props);
     this.formRef = React.createRef(); // creando la referencia
@@ -94,62 +94,20 @@ class ContactUsComponent extends Component {
           <CustomColForm>
             <FormBody>
               <form
-                color={false}
                 method="POST"
                 action="https://jonquil-quoll-1694.twil.io/contact-server"
                 ref={this.formRef} // agregando la referencia al formulario
               >
-                <FormRow>
-                  <FormCol>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Nombre Completo"
-                      required
-                    />
-                  </FormCol>
-                  <FormCol>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Correo electrónico"
-                      required
-                    />
-                  </FormCol>
-                </FormRow>
-
-                <FormRow>
-                  <FormCol>
-                    <input
-                      type="text"
-                      name="subject"
-                      placeholder="Asunto"
-                      required
-                    />
-                  </FormCol>
-                </FormRow>
-
-                <FormRow>
-                  <FormCol>
-                    <textarea
-                      rows="6"
-                      maxLength={500}
-                      name="message"
-                      placeholder="Escribenos! 🖊️"
-                      required
-                    />
-                  </FormCol>
-                </FormRow>
-
-                <ReCAPTCHA
-                  sitekey="6Lej5XImAAAAAEu5-5pS_hZt1QUYxlmiA5DjI-7E"
-                  onChange={this.handleRecaptchaChange}
-                  ref={this.recaptchaRef}
-                />
-
-                <button onClick={this.handleClick} name="Submit">
-                  Enviar
-                </button>
+                <CustomRows align="space-between">
+                  <Row width="48%">
+                    <input type="text" name="name" placeholder={this.context.contact.name} />
+                  </Row>
+                  <Row width="48%">
+                    <input type="email" name="email" placeholder={this.context.contact.mail} />
+                  </Row>
+                </CustomRows>
+                <textarea rows="6" name="message" placeholder={this.context.contact.message} />
+                <button onClick={this.handleClick} name="Submit">{this.context.contact.submit}</button>
               </form>
             </FormBody>
           </CustomColForm>
@@ -160,7 +118,7 @@ class ContactUsComponent extends Component {
                   <i className="icon-mail" />
                 </Row>
                 <Row contact>
-                  <h4>Correo electrónico:</h4> <p>{emailTo}</p>
+                  <h4>{this.context.contact.mail}:</h4> <p>{emailTo}</p>
                 </Row>
               </Rows>
             </Row>
@@ -170,7 +128,7 @@ class ContactUsComponent extends Component {
                   <i className="icon-location" />
                 </Row>
                 <Row contact>
-                  <h4>Dirección:</h4> <p>{address.text}</p>
+                  <h4>{this.context.contact.address}:</h4> <p>{address.text}</p>
                 </Row>
               </Rows>
             </Row>
@@ -180,27 +138,14 @@ class ContactUsComponent extends Component {
                   <i className="icon-phone" />
                 </Row>
                 <Row contact>
-                  <h4>Teléfono:</h4> <p>{phone.text}</p>
+                  <h4>{this.context.contact.phone}:</h4> <p>{phone.text}</p>
                 </Row>
               </Rows>
             </Row>
           </CustomColText>
         </ContactContainer>
-        <div className="donate-container-contact">
-          <i className="icon-donar" />
-          <h2>El periodismo requiere de tu apoyo</h2>
-          <p>Conviértete en miembro del Border Hub</p>
-          <a
-            href="https://www.buymeacoffee.com/borderhub"
-            target="_blank"
-            className="bmc-button"
-            rel="noopener noreferrer"
-            style={{
-              margin: "1.23em auto 0",
-            }}
-          >
-            Donar
-          </a>
+        <div style={{ marginTop: '-130px'}}>
+          <DonateComponent />
         </div>
       </ContactUsSection>
     )

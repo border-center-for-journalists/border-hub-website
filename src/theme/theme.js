@@ -23,4 +23,9 @@ export const Theme = {
   mediumBreakPoint: "@media only screen and (max-width: 970px)",
   smallBreakPoint: "@media only screen and (max-width: 750px)",
   xlBreakPoint: "@media only screen and (max-width: 450px)",
+  smBP: "@media only screen and (max-width: 320px)",
+  mdBP: "@media only screen and (min-width: 321px) and (max-width: 768px)",
+  lgBP: "@media only screen and (min-width: 769px) and (max-width: 1024px)",
+  xlBP: "@media only screen and (min-width: 1025px)",
+
 }

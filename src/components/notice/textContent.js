@@ -3,7 +3,7 @@ import { TextWrapper } from "./index.styled"
 import { Container } from "../../theme/index.styled"
 import ImageModal from "../lightbox/index"
 
-const TextNoticeContentComponent = ({ notice }) => {
+const TextNoticeContentComponent = ({ notice,lang }) => {
   const getSections = (htmlContent) => {
     let splitted = [];
     let openIMG = false;
@@ -43,7 +43,7 @@ const TextNoticeContentComponent = ({ notice }) => {
   return (
     <React.Fragment>
       <Container size="medium" xlStaticSize>
-        <button className="alignbutton" onClick={toggleAlignment}>{isJustified ? "Izq." : "X"}</button>
+        <button type="button" className="alignbutton" onClick={toggleAlignment}>{isJustified ? lang.news.left : "X"}</button>
         {
           htmlElements.map((obj) => {
             if (obj.type == 'text')

@@ -1,9 +1,11 @@
 import React, { Component } from "react"
 import IncidentComponent from "../components/incident"
 import Prismic from "prismic-javascript"
+import { Context } from "../lang/context"
 
 // const IncidentsContainer = ({ data, darkMode, isFetching }) => {
 class IncidentsContainer extends Component {
+  static contextType = Context
   constructor(props) {
     super(props)
     this.state = {
@@ -47,6 +49,7 @@ class IncidentsContainer extends Component {
       .then(api =>
         api.query(query, {
           pageSize: 5,
+          lang: this.context.locale_zone,
           page: this.state.page,
           orderings: `[my.${this.noticeType}.custom_publishdate desc]`
         })

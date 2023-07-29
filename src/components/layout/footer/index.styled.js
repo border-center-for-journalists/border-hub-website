@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Container } from "../../theme/index.styled"
+import { Container } from "../../../theme/index.styled"
 
 const Footer = styled.footer`
   display: block;

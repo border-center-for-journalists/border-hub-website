@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/layoutEN"
 import SEO from "../components/seo"
 import HomeContainer from "../containers/home.js"
+import { Context, EN } from "../lang/context"
 
 const temp = data => {
 
@@ -30,28 +31,38 @@ const temp = data => {
   }
   const principalNotices = { nodes: [...principalSpecialNotices.nodes, ...principalNormalNotices.nodes] }
 
+  const title = EN.seo.title
   const description = common.metadescription.text
   const keywords = common.metakeywords.text
   //console.log("BANNER ???", common.banner.document)
   return (
-    <Layout>
-      <SEO title="Border Hub: Periodismo de Investigación de la Frontera Norte" description={description} keywords={keywords} />
-      <HomeContainer
-        showBanner={common.show_banner}
-        bannerNotice={common.banner.document}
-        categories={common.categories}
-        normalNotices={data.data.normalNotices}
-        recentNotices={data.data.recentNotices}
-        specialNotices={specialNotices}
-        noticeP={common.principal_notices_active ? principalNotices : { nodes: [] }}
-        site={data.data.site.siteMetadata}
-        recentIncidencias={data.data.recentIncidencias}
-      />
-    </Layout>
+    <Context.Provider value={EN}>
+      <Layout>
+        <SEO
+          lang="en-US"
+          title={title}
+          description={description}
+          keywords={keywords}
+        />
+        <HomeContainer
+          showBanner={common.show_banner}
+          bannerNotice={common.banner.document}
+          categories={common.categories}
+          normalNotices={data.data.normalNotices}
+          recentNotices={data.data.recentNotices}
+          specialNotices={specialNotices}
+          noticeP={
+            common.principal_notices_active ? principalNotices : { nodes: [] }
+          }
+          site={data.data.site.siteMetadata}
+          recentIncidencias={data.data.recentIncidencias}
+        />
+      </Layout>
+    </Context.Provider>
   )
 }
 export const pageQuery = graphql`
-  query HomeNoticeQuery {
+  query HomeNoticeQueryEN($lang: String!) {
     site {
       siteMetadata {
         API_KEY
@@ -60,7 +71,7 @@ export const pageQuery = graphql`
       }
     }
 
-    prismicDatosComunes {
+    prismicDatosComunes(lang: { eq: $lang }) {
       data {
         metadescription {
           text
@@ -117,6 +128,7 @@ export const pageQuery = graphql`
             document {
               uid
               type
+              lang
               data {
                 title {
                   text
@@ -148,6 +160,7 @@ export const pageQuery = graphql`
             document {
               uid
               type
+              lang
               data {
                 title {
                   text
@@ -178,6 +191,7 @@ export const pageQuery = graphql`
             document {
                 uid
                 type
+                lang
                 data {
                   title {
                     text
@@ -208,7 +222,12 @@ export const pageQuery = graphql`
   
     normalNotices: allPrismicNoticias(
       limit: 3
-      filter: { data: { type: { eq: "normal" } } }
+      filter: { 
+        data: { 
+          type: { eq: "normal" } 
+        } 
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
@@ -244,6 +263,9 @@ export const pageQuery = graphql`
 
     specialNotices: allPrismicNoticiasEspeciales(
       limit: 5
+      filter: {
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
@@ -275,7 +297,10 @@ export const pageQuery = graphql`
     }
 
     recentNotices: allPrismicNoticias(
-      limit: 8
+      limit: 6
+      filter: {
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     ) {
       nodes {
@@ -310,6 +335,9 @@ export const pageQuery = graphql`
     }
     recentIncidencias: allPrismicIncidencia(
       limit: 3
+      filter: {
+        lang: { eq: $lang }
+      }
       sort: { fields: [data___custom_publishdate], order: [DESC] }
     )  {
         nodes{

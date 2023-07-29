@@ -1,29 +1,28 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/layoutEN"
 import SEO from "../components/seo"
 import BlogContainer from "../containers/blog.js"
+import { Context, EN } from "../lang/context"
+import DonateComponent from "../components/donate"
 
 const Noticias = data => {
   const common = data.data.prismicDatosComunes.data
   const description = "Todos nuestras noticias especiales y reportajes en un solo lugar. Entérate de lo más relevante sobre el periodismo en México y la Frontera Norte."
   const keywords = common.metakeywords.text
+
   return (
-    <Layout>
-      <SEO
-        title="Noticias Especiales"
-        description={description}
-        keywords={keywords}
-      />
-      <BlogContainer
-        darkMode={true}
-        site={data.data.site.siteMetadata}
-      />
-    </Layout>
+    <Context.Provider value={EN}>
+      <Layout>
+        <SEO title="Blog" description={description} keywords={keywords} />
+        <DonateComponent />
+        <BlogContainer darkMode={false} site={data.data.site.siteMetadata} />
+      </Layout>
+    </Context.Provider>
   )
 }
 export const pageQuery = graphql`
-  query blogEspecialesQuery {
+  query blogQueryEN($lang: String!) {
     site {
       siteMetadata {
         API_KEY
@@ -31,7 +30,8 @@ export const pageQuery = graphql`
         API_URL
       }
     }
-    prismicDatosComunes {
+    prismicDatosComunes(lang: { eq: $lang }) {
+      lang
       data {
         metadescription {
           text

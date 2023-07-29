@@ -1,50 +1,37 @@
 import React, { Component } from "react"
 import {
-  CustomTitle,
-  RecentSection,
-  PrincipalContainer,
-  HrCol,
+  RecentNewsSection,
+  Container,
+  SubtitleDark,
+  RecentNewsList,
+  RecentNewsColumn,
 } from "./index.styled"
-import SubNewComponent from "./subNews.js"
-import { Container } from "../../theme/index.styled"
-
+import ColComponent from "../news/col"
+import { Context } from "../../lang/context"
 class RecentNews extends Component {
-  isAllowed = (notice, mergeNotices) => {
-    const r = mergeNotices.reduce((result, item) => {
-      return result && item.uid === notice.uid ? false : result
-    }, true)
-    return r
-  }
-  getColor = mergeNotices => {
-    let count = 0
-    this.props.notices.nodes.map(notice =>
-      this.isAllowed(notice, mergeNotices) ? (count += 1) : ""
-    )
-    return count >= 2 ? "white" : ""
-  }
+  static contextType = Context;
+  
   render() {
-    const mergeNotices = this.props.principalNotices.nodes
+    const discardNews = this.props.principalNotices.nodes.map((item) => item.uid)
+    const news = this.props.notices.nodes.filter((item) => discardNews.indexOf(item.uid) === -1)
+
     return (
-      <RecentSection>
-        <Container size="large">
-          <CustomTitle>
-            <h2>
-              <a href="/noticias/">Ver todas</a> Notas Recientes
-            </h2>
-          </CustomTitle>
-          <PrincipalContainer>
-            {this.props.notices.nodes.map(notice =>
-              this.isAllowed(notice, mergeNotices) ? (
-                <HrCol color={this.getColor(mergeNotices)} key={notice.uid}>
-                  <SubNewComponent notice={notice} />
-                </HrCol>
-              ) : (
-                  ""
-                )
-            )}
-          </PrincipalContainer>
+      <RecentNewsSection>
+        <Container>
+          <SubtitleDark>
+            <h2>{this.context.news.recent_news}</h2>
+            <a href={this.context.news.to_recent_news + "/"}>{this.context.news.see_all}</a>
+          </SubtitleDark>
+
+          <RecentNewsList>
+            {news.map((notice, index) => (
+              <RecentNewsColumn key={index}>
+                <ColComponent notice={notice} section={this.context.news.to_recent_news} darkMode={true} />
+              </RecentNewsColumn>
+            ))}
+          </RecentNewsList>
         </Container>
-      </RecentSection>
+      </RecentNewsSection>
     )
   }
 }

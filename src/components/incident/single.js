@@ -8,8 +8,9 @@ import NormalDonateComponent from "../notice/donate.js"
 import NormalRelatedComponent from "../notice/related.js"
 // import myData from "./prueba.json"
 import Prismic from "prismic-javascript"
-
+import { Context } from "../../lang/context"
 class SingleIncidentComponent extends Component {
+  static contextType = Context
   constructor(props) {
     super(props)
     this.state = {
@@ -24,7 +25,9 @@ class SingleIncidentComponent extends Component {
         api.query([
           Prismic.Predicates.at("document.type", "incidencia"),
           Prismic.Predicates.similar(prismicId, 3),
-        ])
+        ], {
+          lang: this.context.locale_zone
+        })
       )
       .then(response => {
         //console.log("RELATED", response)
@@ -37,22 +40,26 @@ class SingleIncidentComponent extends Component {
       <React.Fragment>
         <NoticeSection color="white">
           <HeaderIncidentComponent
-            noticetype='normal'
+            noticetype="normal"
             align="left"
             notice={this.props.notice}
             url={this.props.url}
+            lang={this.context}
           />
           <NormalNoticeContainer>
             <br />
-            <TextNoticeContentComponent notice={this.props.notice} />
+            <TextNoticeContentComponent
+              notice={this.props.notice}
+              lang={this.context}
+            />
           </NormalNoticeContainer>
         </NoticeSection>
-        {this.props.notice.data.status && this.props.notice.data.status[0].status_type != null ? (
+        {this.props.notice.data.status &&
+        this.props.notice.data.status[0].status_type != null ? (
           <StatusSection color="#f2f2f2">
             <StatusIncidentComponent incident={this.props.notice} />
           </StatusSection>
-        ) : null
-        }
+        ) : null}
       </React.Fragment>
     )
   }

@@ -1,10 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import LayoutES from "../components/layoutES"
+import LayoutEN from "../components/layoutEN"
 import SEO from "../components/seo"
 import NormalNoticeComponent from "../components/notice/normal"
+import {Context, EN, ES} from "../lang/context"
 
 const NormalNoticeContainer = ({ location, data }) => {
+  const lang = data.prismicNoticias.lang === "es-mx" ? ES : EN
+  const Layout = data.prismicNoticias.lang === "es-mx" ? LayoutES : LayoutEN
   let getDescription = data => {
     if (data.metadescription.text) {
       return data.metadescription.text
@@ -14,20 +18,22 @@ const NormalNoticeContainer = ({ location, data }) => {
   }
   const image = data.prismicNoticias.data.banner.url || false
   return (
-    <Layout>
-      <SEO
-        title={data.prismicNoticias.data.title.text}
-        description={getDescription(data.prismicNoticias.data)}
-        keywords={data.prismicNoticias.data.metakeywords.text || ""}
-        image={image}
-      />
-      <NormalNoticeComponent
-        notice={data.prismicNoticias}
-        related={data.relatedNotes}
-        site={data.site.siteMetadata}
-        url={location.href}
-      />
-    </Layout>
+    <Context.Provider value={lang}>
+      <Layout>
+        <SEO
+          title={data.prismicNoticias.data.title.text}
+          description={getDescription(data.prismicNoticias.data)}
+          keywords={data.prismicNoticias.data.metakeywords.text || ""}
+          image={image}
+        />
+        <NormalNoticeComponent
+          notice={data.prismicNoticias}
+          related={data.relatedNotes}
+          site={data.site.siteMetadata}
+          url={location.href}
+        />
+      </Layout>
+    </Context.Provider>
   )
 }
 
@@ -45,6 +51,7 @@ export const pageQuery = graphql`
 
     prismicNoticias(uid: { eq: $uid }) {
       uid
+      lang
       prismicId
       last_publication_date
       data {

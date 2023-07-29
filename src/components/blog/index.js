@@ -1,37 +1,54 @@
-import React from "react"
+import React, { useContext } from "react"
 import {
   Section,
-  Container,
-  TitleYellow,
   Message,
 } from "../../theme/index.styled"
-import SubNewComponent from "../mainNews/subNews"
-
+import { MainNewsSection, Subtitle, NewsList } from "./index.styled"
+import SecondaryComponent from "../news/secondary"
+import { Context } from "../../lang/context"
 const BlogComponent = ({ data, darkMode, isFetching, fetchEnd, category }) => {
+  const lang = useContext(Context)
+  const title = category
+    ? `${category.data.title.text}`
+    : darkMode === true
+    ? lang.news.special_investigations
+    : lang.news.news
+
+  const url = "/" + lang.locale + "/" + 
+    ((title === lang.news.news || category) ? lang.news.to_recent_news : lang.news.to_specials)
+  console.log(url);
   return (
     <Section paddingTop={!category && darkMode === true} darkMode={darkMode}>
-      <Container xlStaticSize wrapPadding>
-        <TitleYellow>
-          {category ? `${category.data.title.text}` : darkMode === true ? "Investigaciones Especiales" : "Noticias"}
-        </TitleYellow>
-        {data.map((notice, index) => (
-          <SubNewComponent darkMode={darkMode} notice={notice} key={index} />
-        ))}
+      <MainNewsSection>
+        <Subtitle>
+          <h1>
+            {title}
+          </h1>
+        </Subtitle>
+
+        <NewsList>
+          {data.map((notice, index) => (
+            <li key={index}>
+              <SecondaryComponent url={url} darkMode={darkMode} size={"contain"} notice={notice} />
+            </li>
+          ))}
+        </NewsList>
+
         {isFetching && !fetchEnd ? (
           <Message darkMode={darkMode}>
-            <span>Cargando noticias ...</span>
+            <span>{lang.news.loading}...</span>
           </Message>
         ) : (
           ""
         )}
         {fetchEnd && !isFetching ? (
           <Message darkMode={darkMode}>
-            <span>Se han cargado todas las noticias</span>
+            <span>{lang.news.all_results}</span>
           </Message>
         ) : (
           ""
         )}
-      </Container>
+      </MainNewsSection>
     </Section>
   )
 }

@@ -1,10 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import LayoutES from "../components/layoutES"
+import LayoutEN from "../components/layoutEN"
 import SEO from "../components/seo"
 import GeneralComponent from "../components/generalNews/index.js"
+import {Context, EN, ES} from "../lang/context"
 
 const generalContainer = ({ data }) => {
+  const lang = data.prismicComun.lang === "es-mx" ? ES : EN
+  const Layout = data.prismicComun.lang === "es-mx" ? LayoutES : LayoutEN
   const title = data.prismicComun.data.title.text
   const description =
     data.prismicComun.data.metadescription.text ||
@@ -13,18 +17,22 @@ const generalContainer = ({ data }) => {
     data.prismicComun.data.metakeywords.text ||
     data.prismicDatosComunes.data.metakeywords.text
   return (
+    <Context.Provider value={lang}>
+
     <Layout>
       <SEO title={title} keywords={keywords} description={description} />
       <GeneralComponent data={data.prismicComun.data} />
     </Layout>
+    </Context.Provider>
   )
 }
 
 export default generalContainer
 export const pageQuery = graphql`
-  query SingleGeneralPage($uid: String!) {
-    prismicComun(uid: { eq: $uid }) {
+  query SingleGeneralPage($uid: String!, $lang: String!) {
+    prismicComun(uid: { eq: $uid }, lang: { eq: $lang }) {
       uid
+      lang
       data {
         title {
           text
@@ -40,7 +48,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    prismicDatosComunes {
+    prismicDatosComunes(lang: { eq: $lang }) {
       data {
         metadescription {
           text

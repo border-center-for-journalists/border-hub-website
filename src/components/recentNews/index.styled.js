@@ -1,145 +1,82 @@
 import styled from "styled-components"
-import {
-  TitleMediumContainer,
-  Section,
-  Container,
-  Col,
-} from "../../theme/index.styled"
 
-const RecentSection = styled(Section)`
-  padding: 35px 24px;
-  background-color: black;
+const RecentNewsSection = styled.section`
+  min-height: 40vh;
+  background-color: ${props => props.theme.Black};
 `
-const CustomTitle = styled(TitleMediumContainer)`
-  padding-top: 39px;
-  max-width: 1100px;
-  h2 {
-    font-size: 30px;
-    line-height: 1.22;
-  }
-  a {
-    float: right;
-    font-size: 15px;
-    font-style: italic;
-    color: ${props => props.theme.Yellow};
-    padding: 12px 0;
-  }
-  background-color: black;
+const Container = styled.div`
+  padding: 2em 0.5em;
+  margin: 0 auto;
 
-  ${props => props.theme.smallBreakPoint} {
+  ${props => props.theme.mdBP} {
+    max-width: 700px;
+    padding: 2em 1em;
+  }
+
+  ${props => props.theme.lgBP} {
+    max-width: 768px;
+  }
+
+  ${props => props.theme.xlBP} {
     padding: 2em 0;
+    max-width: 1000px;
   }
 `
-const PrincipalContainer = styled.div`
+const SubtitleDark = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  ${props => props.theme.ipadBreakPoint} {
-    margin: 0 auto;
+  padding: 0 0.5em 1em;
+  margin-bottom: 1em;
+  border-bottom: 4px solid ${props => props.theme.Yellow};
+
+  h2 {
+    font-size: 1.3em;
+    color: ${props => props.theme.White};
+    margin: 0;
+    padding: 0;
   }
-  ${props => props.theme.largeBreakPoint} {
-    max-width: ${props => props.theme.ContainerExtraLarge + 30}px;
+
+  a {
+    font-size: 0.8em;
+    color: ${props => props.theme.Yellow};
+    text-decoration: underline;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
   }
 `
-
-const NewsContainer = styled(Container)`
+const RecentNewsList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-top: 1em;
+  justify-content: space-between;
   flex-direction: row;
-  img {
-    margin: 0;
-  }
-  ${props => props.theme.xlBreakPoint} {
-    img {
-      padding: 0 0 1em 1em !important;
-    }
-  }
-`
 
-const NewsText = styled(Container)`
-  max-width: 205px;
-  margin: 0;
-  h3 {
-    color: ${props => props.theme.White};
-    font-size: 19px;
-    font-weight: bold;
-    line-height: 1.16;
-    text-align: left;
-    margin-bottom: 15px;
-  }
-  h3 a {
-    color: ${props => props.theme.White};
-    text-decoration: none;
-  }
-  p {
-    color: ${props => props.theme.White};
-    text-align: left;
-    font-size: 16px;
-    line-height: 1.44;
-    margin-bottom: 15px;
+  ${props => props.theme.smBP} {
+    flex-direction: column;
   }
 
-  ${props => props.theme.xlBreakPoint} {
-    p {
-      display: none;
-    }
+  ${props => props.theme.mdBP} {
+    flex-direction: column;
   }
 `
+const RecentNewsColumn = styled.div`
+  display: flex;
+  color: white;
+  width: 100%;
 
-const DateText = styled.p`
-  font-size: 15.5px;
-  color: ${props => props.theme.DarkYellow};
-  line-height: 25px;
-  line-height: 1.29;
-  text-align: left;
-  margin: 0;
-  ${props => props.theme.xlBreakPoint} {
-    color: ${props => props.theme.White};
+  ${props => props.theme.lgBP} {
+    width: 32%;
   }
-`
-const TextCol = styled(Col)`
-  flex: 0 0 40%;
-  max-width: 40%;
-  ${props => props.theme.smallBreakPoint} {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-`
-const ImgCol = styled(Col)`
-  flex: 0 0 60%;
-  max-width: 60%;
-  img {
-    width: 200px;
-    display: block;
-    margin: 0 auto;
-  }
-  ${props => props.theme.smallBreakPoint} {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-`
 
-const YellowText = styled.span`
-  ${props => props.theme.xlBreakPoint} {
-    color: ${props => props.theme.Yellow};
+  ${props => props.theme.xlBP} {
+    width: 32%;
   }
 `
-const HrCol = styled(Col)`
-  padding-bottom: 20px;
-  border-bottom: 1px solid ${props => props.color};
-`
-
 export {
-  CustomTitle,
-  NewsContainer,
-  NewsText,
-  PrincipalContainer,
-  DateText,
-  RecentSection,
-  ImgCol,
-  TextCol,
-  YellowText,
-  HrCol,
+  RecentNewsSection,
+  Container,
+  SubtitleDark,
+  RecentNewsList,
+  RecentNewsColumn,
 }
