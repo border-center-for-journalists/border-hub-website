@@ -57,9 +57,9 @@ exports.onCreatePage = ({ page, actions }) => {
 
   createRedirect({
     fromPath: `/`,
-    isPermanent: true,
     redirectInBrowser: true,
     toPath: `/es/`,
+    statusCode: 301
   })
 
   createRedirect({
