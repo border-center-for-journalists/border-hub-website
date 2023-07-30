@@ -18,8 +18,8 @@ module.exports = {
     API_KEY: process.env.API_KEY,
     API_REF: process.env.API_REF,
     API_URL: process.env.API_URL,
-    SITE_URL: (process.env.SITE_URL + "/es") || "",
-    siteUrl: (process.env.SITE_URL + "/es") || "",
+    SITE_URL: process.env.SITE_URL || "",
+    siteUrl: process.env.SITE_URL || "",
     languages
   },
   plugins: [
@@ -78,7 +78,7 @@ module.exports = {
       resolve: "gatsby-plugin-i18n",
       options: {
         langKeyDefault: languages.defaultLangKey,
-        useLangKeyLayout: false,
+        useLangKeyLayout: true,
         prefixDefault: true,
       },
     },

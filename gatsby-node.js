@@ -57,24 +57,10 @@ exports.onCreatePage = ({ page, actions }) => {
 
   createRedirect({
     fromPath: `/`,
-    redirectInBrowser: true,
-    toPath: `/es/`,
-    statusCode: 301
-  })
-
-  createRedirect({
-    fromPath: `/es`,
     isPermanent: true,
     redirectInBrowser: true,
     toPath: `/es/`,
-  })
-
-  createRedirect({
-    fromPath: `/en`,
-    isPermanent: true,
-    redirectInBrowser: true,
-    toPath: `/en/`,
-  })
+   })
 }
 
 exports.createPages = async ({ graphql, actions }) => {

@@ -4,8 +4,9 @@ import bc from "../../../theme/images/borderhubcenter.jpg"
 import bh from "../../../theme/images/logo.jpg"
 import bcjb from "../../../theme/images/logo_footer.jpg"
 import DonateComponent from "../donate"
-
+import { Context } from "../../../lang/context"
 class FooterComponent extends Component {
+  static contextType = Context
   render() {
     const { facebook, twitter, youtube } = this.props.data
     return (
@@ -20,7 +21,7 @@ class FooterComponent extends Component {
         </BlackContainer>
         <YellowContainer>
           <img alt='' src={bcjb} />
-          <DonateComponent type="square-black" />
+          <DonateComponent type="square-black" text={this.context.donate.fund} />
           <Social
             target="_blank"
             bigger

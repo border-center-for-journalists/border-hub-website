@@ -1,5 +1,5 @@
 module.exports = {
-  langs: ["en", "es"],
+  langs: ["es", "en"],
   defaultLangKey: "es",
   langsWithCode: {
     "en-us": "en",
