@@ -18,8 +18,8 @@ module.exports = {
     API_KEY: process.env.API_KEY,
     API_REF: process.env.API_REF,
     API_URL: process.env.API_URL,
-    SITE_URL: process.env.SITE_URL || "",
-    siteUrl: process.env.SITE_URL || "",
+    SITE_URL: (process.env.SITE_URL + "/es") || "",
+    siteUrl: (process.env.SITE_URL + "/es") || "",
     languages
   },
   plugins: [
