@@ -18,8 +18,8 @@ const getLangSection = (zone, section) => {
     "en": {
       to_category: 'category',
       to_recent_news: 'news',
-      to_incidence: 'incidence',
-      to_specials: 'special-news',
+      to_incidence: 'impact',
+      to_specials: 'investigative_reporting',
     },
     "es": {
       to_category: 'categoria',
