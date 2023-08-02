@@ -1,1 +1,7 @@
-/ /es
+/                           /es                               301
+/noticias/*                 /es/noticias/:splat               301
+/noticias-especiales/*      /es/noticias-especiales/:splat    301
+/categoria/*                /es/categoria/:splat              301
+/incidencia/*               /es/incidencia/:splat             301
+/politicas-de-privacidad    /es/politicas-de-privacidad       301
+/contact                    /es/contacto                      301
