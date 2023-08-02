@@ -173,10 +173,30 @@ const SocialContainer = styled.div`
   }
 `
 
+const LanguageMenu = styled.ul`
+  width: 100%;
+  text-align: right;
+  margin: 0 !important;
+
+  li {
+    a {
+      font-size: 0.8em;
+      margin: 0;
+      padding: 0 8px; 
+    }
+
+    a.active {
+      background-color: ${props => props.theme.Black};
+      color: ${props => props.theme.Yellow};
+    }
+  }
+`
+
 export {
   Hamburguer,
   Menu,
   MenuHeader,
   MenuBody,
   SocialContainer,
+  LanguageMenu
 }

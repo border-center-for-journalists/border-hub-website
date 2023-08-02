@@ -6,6 +6,16 @@ export const ES = {
   },
   locale: "es",
   locale_zone: "es-mx",
+  menu: {
+    label: {
+      EN: 'Inglés',
+      ES: 'Español',
+    },
+    to: {
+      EN: '/en/',
+      ES: '/es/'
+    }
+  },
   donate: {
     fund: 'Apoya al periodismo',
     title: 'El periodismo requiere de tu apoyo',
@@ -55,6 +65,16 @@ export const EN = {
   },
   locale: "en",
   locale_zone: "en-us",
+  menu: {
+    label: {
+      EN: 'English',
+      ES: 'Spanish',
+    },
+    to: {
+      EN: '/en/',
+      ES: '/es/'
+    }
+  },
   donate: {
     fund: 'Support journalism',
     title: 'Journalism needs your support',
